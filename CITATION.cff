@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below, together with the original method."
+title: "qcr: exact, hardware-aware local rewriting of quantum circuits"
+authors:
+  - family-names: Kapoor
+    given-names: Arnav
+    affiliation: IISER Bhopal
+version: 0.1.0
+license: Apache-2.0
+repository-code: "https://github.com/arnavk23/qcr"
+keywords:
+  - quantum computing
+  - quantum circuit optimization
+  - Clifford group
+  - Qiskit
+references:
+  - type: article
+    title: "Optimization driven quantum circuit reduction"
+    authors:
+      - family-names: Rosenhahn
+        given-names: Bodo
+      - family-names: Osborne
+        given-names: Tobias J.
+      - family-names: Hirche
+        given-names: Christoph
+    journal: "New Journal of Physics"
+    volume: 27
+    start: 104509
+    year: 2025
+    identifiers:
+      - type: other
+        value: "arXiv:2502.14715"

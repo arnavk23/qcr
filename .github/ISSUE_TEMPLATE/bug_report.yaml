@@ -1,0 +1,37 @@
+name: Bug report
+description: Something produced a wrong, non-equivalent or illegal circuit, or crashed.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: Thank you for reporting. Please search existing issues first.
+  - type: input
+    id: version
+    attributes:
+      label: Environment
+      description: qcr, Qiskit and Python versions, and the operating system.
+      placeholder: "qcr 0.1.0, qiskit 2.5.1, Python 3.12, Ubuntu 24.04"
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: How can we reproduce it?
+      description: A minimal circuit and the `Config` used. Paste code, not screenshots.
+      render: python
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What should happen?
+  - type: textarea
+    id: extra
+    attributes:
+      label: Any suggestions?

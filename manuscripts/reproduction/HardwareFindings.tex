@@ -1,0 +1,8 @@
+\textbf{Findings.} At transpiler levels 0 and 1 the reduced circuits are closer to the ideal distribution on both chips
+(Brisbane L0: TVD 0.059 $\to$ 0.041, better on 22/30 circuits; Kyiv L0: 0.024 $\to$ 0.018, 20/30), and the newer Kyiv calibration
+is less noisy than Brisbane. Both observations match the paper's Fig.~9. At level 3, however, Qiskit consolidates every 2-qubit
+block and re-synthesises it, so long and short circuits compile to the same $\approx1.1$ two-qubit gates and the advantage
+vanishes (Brisbane 0.018 vs.\ 0.019; Kyiv 0.012 vs.\ 0.012). Plain Qiskit level 3 on the \emph{long} circuit beats the reduced circuit at
+level 1 (0.018 vs.\ 0.037 on Brisbane). The paper's hardware evidence therefore depends on an unreported transpiler setting.
+Its native-op counts (156 vs.\ 34 on Brisbane) are consistent with level 0/1 compilation by an older Qiskit. Our reduced
+circuits average 5.4 gates (paper: 8).

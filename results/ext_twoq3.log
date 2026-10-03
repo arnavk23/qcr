@@ -1,0 +1,8 @@
+  2q-count 0: 13,824 elements (total 13,824) 0s
+  2q-count 1: 373,248 elements (total 387,072) 2s
+  2q-count 2: 5,971,968 elements (total 6,359,040) 44s
+  2q-count 3: 38,486,016 elements (total 44,845,056) 529s
+  2q-count 4: 42,052,608 elements (total 86,897,664) 1293s
+  2q-count 5: 5,971,968 elements (total 92,869,632) 1452s
+  2q-count 6: 27,648 elements (total 92,897,280) 1475s
+{'layers': [13824, 373248, 5971968, 38486016, 42052608, 5971968, 27648], 'order': 92897280, 'mean': 3.509375}

@@ -1,0 +1,24 @@
+qcr
+Copyright 2026 Arnav Kapoor
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+Third-party material
+--------------------
+
+* Figures reproduced in manuscripts/notes/ and manuscripts/talk/figs/ (files
+  CodeReduceTokens.png, ConvCurve3.png, FullComputeGraphs2.png, In200Out4.png,
+  Motivation1.png, QChipCompare1.png, ScalableOpt2.png, Statistics2.png,
+  optVariantsW.png) are taken from B. Rosenhahn, T. J. Osborne and C. Hirche,
+  "Optimization driven quantum circuit reduction", New J. Phys. 27, 104509
+  (2025), published under the Creative Commons Attribution 4.0 licence
+  (https://creativecommons.org/licenses/by/4.0/). They are unmodified.
+
+* qcr/compute_graph.py, qcr/reducer.py and qcr/rf.py are an independent Python
+  re-implementation of the method described in that paper, written by following
+  the authors' MATLAB demo (QCOptimDemo). No MATLAB code is redistributed here;
+  tools/fetch_external.sh downloads it from the authors' web page.
+
+* Benchmark circuits (inQWIRE/VOQC-benchmarks, pnnl/QASMBench) are not
+  redistributed; they remain under their own licences. tools/fetch_external.sh
+  clones them at pinned commits into external/benchmarks/.

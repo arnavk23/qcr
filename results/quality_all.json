@@ -1,0 +1,4431 @@
+[
+ {
+  "cfg": "T3_ion_3q",
+  "seed": 3,
+  "original": {
+   "rx": 93,
+   "ry": 80,
+   "rz": 89,
+   "rxx": 38
+  },
+  "qiskit_L1": {
+   "rx": 20,
+   "rz": 38,
+   "ry": 32,
+   "rxx": 38
+  },
+  "qiskit_L1_s": 0.17652366400034225,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rx": 26,
+   "rz": 37,
+   "rxx": 29,
+   "ry": 26
+  },
+  "qiskit_L2_s": 0.01333955399968545,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rx": 27,
+   "rz": 32,
+   "rxx": 27,
+   "ry": 26
+  },
+  "qiskit_L3_s": 0.015083938000316266,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "ry": 8,
+   "rxx": 12,
+   "rz": 7,
+   "rx": 1
+  },
+  "ours_s": 20.236689584999112,
+  "ours_ok": true,
+  "ours_attempts": 111864
+ },
+ {
+  "cfg": "T3_ion_3q",
+  "seed": 2,
+  "original": {
+   "rz": 79,
+   "ry": 79,
+   "rxx": 36,
+   "rx": 106
+  },
+  "qiskit_L1": {
+   "rxx": 36,
+   "ry": 32,
+   "rx": 19,
+   "rz": 25
+  },
+  "qiskit_L1_s": 0.17071274500085565,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "ry": 28,
+   "rx": 30,
+   "rxx": 29,
+   "rz": 29
+  },
+  "qiskit_L2_s": 0.01762534099907498,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "ry": 28,
+   "rx": 30,
+   "rxx": 29,
+   "rz": 29
+  },
+  "qiskit_L3_s": 0.01705480399868975,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "rxx": 16,
+   "ry": 14,
+   "rz": 8,
+   "rx": 3
+  },
+  "ours_s": 22.91023474600115,
+  "ours_ok": true,
+  "ours_attempts": 108600
+ },
+ {
+  "cfg": "T3_ion_3q",
+  "seed": 1,
+  "original": {
+   "ry": 80,
+   "rz": 90,
+   "rxx": 43,
+   "rx": 87
+  },
+  "qiskit_L1": {
+   "ry": 38,
+   "rz": 38,
+   "rxx": 43,
+   "rx": 13
+  },
+  "qiskit_L1_s": 0.1717416339997726,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rz": 46,
+   "ry": 33,
+   "rx": 31,
+   "rxx": 32
+  },
+  "qiskit_L2_s": 0.03522194199831574,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rz": 45,
+   "ry": 31,
+   "rx": 32,
+   "rxx": 32
+  },
+  "qiskit_L3_s": 0.01912674900086131,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "rz": 11,
+   "ry": 13,
+   "rx": 1,
+   "rxx": 17
+  },
+  "ours_s": 27.934371530000135,
+  "ours_ok": true,
+  "ours_attempts": 127431
+ },
+ {
+  "cfg": "T3_ion_3q",
+  "seed": 7,
+  "original": {
+   "rx": 90,
+   "rz": 90,
+   "ry": 74,
+   "rxx": 46
+  },
+  "qiskit_L1": {
+   "rx": 24,
+   "rz": 43,
+   "ry": 45,
+   "rxx": 46
+  },
+  "qiskit_L1_s": 0.16674294600124995,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rx": 35,
+   "rz": 41,
+   "rxx": 34,
+   "ry": 27
+  },
+  "qiskit_L2_s": 0.01789457099948777,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rx": 33,
+   "rz": 39,
+   "rxx": 32,
+   "ry": 27
+  },
+  "qiskit_L3_s": 0.017839756001194473,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "rz": 12,
+   "ry": 13,
+   "rxx": 19,
+   "rx": 4
+  },
+  "ours_s": 33.02120447800007,
+  "ours_ok": true,
+  "ours_attempts": 143984
+ },
+ {
+  "cfg": "T3_ion_3q",
+  "seed": 5,
+  "original": {
+   "rx": 97,
+   "ry": 92,
+   "rz": 70,
+   "rxx": 41
+  },
+  "qiskit_L1": {
+   "rx": 25,
+   "ry": 37,
+   "rxx": 41,
+   "rz": 28
+  },
+  "qiskit_L1_s": 0.17728309300036926,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rz": 36,
+   "ry": 24,
+   "rxx": 31,
+   "rx": 29
+  },
+  "qiskit_L2_s": 0.015889312000581413,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rz": 34,
+   "ry": 21,
+   "rxx": 28,
+   "rx": 27
+  },
+  "qiskit_L3_s": 0.04534027499903459,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "rxx": 21,
+   "rz": 16,
+   "rx": 2,
+   "ry": 13
+  },
+  "ours_s": 36.735965670999576,
+  "ours_ok": true,
+  "ours_attempts": 153077
+ },
+ {
+  "cfg": "T3_ion_3q",
+  "seed": 4,
+  "original": {
+   "rx": 92,
+   "rz": 77,
+   "rxx": 42,
+   "ry": 89
+  },
+  "qiskit_L1": {
+   "ry": 40,
+   "rz": 42,
+   "rx": 15,
+   "rxx": 42
+  },
+  "qiskit_L1_s": 0.1570543239995459,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rz": 40,
+   "ry": 37,
+   "rx": 25,
+   "rxx": 31
+  },
+  "qiskit_L2_s": 0.018441263000568142,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rz": 40,
+   "ry": 37,
+   "rx": 25,
+   "rxx": 31
+  },
+  "qiskit_L3_s": 0.016877983998710988,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "ry": 20,
+   "rz": 19,
+   "rxx": 26,
+   "rx": 2
+  },
+  "ours_s": 38.72257472199999,
+  "ours_ok": true,
+  "ours_attempts": 147119
+ },
+ {
+  "cfg": "T3_ion_3q",
+  "seed": 0,
+  "original": {
+   "rx": 89,
+   "ry": 86,
+   "rz": 83,
+   "rxx": 42
+  },
+  "qiskit_L1": {
+   "ry": 35,
+   "rz": 37,
+   "rx": 27,
+   "rxx": 42
+  },
+  "qiskit_L1_s": 0.16674789399985457,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rz": 36,
+   "rx": 24,
+   "ry": 34,
+   "rxx": 29
+  },
+  "qiskit_L2_s": 0.025631253000028664,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rz": 37,
+   "rx": 19,
+   "ry": 35,
+   "rxx": 28
+  },
+  "qiskit_L3_s": 0.019404553999265772,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "rxx": 17,
+   "ry": 11,
+   "rx": 3,
+   "rz": 13
+  },
+  "ours_s": 46.92330393500015,
+  "ours_ok": true,
+  "ours_attempts": 182457
+ },
+ {
+  "cfg": "T3_ion_3q",
+  "seed": 9,
+  "original": {
+   "rz": 96,
+   "ry": 90,
+   "rx": 81,
+   "rxx": 33
+  },
+  "qiskit_L1": {
+   "rz": 35,
+   "ry": 35,
+   "rx": 12,
+   "rxx": 33
+  },
+  "qiskit_L1_s": 0.007619518000865355,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "ry": 27,
+   "rx": 23,
+   "rz": 37,
+   "rxx": 24
+  },
+  "qiskit_L2_s": 0.016357934000552632,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "ry": 27,
+   "rx": 23,
+   "rz": 37,
+   "rxx": 24
+  },
+  "qiskit_L3_s": 0.017071263000616455,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "rx": 2,
+   "rz": 10,
+   "ry": 8,
+   "rxx": 11
+  },
+  "ours_s": 24.160677328998645,
+  "ours_ok": true,
+  "ours_attempts": 114069
+ },
+ {
+  "cfg": "T3_ion_3q",
+  "seed": 8,
+  "original": {
+   "ry": 101,
+   "rx": 80,
+   "rz": 80,
+   "rxx": 39
+  },
+  "qiskit_L1": {
+   "ry": 37,
+   "rx": 15,
+   "rxx": 39,
+   "rz": 35
+  },
+  "qiskit_L1_s": 0.01089354000032472,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "ry": 29,
+   "rx": 35,
+   "rxx": 31,
+   "rz": 42
+  },
+  "qiskit_L2_s": 0.023192201999336248,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "ry": 29,
+   "rx": 35,
+   "rxx": 31,
+   "rz": 42
+  },
+  "qiskit_L3_s": 0.033931183999811765,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "ry": 10,
+   "rxx": 19,
+   "rz": 18,
+   "rx": 4
+  },
+  "ours_s": 28.431310568999834,
+  "ours_ok": true,
+  "ours_attempts": 108264
+ },
+ {
+  "cfg": "T3_ion_3q",
+  "seed": 6,
+  "original": {
+   "rx": 77,
+   "rxx": 52,
+   "rz": 88,
+   "ry": 83
+  },
+  "qiskit_L1": {
+   "rx": 27,
+   "rxx": 52,
+   "rz": 35,
+   "ry": 38
+  },
+  "qiskit_L1_s": 0.170798991999618,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rz": 38,
+   "rx": 33,
+   "rxx": 32,
+   "ry": 30
+  },
+  "qiskit_L2_s": 0.016617773999314522,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rz": 37,
+   "rx": 30,
+   "rxx": 31,
+   "ry": 31
+  },
+  "qiskit_L3_s": 0.021762696000223514,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "rz": 14,
+   "rxx": 25,
+   "ry": 18,
+   "rx": 4
+  },
+  "ours_s": 53.294883458000186,
+  "ours_ok": true,
+  "ours_attempts": 202948
+ },
+ {
+  "cfg": "T3_ion_3q",
+  "seed": 10,
+  "original": {
+   "ry": 81,
+   "rxx": 45,
+   "rx": 84,
+   "rz": 90
+  },
+  "qiskit_L1": {
+   "rx": 25,
+   "ry": 39,
+   "rxx": 45,
+   "rz": 43
+  },
+  "qiskit_L1_s": 0.00914895399910165,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rx": 34,
+   "ry": 34,
+   "rxx": 35,
+   "rz": 43
+  },
+  "qiskit_L2_s": 0.022367235000274377,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rx": 32,
+   "ry": 33,
+   "rxx": 33,
+   "rz": 42
+  },
+  "qiskit_L3_s": 0.032590024999080924,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "ry": 10,
+   "rxx": 17,
+   "rx": 3,
+   "rz": 15
+  },
+  "ours_s": 27.207391044999895,
+  "ours_ok": true,
+  "ours_attempts": 110817
+ },
+ {
+  "cfg": "T3_ion_3q",
+  "seed": 11,
+  "original": {
+   "rz": 85,
+   "ry": 94,
+   "rx": 73,
+   "rxx": 48
+  },
+  "qiskit_L1": {
+   "rz": 36,
+   "ry": 35,
+   "rxx": 48,
+   "rx": 19
+  },
+  "qiskit_L1_s": 0.008005487999980687,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "ry": 27,
+   "rx": 39,
+   "rz": 40,
+   "rxx": 36
+  },
+  "qiskit_L2_s": 0.017589896999197663,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "ry": 24,
+   "rx": 41,
+   "rz": 41,
+   "rxx": 35
+  },
+  "qiskit_L3_s": 0.0232638350007619,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "ry": 7,
+   "rxx": 11,
+   "rz": 7,
+   "rx": 3
+  },
+  "ours_s": 23.085400709998794,
+  "ours_ok": true,
+  "ours_attempts": 106129
+ },
+ {
+  "cfg": "T3_ion_3q",
+  "seed": 12,
+  "original": {
+   "ry": 66,
+   "rxx": 45,
+   "rx": 99,
+   "rz": 90
+  },
+  "qiskit_L1": {
+   "ry": 29,
+   "rz": 36,
+   "rxx": 45,
+   "rx": 27
+  },
+  "qiskit_L1_s": 0.011980753999523586,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rx": 35,
+   "rz": 45,
+   "rxx": 32,
+   "ry": 22
+  },
+  "qiskit_L2_s": 0.021076012000776245,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rx": 35,
+   "rz": 45,
+   "rxx": 32,
+   "ry": 22
+  },
+  "qiskit_L3_s": 0.02139993799937656,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "ry": 13,
+   "rxx": 21,
+   "rz": 18,
+   "rx": 2
+  },
+  "ours_s": 30.734777112998927,
+  "ours_ok": true,
+  "ours_attempts": 113643
+ },
+ {
+  "cfg": "T3_ion_3q",
+  "seed": 13,
+  "original": {
+   "ry": 87,
+   "rx": 79,
+   "rxx": 57,
+   "rz": 77
+  },
+  "qiskit_L1": {
+   "ry": 41,
+   "rz": 38,
+   "rxx": 57,
+   "rx": 23
+  },
+  "qiskit_L1_s": 0.008946167001340655,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "ry": 38,
+   "rx": 34,
+   "rxx": 35,
+   "rz": 49
+  },
+  "qiskit_L2_s": 0.023534191999715404,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "ry": 38,
+   "rx": 34,
+   "rxx": 35,
+   "rz": 49
+  },
+  "qiskit_L3_s": 0.04776081899944984,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "ry": 17,
+   "rxx": 25,
+   "rz": 17,
+   "rx": 4
+  },
+  "ours_s": 34.40102991999993,
+  "ours_ok": true,
+  "ours_attempts": 114903
+ },
+ {
+  "cfg": "T3_ion_3q",
+  "seed": 15,
+  "original": {
+   "rz": 84,
+   "ry": 93,
+   "rx": 72,
+   "rxx": 51
+  },
+  "qiskit_L1": {
+   "rz": 41,
+   "rx": 21,
+   "rxx": 51,
+   "ry": 29
+  },
+  "qiskit_L1_s": 0.008608049998656497,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rx": 20,
+   "rz": 39,
+   "rxx": 30,
+   "ry": 34
+  },
+  "qiskit_L2_s": 0.031028880999656394,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rx": 18,
+   "rz": 32,
+   "rxx": 27,
+   "ry": 31
+  },
+  "qiskit_L3_s": 0.03503883500161464,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "rz": 9,
+   "rxx": 18,
+   "ry": 10,
+   "rx": 3
+  },
+  "ours_s": 26.000413521000155,
+  "ours_ok": true,
+  "ours_attempts": 107697
+ },
+ {
+  "cfg": "T3_ion_3q",
+  "seed": 14,
+  "original": {
+   "rx": 93,
+   "rxx": 34,
+   "ry": 86,
+   "rz": 87
+  },
+  "qiskit_L1": {
+   "rx": 17,
+   "rz": 33,
+   "rxx": 34,
+   "ry": 33
+  },
+  "qiskit_L1_s": 0.008434801999101182,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rx": 41,
+   "ry": 30,
+   "rxx": 32,
+   "rz": 30
+  },
+  "qiskit_L2_s": 0.021274545000778744,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rx": 41,
+   "ry": 30,
+   "rxx": 32,
+   "rz": 30
+  },
+  "qiskit_L3_s": 0.023899959000118542,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "rxx": 26,
+   "ry": 13,
+   "rz": 18,
+   "rx": 4
+  },
+  "ours_s": 33.124524331999055,
+  "ours_ok": true,
+  "ours_attempts": 115981
+ },
+ {
+  "cfg": "T3_ion_3q",
+  "seed": 17,
+  "original": {
+   "rz": 96,
+   "ry": 90,
+   "rx": 85,
+   "rxx": 29
+  },
+  "qiskit_L1": {
+   "ry": 23,
+   "rz": 30,
+   "rxx": 29,
+   "rx": 15
+  },
+  "qiskit_L1_s": 0.00696057099958125,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "ry": 20,
+   "rz": 31,
+   "rx": 24,
+   "rxx": 19
+  },
+  "qiskit_L2_s": 0.01468726399980369,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "ry": 21,
+   "rx": 17,
+   "rz": 27,
+   "rxx": 16
+  },
+  "qiskit_L3_s": 0.034861500000261,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "ry": 9,
+   "rx": 1,
+   "rxx": 15,
+   "rz": 11
+  },
+  "ours_s": 31.046033872999033,
+  "ours_ok": true,
+  "ours_attempts": 137309
+ },
+ {
+  "cfg": "T3_ion_3q",
+  "seed": 16,
+  "original": {
+   "ry": 66,
+   "rxx": 53,
+   "rx": 91,
+   "rz": 90
+  },
+  "qiskit_L1": {
+   "ry": 37,
+   "rxx": 53,
+   "rx": 21,
+   "rz": 43
+  },
+  "qiskit_L1_s": 0.013594226000350318,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rz": 29,
+   "ry": 35,
+   "rxx": 34,
+   "rx": 40
+  },
+  "qiskit_L2_s": 0.023671998000281746,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rz": 29,
+   "ry": 35,
+   "rxx": 33,
+   "rx": 39
+  },
+  "qiskit_L3_s": 0.049255783000262454,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "rxx": 25,
+   "rz": 18,
+   "ry": 17,
+   "rx": 1
+  },
+  "ours_s": 37.056940956999824,
+  "ours_ok": true,
+  "ours_attempts": 127009
+ },
+ {
+  "cfg": "T4_nisq_3q",
+  "seed": 0,
+  "original": {
+   "cz": 58,
+   "rx": 127,
+   "rz": 115
+  },
+  "qiskit_L1": {
+   "rz": 53,
+   "rx": 58,
+   "cz": 56
+  },
+  "qiskit_L1_s": 0.008316792000186979,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rz": 34,
+   "rx": 55,
+   "cz": 35
+  },
+  "qiskit_L2_s": 0.01485654499992961,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rz": 33,
+   "rx": 54,
+   "cz": 34
+  },
+  "qiskit_L3_s": 0.023065679999490385,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "cz": 13,
+   "rz": 8,
+   "rx": 16
+  },
+  "ours_s": 26.47679164100009,
+  "ours_ok": true,
+  "ours_attempts": 112601
+ },
+ {
+  "cfg": "T3_ion_3q",
+  "seed": 18,
+  "original": {
+   "ry": 79,
+   "rz": 101,
+   "rx": 74,
+   "rxx": 46
+  },
+  "qiskit_L1": {
+   "ry": 40,
+   "rx": 19,
+   "rz": 41,
+   "rxx": 46
+  },
+  "qiskit_L1_s": 0.028008665000015753,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "ry": 41,
+   "rx": 32,
+   "rxx": 33,
+   "rz": 40
+  },
+  "qiskit_L2_s": 0.028540913999677286,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "ry": 41,
+   "rx": 31,
+   "rxx": 33,
+   "rz": 40
+  },
+  "qiskit_L3_s": 0.07746810899880074,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "ry": 14,
+   "rx": 4,
+   "rz": 14,
+   "rxx": 22
+  },
+  "ours_s": 42.87187011400056,
+  "ours_ok": true,
+  "ours_attempts": 154542
+ },
+ {
+  "cfg": "T4_nisq_3q",
+  "seed": 2,
+  "original": {
+   "rz": 115,
+   "cz": 49,
+   "rx": 136
+  },
+  "qiskit_L1": {
+   "rz": 55,
+   "cz": 45,
+   "rx": 52
+  },
+  "qiskit_L1_s": 0.01746683400051552,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rz": 28,
+   "cz": 26,
+   "rx": 42
+  },
+  "qiskit_L2_s": 0.020169261000773986,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rz": 26,
+   "cz": 24,
+   "rx": 39
+  },
+  "qiskit_L3_s": 0.02183974999934435,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "cz": 17,
+   "rz": 6,
+   "rx": 20
+  },
+  "ours_s": 31.059779389999676,
+  "ours_ok": true,
+  "ours_attempts": 128177
+ },
+ {
+  "cfg": "T3_ion_3q",
+  "seed": 19,
+  "original": {
+   "ry": 82,
+   "rx": 83,
+   "rz": 93,
+   "rxx": 42
+  },
+  "qiskit_L1": {
+   "ry": 37,
+   "rz": 32,
+   "rx": 20,
+   "rxx": 42
+  },
+  "qiskit_L1_s": 0.015284330000213231,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rz": 32,
+   "ry": 38,
+   "rx": 42,
+   "rxx": 32
+  },
+  "qiskit_L2_s": 0.021574375001364388,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rz": 31,
+   "ry": 34,
+   "rx": 39,
+   "rxx": 28
+  },
+  "qiskit_L3_s": 0.06184906199996476,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "ry": 7,
+   "rz": 11,
+   "rxx": 15,
+   "rx": 3
+  },
+  "ours_s": 50.52992608800014,
+  "ours_ok": true,
+  "ours_attempts": 208262
+ },
+ {
+  "cfg": "T4_nisq_3q",
+  "seed": 1,
+  "original": {
+   "rx": 122,
+   "rz": 122,
+   "cz": 56
+  },
+  "qiskit_L1": {
+   "rz": 64,
+   "rx": 53,
+   "cz": 52
+  },
+  "qiskit_L1_s": 0.01968445200145652,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rx": 43,
+   "cz": 26,
+   "rz": 30
+  },
+  "qiskit_L2_s": 0.024871180999980425,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rx": 41,
+   "cz": 24,
+   "rz": 26
+  },
+  "qiskit_L3_s": 0.018519970999477664,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "rx": 23,
+   "rz": 8,
+   "cz": 18
+  },
+  "ours_s": 34.92071324300014,
+  "ours_ok": true,
+  "ours_attempts": 137038
+ },
+ {
+  "cfg": "T4_nisq_3q",
+  "seed": 4,
+  "original": {
+   "rx": 133,
+   "rz": 107,
+   "cz": 60
+  },
+  "qiskit_L1": {
+   "rx": 53,
+   "rz": 59,
+   "cz": 46
+  },
+  "qiskit_L1_s": 0.00796897899999749,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rz": 26,
+   "rx": 53,
+   "cz": 32
+  },
+  "qiskit_L2_s": 0.016976881001028232,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rz": 26,
+   "rx": 53,
+   "cz": 31
+  },
+  "qiskit_L3_s": 0.03460789099881367,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "cz": 10,
+   "rx": 14,
+   "rz": 4
+  },
+  "ours_s": 24.0234928459995,
+  "ours_ok": true,
+  "ours_attempts": 109000
+ },
+ {
+  "cfg": "T4_nisq_3q",
+  "seed": 3,
+  "original": {
+   "rx": 112,
+   "rz": 128,
+   "cz": 60
+  },
+  "qiskit_L1": {
+   "rx": 52,
+   "rz": 47,
+   "cz": 44
+  },
+  "qiskit_L1_s": 0.015116031001525698,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rx": 45,
+   "rz": 33,
+   "cz": 27
+  },
+  "qiskit_L2_s": 0.013396590999036562,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rx": 45,
+   "rz": 33,
+   "cz": 27
+  },
+  "qiskit_L3_s": 0.049962778999542934,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "cz": 16,
+   "rx": 19,
+   "rz": 5
+  },
+  "ours_s": 28.83758071000011,
+  "ours_ok": true,
+  "ours_attempts": 119529
+ },
+ {
+  "cfg": "T4_nisq_3q",
+  "seed": 5,
+  "original": {
+   "rx": 134,
+   "rz": 109,
+   "cz": 57
+  },
+  "qiskit_L1": {
+   "rx": 51,
+   "cz": 53,
+   "rz": 52
+  },
+  "qiskit_L1_s": 0.00784393799949612,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rx": 46,
+   "cz": 34,
+   "rz": 27
+  },
+  "qiskit_L2_s": 0.013337633999981335,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rx": 46,
+   "cz": 34,
+   "rz": 27
+  },
+  "qiskit_L3_s": 0.015521847999480087,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "rx": 16,
+   "cz": 16,
+   "rz": 3
+  },
+  "ours_s": 23.847189963000346,
+  "ours_ok": true,
+  "ours_attempts": 107042
+ },
+ {
+  "cfg": "T4_nisq_3q",
+  "seed": 6,
+  "original": {
+   "rx": 115,
+   "cz": 69,
+   "rz": 116
+  },
+  "qiskit_L1": {
+   "rz": 50,
+   "rx": 58,
+   "cz": 51
+  },
+  "qiskit_L1_s": 0.00766567299979215,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rz": 32,
+   "rx": 49,
+   "cz": 33
+  },
+  "qiskit_L2_s": 0.01393598499998916,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rz": 31,
+   "rx": 43,
+   "cz": 31
+  },
+  "qiskit_L3_s": 0.025242427000193857,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "rx": 13,
+   "rz": 6,
+   "cz": 14
+  },
+  "ours_s": 22.815953027999058,
+  "ours_ok": true,
+  "ours_attempts": 102512
+ },
+ {
+  "cfg": "T4_nisq_3q",
+  "seed": 7,
+  "original": {
+   "cz": 59,
+   "rz": 116,
+   "rx": 125
+  },
+  "qiskit_L1": {
+   "rz": 55,
+   "cz": 51,
+   "rx": 53
+  },
+  "qiskit_L1_s": 0.007561943000837346,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rx": 55,
+   "cz": 33,
+   "rz": 31
+  },
+  "qiskit_L2_s": 0.03644505900047079,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rx": 55,
+   "cz": 33,
+   "rz": 31
+  },
+  "qiskit_L3_s": 0.01331592199858278,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "rz": 2,
+   "rx": 7,
+   "cz": 5
+  },
+  "ours_s": 27.708635077999134,
+  "ours_ok": true,
+  "ours_attempts": 141379
+ },
+ {
+  "cfg": "T4_nisq_3q",
+  "seed": 9,
+  "original": {
+   "rz": 131,
+   "rx": 116,
+   "cz": 53
+  },
+  "qiskit_L1": {
+   "rz": 58,
+   "rx": 49,
+   "cz": 45
+  },
+  "qiskit_L1_s": 0.008770398999331519,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rz": 29,
+   "rx": 48,
+   "cz": 31
+  },
+  "qiskit_L2_s": 0.012958240999068948,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rz": 29,
+   "rx": 48,
+   "cz": 31
+  },
+  "qiskit_L3_s": 0.017437197000617743,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "rz": 7,
+   "cz": 14,
+   "rx": 22
+  },
+  "ours_s": 23.83927784699881,
+  "ours_ok": true,
+  "ours_attempts": 102217
+ },
+ {
+  "cfg": "T4_nisq_3q",
+  "seed": 11,
+  "original": {
+   "rz": 125,
+   "rx": 116,
+   "cz": 59
+  },
+  "qiskit_L1": {
+   "rz": 47,
+   "rx": 48,
+   "cz": 39
+  },
+  "qiskit_L1_s": 0.012490237000747584,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rx": 43,
+   "cz": 27,
+   "rz": 28
+  },
+  "qiskit_L2_s": 0.06142532800004119,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rx": 43,
+   "cz": 27,
+   "rz": 28
+  },
+  "qiskit_L3_s": 0.01777955400029896,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "rx": 20,
+   "cz": 16,
+   "rz": 8
+  },
+  "ours_s": 24.734697284000504,
+  "ours_ok": true,
+  "ours_attempts": 102892
+ },
+ {
+  "cfg": "T4_nisq_3q",
+  "seed": 14,
+  "original": {
+   "rx": 120,
+   "cz": 54,
+   "rz": 126
+  },
+  "qiskit_L1": {
+   "rx": 50,
+   "rz": 62,
+   "cz": 42
+  },
+  "qiskit_L1_s": 0.02361707800082513,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rx": 45,
+   "cz": 27,
+   "rz": 19
+  },
+  "qiskit_L2_s": 0.0157107779996295,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rx": 45,
+   "cz": 27,
+   "rz": 19
+  },
+  "qiskit_L3_s": 0.024406336999163614,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "rx": 6,
+   "rz": 1,
+   "cz": 5
+  },
+  "ours_s": 19.333350413000517,
+  "ours_ok": true,
+  "ours_attempts": 112777
+ },
+ {
+  "cfg": "T4_nisq_3q",
+  "seed": 13,
+  "original": {
+   "rx": 115,
+   "rz": 113,
+   "cz": 72
+  },
+  "qiskit_L1": {
+   "rz": 60,
+   "rx": 55,
+   "cz": 52
+  },
+  "qiskit_L1_s": 0.008901699999114498,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rz": 27,
+   "rx": 47,
+   "cz": 29
+  },
+  "qiskit_L2_s": 0.01852966400110745,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rz": 25,
+   "rx": 47,
+   "cz": 29
+  },
+  "qiskit_L3_s": 0.018379471999651287,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "rz": 6,
+   "rx": 23,
+   "cz": 19
+  },
+  "ours_s": 27.394421418999627,
+  "ours_ok": true,
+  "ours_attempts": 111549
+ },
+ {
+  "cfg": "T4_nisq_3q",
+  "seed": 10,
+  "original": {
+   "rz": 122,
+   "cz": 62,
+   "rx": 116
+  },
+  "qiskit_L1": {
+   "rz": 62,
+   "cz": 54,
+   "rx": 53
+  },
+  "qiskit_L1_s": 0.010017997001341428,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rz": 35,
+   "cz": 35,
+   "rx": 50
+  },
+  "qiskit_L2_s": 0.025665729999673204,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rz": 35,
+   "cz": 35,
+   "rx": 50
+  },
+  "qiskit_L3_s": 0.02299872199910169,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "rz": 14,
+   "rx": 38,
+   "cz": 26
+  },
+  "ours_s": 32.490373217000524,
+  "ours_ok": true,
+  "ours_attempts": 106744
+ },
+ {
+  "cfg": "T4_nisq_3q",
+  "seed": 8,
+  "original": {
+   "rx": 128,
+   "cz": 57,
+   "rz": 115
+  },
+  "qiskit_L1": {
+   "rz": 53,
+   "rx": 54,
+   "cz": 49
+  },
+  "qiskit_L1_s": 0.009113866999541642,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rx": 52,
+   "cz": 38,
+   "rz": 30
+  },
+  "qiskit_L2_s": 0.013011009001274942,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rx": 52,
+   "cz": 38,
+   "rz": 29
+  },
+  "qiskit_L3_s": 0.018798887998855207,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "rx": 17,
+   "cz": 14,
+   "rz": 7
+  },
+  "ours_s": 38.1064799779997,
+  "ours_ok": true,
+  "ours_attempts": 158084
+ },
+ {
+  "cfg": "T4_nisq_3q",
+  "seed": 17,
+  "original": {
+   "rz": 143,
+   "rx": 111,
+   "cz": 46
+  },
+  "qiskit_L1": {
+   "rx": 34,
+   "rz": 39,
+   "cz": 34
+  },
+  "qiskit_L1_s": 0.017392032001225743,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rx": 33,
+   "rz": 22,
+   "cz": 20
+  },
+  "qiskit_L2_s": 0.017352805998598342,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rx": 33,
+   "rz": 23,
+   "cz": 20
+  },
+  "qiskit_L3_s": 0.02141861699965375,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "cz": 4,
+   "rx": 6,
+   "rz": 3
+  },
+  "ours_s": 20.706878159999178,
+  "ours_ok": true,
+  "ours_attempts": 101101
+ },
+ {
+  "cfg": "T4_nisq_3q",
+  "seed": 15,
+  "original": {
+   "rz": 126,
+   "rx": 110,
+   "cz": 64
+  },
+  "qiskit_L1": {
+   "rx": 37,
+   "rz": 51,
+   "cz": 48
+  },
+  "qiskit_L1_s": 0.014976307000324596,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "cz": 22,
+   "rz": 25,
+   "rx": 33
+  },
+  "qiskit_L2_s": 0.021684732999347034,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "cz": 22,
+   "rz": 25,
+   "rx": 33
+  },
+  "qiskit_L3_s": 0.020101468999200733,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "rz": 6,
+   "cz": 18,
+   "rx": 20
+  },
+  "ours_s": 29.953094237000187,
+  "ours_ok": true,
+  "ours_attempts": 104050
+ },
+ {
+  "cfg": "T4_nisq_3q",
+  "seed": 12,
+  "original": {
+   "rx": 110,
+   "cz": 68,
+   "rz": 122
+  },
+  "qiskit_L1": {
+   "rx": 61,
+   "cz": 60,
+   "rz": 54
+  },
+  "qiskit_L1_s": 0.013458068000545609,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rx": 51,
+   "cz": 37,
+   "rz": 31
+  },
+  "qiskit_L2_s": 0.014741836999746738,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rx": 48,
+   "cz": 34,
+   "rz": 28
+  },
+  "qiskit_L3_s": 0.01553713199973572,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "rz": 3,
+   "cz": 16,
+   "rx": 14
+  },
+  "ours_s": 51.12954689400067,
+  "ours_ok": true,
+  "ours_attempts": 189715
+ },
+ {
+  "cfg": "T4_nisq_3q",
+  "seed": 19,
+  "original": {
+   "rz": 127,
+   "rx": 111,
+   "cz": 62
+  },
+  "qiskit_L1": {
+   "rx": 55,
+   "rz": 53,
+   "cz": 48
+  },
+  "qiskit_L1_s": 0.009414044001459843,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rz": 27,
+   "rx": 46,
+   "cz": 27
+  },
+  "qiskit_L2_s": 0.01598293400093098,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rz": 27,
+   "rx": 46,
+   "cz": 27
+  },
+  "qiskit_L3_s": 0.0272541310005181,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "rz": 3,
+   "rx": 13,
+   "cz": 8
+  },
+  "ours_s": 53.480569923000076,
+  "ours_ok": true,
+  "ours_attempts": 160498
+ },
+ {
+  "cfg": "T4_nisq_3q",
+  "seed": 16,
+  "original": {
+   "rz": 114,
+   "cz": 70,
+   "rx": 116
+  },
+  "qiskit_L1": {
+   "rz": 58,
+   "cz": 54,
+   "rx": 55
+  },
+  "qiskit_L1_s": 0.00907657799871231,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "cz": 38,
+   "rz": 32,
+   "rx": 50
+  },
+  "qiskit_L2_s": 0.013067709998722421,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "cz": 38,
+   "rz": 32,
+   "rx": 50
+  },
+  "qiskit_L3_s": 0.014630622001277516,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "rx": 16,
+   "rz": 5,
+   "cz": 11
+  },
+  "ours_s": 63.5579296119995,
+  "ours_ok": true,
+  "ours_attempts": 181252
+ },
+ {
+  "cfg": "T4_nisq_3q",
+  "seed": 18,
+  "original": {
+   "rz": 134,
+   "rx": 106,
+   "cz": 60
+  },
+  "qiskit_L1": {
+   "rx": 50,
+   "rz": 58,
+   "cz": 50
+  },
+  "qiskit_L1_s": 0.010210489001110545,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rz": 28,
+   "cz": 34,
+   "rx": 48
+  },
+  "qiskit_L2_s": 0.01365924499987159,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rz": 28,
+   "cz": 34,
+   "rx": 48
+  },
+  "qiskit_L3_s": 0.019536750000042957,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "cz": 21,
+   "rx": 21,
+   "rz": 5
+  },
+  "ours_s": 72.60986175799917,
+  "ours_ok": true,
+  "ours_attempts": 170574
+ },
+ {
+  "cfg": "T5_nisq_15q",
+  "seed": 4,
+  "original": {
+   "cz": 340,
+   "rz": 71,
+   "rx": 89
+  },
+  "qiskit_L1": {
+   "rz": 65,
+   "rx": 69,
+   "cz": 312
+  },
+  "qiskit_L1_s": 0.026614399001118727,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rz": 39,
+   "rx": 69,
+   "cz": 219
+  },
+  "qiskit_L2_s": 0.11719155600076192,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rz": 39,
+   "rx": 69,
+   "cz": 219
+  },
+  "qiskit_L3_s": 0.11928074299976288,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "cz": 220,
+   "rz": 41,
+   "rx": 71
+  },
+  "ours_s": 317.30456543000037,
+  "ours_ok": true,
+  "ours_attempts": 198043
+ },
+ {
+  "cfg": "T5_nisq_15q",
+  "seed": 5,
+  "original": {
+   "cz": 329,
+   "rz": 89,
+   "rx": 82
+  },
+  "qiskit_L1": {
+   "rz": 74,
+   "cz": 295,
+   "rx": 71
+  },
+  "qiskit_L1_s": 0.012996600000406033,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rz": 40,
+   "cz": 204,
+   "rx": 75
+  },
+  "qiskit_L2_s": 0.0659977830000571,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rz": 40,
+   "cz": 204,
+   "rx": 75
+  },
+  "qiskit_L3_s": 0.12328389899994363,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "cz": 202,
+   "rz": 46,
+   "rx": 74
+  },
+  "ours_s": 333.6372426910002,
+  "ours_ok": true,
+  "ours_attempts": 234042
+ },
+ {
+  "cfg": "T5_nisq_15q",
+  "seed": 6,
+  "original": {
+   "cz": 314,
+   "rx": 89,
+   "rz": 97
+  },
+  "qiskit_L1": {
+   "rx": 72,
+   "cz": 306,
+   "rz": 76
+  },
+  "qiskit_L1_s": 0.010115343000506982,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rx": 74,
+   "cz": 197,
+   "rz": 42
+  },
+  "qiskit_L2_s": 0.09697422800127242,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rx": 74,
+   "cz": 197,
+   "rz": 42
+  },
+  "qiskit_L3_s": 0.1312431309997919,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "cz": 196,
+   "rx": 79,
+   "rz": 49
+  },
+  "ours_s": 337.8992908119999,
+  "ours_ok": true,
+  "ours_attempts": 203304
+ },
+ {
+  "cfg": "T5_nisq_15q",
+  "seed": 0,
+  "original": {
+   "cz": 330,
+   "rx": 86,
+   "rz": 84
+  },
+  "qiskit_L1": {
+   "cz": 314,
+   "rx": 75,
+   "rz": 74
+  },
+  "qiskit_L1_s": 0.013459220001095673,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "cz": 233,
+   "rx": 78,
+   "rz": 35
+  },
+  "qiskit_L2_s": 0.07317658099964319,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "cz": 233,
+   "rx": 78,
+   "rz": 35
+  },
+  "qiskit_L3_s": 0.11618556100074784,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "cz": 236,
+   "rz": 37,
+   "rx": 79
+  },
+  "ours_s": 400.05789052,
+  "ours_ok": true,
+  "ours_attempts": 193945
+ },
+ {
+  "cfg": "T5_nisq_15q",
+  "seed": 1,
+  "original": {
+   "cz": 321,
+   "rx": 88,
+   "rz": 91
+  },
+  "qiskit_L1": {
+   "rx": 77,
+   "cz": 307,
+   "rz": 82
+  },
+  "qiskit_L1_s": 0.016753341000367072,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rx": 77,
+   "cz": 233,
+   "rz": 43
+  },
+  "qiskit_L2_s": 0.07260515999951167,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rx": 77,
+   "cz": 233,
+   "rz": 43
+  },
+  "qiskit_L3_s": 0.08578043399938906,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "rz": 47,
+   "cz": 233,
+   "rx": 82
+  },
+  "ours_s": 400.1278277700003,
+  "ours_ok": true,
+  "ours_attempts": 207626
+ },
+ {
+  "cfg": "T5_nisq_15q",
+  "seed": 2,
+  "original": {
+   "rz": 83,
+   "cz": 333,
+   "rx": 84
+  },
+  "qiskit_L1": {
+   "cz": 315,
+   "rz": 72,
+   "rx": 69
+  },
+  "qiskit_L1_s": 0.012882463001005817,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "cz": 203,
+   "rx": 68,
+   "rz": 34
+  },
+  "qiskit_L2_s": 0.05626623200078029,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "cz": 203,
+   "rx": 68,
+   "rz": 34
+  },
+  "qiskit_L3_s": 0.1321710610009177,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "cz": 201,
+   "rz": 39,
+   "rx": 72
+  },
+  "ours_s": 400.1100427860001,
+  "ours_ok": true,
+  "ours_attempts": 265604
+ },
+ {
+  "cfg": "T5_nisq_15q",
+  "seed": 3,
+  "original": {
+   "cz": 308,
+   "rx": 100,
+   "rz": 92
+  },
+  "qiskit_L1": {
+   "cz": 296,
+   "rx": 82,
+   "rz": 80
+  },
+  "qiskit_L1_s": 0.024288266000439762,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "cz": 238,
+   "rx": 85,
+   "rz": 53
+  },
+  "qiskit_L2_s": 0.07641958699969109,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "cz": 238,
+   "rx": 85,
+   "rz": 53
+  },
+  "qiskit_L3_s": 0.08495190299981914,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "cz": 239,
+   "rx": 84,
+   "rz": 56
+  },
+  "ours_s": 400.1353211599999,
+  "ours_ok": true,
+  "ours_attempts": 199652
+ },
+ {
+  "cfg": "NJP_ion_4q",
+  "seed": 0,
+  "original": {
+   "rxx": 58,
+   "ry": 79,
+   "rx": 86,
+   "rz": 77
+  },
+  "qiskit_L1": {
+   "rz": 38,
+   "ry": 35,
+   "rxx": 58,
+   "rx": 29
+  },
+  "qiskit_L1_s": 0.042291261999707785,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rz": 48,
+   "rxx": 46,
+   "rx": 45,
+   "ry": 26
+  },
+  "qiskit_L2_s": 0.06055883999943035,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rz": 48,
+   "rxx": 46,
+   "rx": 45,
+   "ry": 26
+  },
+  "qiskit_L3_s": 0.050203849999888916,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "ry": 15,
+   "rx": 2,
+   "rxx": 29,
+   "rz": 19
+  },
+  "ours_s": 53.26213185800043,
+  "ours_ok": true,
+  "ours_attempts": 157374
+ },
+ {
+  "cfg": "T5_nisq_15q",
+  "seed": 7,
+  "original": {
+   "cz": 322,
+   "rz": 90,
+   "rx": 88
+  },
+  "qiskit_L1": {
+   "rz": 77,
+   "cz": 310,
+   "rx": 66
+  },
+  "qiskit_L1_s": 0.017829095999331912,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rz": 47,
+   "cz": 206,
+   "rx": 69
+  },
+  "qiskit_L2_s": 0.08310882800105901,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rz": 47,
+   "cz": 206,
+   "rx": 69
+  },
+  "qiskit_L3_s": 0.07963396699960867,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "rz": 42,
+   "cz": 204,
+   "rx": 70
+  },
+  "ours_s": 400.0560915160004,
+  "ours_ok": true,
+  "ours_attempts": 240584
+ },
+ {
+  "cfg": "NJP_ion_4q",
+  "seed": 2,
+  "original": {
+   "rz": 74,
+   "ry": 75,
+   "rxx": 49,
+   "rx": 102
+  },
+  "qiskit_L1": {
+   "rxx": 49,
+   "rx": 31,
+   "ry": 33,
+   "rz": 32
+  },
+  "qiskit_L1_s": 0.012548039001558209,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rxx": 41,
+   "rx": 46,
+   "rz": 34,
+   "ry": 35
+  },
+  "qiskit_L2_s": 0.02338397600033204,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rxx": 41,
+   "rx": 46,
+   "rz": 34,
+   "ry": 35
+  },
+  "qiskit_L3_s": 0.023547618999145925,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "rxx": 28,
+   "ry": 22,
+   "rx": 3,
+   "rz": 12
+  },
+  "ours_s": 54.12691688000086,
+  "ours_ok": true,
+  "ours_attempts": 160622
+ },
+ {
+  "cfg": "NJP_ion_4q",
+  "seed": 1,
+  "original": {
+   "rx": 85,
+   "ry": 74,
+   "rxx": 56,
+   "rz": 85
+  },
+  "qiskit_L1": {
+   "rxx": 56,
+   "rx": 24,
+   "rz": 45,
+   "ry": 39
+  },
+  "qiskit_L1_s": 0.03748955099945306,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rxx": 47,
+   "rx": 39,
+   "rz": 43,
+   "ry": 42
+  },
+  "qiskit_L2_s": 0.020013223998830654,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rxx": 47,
+   "rx": 39,
+   "rz": 43,
+   "ry": 42
+  },
+  "qiskit_L3_s": 0.05079235900120693,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "ry": 31,
+   "rxx": 44,
+   "rz": 24,
+   "rx": 5
+  },
+  "ours_s": 76.67855779199999,
+  "ours_ok": true,
+  "ours_attempts": 183872
+ },
+ {
+  "cfg": "NJP_ion_4q",
+  "seed": 3,
+  "original": {
+   "rx": 79,
+   "ry": 74,
+   "rz": 87,
+   "rxx": 60
+  },
+  "qiskit_L1": {
+   "rz": 40,
+   "rx": 31,
+   "rxx": 60,
+   "ry": 36
+  },
+  "qiskit_L1_s": 0.03290828799981682,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rx": 39,
+   "rz": 47,
+   "rxx": 47,
+   "ry": 36
+  },
+  "qiskit_L2_s": 0.05986637500063807,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rx": 39,
+   "rz": 47,
+   "rxx": 47,
+   "ry": 36
+  },
+  "qiskit_L3_s": 0.059985659001540625,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "rx": 6,
+   "rz": 19,
+   "rxx": 33,
+   "ry": 20
+  },
+  "ours_s": 65.72650689700095,
+  "ours_ok": true,
+  "ours_attempts": 184641
+ },
+ {
+  "cfg": "NJP_ion_4q",
+  "seed": 5,
+  "original": {
+   "rx": 92,
+   "rz": 66,
+   "rxx": 57,
+   "ry": 85
+  },
+  "qiskit_L1": {
+   "rx": 19,
+   "rxx": 57,
+   "rz": 34,
+   "ry": 42
+  },
+  "qiskit_L1_s": 0.015862874000958982,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rx": 29,
+   "rxx": 49,
+   "rz": 42,
+   "ry": 40
+  },
+  "qiskit_L2_s": 0.02779635899969435,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rx": 29,
+   "rxx": 49,
+   "rz": 42,
+   "ry": 40
+  },
+  "qiskit_L3_s": 0.03712852300122904,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "rxx": 34,
+   "rz": 22,
+   "rx": 5,
+   "ry": 20
+  },
+  "ours_s": 49.499408903000585,
+  "ours_ok": true,
+  "ours_attempts": 135913
+ },
+ {
+  "cfg": "NJP_ion_4q",
+  "seed": 4,
+  "original": {
+   "rx": 91,
+   "rz": 68,
+   "rxx": 60,
+   "ry": 81
+  },
+  "qiskit_L1": {
+   "rz": 38,
+   "ry": 41,
+   "rx": 25,
+   "rxx": 60
+  },
+  "qiskit_L1_s": 0.013862637000784162,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rx": 38,
+   "rz": 38,
+   "rxx": 47,
+   "ry": 33
+  },
+  "qiskit_L2_s": 0.01957786099956138,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rx": 38,
+   "rz": 38,
+   "rxx": 47,
+   "ry": 33
+  },
+  "qiskit_L3_s": 0.03315952099910646,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "rz": 13,
+   "rxx": 20,
+   "ry": 16,
+   "rx": 1
+  },
+  "ours_s": 81.06311105999885,
+  "ours_ok": true,
+  "ours_attempts": 282458
+ },
+ {
+  "cfg": "NJP_ion_4q",
+  "seed": 8,
+  "original": {
+   "rx": 76,
+   "ry": 91,
+   "rxx": 57,
+   "rz": 76
+  },
+  "qiskit_L1": {
+   "rz": 39,
+   "ry": 35,
+   "rx": 44,
+   "rxx": 57
+  },
+  "qiskit_L1_s": 0.010321905001546838,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rz": 36,
+   "ry": 39,
+   "rx": 41,
+   "rxx": 39
+  },
+  "qiskit_L2_s": 0.015595101000144496,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rz": 33,
+   "ry": 39,
+   "rx": 41,
+   "rxx": 38
+  },
+  "qiskit_L3_s": 0.04541065899866226,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "rxx": 27,
+   "rz": 15,
+   "ry": 14
+  },
+  "ours_s": 51.862167835000946,
+  "ours_ok": true,
+  "ours_attempts": 177180
+ },
+ {
+  "cfg": "NJP_ion_4q",
+  "seed": 7,
+  "original": {
+   "rxx": 59,
+   "rz": 85,
+   "ry": 72,
+   "rx": 84
+  },
+  "qiskit_L1": {
+   "ry": 42,
+   "rxx": 59,
+   "rx": 24,
+   "rz": 44
+  },
+  "qiskit_L1_s": 0.01098180900044099,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "ry": 37,
+   "rxx": 54,
+   "rx": 39,
+   "rz": 44
+  },
+  "qiskit_L2_s": 0.02454265599953942,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "ry": 37,
+   "rxx": 54,
+   "rx": 39,
+   "rz": 44
+  },
+  "qiskit_L3_s": 0.027548748001208878,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "rxx": 26,
+   "ry": 21,
+   "rz": 14,
+   "rx": 2
+  },
+  "ours_s": 89.91182703699997,
+  "ours_ok": true,
+  "ours_attempts": 294890
+ },
+ {
+  "cfg": "NJP_ion_4q",
+  "seed": 6,
+  "original": {
+   "rx": 77,
+   "rxx": 69,
+   "rz": 82,
+   "ry": 72
+  },
+  "qiskit_L1": {
+   "rz": 43,
+   "ry": 44,
+   "rxx": 69,
+   "rx": 32
+  },
+  "qiskit_L1_s": 0.012107690999982879,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rz": 38,
+   "ry": 46,
+   "rxx": 53,
+   "rx": 39
+  },
+  "qiskit_L2_s": 0.016304134000165504,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rz": 38,
+   "ry": 43,
+   "rx": 42,
+   "rxx": 52
+  },
+  "qiskit_L3_s": 0.032317422001142404,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "ry": 20,
+   "rz": 11,
+   "rxx": 31,
+   "rx": 4
+  },
+  "ours_s": 95.33886755000094,
+  "ours_ok": true,
+  "ours_attempts": 284192
+ },
+ {
+  "cfg": "NJP_ion_4q",
+  "seed": 9,
+  "original": {
+   "rz": 85,
+   "ry": 85,
+   "rx": 77,
+   "rxx": 53
+  },
+  "qiskit_L1": {
+   "rz": 51,
+   "ry": 37,
+   "rxx": 53,
+   "rx": 25
+  },
+  "qiskit_L1_s": 0.008735239000088768,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rx": 34,
+   "rz": 52,
+   "ry": 31,
+   "rxx": 44
+  },
+  "qiskit_L2_s": 0.0197428100000252,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rx": 34,
+   "rz": 52,
+   "ry": 31,
+   "rxx": 44
+  },
+  "qiskit_L3_s": 0.03965915600019798,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "ry": 15,
+   "rz": 23,
+   "rxx": 32,
+   "rx": 4
+  },
+  "ours_s": 67.81366386399895,
+  "ours_ok": true,
+  "ours_attempts": 195446
+ },
+ {
+  "cfg": "NJP_ion_4q",
+  "seed": 11,
+  "original": {
+   "ry": 93,
+   "rz": 77,
+   "rxx": 59,
+   "rx": 71
+  },
+  "qiskit_L1": {
+   "rz": 39,
+   "ry": 46,
+   "rx": 21,
+   "rxx": 59
+  },
+  "qiskit_L1_s": 0.01424809499985713,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rz": 45,
+   "ry": 42,
+   "rx": 28,
+   "rxx": 46
+  },
+  "qiskit_L2_s": 0.03357145100017078,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rz": 47,
+   "ry": 39,
+   "rx": 29,
+   "rxx": 44
+  },
+  "qiskit_L3_s": 0.036309526998593356,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "ry": 22,
+   "rxx": 33,
+   "rz": 21,
+   "rx": 5
+  },
+  "ours_s": 54.3196250760011,
+  "ours_ok": true,
+  "ours_attempts": 151519
+ },
+ {
+  "cfg": "NJP_ion_4q",
+  "seed": 10,
+  "original": {
+   "ry": 79,
+   "rxx": 62,
+   "rz": 85,
+   "rx": 74
+  },
+  "qiskit_L1": {
+   "ry": 36,
+   "rxx": 62,
+   "rx": 23,
+   "rz": 53
+  },
+  "qiskit_L1_s": 0.012185555000542081,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "ry": 35,
+   "rxx": 49,
+   "rz": 43,
+   "rx": 31
+  },
+  "qiskit_L2_s": 0.02957518500079459,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "ry": 35,
+   "rxx": 49,
+   "rz": 43,
+   "rx": 31
+  },
+  "qiskit_L3_s": 0.02283138300117571,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "rxx": 35,
+   "ry": 16,
+   "rz": 17,
+   "rx": 1
+  },
+  "ours_s": 80.65938834300141,
+  "ours_ok": true,
+  "ours_attempts": 236563
+ },
+ {
+  "cfg": "NJP_ion_4q",
+  "seed": 14,
+  "original": {
+   "rx": 84,
+   "rxx": 54,
+   "ry": 80,
+   "rz": 82
+  },
+  "qiskit_L1": {
+   "ry": 46,
+   "rxx": 54,
+   "rz": 49,
+   "rx": 18
+  },
+  "qiskit_L1_s": 0.009716356000353699,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rx": 36,
+   "rz": 52,
+   "ry": 36,
+   "rxx": 43
+  },
+  "qiskit_L2_s": 0.017353043000184698,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rx": 36,
+   "rz": 51,
+   "ry": 35,
+   "rxx": 42
+  },
+  "qiskit_L3_s": 0.02448297699993418,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "ry": 23,
+   "rxx": 32,
+   "rx": 5,
+   "rz": 17
+  },
+  "ours_s": 41.950339867000366,
+  "ours_ok": true,
+  "ours_attempts": 122334
+ },
+ {
+  "cfg": "NJP_ion_4q",
+  "seed": 12,
+  "original": {
+   "ry": 65,
+   "rxx": 68,
+   "rx": 83,
+   "rz": 84
+  },
+  "qiskit_L1": {
+   "ry": 38,
+   "rz": 51,
+   "rxx": 68,
+   "rx": 30
+  },
+  "qiskit_L1_s": 0.018677508998734993,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "ry": 32,
+   "rz": 53,
+   "rxx": 63,
+   "rx": 51
+  },
+  "qiskit_L2_s": 0.02343843000016932,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "ry": 32,
+   "rz": 53,
+   "rxx": 63,
+   "rx": 51
+  },
+  "qiskit_L3_s": 0.04002697899886698,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "rxx": 52,
+   "rz": 35,
+   "ry": 23,
+   "rx": 5
+  },
+  "ours_s": 59.41365189899989,
+  "ours_ok": true,
+  "ours_attempts": 138859
+ },
+ {
+  "cfg": "NJP_ion_4q",
+  "seed": 13,
+  "original": {
+   "ry": 82,
+   "rx": 73,
+   "rxx": 72,
+   "rz": 73
+  },
+  "qiskit_L1": {
+   "ry": 33,
+   "rz": 40,
+   "rxx": 72,
+   "rx": 42
+  },
+  "qiskit_L1_s": 0.007740053999441443,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "ry": 33,
+   "rz": 50,
+   "rxx": 47,
+   "rx": 40
+  },
+  "qiskit_L2_s": 0.025339497000459232,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "ry": 31,
+   "rz": 49,
+   "rxx": 45,
+   "rx": 40
+  },
+  "qiskit_L3_s": 0.048363850999521674,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "rx": 4,
+   "ry": 18,
+   "rz": 23,
+   "rxx": 38
+  },
+  "ours_s": 47.21319137700084,
+  "ours_ok": true,
+  "ours_attempts": 131829
+ },
+ {
+  "cfg": "NJP_ion_4q",
+  "seed": 17,
+  "original": {
+   "rz": 93,
+   "ry": 81,
+   "rx": 80,
+   "rxx": 46
+  },
+  "qiskit_L1": {
+   "rx": 23,
+   "rz": 36,
+   "ry": 28,
+   "rxx": 46
+  },
+  "qiskit_L1_s": 0.007972265000717016,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rx": 31,
+   "rz": 42,
+   "rxx": 32,
+   "ry": 24
+  },
+  "qiskit_L2_s": 0.017665479999777745,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rx": 31,
+   "rz": 42,
+   "rxx": 32,
+   "ry": 24
+  },
+  "qiskit_L3_s": 0.03278272599891352,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "rxx": 25,
+   "rz": 16,
+   "ry": 15,
+   "rx": 5
+  },
+  "ours_s": 47.93680717400093,
+  "ours_ok": true,
+  "ours_attempts": 152879
+ },
+ {
+  "cfg": "NJP_ion_4q",
+  "seed": 16,
+  "original": {
+   "ry": 58,
+   "rxx": 70,
+   "rx": 86,
+   "rz": 86
+  },
+  "qiskit_L1": {
+   "rxx": 70,
+   "ry": 43,
+   "rx": 28,
+   "rz": 49
+  },
+  "qiskit_L1_s": 0.007963897000081488,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "ry": 42,
+   "rx": 27,
+   "rxx": 53,
+   "rz": 50
+  },
+  "qiskit_L2_s": 0.021599831999992603,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "ry": 42,
+   "rx": 27,
+   "rxx": 53,
+   "rz": 50
+  },
+  "qiskit_L3_s": 0.051908684999943944,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "ry": 21,
+   "rxx": 40,
+   "rz": 32,
+   "rx": 8
+  },
+  "ours_s": 60.54552140099986,
+  "ours_ok": true,
+  "ours_attempts": 148930
+ },
+ {
+  "cfg": "NJP_ion_4q",
+  "seed": 18,
+  "original": {
+   "ry": 77,
+   "rx": 68,
+   "rz": 95,
+   "rxx": 60
+  },
+  "qiskit_L1": {
+   "rz": 41,
+   "rx": 26,
+   "ry": 42,
+   "rxx": 60
+  },
+  "qiskit_L1_s": 0.008236102999944706,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rz": 38,
+   "ry": 47,
+   "rx": 40,
+   "rxx": 48
+  },
+  "qiskit_L2_s": 0.02407633300026646,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rz": 38,
+   "ry": 47,
+   "rx": 40,
+   "rxx": 48
+  },
+  "qiskit_L3_s": 0.02007240100101626,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "rz": 24,
+   "rx": 7,
+   "rxx": 35,
+   "ry": 24
+  },
+  "ours_s": 42.47568393700021,
+  "ours_ok": true,
+  "ours_attempts": 115178
+ },
+ {
+  "cfg": "NJP_ion_4q",
+  "seed": 15,
+  "original": {
+   "rz": 79,
+   "ry": 89,
+   "rx": 68,
+   "rxx": 64
+  },
+  "qiskit_L1": {
+   "rz": 42,
+   "ry": 41,
+   "rx": 22,
+   "rxx": 64
+  },
+  "qiskit_L1_s": 0.008279330999357626,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "ry": 38,
+   "rx": 31,
+   "rxx": 48,
+   "rz": 46
+  },
+  "qiskit_L2_s": 0.03985443399869837,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "ry": 38,
+   "rx": 31,
+   "rxx": 48,
+   "rz": 46
+  },
+  "qiskit_L3_s": 0.039120602999901166,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "ry": 19,
+   "rx": 3,
+   "rz": 21,
+   "rxx": 31
+  },
+  "ours_s": 79.13187188200027,
+  "ours_ok": true,
+  "ours_attempts": 229623
+ },
+ {
+  "cfg": "T5_nisq_15q",
+  "seed": 8,
+  "original": {
+   "cz": 322,
+   "rx": 85,
+   "rz": 93
+  },
+  "qiskit_L1": {
+   "rz": 75,
+   "rx": 75,
+   "cz": 304
+  },
+  "qiskit_L1_s": 0.07142016000034346,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rz": 51,
+   "rx": 79,
+   "cz": 199
+  },
+  "qiskit_L2_s": 0.05407010900125897,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rz": 51,
+   "rx": 79,
+   "cz": 199
+  },
+  "qiskit_L3_s": 0.11036522600079479,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "cz": 200,
+   "rz": 53,
+   "rx": 77
+  },
+  "ours_s": 287.8352854950008,
+  "ours_ok": true,
+  "ours_attempts": 174827
+ },
+ {
+  "cfg": "NJP_ion_4q",
+  "seed": 19,
+  "original": {
+   "ry": 77,
+   "rx": 73,
+   "rz": 88,
+   "rxx": 62
+  },
+  "qiskit_L1": {
+   "rz": 44,
+   "ry": 38,
+   "rx": 30,
+   "rxx": 62
+  },
+  "qiskit_L1_s": 0.008662866999657126,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rx": 42,
+   "rz": 42,
+   "ry": 38,
+   "rxx": 43
+  },
+  "qiskit_L2_s": 0.01824274700084061,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rx": 42,
+   "rz": 42,
+   "ry": 38,
+   "rxx": 43
+  },
+  "qiskit_L3_s": 0.02142743900003552,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "ry": 25,
+   "rxx": 40,
+   "rx": 6,
+   "rz": 27
+  },
+  "ours_s": 56.52587588699862,
+  "ours_ok": true,
+  "ours_attempts": 139841
+ },
+ {
+  "cfg": "NJP_ion_4q",
+  "seed": 21,
+  "original": {
+   "rxx": 70,
+   "ry": 73,
+   "rx": 70,
+   "rz": 87
+  },
+  "qiskit_L1": {
+   "rz": 46,
+   "rx": 27,
+   "ry": 42,
+   "rxx": 70
+  },
+  "qiskit_L1_s": 0.014615292000598856,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rx": 39,
+   "ry": 40,
+   "rxx": 54,
+   "rz": 48
+  },
+  "qiskit_L2_s": 0.01727794299949892,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rx": 39,
+   "ry": 39,
+   "rxx": 53,
+   "rz": 49
+  },
+  "qiskit_L3_s": 0.04497314800028107,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "rxx": 27,
+   "ry": 23,
+   "rz": 14,
+   "rx": 4
+  },
+  "ours_s": 47.1654097669998,
+  "ours_ok": true,
+  "ours_attempts": 133912
+ },
+ {
+  "cfg": "NJP_ion_4q",
+  "seed": 20,
+  "original": {
+   "rxx": 63,
+   "rx": 65,
+   "rz": 93,
+   "ry": 79
+  },
+  "qiskit_L1": {
+   "rz": 48,
+   "rxx": 63,
+   "rx": 23,
+   "ry": 36
+  },
+  "qiskit_L1_s": 0.01974582399998326,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rz": 47,
+   "rx": 41,
+   "rxx": 50,
+   "ry": 37
+  },
+  "qiskit_L2_s": 0.0251315200002864,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rz": 47,
+   "rx": 41,
+   "rxx": 50,
+   "ry": 37
+  },
+  "qiskit_L3_s": 0.03247875699889846,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "rxx": 34,
+   "ry": 21,
+   "rx": 7,
+   "rz": 22
+  },
+  "ours_s": 79.0550021550007,
+  "ours_ok": true,
+  "ours_attempts": 205995
+ },
+ {
+  "cfg": "NJP_ion_4q",
+  "seed": 24,
+  "original": {
+   "rx": 78,
+   "rxx": 65,
+   "rz": 77,
+   "ry": 80
+  },
+  "qiskit_L1": {
+   "rxx": 65,
+   "rz": 53,
+   "ry": 45,
+   "rx": 31
+  },
+  "qiskit_L1_s": 0.01586600300106511,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rxx": 46,
+   "rz": 42,
+   "ry": 44,
+   "rx": 38
+  },
+  "qiskit_L2_s": 0.021492961999683757,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rxx": 46,
+   "rz": 42,
+   "ry": 44,
+   "rx": 38
+  },
+  "qiskit_L3_s": 0.02317543199933425,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "ry": 30,
+   "rxx": 37,
+   "rx": 6,
+   "rz": 19
+  },
+  "ours_s": 56.44003165899994,
+  "ours_ok": true,
+  "ours_attempts": 147168
+ },
+ {
+  "cfg": "NJP_ion_4q",
+  "seed": 22,
+  "original": {
+   "ry": 80,
+   "rx": 74,
+   "rz": 77,
+   "rxx": 69
+  },
+  "qiskit_L1": {
+   "rz": 47,
+   "rx": 29,
+   "rxx": 69,
+   "ry": 39
+  },
+  "qiskit_L1_s": 0.011610109000685043,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rz": 51,
+   "rx": 45,
+   "rxx": 55,
+   "ry": 34
+  },
+  "qiskit_L2_s": 0.03550035000080243,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rz": 47,
+   "rx": 43,
+   "rxx": 52,
+   "ry": 33
+  },
+  "qiskit_L3_s": 0.05795433599996613,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "rz": 27,
+   "rx": 7,
+   "rxx": 45,
+   "ry": 29
+  },
+  "ours_s": 72.27781193900046,
+  "ours_ok": true,
+  "ours_attempts": 167991
+ },
+ {
+  "cfg": "NJP_ion_4q",
+  "seed": 26,
+  "original": {
+   "ry": 99,
+   "rz": 85,
+   "rxx": 48,
+   "rx": 68
+  },
+  "qiskit_L1": {
+   "ry": 33,
+   "rx": 32,
+   "rz": 38,
+   "rxx": 48
+  },
+  "qiskit_L1_s": 0.00872424200133537,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "ry": 30,
+   "rx": 34,
+   "rz": 32,
+   "rxx": 32
+  },
+  "qiskit_L2_s": 0.02738140099972952,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "ry": 30,
+   "rx": 34,
+   "rz": 32,
+   "rxx": 32
+  },
+  "qiskit_L3_s": 0.01794022800095263,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "ry": 19,
+   "rz": 13,
+   "rxx": 22,
+   "rx": 3
+  },
+  "ours_s": 49.688763307000045,
+  "ours_ok": true,
+  "ours_attempts": 171749
+ },
+ {
+  "cfg": "NJP_ion_4q",
+  "seed": 25,
+  "original": {
+   "ry": 69,
+   "rx": 80,
+   "rz": 77,
+   "rxx": 74
+  },
+  "qiskit_L1": {
+   "ry": 41,
+   "rz": 44,
+   "rx": 36,
+   "rxx": 74
+  },
+  "qiskit_L1_s": 0.011002946999724372,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "ry": 35,
+   "rz": 49,
+   "rx": 40,
+   "rxx": 59
+  },
+  "qiskit_L2_s": 0.01890463999916392,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "ry": 35,
+   "rz": 49,
+   "rx": 40,
+   "rxx": 59
+  },
+  "qiskit_L3_s": 0.03176762499970209,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "rz": 20,
+   "ry": 19,
+   "rxx": 29,
+   "rx": 6
+  },
+  "ours_s": 65.10996047200024,
+  "ours_ok": true,
+  "ours_attempts": 194585
+ },
+ {
+  "cfg": "NJP_ion_4q",
+  "seed": 28,
+  "original": {
+   "rx": 77,
+   "rxx": 68,
+   "rz": 77,
+   "ry": 78
+  },
+  "qiskit_L1": {
+   "rx": 28,
+   "rxx": 68,
+   "rz": 47,
+   "ry": 33
+  },
+  "qiskit_L1_s": 0.008750827000767458,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rx": 46,
+   "rxx": 56,
+   "ry": 31,
+   "rz": 50
+  },
+  "qiskit_L2_s": 0.018567846000223653,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rx": 46,
+   "rxx": 56,
+   "ry": 31,
+   "rz": 50
+  },
+  "qiskit_L3_s": 0.09149711700047192,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "rx": 7,
+   "rxx": 34,
+   "rz": 17,
+   "ry": 16
+  },
+  "ours_s": 41.21739629699914,
+  "ours_ok": true,
+  "ours_attempts": 114604
+ },
+ {
+  "cfg": "NJP_nisq_4q",
+  "seed": 3,
+  "original": {
+   "rx": 106,
+   "rz": 118,
+   "cz": 76
+  },
+  "qiskit_L1": {
+   "rx": 68,
+   "rz": 55,
+   "cz": 68
+  },
+  "qiskit_L1_s": 0.012245252000866458,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rx": 63,
+   "rz": 36,
+   "cz": 51
+  },
+  "qiskit_L2_s": 0.015272437000021455,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rx": 63,
+   "rz": 36,
+   "cz": 51
+  },
+  "qiskit_L3_s": 0.035533375999875716,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "rx": 33,
+   "cz": 31,
+   "rz": 10
+  },
+  "ours_s": 36.031300253000154,
+  "ours_ok": true,
+  "ours_attempts": 109420
+ },
+ {
+  "cfg": "NJP_ion_4q",
+  "seed": 27,
+  "original": {
+   "rxx": 66,
+   "rx": 75,
+   "rz": 78,
+   "ry": 81
+  },
+  "qiskit_L1": {
+   "rx": 29,
+   "rz": 47,
+   "rxx": 66,
+   "ry": 41
+  },
+  "qiskit_L1_s": 0.019252853000580217,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rx": 34,
+   "rz": 45,
+   "rxx": 51,
+   "ry": 34
+  },
+  "qiskit_L2_s": 0.022090717999162734,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rx": 35,
+   "rz": 46,
+   "rxx": 49,
+   "ry": 31
+  },
+  "qiskit_L3_s": 0.04187653500048327,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "rxx": 39,
+   "rx": 8,
+   "ry": 23,
+   "rz": 18
+  },
+  "ours_s": 85.49179135799932,
+  "ours_ok": true,
+  "ours_attempts": 230293
+ },
+ {
+  "cfg": "NJP_nisq_4q",
+  "seed": 1,
+  "original": {
+   "rx": 114,
+   "rz": 111,
+   "cz": 75
+  },
+  "qiskit_L1": {
+   "rz": 67,
+   "rx": 62,
+   "cz": 65
+  },
+  "qiskit_L1_s": 0.008966174000306637,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rx": 61,
+   "rz": 35,
+   "cz": 45
+  },
+  "qiskit_L2_s": 0.013863714999388321,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rx": 59,
+   "rz": 35,
+   "cz": 42
+  },
+  "qiskit_L3_s": 0.02993047499876411,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "cz": 25,
+   "rx": 23,
+   "rz": 6
+  },
+  "ours_s": 61.8104216669999,
+  "ours_ok": true,
+  "ours_attempts": 206058
+ },
+ {
+  "cfg": "NJP_ion_4q",
+  "seed": 29,
+  "original": {
+   "rxx": 62,
+   "ry": 82,
+   "rz": 71,
+   "rx": 85
+  },
+  "qiskit_L1": {
+   "rxx": 62,
+   "rx": 22,
+   "ry": 39,
+   "rz": 49
+  },
+  "qiskit_L1_s": 0.013230085000031977,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rxx": 42,
+   "rx": 24,
+   "ry": 34,
+   "rz": 51
+  },
+  "qiskit_L2_s": 0.02145112800099014,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rxx": 42,
+   "rx": 24,
+   "ry": 34,
+   "rz": 51
+  },
+  "qiskit_L3_s": 0.02893246799976623,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "rx": 5,
+   "rxx": 33,
+   "rz": 28,
+   "ry": 19
+  },
+  "ours_s": 68.74225783400107,
+  "ours_ok": true,
+  "ours_attempts": 184327
+ },
+ {
+  "cfg": "NJP_ion_4q",
+  "seed": 23,
+  "original": {
+   "rxx": 67,
+   "ry": 79,
+   "rz": 85,
+   "rx": 69
+  },
+  "qiskit_L1": {
+   "rz": 47,
+   "rxx": 67,
+   "ry": 49,
+   "rx": 23
+  },
+  "qiskit_L1_s": 0.009362647000671132,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rz": 43,
+   "rxx": 50,
+   "ry": 35,
+   "rx": 32
+  },
+  "qiskit_L2_s": 0.02654659500149137,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rz": 41,
+   "rxx": 48,
+   "ry": 35,
+   "rx": 32
+  },
+  "qiskit_L3_s": 0.030162308999933884,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "ry": 24,
+   "rxx": 34,
+   "rz": 22,
+   "rx": 4
+  },
+  "ours_s": 136.5463709529995,
+  "ours_ok": true,
+  "ours_attempts": 368524
+ },
+ {
+  "cfg": "NJP_nisq_4q",
+  "seed": 0,
+  "original": {
+   "cz": 85,
+   "rx": 109,
+   "rz": 106
+  },
+  "qiskit_L1": {
+   "cz": 67,
+   "rz": 53,
+   "rx": 58
+  },
+  "qiskit_L1_s": 0.007473175999621162,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "cz": 49,
+   "rz": 41,
+   "rx": 64
+  },
+  "qiskit_L2_s": 0.0200705970000854,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "cz": 49,
+   "rz": 41,
+   "rx": 64
+  },
+  "qiskit_L3_s": 0.02436721100093564,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "cz": 27,
+   "rz": 8,
+   "rx": 23
+  },
+  "ours_s": 80.34345083500011,
+  "ours_ok": true,
+  "ours_attempts": 256348
+ },
+ {
+  "cfg": "NJP_nisq_4q",
+  "seed": 5,
+  "original": {
+   "rx": 123,
+   "cz": 85,
+   "rz": 92
+  },
+  "qiskit_L1": {
+   "rx": 58,
+   "cz": 69,
+   "rz": 50
+  },
+  "qiskit_L1_s": 0.012595592999787186,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rx": 55,
+   "cz": 42,
+   "rz": 31
+  },
+  "qiskit_L2_s": 0.019937438000852126,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rx": 55,
+   "cz": 42,
+   "rz": 31
+  },
+  "qiskit_L3_s": 0.015234096001222497,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "rz": 12,
+   "cz": 28,
+   "rx": 31
+  },
+  "ours_s": 43.33752694699979,
+  "ours_ok": true,
+  "ours_attempts": 131861
+ },
+ {
+  "cfg": "NJP_nisq_4q",
+  "seed": 4,
+  "original": {
+   "rx": 112,
+   "rz": 100,
+   "cz": 88
+  },
+  "qiskit_L1": {
+   "rx": 56,
+   "rz": 69,
+   "cz": 72
+  },
+  "qiskit_L1_s": 0.008268578001661808,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rx": 60,
+   "rz": 36,
+   "cz": 51
+  },
+  "qiskit_L2_s": 0.028666064999924856,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rx": 59,
+   "rz": 36,
+   "cz": 51
+  },
+  "qiskit_L3_s": 0.02797496400125965,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "rx": 42,
+   "rz": 13,
+   "cz": 39
+  },
+  "ours_s": 45.61582134300079,
+  "ours_ok": true,
+  "ours_attempts": 115158
+ },
+ {
+  "cfg": "T5_nisq_15q",
+  "seed": 9,
+  "original": {
+   "rx": 107,
+   "cz": 303,
+   "rz": 90
+  },
+  "qiskit_L1": {
+   "cz": 293,
+   "rx": 82,
+   "rz": 74
+  },
+  "qiskit_L1_s": 0.03849079800056643,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "cz": 203,
+   "rx": 84,
+   "rz": 44
+  },
+  "qiskit_L2_s": 0.07131249600024603,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "cz": 203,
+   "rx": 84,
+   "rz": 44
+  },
+  "qiskit_L3_s": 0.0824489110000286,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "cz": 201,
+   "rx": 87,
+   "rz": 42
+  },
+  "ours_s": 400.09970110299946,
+  "ours_ok": true,
+  "ours_attempts": 221273
+ },
+ {
+  "cfg": "NJP_nisq_4q",
+  "seed": 7,
+  "original": {
+   "cz": 83,
+   "rz": 106,
+   "rx": 111
+  },
+  "qiskit_L1": {
+   "cz": 71,
+   "rz": 60,
+   "rx": 60
+  },
+  "qiskit_L1_s": 0.01087054699928558,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "cz": 54,
+   "rz": 33,
+   "rx": 62
+  },
+  "qiskit_L2_s": 0.024887807998311473,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "cz": 54,
+   "rz": 33,
+   "rx": 62
+  },
+  "qiskit_L3_s": 0.036795588999666506,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "rz": 12,
+   "rx": 39,
+   "cz": 36
+  },
+  "ours_s": 57.50752136899973,
+  "ours_ok": true,
+  "ours_attempts": 155850
+ },
+ {
+  "cfg": "NJP_nisq_4q",
+  "seed": 8,
+  "original": {
+   "rx": 123,
+   "cz": 74,
+   "rz": 103
+  },
+  "qiskit_L1": {
+   "rx": 58,
+   "cz": 70,
+   "rz": 53
+  },
+  "qiskit_L1_s": 0.009114929000133998,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rx": 64,
+   "cz": 53,
+   "rz": 35
+  },
+  "qiskit_L2_s": 0.05142282100132434,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rx": 64,
+   "cz": 53,
+   "rz": 35
+  },
+  "qiskit_L3_s": 0.02106047399865929,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "rx": 34,
+   "rz": 7,
+   "cz": 33
+  },
+  "ours_s": 48.953385384000285,
+  "ours_ok": true,
+  "ours_attempts": 142529
+ },
+ {
+  "cfg": "NJP_nisq_4q",
+  "seed": 6,
+  "original": {
+   "rx": 107,
+   "cz": 85,
+   "rz": 108
+  },
+  "qiskit_L1": {
+   "rx": 63,
+   "rz": 57,
+   "cz": 69
+  },
+  "qiskit_L1_s": 0.014967515999160241,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rx": 66,
+   "rz": 41,
+   "cz": 60
+  },
+  "qiskit_L2_s": 0.01668581599915342,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rx": 66,
+   "rz": 41,
+   "cz": 60
+  },
+  "qiskit_L3_s": 0.027434120998805156,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "rx": 42,
+   "cz": 45,
+   "rz": 9
+  },
+  "ours_s": 85.44542668599934,
+  "ours_ok": true,
+  "ours_attempts": 207341
+ },
+ {
+  "cfg": "NJP_nisq_4q",
+  "seed": 10,
+  "original": {
+   "rz": 111,
+   "cz": 82,
+   "rx": 107
+  },
+  "qiskit_L1": {
+   "rz": 67,
+   "cz": 68,
+   "rx": 64
+  },
+  "qiskit_L1_s": 0.011991556999419117,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rx": 67,
+   "cz": 49,
+   "rz": 40
+  },
+  "qiskit_L2_s": 0.025335438000183785,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rx": 67,
+   "cz": 49,
+   "rz": 40
+  },
+  "qiskit_L3_s": 0.022709501999997883,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "cz": 38,
+   "rx": 39,
+   "rz": 13
+  },
+  "ours_s": 50.45127974999923,
+  "ours_ok": true,
+  "ours_attempts": 128925
+ },
+ {
+  "cfg": "NJP_nisq_4q",
+  "seed": 2,
+  "original": {
+   "rz": 99,
+   "rx": 116,
+   "cz": 85
+  },
+  "qiskit_L1": {
+   "cz": 79,
+   "rx": 59,
+   "rz": 65
+  },
+  "qiskit_L1_s": 0.009019593999255449,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rx": 60,
+   "rz": 42,
+   "cz": 53
+  },
+  "qiskit_L2_s": 0.014681106000352884,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rx": 60,
+   "rz": 42,
+   "cz": 53
+  },
+  "qiskit_L3_s": 0.01894697100033227,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "cz": 28,
+   "rz": 10,
+   "rx": 31
+  },
+  "ours_s": 145.60983040800056,
+  "ours_ok": true,
+  "ours_attempts": 416417
+ },
+ {
+  "cfg": "NJP_nisq_4q",
+  "seed": 11,
+  "original": {
+   "rz": 117,
+   "rx": 107,
+   "cz": 76
+  },
+  "qiskit_L1": {
+   "rz": 71,
+   "rx": 56,
+   "cz": 66
+  },
+  "qiskit_L1_s": 0.016890125001737033,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rx": 50,
+   "rz": 32,
+   "cz": 39
+  },
+  "qiskit_L2_s": 0.024254661999293603,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rx": 48,
+   "rz": 30,
+   "cz": 37
+  },
+  "qiskit_L3_s": 0.033865245000924915,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "rz": 10,
+   "rx": 27,
+   "cz": 27
+  },
+  "ours_s": 59.577390736998495,
+  "ours_ok": true,
+  "ours_attempts": 190018
+ },
+ {
+  "cfg": "NJP_nisq_4q",
+  "seed": 14,
+  "original": {
+   "cz": 81,
+   "rx": 108,
+   "rz": 111
+  },
+  "qiskit_L1": {
+   "rz": 70,
+   "rx": 59,
+   "cz": 71
+  },
+  "qiskit_L1_s": 0.007752871000775485,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rx": 57,
+   "cz": 51,
+   "rz": 34
+  },
+  "qiskit_L2_s": 0.01783828400039056,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rx": 57,
+   "cz": 51,
+   "rz": 34
+  },
+  "qiskit_L3_s": 0.02569454699914786,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "cz": 28,
+   "rz": 8,
+   "rx": 29
+  },
+  "ours_s": 42.249385101998996,
+  "ours_ok": true,
+  "ours_attempts": 125138
+ },
+ {
+  "cfg": "NJP_nisq_4q",
+  "seed": 12,
+  "original": {
+   "rx": 94,
+   "cz": 92,
+   "rz": 114
+  },
+  "qiskit_L1": {
+   "rx": 64,
+   "rz": 68,
+   "cz": 84
+  },
+  "qiskit_L1_s": 0.017790768999475404,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rx": 67,
+   "rz": 42,
+   "cz": 55
+  },
+  "qiskit_L2_s": 0.021496127999853343,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rx": 67,
+   "rz": 42,
+   "cz": 55
+  },
+  "qiskit_L3_s": 0.026851542001168127,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "rx": 35,
+   "cz": 40,
+   "rz": 12
+  },
+  "ours_s": 60.518209900999864,
+  "ours_ok": true,
+  "ours_attempts": 159735
+ },
+ {
+  "cfg": "NJP_nisq_4q",
+  "seed": 15,
+  "original": {
+   "rz": 117,
+   "rx": 100,
+   "cz": 83
+  },
+  "qiskit_L1": {
+   "rx": 46,
+   "cz": 75,
+   "rz": 54
+  },
+  "qiskit_L1_s": 0.013945745000455645,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rx": 50,
+   "cz": 43,
+   "rz": 30
+  },
+  "qiskit_L2_s": 0.014115881000179797,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rx": 50,
+   "cz": 43,
+   "rz": 30
+  },
+  "qiskit_L3_s": 0.01875533800011908,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "rx": 9,
+   "cz": 7,
+   "rz": 4
+  },
+  "ours_s": 27.388382172999627,
+  "ours_ok": true,
+  "ours_attempts": 131789
+ },
+ {
+  "cfg": "NJP_nisq_4q",
+  "seed": 13,
+  "original": {
+   "rx": 105,
+   "rz": 101,
+   "cz": 94
+  },
+  "qiskit_L1": {
+   "rz": 58,
+   "rx": 57,
+   "cz": 68
+  },
+  "qiskit_L1_s": 0.015383457001007628,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rx": 58,
+   "cz": 52,
+   "rz": 38
+  },
+  "qiskit_L2_s": 0.01870659300038824,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rx": 58,
+   "cz": 52,
+   "rz": 38
+  },
+  "qiskit_L3_s": 0.0360965470008523,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "cz": 37,
+   "rz": 12,
+   "rx": 37
+  },
+  "ours_s": 65.70375169900035,
+  "ours_ok": true,
+  "ours_attempts": 171497
+ },
+ {
+  "cfg": "NJP_nisq_4q",
+  "seed": 9,
+  "original": {
+   "rz": 120,
+   "rx": 105,
+   "cz": 75
+  },
+  "qiskit_L1": {
+   "rx": 55,
+   "rz": 60,
+   "cz": 57
+  },
+  "qiskit_L1_s": 0.01654228599909402,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rx": 55,
+   "rz": 37,
+   "cz": 44
+  },
+  "qiskit_L2_s": 0.01314622599966242,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rx": 55,
+   "rz": 37,
+   "cz": 44
+  },
+  "qiskit_L3_s": 0.02193521499975759,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "rx": 22,
+   "rz": 8,
+   "cz": 18
+  },
+  "ours_s": 129.17733107700042,
+  "ours_ok": true,
+  "ours_attempts": 407287
+ },
+ {
+  "cfg": "NJP_nisq_4q",
+  "seed": 16,
+  "original": {
+   "rz": 106,
+   "cz": 94,
+   "rx": 100
+  },
+  "qiskit_L1": {
+   "rz": 67,
+   "rx": 62,
+   "cz": 78
+  },
+  "qiskit_L1_s": 0.013797333998809336,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rz": 43,
+   "rx": 61,
+   "cz": 54
+  },
+  "qiskit_L2_s": 0.014440162000028067,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rz": 43,
+   "rx": 61,
+   "cz": 54
+  },
+  "qiskit_L3_s": 0.02134278199991968,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "cz": 36,
+   "rx": 35,
+   "rz": 9
+  },
+  "ours_s": 56.51093106400003,
+  "ours_ok": true,
+  "ours_attempts": 161320
+ },
+ {
+  "cfg": "NJP_nisq_4q",
+  "seed": 20,
+  "original": {
+   "cz": 85,
+   "rx": 98,
+   "rz": 117
+  },
+  "qiskit_L1": {
+   "rz": 77,
+   "rx": 57,
+   "cz": 75
+  },
+  "qiskit_L1_s": 0.012304834001042764,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rz": 36,
+   "rx": 56,
+   "cz": 48
+  },
+  "qiskit_L2_s": 0.016011806999813416,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rz": 35,
+   "rx": 56,
+   "cz": 47
+  },
+  "qiskit_L3_s": 0.016891781999220257,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "rx": 41,
+   "rz": 12,
+   "cz": 42
+  },
+  "ours_s": 52.002719664000324,
+  "ours_ok": true,
+  "ours_attempts": 130974
+ },
+ {
+  "cfg": "NJP_nisq_4q",
+  "seed": 18,
+  "original": {
+   "rz": 125,
+   "rx": 102,
+   "cz": 73
+  },
+  "qiskit_L1": {
+   "rz": 57,
+   "rx": 54,
+   "cz": 55
+  },
+  "qiskit_L1_s": 0.008803103999525774,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rz": 28,
+   "rx": 47,
+   "cz": 35
+  },
+  "qiskit_L2_s": 0.017531363000671263,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rz": 27,
+   "rx": 45,
+   "cz": 34
+  },
+  "qiskit_L3_s": 0.0261896779993549,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "rz": 11,
+   "cz": 32,
+   "rx": 41
+  },
+  "ours_s": 59.427180729999236,
+  "ours_ok": true,
+  "ours_attempts": 170779
+ },
+ {
+  "cfg": "NJP_nisq_4q",
+  "seed": 19,
+  "original": {
+   "rz": 114,
+   "rx": 105,
+   "cz": 81
+  },
+  "qiskit_L1": {
+   "rx": 61,
+   "rz": 61,
+   "cz": 69
+  },
+  "qiskit_L1_s": 0.008660788000270259,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rz": 41,
+   "rx": 65,
+   "cz": 50
+  },
+  "qiskit_L2_s": 0.013467467000737088,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rz": 42,
+   "rx": 63,
+   "cz": 48
+  },
+  "qiskit_L3_s": 0.021157232999030384,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "rx": 45,
+   "cz": 44,
+   "rz": 9
+  },
+  "ours_s": 56.396850758001165,
+  "ours_ok": true,
+  "ours_attempts": 146010
+ },
+ {
+  "cfg": "NJP_nisq_4q",
+  "seed": 21,
+  "original": {
+   "cz": 93,
+   "rz": 119,
+   "rx": 88
+  },
+  "qiskit_L1": {
+   "rx": 59,
+   "rz": 66,
+   "cz": 83
+  },
+  "qiskit_L1_s": 0.017214756000612397,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rx": 52,
+   "rz": 33,
+   "cz": 48
+  },
+  "qiskit_L2_s": 0.014114558000073885,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rx": 52,
+   "rz": 33,
+   "cz": 48
+  },
+  "qiskit_L3_s": 0.01981402999990678,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "rz": 9,
+   "rx": 32,
+   "cz": 31
+  },
+  "ours_s": 69.10330596899985,
+  "ours_ok": true,
+  "ours_attempts": 204795
+ },
+ {
+  "cfg": "NJP_nisq_4q",
+  "seed": 23,
+  "original": {
+   "cz": 87,
+   "rz": 119,
+   "rx": 94
+  },
+  "qiskit_L1": {
+   "rz": 67,
+   "cz": 75,
+   "rx": 56
+  },
+  "qiskit_L1_s": 0.01970693900148035,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rz": 35,
+   "cz": 40,
+   "rx": 51
+  },
+  "qiskit_L2_s": 0.015238502999636694,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rz": 35,
+   "cz": 40,
+   "rx": 51
+  },
+  "qiskit_L3_s": 0.01810215700061235,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "rx": 36,
+   "cz": 32,
+   "rz": 11
+  },
+  "ours_s": 41.172699088001536,
+  "ours_ok": true,
+  "ours_attempts": 115394
+ },
+ {
+  "cfg": "NJP_nisq_4q",
+  "seed": 17,
+  "original": {
+   "rz": 129,
+   "rx": 104,
+   "cz": 67
+  },
+  "qiskit_L1": {
+   "rz": 50,
+   "cz": 51,
+   "rx": 43
+  },
+  "qiskit_L1_s": 0.021222575998763205,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rx": 44,
+   "rz": 27,
+   "cz": 37
+  },
+  "qiskit_L2_s": 0.025929209999958402,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rx": 44,
+   "rz": 27,
+   "cz": 37
+  },
+  "qiskit_L3_s": 0.018126545999621158,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "cz": 33,
+   "rx": 26,
+   "rz": 7
+  },
+  "ours_s": 100.78041268500056,
+  "ours_ok": true,
+  "ours_attempts": 306575
+ },
+ {
+  "cfg": "NJP_nisq_4q",
+  "seed": 26,
+  "original": {
+   "rx": 120,
+   "rz": 117,
+   "cz": 63
+  },
+  "qiskit_L1": {
+   "rz": 64,
+   "rx": 54,
+   "cz": 53
+  },
+  "qiskit_L1_s": 0.008603565000157687,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rx": 59,
+   "cz": 39,
+   "rz": 28
+  },
+  "qiskit_L2_s": 0.014703961000122945,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rx": 59,
+   "cz": 39,
+   "rz": 28
+  },
+  "qiskit_L3_s": 0.017229516999577754,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "rz": 9,
+   "cz": 29,
+   "rx": 31
+  },
+  "ours_s": 40.51255175500046,
+  "ours_ok": true,
+  "ours_attempts": 118588
+ },
+ {
+  "cfg": "NJP_nisq_4q",
+  "seed": 27,
+  "original": {
+   "cz": 86,
+   "rz": 109,
+   "rx": 105
+  },
+  "qiskit_L1": {
+   "cz": 68,
+   "rz": 62,
+   "rx": 49
+  },
+  "qiskit_L1_s": 0.010507054999834509,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "cz": 44,
+   "rz": 35,
+   "rx": 52
+  },
+  "qiskit_L2_s": 0.013967312001113896,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "cz": 44,
+   "rz": 35,
+   "rx": 52
+  },
+  "qiskit_L3_s": 0.029198432001066976,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "rz": 12,
+   "rx": 31,
+   "cz": 32
+  },
+  "ours_s": 44.224657869999646,
+  "ours_ok": true,
+  "ours_attempts": 126092
+ },
+ {
+  "cfg": "NJP_nisq_4q",
+  "seed": 22,
+  "original": {
+   "rz": 108,
+   "rx": 100,
+   "cz": 92
+  },
+  "qiskit_L1": {
+   "rz": 68,
+   "rx": 59,
+   "cz": 86
+  },
+  "qiskit_L1_s": 0.00869151100050658,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rx": 56,
+   "rz": 34,
+   "cz": 47
+  },
+  "qiskit_L2_s": 0.01842044100158091,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rx": 54,
+   "rz": 34,
+   "cz": 44
+  },
+  "qiskit_L3_s": 0.017925907000972074,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "cz": 35,
+   "rz": 13,
+   "rx": 32
+  },
+  "ours_s": 90.85525310099911,
+  "ours_ok": true,
+  "ours_attempts": 299274
+ },
+ {
+  "cfg": "NJP_nisq_4q",
+  "seed": 24,
+  "original": {
+   "rx": 101,
+   "cz": 85,
+   "rz": 114
+  },
+  "qiskit_L1": {
+   "rx": 65,
+   "cz": 71,
+   "rz": 66
+  },
+  "qiskit_L1_s": 0.010468344999026158,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rz": 39,
+   "rx": 64,
+   "cz": 46
+  },
+  "qiskit_L2_s": 0.021672884999134112,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rz": 39,
+   "rx": 64,
+   "cz": 46
+  },
+  "qiskit_L3_s": 0.02251624800010177,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "cz": 41,
+   "rx": 47,
+   "rz": 13
+  },
+  "ours_s": 74.26181936899957,
+  "ours_ok": true,
+  "ours_attempts": 212995
+ },
+ {
+  "cfg": "NJP_nisq_4q",
+  "seed": 25,
+  "original": {
+   "rx": 113,
+   "rz": 98,
+   "cz": 89
+  },
+  "qiskit_L1": {
+   "rx": 59,
+   "rz": 63,
+   "cz": 75
+  },
+  "qiskit_L1_s": 0.011207444998944993,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rx": 62,
+   "rz": 36,
+   "cz": 46
+  },
+  "qiskit_L2_s": 0.016945986999417073,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rx": 62,
+   "rz": 36,
+   "cz": 46
+  },
+  "qiskit_L3_s": 0.02335041900005308,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "rz": 13,
+   "rx": 42,
+   "cz": 36
+  },
+  "ours_s": 64.33175778700024,
+  "ours_ok": true,
+  "ours_attempts": 220662
+ },
+ {
+  "cfg": "NJP_nisq_4q",
+  "seed": 29,
+  "original": {
+   "cz": 82,
+   "rx": 105,
+   "rz": 113
+  },
+  "qiskit_L1": {
+   "cz": 68,
+   "rz": 72,
+   "rx": 59
+  },
+  "qiskit_L1_s": 0.007871061001424096,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "cz": 50,
+   "rz": 37,
+   "rx": 60
+  },
+  "qiskit_L2_s": 0.032086414999866975,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "cz": 50,
+   "rz": 37,
+   "rx": 60
+  },
+  "qiskit_L3_s": 0.02383872799873643,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "cz": 28,
+   "rz": 9,
+   "rx": 29
+  },
+  "ours_s": 45.59367279499929,
+  "ours_ok": true,
+  "ours_attempts": 220869
+ },
+ {
+  "cfg": "NJP_nisq_4q",
+  "seed": 28,
+  "original": {
+   "cz": 92,
+   "rz": 103,
+   "rx": 105
+  },
+  "qiskit_L1": {
+   "rz": 65,
+   "cz": 80,
+   "rx": 62
+  },
+  "qiskit_L1_s": 0.010510194000744377,
+  "qiskit_L1_ok": true,
+  "qiskit_L2": {
+   "rz": 35,
+   "cz": 57,
+   "rx": 62
+  },
+  "qiskit_L2_s": 0.025275423999119084,
+  "qiskit_L2_ok": true,
+  "qiskit_L3": {
+   "rz": 35,
+   "cz": 57,
+   "rx": 62
+  },
+  "qiskit_L3_s": 0.03253006299928529,
+  "qiskit_L3_ok": true,
+  "ours": {
+   "cz": 35,
+   "rz": 11,
+   "rx": 40
+  },
+  "ours_s": 62.23973864599975,
+  "ours_ok": true,
+  "ours_attempts": 305237
+ }
+]

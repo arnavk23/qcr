@@ -1,0 +1,34 @@
+{
+ "nam/pf2_10": {
+  "exact_count": {
+   "total": 1026,
+   "verify": 3.293707254083648e-11,
+   "active": 20,
+   "err_bound": 0.0
+  },
+  "exact_w2": {
+   "total": 1043,
+   "verify": 3.157193699147225e-11,
+   "active": 20,
+   "err_bound": 0.0
+  },
+  "exact_cal": {
+   "total": 1088,
+   "verify": 2.8439177295341397e-11,
+   "active": 20,
+   "err_bound": 0.0
+  },
+  "state_cal": {
+   "total": 1056,
+   "verify": 2.9976026322912997e-15,
+   "active": 20,
+   "err_bound": 0.0
+  },
+  "approx_cal": {
+   "total": 529,
+   "verify": 0.00012930517532266407,
+   "active": 20,
+   "err_bound": 0.0007071842112519897
+  }
+ }
+}

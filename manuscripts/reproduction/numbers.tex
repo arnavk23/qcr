@@ -1,0 +1,30 @@
+\newcommand{\BuildSecondsBig}{8}
+\newcommand{\DemoDfour}{140 (range 132--148)}
+\newcommand{\DemoDfive}{115 (range 112--117)}
+\newcommand{\RFRecallHalf}{30\%}
+\newcommand{\RFRecallTwo}{92\%}
+\newcommand{\OursTthree}{47.1}
+\newcommand{\NTthree}{20}
+\newcommand{\QualityFindings}{(i) \emph{Table III reproduces}: the faithful loop reaches 47.1 gates on average (paper: 45 on its single circuit), against
+127 for Qiskit L3. (ii) \emph{Table IV}: we obtain 36.8 gates (paper: 72), so the method is even stronger than reported here.
+(iii) Qiskit 2.5 is much stronger than the version used in the paper (L3: 127 vs.\ 176 and 104 vs.\ 153). (iv) \emph{Table V does not
+reproduce}: at 15 qubits the method (335.9 gates, 213 CZ) only ties Qiskit L3 (332.1 gates, 213.5 CZ), whereas the paper reports
+293 vs.\ 313. Most random 15-qubit gate pairs act on disjoint wires, so there is little for 3-wire windows to do that Qiskit's
+commutation analysis does not already do. These runs also reached the 400\,s cap, so a longer budget could help somewhat.
+(v) Two-qubit gates are reduced proportionally (3q ion: 43 $\to$ 18.9 RXX; Qiskit L3: 29.9). All outputs were verified equivalent to their inputs.
+}
+\newcommand{\NJPFindings}{\textbf{Findings.} Our faithful port gives 78.8 (ion trap) and 76.0 (IBM-style) gates on average, \emph{better} than the published
+111 and 107. Qiskit 2.5 L3 gives 164.9 and 140.9. The difference to the published numbers is plausibly due to the database used
+(ours: 24-op depth 5 / 15-op depth 6, unstated in the paper) and run time. The qualitative claim, that the method clearly beats Qiskit on
+few-qubit random circuits, reproduces. The extension paper shows that an exact convex-window optimiser reaches 56.7 / 59.1 on the
+same benchmark in $\sim$6\,s per circuit.
+}
+\newcommand{\HardwareFindings}{\textbf{Findings.} At transpiler levels 0 and 1 the reduced circuits are closer to the ideal distribution on both chips
+(Brisbane L0: TVD 0.059 $\to$ 0.041, better on 22/30 circuits; Kyiv L0: 0.024 $\to$ 0.018, 20/30), and the newer Kyiv calibration
+is less noisy than Brisbane. Both observations match the paper's Fig.~9. At level 3, however, Qiskit consolidates every 2-qubit
+block and re-synthesises it, so long and short circuits compile to the same $\approx1.1$ two-qubit gates and the advantage
+vanishes (Brisbane 0.018 vs.\ 0.019; Kyiv 0.012 vs.\ 0.012). Plain Qiskit level 3 on the \emph{long} circuit beats the reduced circuit at
+level 1 (0.018 vs.\ 0.037 on Brisbane). The paper's hardware evidence therefore depends on an unreported transpiler setting.
+Its native-op counts (156 vs.\ 34 on Brisbane) are consistent with level 0/1 compilation by an older Qiskit. Our reduced
+circuits average 5.4 gates (paper: 8).
+}

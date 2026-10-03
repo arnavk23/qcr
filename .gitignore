@@ -1,0 +1,43 @@
+# Regenerated artefacts and third-party material (see tools/fetch_external.sh)
+/cache/
+/external/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+.tox/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# Docs
+docs/_build/
+docs/stubs/
+
+# LaTeX build files (PDFs are committed)
+manuscripts/**/*.aux
+manuscripts/**/*.log
+manuscripts/**/*.out
+manuscripts/**/*.toc
+manuscripts/**/*.nav
+manuscripts/**/*.snm
+manuscripts/**/*.vrb
+manuscripts/**/*.fls
+manuscripts/**/*.fdb_latexmk
+manuscripts/**/*.synctex.gz
+manuscripts/**/*.bbl
+manuscripts/**/*.blg
+
+# Editors / OS
+.idea/
+.vscode/
+*.swp
+.DS_Store

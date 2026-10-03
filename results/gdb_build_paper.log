@@ -1,0 +1,29 @@
+  DB[phase,tri] depth 1: +8 (total 9) 0s
+  DB[phase,tri] depth 2: +68 (total 77) 0s
+  DB[phase,tri] depth 3: +537 (total 614) 0s
+  DB[phase,tri] depth 4: +3,562 (total 4,176) 0s
+  DB[phase,tri] depth 5: +19,372 (total 23,548) 1s
+  DB[phase,tri] depth 6: +83,828 (total 107,376) 8s
+  DB[phase,tri] depth 7: +285,442 (total 392,818) 92s
+  DB[phase,tri] depth 8: +784,631 (total 1,177,449) 464s
+  DB[phase,tri] depth 1: +8 (total 9) 0s
+  DB[phase,tri] depth 2: +68 (total 77) 0s
+  DB[phase,tri] depth 3: +537 (total 614) 0s
+  DB[phase,tri] depth 4: +3,562 (total 4,176) 0s
+  DB[phase,tri] depth 5: +19,372 (total 23,548) 1s
+  DB[phase,tri] depth 6: +83,828 (total 107,376) 6s
+  DB[phase,tri] depth 7: +285,442 (total 392,818) 29s
+  DB[phase,tri] depth 8: +784,631 (total 1,177,449) 245s
+  DB[phase,tri] depth 9: +1,753,121 (total 2,930,570) 438s
+('ion_paper', 'tri', 'phase') {'size': 2930570, 'levels': [1, 8, 68, 537, 3562, 19372, 83828, 285442, 784631, 1753121], 'depth': 9, 'seconds': 437.98379707336426, 'pool': 24}
+  DB[phase,tri] depth 1: +5 (total 6) 0s
+  DB[phase,tri] depth 2: +31 (total 37) 0s
+  DB[phase,tri] depth 3: +163 (total 200) 0s
+  DB[phase,tri] depth 4: +797 (total 997) 0s
+  DB[phase,tri] depth 5: +3,548 (total 4,545) 0s
+  DB[phase,tri] depth 6: +14,279 (total 18,824) 1s
+  DB[phase,tri] depth 7: +51,680 (total 70,504) 3s
+  DB[phase,tri] depth 8: +167,052 (total 237,556) 12s
+  DB[phase,tri] depth 9: +470,247 (total 707,803) 41s
+  DB[phase,tri] depth 10: +1,129,970 (total 1,837,773) 115s
+('ibm_paper', 'tri', 'phase') {'size': 1837773, 'levels': [1, 5, 31, 163, 797, 3548, 14279, 51680, 167052, 470247, 1129970], 'depth': 10, 'seconds': 115.12252163887024, 'pool': 15}

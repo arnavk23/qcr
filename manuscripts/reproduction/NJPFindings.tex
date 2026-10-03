@@ -1,0 +1,5 @@
+\textbf{Findings.} Our faithful port gives 78.8 (ion trap) and 76.0 (IBM-style) gates on average, \emph{better} than the published
+111 and 107. Qiskit 2.5 L3 gives 164.9 and 140.9. The difference to the published numbers is plausibly due to the database used
+(ours: 24-op depth 5 / 15-op depth 6, unstated in the paper) and run time. The qualitative claim, that the method clearly beats Qiskit on
+few-qubit random circuits, reproduces. The extension paper shows that an exact convex-window optimiser reaches 56.7 / 59.1 on the
+same benchmark in $\sim$6\,s per circuit.

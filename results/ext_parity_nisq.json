@@ -1,0 +1,6 @@
+{
+ "nisq": {
+  "first_same_level_edge_depth": 4,
+  "shortest_odd_relator": 9
+ }
+}

@@ -1,0 +1,7 @@
+(i) \emph{Table III reproduces}: the faithful loop reaches 47.1 gates on average (paper: 45 on its single circuit), against
+127 for Qiskit L3. (ii) \emph{Table IV}: we obtain 36.8 gates (paper: 72), so the method is even stronger than reported here.
+(iii) Qiskit 2.5 is much stronger than the version used in the paper (L3: 127 vs.\ 176 and 104 vs.\ 153). (iv) \emph{Table V does not
+reproduce}: at 15 qubits the method (335.9 gates, 213 CZ) only ties Qiskit L3 (332.1 gates, 213.5 CZ), whereas the paper reports
+293 vs.\ 313. Most random 15-qubit gate pairs act on disjoint wires, so there is little for 3-wire windows to do that Qiskit's
+commutation analysis does not already do. These runs also reached the 400\,s cap, so a longer budget could help somewhat.
+(v) Two-qubit gates are reduced proportionally (3q ion: 43 $\to$ 18.9 RXX; Qiskit L3: 29.9). All outputs were verified equivalent to their inputs.

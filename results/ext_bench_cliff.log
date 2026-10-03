@@ -1,0 +1,210 @@
+{"cfg": "NJP_ion", "seed": 26, "qiskit_raw": 128, "qiskit": null, "qiskit_legal": false, "ours": 29, "ours_s": 1.7173091909971845, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 8, "qiskit_raw": 151, "qiskit": null, "qiskit_legal": false, "ours": 45, "ours_s": 2.4223919870019017, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 17, "qiskit_raw": 129, "qiskit": null, "qiskit_legal": false, "ours": 40, "ours_s": 3.025675742999738, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 35, "qiskit_raw": 172, "qiskit": null, "qiskit_legal": false, "ours": 48, "ours_s": 4.366374303001066, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 27, "qiskit_raw": 161, "qiskit": null, "qiskit_legal": false, "ours": 36, "ours_s": 3.724206798000523, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 18, "qiskit_raw": 173, "qiskit": null, "qiskit_legal": false, "ours": 34, "ours_s": 2.9940188959990337, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 9, "qiskit_raw": 161, "qiskit": null, "qiskit_legal": false, "ours": 46, "ours_s": 4.091161716998613, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 28, "qiskit_raw": 183, "qiskit": null, "qiskit_legal": false, "ours": 40, "ours_s": 2.3222013949998654, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 36, "qiskit_raw": 154, "qiskit": null, "qiskit_legal": false, "ours": 31, "ours_s": 3.7055277100007515, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 29, "qiskit_raw": 151, "qiskit": null, "qiskit_legal": false, "ours": 75, "ours_s": 2.750350567002897, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 10, "qiskit_raw": 158, "qiskit": null, "qiskit_legal": false, "ours": 28, "ours_s": 4.86682298300002, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 19, "qiskit_raw": 165, "qiskit": null, "qiskit_legal": false, "ours": 62, "ours_s": 5.800806755996746, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 30, "qiskit_raw": 179, "qiskit": null, "qiskit_legal": false, "ours": 17, "ours_s": 1.5723325430008117, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 20, "qiskit_raw": 175, "qiskit": null, "qiskit_legal": false, "ours": 61, "ours_s": 5.432300989003124, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 31, "qiskit_raw": 155, "qiskit": null, "qiskit_legal": false, "ours": 66, "ours_s": 5.327986353997403, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 37, "qiskit_raw": 168, "qiskit": null, "qiskit_legal": false, "ours": 83, "ours_s": 9.630793075000838, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 11, "qiskit_raw": 159, "qiskit": null, "qiskit_legal": false, "ours": 69, "ours_s": 7.674807622002845, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 38, "qiskit_raw": 156, "qiskit": null, "qiskit_legal": false, "ours": 53, "ours_s": 3.418083538002975, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 12, "qiskit_raw": 199, "qiskit": null, "qiskit_legal": false, "ours": 18, "ours_s": 2.8562824900000123, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 32, "qiskit_raw": 163, "qiskit": null, "qiskit_legal": false, "ours": 69, "ours_s": 5.2134506729998975, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 21, "qiskit_raw": 180, "qiskit": null, "qiskit_legal": false, "ours": 33, "ours_s": 5.641806659001304, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 39, "qiskit_raw": 154, "qiskit": null, "qiskit_legal": false, "ours": 31, "ours_s": 3.8132662039970455, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 13, "qiskit_raw": 165, "qiskit": null, "qiskit_legal": false, "ours": 52, "ours_s": 4.562991449001856, "ours_ok": true}
+{"cfg": "T5", "seed": 9, "qiskit_raw": 331, "qiskit": 348, "qiskit_legal": true, "ours": 322, "ours_s": 12.321656653999526, "ours_ok": true, "q3_ours": 324, "q3_ours_s": 10.319884540000203, "q3_ours_ok": true}
+{"cfg": "NJP_ion", "seed": 40, "qiskit_raw": 164, "qiskit": null, "qiskit_legal": false, "ours": 31, "ours_s": 3.132117273999029, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 33, "qiskit_raw": 167, "qiskit": null, "qiskit_legal": false, "ours": 68, "ours_s": 5.676552635999542, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 22, "qiskit_raw": 175, "qiskit": null, "qiskit_legal": false, "ours": 72, "ours_s": 6.427529356999003, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 0, "qiskit_raw": 165, "qiskit": null, "qiskit_legal": false, "ours": 19, "ours_s": 3.8806519940008, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 14, "qiskit_raw": 164, "qiskit": null, "qiskit_legal": false, "ours": 27, "ours_s": 5.246928980999655, "ours_ok": true}
+{"cfg": "T5", "seed": 0, "qiskit_raw": 346, "qiskit": 356, "qiskit_legal": true, "ours": 343, "ours_s": 11.754339190996689, "ours_ok": true, "q3_ours": 341, "q3_ours_s": 16.15966298100102, "q3_ours_ok": true}
+{"cfg": "NJP_ion", "seed": 41, "qiskit_raw": 179, "qiskit": null, "qiskit_legal": false, "ours": 62, "ours_s": 4.746178223998868, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 34, "qiskit_raw": 171, "qiskit": null, "qiskit_legal": false, "ours": 58, "ours_s": 4.47291783000037, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 15, "qiskit_raw": 163, "qiskit": null, "qiskit_legal": false, "ours": 27, "ours_s": 3.2350146859971574, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 44, "qiskit_raw": 172, "qiskit": null, "qiskit_legal": false, "ours": 31, "ours_s": 2.631254646999878, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 23, "qiskit_raw": 156, "qiskit": null, "qiskit_legal": false, "ours": 67, "ours_s": 6.716535660001682, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 42, "qiskit_raw": 145, "qiskit": null, "qiskit_legal": false, "ours": 31, "ours_s": 3.2022146080016682, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 1, "qiskit_raw": 171, "qiskit": null, "qiskit_legal": false, "ours": 55, "ours_s": 5.175765074000083, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 24, "qiskit_raw": 170, "qiskit": null, "qiskit_legal": false, "ours": 25, "ours_s": 3.1576097559991467, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 2, "qiskit_raw": 156, "qiskit": null, "qiskit_legal": false, "ours": 34, "ours_s": 3.21271098500074, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 43, "qiskit_raw": 181, "qiskit": null, "qiskit_legal": false, "ours": 82, "ours_s": 4.170727620999969, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 16, "qiskit_raw": 172, "qiskit": null, "qiskit_legal": false, "ours": 45, "ours_s": 5.954984740001237, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 45, "qiskit_raw": 177, "qiskit": null, "qiskit_legal": false, "ours": 55, "ours_s": 5.948482621002768, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 53, "qiskit_raw": 150, "qiskit": null, "qiskit_legal": false, "ours": 38, "ours_s": 3.4286428759987757, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 3, "qiskit_raw": 169, "qiskit": null, "qiskit_legal": false, "ours": 46, "ours_s": 4.765938856002322, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 25, "qiskit_raw": 183, "qiskit": null, "qiskit_legal": false, "ours": 32, "ours_s": 5.349049191998347, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 54, "qiskit_raw": 168, "qiskit": null, "qiskit_legal": false, "ours": 30, "ours_s": 2.6078207310019934, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 62, "qiskit_raw": 168, "qiskit": null, "qiskit_legal": false, "ours": 75, "ours_s": 5.651283199000318, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 4, "qiskit_raw": 156, "qiskit": null, "qiskit_legal": false, "ours": 27, "ours_s": 2.5202283979997446, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 46, "qiskit_raw": 125, "qiskit": null, "qiskit_legal": false, "ours": 50, "ours_s": 5.515354002996901, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 71, "qiskit_raw": 161, "qiskit": null, "qiskit_legal": false, "ours": 65, "ours_s": 4.11103342899878, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 5, "qiskit_raw": 160, "qiskit": null, "qiskit_legal": false, "ours": 66, "ours_s": 3.965095581999776, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 63, "qiskit_raw": 179, "qiskit": null, "qiskit_legal": false, "ours": 30, "ours_s": 4.641729106002458, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 47, "qiskit_raw": 158, "qiskit": null, "qiskit_legal": false, "ours": 42, "ours_s": 4.811684242999036, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 55, "qiskit_raw": 167, "qiskit": null, "qiskit_legal": false, "ours": 58, "ours_s": 5.732853926001553, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 72, "qiskit_raw": 142, "qiskit": null, "qiskit_legal": false, "ours": 44, "ours_s": 5.045396018002066, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 6, "qiskit_raw": 175, "qiskit": null, "qiskit_legal": false, "ours": 37, "ours_s": 5.938987763998739, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 56, "qiskit_raw": 167, "qiskit": null, "qiskit_legal": false, "ours": 36, "ours_s": 4.9839666100015165, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 48, "qiskit_raw": 156, "qiskit": null, "qiskit_legal": false, "ours": 49, "ours_s": 5.493747081996844, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 73, "qiskit_raw": 135, "qiskit": null, "qiskit_legal": false, "ours": 26, "ours_s": 3.818116075999569, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 64, "qiskit_raw": 183, "qiskit": null, "qiskit_legal": false, "ours": 28, "ours_s": 6.696308531001705, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 49, "qiskit_raw": 138, "qiskit": null, "qiskit_legal": false, "ours": 34, "ours_s": 1.825425090999488, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 74, "qiskit_raw": 187, "qiskit": null, "qiskit_legal": false, "ours": 48, "ours_s": 3.4713858969989815, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 7, "qiskit_raw": 174, "qiskit": null, "qiskit_legal": false, "ours": 34, "ours_s": 4.728689655999915, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 65, "qiskit_raw": 150, "qiskit": null, "qiskit_legal": false, "ours": 39, "ours_s": 4.7603087540010165, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 75, "qiskit_raw": 158, "qiskit": null, "qiskit_legal": false, "ours": 30, "ours_s": 2.235140841003158, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 50, "qiskit_raw": 143, "qiskit": null, "qiskit_legal": false, "ours": 45, "ours_s": 4.265089778000402, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 57, "qiskit_raw": 175, "qiskit": null, "qiskit_legal": false, "ours": 64, "ours_s": 7.547093785997276, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 80, "qiskit_raw": 157, "qiskit": null, "qiskit_legal": false, "ours": 43, "ours_s": 4.657642727001075, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 66, "qiskit_raw": 168, "qiskit": null, "qiskit_legal": false, "ours": 46, "ours_s": 3.4440063719994214, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 76, "qiskit_raw": 174, "qiskit": null, "qiskit_legal": false, "ours": 39, "ours_s": 3.528282078998018, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 51, "qiskit_raw": 174, "qiskit": null, "qiskit_legal": false, "ours": 44, "ours_s": 5.134252356001525, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 67, "qiskit_raw": 153, "qiskit": null, "qiskit_legal": false, "ours": 40, "ours_s": 3.6722731800000474, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 81, "qiskit_raw": 129, "qiskit": null, "qiskit_legal": false, "ours": 39, "ours_s": 4.973448542998085, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 77, "qiskit_raw": 164, "qiskit": null, "qiskit_legal": false, "ours": 50, "ours_s": 4.487177623999742, "ours_ok": true}
+{"cfg": "T5", "seed": 1, "qiskit_raw": 353, "qiskit": 366, "qiskit_legal": true, "ours": 350, "ours_s": 20.659471441002097, "ours_ok": true, "q3_ours": 351, "q3_ours_s": 15.51153483500093, "q3_ours_ok": true}
+{"cfg": "NJP_ion", "seed": 58, "qiskit_raw": 142, "qiskit": null, "qiskit_legal": false, "ours": 59, "ours_s": 7.785228194999945, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 52, "qiskit_raw": 166, "qiskit": null, "qiskit_legal": false, "ours": 38, "ours_s": 5.3501135779988545, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 68, "qiskit_raw": 174, "qiskit": null, "qiskit_legal": false, "ours": 31, "ours_s": 4.077044556001056, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 82, "qiskit_raw": 187, "qiskit": null, "qiskit_legal": false, "ours": 44, "ours_s": 3.837681319000694, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 59, "qiskit_raw": 122, "qiskit": null, "qiskit_legal": false, "ours": 21, "ours_s": 6.175390439999319, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 83, "qiskit_raw": 171, "qiskit": null, "qiskit_legal": false, "ours": 68, "ours_s": 4.126470287999837, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 78, "qiskit_raw": 194, "qiskit": null, "qiskit_legal": false, "ours": 67, "ours_s": 9.717193335000047, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 89, "qiskit_raw": 171, "qiskit": null, "qiskit_legal": false, "ours": 57, "ours_s": 7.37865388299906, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 69, "qiskit_raw": 169, "qiskit": null, "qiskit_legal": false, "ours": 57, "ours_s": 8.083219961001305, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 60, "qiskit_raw": 171, "qiskit": null, "qiskit_legal": false, "ours": 71, "ours_s": 6.4934986579974066, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 84, "qiskit_raw": 167, "qiskit": null, "qiskit_legal": false, "ours": 48, "ours_s": 6.418207224000071, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 79, "qiskit_raw": 157, "qiskit": null, "qiskit_legal": false, "ours": 33, "ours_s": 5.37953923799796, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 90, "qiskit_raw": 166, "qiskit": null, "qiskit_legal": false, "ours": 66, "ours_s": 6.738377210000181, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 98, "qiskit_raw": 150, "qiskit": null, "qiskit_legal": false, "ours": 43, "ours_s": 2.6112521440009004, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 70, "qiskit_raw": 168, "qiskit": null, "qiskit_legal": false, "ours": 55, "ours_s": 7.005022318997362, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 85, "qiskit_raw": 169, "qiskit": null, "qiskit_legal": false, "ours": 39, "ours_s": 4.486184820001654, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 61, "qiskit_raw": 163, "qiskit": null, "qiskit_legal": false, "ours": 44, "ours_s": 5.648431818000972, "ours_ok": true}
+{"cfg": "T5", "seed": 2, "qiskit_raw": 305, "qiskit": 316, "qiskit_legal": true, "ours": 304, "ours_s": 10.009889308999846, "ours_ok": true, "q3_ours": 306, "q3_ours_s": 7.122513802001777, "q3_ours_ok": true}
+{"cfg": "NJP_ion", "seed": 99, "qiskit_raw": 156, "qiskit": null, "qiskit_legal": false, "ours": 48, "ours_s": 4.648267652999493, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 91, "qiskit_raw": 172, "qiskit": null, "qiskit_legal": false, "ours": 58, "ours_s": 7.160357142001885, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 86, "qiskit_raw": 173, "qiskit": null, "qiskit_legal": false, "ours": 30, "ours_s": 5.884564109001076, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 92, "qiskit_raw": 187, "qiskit": null, "qiskit_legal": false, "ours": 64, "ours_s": 6.378646895002021, "ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 7, "qiskit_raw": 149, "qiskit": 168, "qiskit_legal": true, "ours": 55, "ours_s": 7.927851992997603, "ours_ok": true, "q3_ours": 43, "q3_ours_s": 5.227419066999573, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 0, "qiskit_raw": 154, "qiskit": 170, "qiskit_legal": true, "ours": 70, "ours_s": 5.505191774002014, "ours_ok": true, "q3_ours": 70, "q3_ours_s": 3.702789163999114, "q3_ours_ok": true}
+{"cfg": "NJP_ion", "seed": 87, "qiskit_raw": 167, "qiskit": null, "qiskit_legal": false, "ours": 18, "ours_s": 8.099356980001176, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 93, "qiskit_raw": 188, "qiskit": null, "qiskit_legal": false, "ours": 60, "ours_s": 3.08728424599758, "ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 16, "qiskit_raw": 158, "qiskit": 180, "qiskit_legal": true, "ours": 77, "ours_s": 9.341503325002122, "ours_ok": true, "q3_ours": 63, "q3_ours_s": 6.366916061000666, "q3_ours_ok": true}
+{"cfg": "NJP_ion", "seed": 88, "qiskit_raw": 156, "qiskit": null, "qiskit_legal": false, "ours": 35, "ours_s": 3.2948428820018307, "ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 1, "qiskit_raw": 136, "qiskit": null, "qiskit_legal": false, "ours": 49, "ours_s": 5.138807401999657, "ours_ok": true}
+{"cfg": "NJP_ion", "seed": 94, "qiskit_raw": 157, "qiskit": null, "qiskit_legal": false, "ours": 65, "ours_s": 6.054769045000285, "ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 25, "qiskit_raw": 144, "qiskit": 156, "qiskit_legal": true, "ours": 36, "ours_s": 3.1619703530013794, "ours_ok": true, "q3_ours": 22, "q3_ours_s": 2.610051043000567, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 17, "qiskit_raw": 108, "qiskit": 124, "qiskit_legal": true, "ours": 38, "ours_s": 7.271734272999311, "ours_ok": true, "q3_ours": 39, "q3_ours_s": 2.05821285699858, "q3_ours_ok": true}
+{"cfg": "NJP_ion", "seed": 95, "qiskit_raw": 174, "qiskit": null, "qiskit_legal": false, "ours": 43, "ours_s": 5.9059297569983755, "ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 8, "qiskit_raw": 152, "qiskit": 172, "qiskit_legal": true, "ours": 72, "ours_s": 8.81448806499975, "ours_ok": true, "q3_ours": 69, "q3_ours_s": 7.749308607002604, "q3_ours_ok": true}
+{"cfg": "NJP_ion", "seed": 96, "qiskit_raw": 153, "qiskit": null, "qiskit_legal": false, "ours": 30, "ours_s": 4.498647267999331, "ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 26, "qiskit_raw": 126, "qiskit": 140, "qiskit_legal": true, "ours": 61, "ours_s": 5.101757592001377, "ours_ok": true, "q3_ours": 59, "q3_ours_s": 3.5664640099967073, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 2, "qiskit_raw": 155, "qiskit": 172, "qiskit_legal": true, "ours": 66, "ours_s": 9.703412881997792, "ours_ok": true, "q3_ours": 27, "q3_ours_s": 4.817855588000384, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 18, "qiskit_raw": 106, "qiskit": 120, "qiskit_legal": true, "ours": 47, "ours_s": 5.331118720001541, "ours_ok": true, "q3_ours": 45, "q3_ours_s": 2.819988024999475, "q3_ours_ok": true}
+{"cfg": "NJP_ion", "seed": 97, "qiskit_raw": 152, "qiskit": null, "qiskit_legal": false, "ours": 36, "ours_s": 4.815686726000422, "ours_ok": true}
+{"cfg": "T5", "seed": 3, "qiskit_raw": 376, "qiskit": 396, "qiskit_legal": true, "ours": 365, "ours_s": 20.430506163000246, "ours_ok": true, "q3_ours": 363, "q3_ours_s": 16.10290153099777, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 9, "qiskit_raw": 136, "qiskit": 156, "qiskit_legal": true, "ours": 86, "ours_s": 7.449064894000912, "ours_ok": true, "q3_ours": 53, "q3_ours_s": 5.1941458209985285, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 27, "qiskit_raw": 131, "qiskit": 142, "qiskit_legal": true, "ours": 59, "ours_s": 8.931683615999646, "ours_ok": true, "q3_ours": 44, "q3_ours_s": 3.118293677998736, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 3, "qiskit_raw": 150, "qiskit": 162, "qiskit_legal": true, "ours": 65, "ours_s": 5.721092812000279, "ours_ok": true, "q3_ours": 45, "q3_ours_s": 7.513684858997294, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 19, "qiskit_raw": 153, "qiskit": 168, "qiskit_legal": true, "ours": 50, "ours_s": 8.308517623001535, "ours_ok": true, "q3_ours": 38, "q3_ours_s": 3.709565830999054, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 34, "qiskit_raw": 164, "qiskit": 180, "qiskit_legal": true, "ours": 56, "ours_s": 7.1622958590014605, "ours_ok": true, "q3_ours": 86, "q3_ours_s": 8.266874666001968, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 28, "qiskit_raw": 154, "qiskit": 170, "qiskit_legal": true, "ours": 41, "ours_s": 4.862770675001229, "ours_ok": true, "q3_ours": 22, "q3_ours_s": 2.9115618110008654, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 10, "qiskit_raw": 156, "qiskit": 178, "qiskit_legal": true, "ours": 45, "ours_s": 6.661545202998241, "ours_ok": true, "q3_ours": 35, "q3_ours_s": 3.571125326998299, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 4, "qiskit_raw": 146, "qiskit": 164, "qiskit_legal": true, "ours": 51, "ours_s": 5.192633801998454, "ours_ok": true, "q3_ours": 41, "q3_ours_s": 4.4205346340022516, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 11, "qiskit_raw": 115, "qiskit": null, "qiskit_legal": false, "ours": 58, "ours_s": 7.252893184999266, "ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 29, "qiskit_raw": 147, "qiskit": 162, "qiskit_legal": true, "ours": 28, "ours_s": 3.7547512680030195, "ours_ok": true, "q3_ours": 30, "q3_ours_s": 4.630789021997771, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 20, "qiskit_raw": 138, "qiskit": 158, "qiskit_legal": true, "ours": 49, "ours_s": 9.730717354999797, "ours_ok": true, "q3_ours": 76, "q3_ours_s": 5.454956877998484, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 35, "qiskit_raw": 160, "qiskit": 178, "qiskit_legal": true, "ours": 44, "ours_s": 3.0885129069974937, "ours_ok": true, "q3_ours": 85, "q3_ours_s": 8.546268968999357, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 5, "qiskit_raw": 128, "qiskit": 148, "qiskit_legal": true, "ours": 57, "ours_s": 7.138451235001412, "ours_ok": true, "q3_ours": 51, "q3_ours_s": 4.760329030999856, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 30, "qiskit_raw": 130, "qiskit": null, "qiskit_legal": false, "ours": 46, "ours_s": 7.39940344599745, "ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 21, "qiskit_raw": 133, "qiskit": 142, "qiskit_legal": true, "ours": 42, "ours_s": 4.7784558620005555, "ours_ok": true, "q3_ours": 56, "q3_ours_s": 2.7300431650000974, "q3_ours_ok": true}
+{"cfg": "T5", "seed": 4, "qiskit_raw": 327, "qiskit": 338, "qiskit_legal": true, "ours": 330, "ours_s": 18.74874379600078, "ours_ok": true, "q3_ours": 326, "q3_ours_s": 9.129908925999189, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 12, "qiskit_raw": 164, "qiskit": 182, "qiskit_legal": true, "ours": 55, "ours_s": 10.18468141899939, "ours_ok": true, "q3_ours": 42, "q3_ours_s": 6.313518193001073, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 36, "qiskit_raw": 150, "qiskit": null, "qiskit_legal": false, "ours": 86, "ours_s": 12.484030932999303, "ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 22, "qiskit_raw": 132, "qiskit": 146, "qiskit_legal": true, "ours": 27, "ours_s": 4.732707574999949, "ours_ok": true, "q3_ours": 73, "q3_ours_s": 5.2745617239997955, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 31, "qiskit_raw": 141, "qiskit": null, "qiskit_legal": false, "ours": 62, "ours_s": 11.88811652000004, "ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 13, "qiskit_raw": 148, "qiskit": null, "qiskit_legal": false, "ours": 42, "ours_s": 6.561774660000083, "ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 23, "qiskit_raw": 126, "qiskit": null, "qiskit_legal": false, "ours": 65, "ours_s": 5.876857924999058, "ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 37, "qiskit_raw": 131, "qiskit": 150, "qiskit_legal": true, "ours": 28, "ours_s": 4.177488312001515, "ours_ok": true, "q3_ours": 25, "q3_ours_s": 4.783442507003201, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 6, "qiskit_raw": 167, "qiskit": 180, "qiskit_legal": true, "ours": 33, "ours_s": 13.619267469999613, "ours_ok": true, "q3_ours": 85, "q3_ours_s": 6.818847559999995, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 38, "qiskit_raw": 126, "qiskit": null, "qiskit_legal": false, "ours": 38, "ours_s": 5.579184964000888, "ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 14, "qiskit_raw": 142, "qiskit": 168, "qiskit_legal": true, "ours": 52, "ours_s": 5.987669442998595, "ours_ok": true, "q3_ours": 43, "q3_ours_s": 5.742620895001892, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 24, "qiskit_raw": 149, "qiskit": null, "qiskit_legal": false, "ours": 80, "ours_s": 12.061609192001924, "ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 32, "qiskit_raw": 151, "qiskit": 160, "qiskit_legal": true, "ours": 79, "ours_s": 11.119112021999172, "ours_ok": true, "q3_ours": 51, "q3_ours_s": 6.759415419997822, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 43, "qiskit_raw": 145, "qiskit": 162, "qiskit_legal": true, "ours": 49, "ours_s": 5.145155979000265, "ours_ok": true, "q3_ours": 39, "q3_ours_s": 4.493257702000847, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 39, "qiskit_raw": 159, "qiskit": 178, "qiskit_legal": true, "ours": 50, "ours_s": 4.906953465000697, "ours_ok": true, "q3_ours": 58, "q3_ours_s": 2.8767367799991916, "q3_ours_ok": true}
+{"cfg": "T5", "seed": 5, "qiskit_raw": 319, "qiskit": 330, "qiskit_legal": true, "ours": 313, "ours_s": 9.771772169999167, "ours_ok": true, "q3_ours": 303, "q3_ours_s": 16.38379116700162, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 15, "qiskit_raw": 123, "qiskit": 136, "qiskit_legal": true, "ours": 45, "ours_s": 5.364894892001757, "ours_ok": true, "q3_ours": 42, "q3_ours_s": 3.6965942310016544, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 40, "qiskit_raw": 119, "qiskit": null, "qiskit_legal": false, "ours": 46, "ours_s": 5.437173211001209, "ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 52, "qiskit_raw": 111, "qiskit": 122, "qiskit_legal": true, "ours": 39, "ours_s": 4.346903634999762, "ours_ok": true, "q3_ours": 26, "q3_ours_s": 3.5426292740012286, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 44, "qiskit_raw": 114, "qiskit": 130, "qiskit_legal": true, "ours": 48, "ours_s": 6.868222640998283, "ours_ok": true, "q3_ours": 59, "q3_ours_s": 2.4660546949999116, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 33, "qiskit_raw": 123, "qiskit": 136, "qiskit_legal": true, "ours": 34, "ours_s": 6.384745104001922, "ours_ok": true, "q3_ours": 56, "q3_ours_s": 5.458846689001803, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 61, "qiskit_raw": 159, "qiskit": 180, "qiskit_legal": true, "ours": 50, "ours_s": 4.4098107169993455, "ours_ok": true, "q3_ours": 53, "q3_ours_s": 3.842055076998804, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 41, "qiskit_raw": 120, "qiskit": null, "qiskit_legal": false, "ours": 66, "ours_s": 7.9158605900011025, "ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 45, "qiskit_raw": 154, "qiskit": 166, "qiskit_legal": true, "ours": 43, "ours_s": 4.288964008002949, "ours_ok": true, "q3_ours": 81, "q3_ours_s": 4.184384039999713, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 53, "qiskit_raw": 157, "qiskit": 174, "qiskit_legal": true, "ours": 49, "ours_s": 9.740003320999676, "ours_ok": true, "q3_ours": 48, "q3_ours_s": 5.566330281999399, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 46, "qiskit_raw": 113, "qiskit": null, "qiskit_legal": false, "ours": 45, "ours_s": 5.472846387998288, "ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 42, "qiskit_raw": 128, "qiskit": 142, "qiskit_legal": true, "ours": 35, "ours_s": 6.234276664999925, "ours_ok": true, "q3_ours": 50, "q3_ours_s": 3.7434147040003154, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 62, "qiskit_raw": 134, "qiskit": 144, "qiskit_legal": true, "ours": 55, "ours_s": 6.248217188000126, "ours_ok": true, "q3_ours": 55, "q3_ours_s": 4.614595112998359, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 70, "qiskit_raw": 138, "qiskit": 154, "qiskit_legal": true, "ours": 35, "ours_s": 10.124432648000948, "ours_ok": true, "q3_ours": 69, "q3_ours_s": 6.792818727000849, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 54, "qiskit_raw": 145, "qiskit": 162, "qiskit_legal": true, "ours": 51, "ours_s": 7.779007514000114, "ours_ok": true, "q3_ours": 70, "q3_ours_s": 3.440914953000174, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 47, "qiskit_raw": 145, "qiskit": 156, "qiskit_legal": true, "ours": 25, "ours_s": 5.625773357998696, "ours_ok": true, "q3_ours": 46, "q3_ours_s": 6.030510499000229, "q3_ours_ok": true}
+{"cfg": "T5", "seed": 6, "qiskit_raw": 313, "qiskit": 328, "qiskit_legal": true, "ours": 304, "ours_s": 12.654489513999579, "ours_ok": true, "q3_ours": 306, "q3_ours_s": 14.878709945998708, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 71, "qiskit_raw": 100, "qiskit": 116, "qiskit_legal": true, "ours": 33, "ours_s": 6.4343735959992046, "ours_ok": true, "q3_ours": 31, "q3_ours_s": 1.3672174290004477, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 79, "qiskit_raw": 137, "qiskit": 142, "qiskit_legal": true, "ours": 51, "ours_s": 4.6016631689999485, "ours_ok": true, "q3_ours": 49, "q3_ours_s": 9.349270459999389, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 55, "qiskit_raw": 150, "qiskit": null, "qiskit_legal": false, "ours": 38, "ours_s": 6.265392538996821, "ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 63, "qiskit_raw": 146, "qiskit": 162, "qiskit_legal": true, "ours": 69, "ours_s": 10.951806714998384, "ours_ok": true, "q3_ours": 95, "q3_ours_s": 5.34316244799993, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 56, "qiskit_raw": 121, "qiskit": null, "qiskit_legal": false, "ours": 49, "ours_s": 5.001451030999306, "ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 72, "qiskit_raw": 155, "qiskit": 172, "qiskit_legal": true, "ours": 65, "ours_s": 5.164060128001438, "ours_ok": true, "q3_ours": 73, "q3_ours_s": 3.8711775980009406, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 48, "qiskit_raw": 125, "qiskit": 136, "qiskit_legal": true, "ours": 61, "ours_s": 6.872566776000895, "ours_ok": true, "q3_ours": 57, "q3_ours_s": 4.962955990999035, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 80, "qiskit_raw": 165, "qiskit": null, "qiskit_legal": false, "ours": 59, "ours_s": 11.579945057001169, "ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 57, "qiskit_raw": 146, "qiskit": null, "qiskit_legal": false, "ours": 45, "ours_s": 4.517285272999288, "ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 64, "qiskit_raw": 131, "qiskit": 140, "qiskit_legal": true, "ours": 44, "ours_s": 7.349322089001362, "ours_ok": true, "q3_ours": 48, "q3_ours_s": 3.8680274599973927, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 58, "qiskit_raw": 150, "qiskit": null, "qiskit_legal": false, "ours": 39, "ours_s": 4.355245627000841, "ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 73, "qiskit_raw": 141, "qiskit": 158, "qiskit_legal": true, "ours": 48, "ours_s": 4.775823460000538, "ours_ok": true, "q3_ours": 44, "q3_ours_s": 3.808267946998967, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 49, "qiskit_raw": 128, "qiskit": 150, "qiskit_legal": true, "ours": 39, "ours_s": 5.652166315001523, "ours_ok": true, "q3_ours": 52, "q3_ours_s": 4.0264641319990915, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 81, "qiskit_raw": 143, "qiskit": 164, "qiskit_legal": true, "ours": 29, "ours_s": 5.440574912998272, "ours_ok": true, "q3_ours": 23, "q3_ours_s": 2.2468979730001593, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 65, "qiskit_raw": 148, "qiskit": null, "qiskit_legal": false, "ours": 32, "ours_s": 6.717287630999635, "ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 82, "qiskit_raw": 144, "qiskit": null, "qiskit_legal": false, "ours": 40, "ours_s": 4.577403725001204, "ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 74, "qiskit_raw": 122, "qiskit": 132, "qiskit_legal": true, "ours": 45, "ours_s": 4.007155849998526, "ours_ok": true, "q3_ours": 43, "q3_ours_s": 4.168293282000377, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 59, "qiskit_raw": 144, "qiskit": 162, "qiskit_legal": true, "ours": 57, "ours_s": 7.010020658999565, "ours_ok": true, "q3_ours": 63, "q3_ours_s": 6.567750489997707, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 50, "qiskit_raw": 133, "qiskit": 154, "qiskit_legal": true, "ours": 61, "ours_s": 6.38969739499953, "ours_ok": true, "q3_ours": 41, "q3_ours_s": 6.434872396999708, "q3_ours_ok": true}
+{"cfg": "T5", "seed": 7, "qiskit_raw": 322, "qiskit": 334, "qiskit_legal": true, "ours": 306, "ours_s": 17.284394407000946, "ours_ok": true, "q3_ours": 300, "q3_ours_s": 13.528305821997492, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 75, "qiskit_raw": 131, "qiskit": 148, "qiskit_legal": true, "ours": 41, "ours_s": 7.678823254998861, "ours_ok": true, "q3_ours": 51, "q3_ours_s": 4.456186867002543, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 66, "qiskit_raw": 135, "qiskit": 156, "qiskit_legal": true, "ours": 36, "ours_s": 7.608178676000534, "ours_ok": true, "q3_ours": 63, "q3_ours_s": 9.092675561998476, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 83, "qiskit_raw": 161, "qiskit": 178, "qiskit_legal": true, "ours": 57, "ours_s": 8.061198153998703, "ours_ok": true, "q3_ours": 72, "q3_ours_s": 6.00310877299853, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 51, "qiskit_raw": 130, "qiskit": 148, "qiskit_legal": true, "ours": 45, "ours_s": 5.484317580001516, "ours_ok": true, "q3_ours": 45, "q3_ours_s": 4.129854950999288, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 60, "qiskit_raw": 163, "qiskit": 182, "qiskit_legal": true, "ours": 35, "ours_s": 8.185178650997841, "ours_ok": true, "q3_ours": 43, "q3_ours_s": 5.898659823000344, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 76, "qiskit_raw": 147, "qiskit": null, "qiskit_legal": false, "ours": 75, "ours_s": 8.030968338000093, "ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 84, "qiskit_raw": 141, "qiskit": 156, "qiskit_legal": true, "ours": 63, "ours_s": 4.964060204998532, "ours_ok": true, "q3_ours": 47, "q3_ours_s": 4.134983377000026, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 88, "qiskit_raw": 119, "qiskit": 136, "qiskit_legal": true, "ours": 36, "ours_s": 5.366155271996831, "ours_ok": true, "q3_ours": 37, "q3_ours_s": 5.485421581000992, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 67, "qiskit_raw": 148, "qiskit": 166, "qiskit_legal": true, "ours": 40, "ours_s": 10.347387710000476, "ours_ok": true, "q3_ours": 51, "q3_ours_s": 6.794133522002085, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 85, "qiskit_raw": 150, "qiskit": null, "qiskit_legal": false, "ours": 70, "ours_s": 8.488839546997042, "ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 77, "qiskit_raw": 156, "qiskit": 174, "qiskit_legal": true, "ours": 50, "ours_s": 7.525056539998332, "ours_ok": true, "q3_ours": 42, "q3_ours_s": 3.9582880859998113, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 97, "qiskit_raw": 156, "qiskit": 174, "qiskit_legal": true, "ours": 35, "ours_s": 8.122552610999264, "ours_ok": true, "q3_ours": 35, "q3_ours_s": 4.561647182999877, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 68, "qiskit_raw": 157, "qiskit": null, "qiskit_legal": false, "ours": 47, "ours_s": 4.215614654000092, "ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 98, "qiskit_raw": 157, "qiskit": 178, "qiskit_legal": true, "ours": 37, "ours_s": 3.8959056730018347, "ours_ok": true, "q3_ours": 47, "q3_ours_s": 4.067427747999318, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 89, "qiskit_raw": 165, "qiskit": 180, "qiskit_legal": true, "ours": 43, "ours_s": 9.695520014000067, "ours_ok": true, "q3_ours": 71, "q3_ours_s": 4.192835920002835, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 86, "qiskit_raw": 147, "qiskit": 162, "qiskit_legal": true, "ours": 20, "ours_s": 7.43986495700301, "ours_ok": true, "q3_ours": 35, "q3_ours_s": 3.5290839660010533, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 69, "qiskit_raw": 132, "qiskit": 148, "qiskit_legal": true, "ours": 33, "ours_s": 6.184700156001782, "ours_ok": true, "q3_ours": 31, "q3_ours_s": 3.0343650369977695, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 78, "qiskit_raw": 136, "qiskit": 150, "qiskit_legal": true, "ours": 71, "ours_s": 8.290182492000895, "ours_ok": true, "q3_ours": 85, "q3_ours_s": 5.617731786998775, "q3_ours_ok": true}
+{"cfg": "T5", "seed": 8, "qiskit_raw": 329, "qiskit": 344, "qiskit_legal": true, "ours": 309, "ours_s": 16.200398270000733, "ours_ok": true, "q3_ours": 304, "q3_ours_s": 18.88710797100066, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 90, "qiskit_raw": 132, "qiskit": 148, "qiskit_legal": true, "ours": 41, "ours_s": 3.309738774001744, "ours_ok": true, "q3_ours": 29, "q3_ours_s": 2.4675699540021014, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 87, "qiskit_raw": 132, "qiskit": 146, "qiskit_legal": true, "ours": 66, "ours_s": 5.229947405998246, "ours_ok": true, "q3_ours": 51, "q3_ours_s": 3.504807108998648, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 99, "qiskit_raw": 138, "qiskit": 152, "qiskit_legal": true, "ours": 60, "ours_s": 8.254060120998474, "ours_ok": true, "q3_ours": 43, "q3_ours_s": 2.6697190859995317, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 91, "qiskit_raw": 147, "qiskit": 168, "qiskit_legal": true, "ours": 31, "ours_s": 2.508629870000732, "ours_ok": true, "q3_ours": 58, "q3_ours_s": 2.0697864229987317, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 92, "qiskit_raw": 136, "qiskit": 150, "qiskit_legal": true, "ours": 48, "ours_s": 2.5864555059997656, "ours_ok": true, "q3_ours": 37, "q3_ours_s": 1.4665193059990997, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 93, "qiskit_raw": 117, "qiskit": 126, "qiskit_legal": true, "ours": 49, "ours_s": 2.1102431020008225, "ours_ok": true, "q3_ours": 54, "q3_ours_s": 1.2541487009984849, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 94, "qiskit_raw": 143, "qiskit": 164, "qiskit_legal": true, "ours": 68, "ours_s": 3.0717202439991524, "ours_ok": true, "q3_ours": 42, "q3_ours_s": 1.5728174569994735, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 95, "qiskit_raw": 153, "qiskit": 166, "qiskit_legal": true, "ours": 32, "ours_s": 3.5037606510013575, "ours_ok": true, "q3_ours": 28, "q3_ours_s": 1.6595779579984082, "q3_ours_ok": true}
+{"cfg": "NJP_nisq", "seed": 96, "qiskit_raw": 151, "qiskit": 168, "qiskit_legal": true, "ours": 37, "ours_s": 4.171767859999818, "ours_ok": true, "q3_ours": 46, "q3_ours_s": 2.290298690997588, "q3_ours_ok": true}

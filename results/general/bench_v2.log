@@ -1,0 +1,134 @@
+/home/arnav/Downloads/ankur/repro/scripts/gen_bench.py:72: DeprecationWarning: The class ``qiskit.circuit.library.basis_change.qft.QFT`` is deprecated as of Qiskit 2.1. It will be removed in Qiskit 3.0. ('Use qiskit.circuit.library.QFTGate or qiskit.synthesis.qft.synth_qft_full instead, for access to all previous arguments.',)
+  add(f"alg/qft_{n}", QFT(n))
+/home/arnav/Downloads/ankur/repro/scripts/gen_bench.py:94: DeprecationWarning: The class ``qiskit.circuit.library.n_local.efficient_su2.EfficientSU2`` is deprecated as of Qiskit 2.1. It will be removed in Qiskit 3.0. Use the function qiskit.circuit.library.efficient_su2 instead.
+  add("alg/efficientsu2_6", EfficientSU2(6, reps=3).assign_parameters(rng.uniform(-pi, pi, 48)))
+skip hhl_n10 QASM2ParseError
+skip qasmbench/inverseqft_n4 classical control flow
+skip qasmbench/ipea_n2 classical control flow
+skip qasmbench/qec_sm_n5 classical control flow
+skip qasmbench/shor_n5 classical control flow
+skip vqe_uccsd_n4 QASM2ParseError
+skip vqe_uccsd_n6 QASM2ParseError
+skip vqe_uccsd_n8 QASM2ParseError
+60 circuits: nam/barenco_tof_3, nam/barenco_tof_4, nam/barenco_tof_5, nam/gf2^4_mult, nam/mod5_4, nam/mod_mult_55, nam/mod_red_21, nam/tof_3, nam/tof_4, nam/tof_5, nam/vbe_adder_3, nam/pf1_10, nam/pf2_10, nam/QFT8, qasmbench/adder_n10, qasmbench/adder_n4, qasmbench/basis_change_n3, qasmbench/bb84_n8, qasmbench/bell_n4, qasmbench/cat_state_n4, qasmbench/deutsch_n2, qasmbench/dnn_n2, qasmbench/dnn_n8, qasmbench/error_correctiond3_n5, qasmbench/fredkin_n3, qasmbench/grover_n2, qasmbench/hhl_n7, qasmbench/hs4_n4, qasmbench/ising_n10, qasmbench/iswap_n2, qasmbench/linearsolver_n3, qasmbench/lpn_n5, qasmbench/pea_n5, qasmbench/qaoa_n3, qasmbench/qaoa_n6, qasmbench/qec_en_n5, qasmbench/qft_n4, qasmbench/qpe_n9, qasmbench/qrng_n4, qasmbench/quantumwalks_n2, qasmbench/sat_n7, qasmbench/simon_n6, qasmbench/teleportation_n3, qasmbench/toffoli_n3, qasmbench/variational_n4, qasmbench/vqe_n4, qasmbench/wstate_n3, alg/qft_4, alg/qft_6, alg/qft_8, alg/qaoa_6, alg/qaoa_8, alg/heisenberg_6, alg/heisenberg_8, alg/efficientsu2_6, alg/steane_encoder, random/grid_4q, random/cont_4q, random/grid_6q, random/cont_6q
+0 rows already done, 120 to run
+{"name": "nam/barenco_tof_3", "dev": "heron", "L3": 36, "ours": 39, "ok": 8.372768381839175e-13}
+{"name": "nam/mod5_4", "dev": "heron", "L3": 51, "ours": 44, "ok": 1.0077771527204994e-12}
+{"name": "nam/barenco_tof_4", "dev": "heron", "L3": 76, "ours": 77, "ok": 9.541024707853774e-13}
+{"name": "nam/barenco_tof_5", "dev": "heron", "L3": 119, "ours": 119, "ok": 1.2330814840844954e-12}
+{"name": "nam/tof_3", "dev": "heron", "L3": 26, "ours": 24, "ok": 4.5346285605317196e-13}
+{"name": "nam/mod_mult_55", "dev": "heron", "L3": 84, "ours": 91, "ok": 7.691055023604572e-13}
+{"name": "nam/tof_4", "dev": "heron", "L3": 43, "ours": 43, "ok": 7.112768993205102e-13}
+{"name": "nam/tof_5", "dev": "heron", "L3": 58, "ours": 62, "ok": 1.036883255684504e-12}
+{"name": "nam/gf2^4_mult", "dev": "heron", "L3": 213, "ours": 209, "ok": 1.6065285934563836e-12}
+{"name": "nam/mod_red_21", "dev": "heron", "L3": 195, "ours": 206, "ok": 1.413679684394603e-12}
+{"name": "nam/vbe_adder_3", "dev": "heron", "L3": 103, "ours": 103, "ok": 9.782157583115241e-13}
+{"name": "qasmbench/adder_n10", "dev": "heron", "L3": 96, "ours": 81, "ok": 9.365924749847183e-13}
+{"name": "qasmbench/adder_n4", "dev": "heron", "L3": 16, "ours": 12, "ok": 5.558642075939193e-13}
+{"name": "nam/pf1_10", "dev": "heron", "L3": 0, "ours": 139, "ok": 7.490915268211035e-13}
+{"name": "qasmbench/bb84_n8", "dev": "heron", "L3": 0, "ours": 0, "ok": 0.0}
+{"name": "qasmbench/bell_n4", "dev": "heron", "L3": 5, "ours": 5, "ok": 3.4516927596812324e-13}
+{"name": "qasmbench/cat_state_n4", "dev": "heron", "L3": 3, "ours": 3, "ok": 1.1783648464192412e-13}
+{"name": "qasmbench/deutsch_n2", "dev": "heron", "L3": 1, "ours": 1, "ok": 0.0}
+{"name": "qasmbench/basis_change_n3", "dev": "heron", "L3": 10, "ours": 10, "ok": 0.0}
+{"name": "nam/pf2_10", "dev": "heron", "L3": 0, "ours": 298, "ok": null}
+{"name": "qasmbench/error_correctiond3_n5", "dev": "heron", "L3": 44, "ours": 34, "ok": 5.134442151701403e-15}
+{"name": "nam/QFT8", "dev": "heron", "L3": 107, "ours": 91, "ok": 1.7956413583821148e-12}
+{"name": "qasmbench/grover_n2", "dev": "heron", "L3": 2, "ours": 2, "ok": 1.3737435556073875e-15}
+{"name": "qasmbench/fredkin_n3", "dev": "heron", "L3": 12, "ours": 12, "ok": 1.720231734504555e-13}
+{"name": "qasmbench/hs4_n4", "dev": "heron", "L3": 4, "ours": 4, "ok": 1.7949115989466225e-15}
+{"name": "qasmbench/dnn_n2", "dev": "heron", "L3": 3, "ours": 14, "ok": 2.985607554443146e-12}
+{"name": "qasmbench/iswap_n2", "dev": "heron", "L3": 2, "ours": 2, "ok": 0.0}
+{"name": "qasmbench/linearsolver_n3", "dev": "heron", "L3": 4, "ours": 4, "ok": 0.0}
+{"name": "qasmbench/lpn_n5", "dev": "heron", "L3": 2, "ours": 2, "ok": 4.545902364027965e-16}
+{"name": "qasmbench/pea_n5", "dev": "heron", "L3": 28, "ours": 29, "ok": 8.972264732194645e-13}
+{"name": "qasmbench/qaoa_n3", "dev": "heron", "L3": 7, "ours": 7, "ok": 2.933082075436496e-13}
+{"name": "qasmbench/ising_n10", "dev": "heron", "L3": 90, "ours": 90, "ok": 0.0}
+{"name": "qasmbench/qec_en_n5", "dev": "heron", "L3": 12, "ours": 12, "ok": 3.3046210171757924e-13}
+{"name": "qasmbench/qft_n4", "dev": "heron", "L3": 18, "ours": 19, "ok": 6.81922493078507e-13}
+{"name": "qasmbench/qaoa_n6", "dev": "heron", "L3": 60, "ours": 63, "ok": 1.6232513292147642e-12}
+{"name": "qasmbench/qrng_n4", "dev": "heron", "L3": 0, "ours": 0, "ok": 0.0}
+{"name": "qasmbench/qpe_n9", "dev": "heron", "L3": 79, "ours": 75, "ok": 1.2462584886210768e-12}
+{"name": "qasmbench/quantumwalks_n2", "dev": "heron", "L3": 3, "ours": 3, "ok": 1.2933967022813329e-12}
+{"name": "qasmbench/simon_n6", "dev": "heron", "L3": 20, "ours": 20, "ok": 4.337804900950737e-13}
+{"name": "qasmbench/teleportation_n3", "dev": "heron", "L3": 2, "ours": 2, "ok": 4.081579843510303e-16}
+{"name": "qasmbench/toffoli_n3", "dev": "heron", "L3": 7, "ours": 7, "ok": 5.599011283001736e-13}
+{"name": "qasmbench/variational_n4", "dev": "heron", "L3": 8, "ours": 10, "ok": 6.315192708125145e-13}
+{"name": "qasmbench/vqe_n4", "dev": "heron", "L3": 9, "ours": 9, "ok": 0.0}
+{"name": "qasmbench/wstate_n3", "dev": "heron", "L3": 10, "ours": 10, "ok": 6.445977788858772e-13}
+{"name": "alg/qft_4", "dev": "heron", "L3": 25, "ours": 23, "ok": 7.283245205143475e-13}
+{"name": "qasmbench/sat_n7", "dev": "heron", "L3": 97, "ours": 116, "ok": 1.1957080345898767e-12}
+{"name": "alg/qft_6", "dev": "heron", "L3": 62, "ours": 69, "ok": 1.1166823627716456e-12}
+{"name": "qasmbench/dnn_n8", "dev": "heron", "L3": 109, "ours": 110, "ok": 4.439889307788663e-12}
+{"name": "alg/qaoa_6", "dev": "heron", "L3": 68, "ours": 73, "ok": 1.0246026141340284e-12}
+{"name": "alg/qft_8", "dev": "heron", "L3": 120, "ours": 129, "ok": 1.4217785225791616e-12}
+{"name": "alg/heisenberg_6", "dev": "heron", "L3": 45, "ours": 45, "ok": 1.6022363025341138e-12}
+{"name": "alg/qaoa_8", "dev": "heron", "L3": 82, "ours": 80, "ok": 9.85454848162665e-13}
+{"name": "qasmbench/hhl_n7", "dev": "heron", "L3": 191, "ours": 184, "ok": 4.279480608673271e-12}
+{"name": "alg/efficientsu2_6", "dev": "heron", "L3": 15, "ours": 15, "ok": 5.361415017656646e-13}
+{"name": "alg/steane_encoder", "dev": "heron", "L3": 23, "ours": 27, "ok": 1.197068870662844e-15}
+{"name": "alg/heisenberg_8", "dev": "heron", "L3": 63, "ours": 63, "ok": 2.196046549364774e-12}
+{"name": "random/cont_4q", "dev": "heron", "L3": 61, "ours": 62, "ok": 1.0858309382274025e-12}
+{"name": "random/grid_4q", "dev": "heron", "L3": 58, "ours": 47, "ok": 1.1751825589888185e-12}
+{"name": "nam/barenco_tof_3", "dev": "ion", "L3": 20, "ours": 19, "ok": 2.3426843295401546e-13}
+{"name": "nam/barenco_tof_4", "dev": "ion", "L3": 40, "ours": 38, "ok": 4.554691271707412e-13}
+{"name": "nam/barenco_tof_5", "dev": "ion", "L3": 60, "ours": 57, "ok": 5.520807250706329e-13}
+{"name": "random/grid_6q", "dev": "heron", "L3": 107, "ours": 116, "ok": 1.563260586735939e-12}
+{"name": "nam/mod5_4", "dev": "ion", "L3": 24, "ours": 15, "ok": 3.1338823642115607e-15}
+{"name": "nam/mod_mult_55", "dev": "ion", "L3": 41, "ours": 37, "ok": 3.333905076177314e-13}
+{"name": "nam/gf2^4_mult", "dev": "ion", "L3": 83, "ours": 83, "ok": 4.818333108687455e-13}
+{"name": "nam/tof_3", "dev": "ion", "L3": 15, "ours": 14, "ok": 5.474264191538421e-13}
+{"name": "nam/tof_4", "dev": "ion", "L3": 25, "ours": 23, "ok": 4.1380131547408666e-13}
+{"name": "nam/tof_5", "dev": "ion", "L3": 35, "ours": 32, "ok": 7.655465253291729e-13}
+{"name": "nam/vbe_adder_3", "dev": "ion", "L3": 54, "ours": 53, "ok": 4.5394579803964677e-13}
+{"name": "random/cont_6q", "dev": "heron", "L3": 95, "ours": 93, "ok": 1.495690298229687e-12}
+{"name": "nam/mod_red_21", "dev": "ion", "L3": 88, "ours": 80, "ok": 6.203628351809789e-13}
+{"name": "qasmbench/adder_n10", "dev": "ion", "L3": 57, "ours": 49, "ok": 3.896899541362586e-15}
+{"name": "qasmbench/adder_n4", "dev": "ion", "L3": 7, "ours": 7, "ok": 2.2397448288921718e-13}
+{"name": "qasmbench/basis_change_n3", "dev": "ion", "L3": 10, "ours": 10, "ok": 1.1866245520950012e-12}
+{"name": "qasmbench/bb84_n8", "dev": "ion", "L3": 0, "ours": 0, "ok": 0.0}
+{"name": "qasmbench/bell_n4", "dev": "ion", "L3": 3, "ours": 3, "ok": 3.267618164471603e-13}
+{"name": "qasmbench/cat_state_n4", "dev": "ion", "L3": 3, "ours": 3, "ok": 5.544280441918097e-16}
+{"name": "qasmbench/deutsch_n2", "dev": "ion", "L3": 1, "ours": 1, "ok": 2.6883177111928387e-16}
+{"name": "nam/QFT8", "dev": "ion", "L3": 28, "ours": 28, "ok": 2.3873866003684004e-12}
+{"name": "nam/pf2_10", "dev": "ion", "L3": 0, "ours": 118, "ok": 1.5682271400839202e-12}
+{"name": "qasmbench/error_correctiond3_n5", "dev": "ion", "L3": 35, "ours": 10, "ok": 2.6451508444899098e-15}
+{"name": "qasmbench/fredkin_n3", "dev": "ion", "L3": 8, "ours": 7, "ok": 1.312918675499433e-15}
+{"name": "qasmbench/grover_n2", "dev": "ion", "L3": 2, "ours": 2, "ok": 7.0524190312495755e-16}
+{"name": "qasmbench/dnn_n2", "dev": "ion", "L3": 3, "ours": 3, "ok": 4.777250877711953e-12}
+{"name": "qasmbench/hs4_n4", "dev": "ion", "L3": 4, "ours": 4, "ok": 8.615762217457042e-16}
+{"name": "nam/pf1_10", "dev": "ion", "L3": 0, "ours": 60, "ok": 9.877464168891456e-13}
+{"name": "qasmbench/iswap_n2", "dev": "ion", "L3": 2, "ours": 2, "ok": 7.734610455448193e-16}
+{"name": "qasmbench/linearsolver_n3", "dev": "ion", "L3": 3, "ours": 3, "ok": 5.156711311559861e-14}
+{"name": "qasmbench/lpn_n5", "dev": "ion", "L3": 2, "ours": 2, "ok": 3.1309716410295113e-16}
+{"name": "qasmbench/pea_n5", "dev": "ion", "L3": 9, "ours": 11, "ok": 1.0028628931521191e-12}
+{"name": "qasmbench/qaoa_n3", "dev": "ion", "L3": 4, "ours": 5, "ok": 3.7665797315574693e-13}
+{"name": "qasmbench/qaoa_n6", "dev": "ion", "L3": 18, "ours": 18, "ok": 2.271370458235328e-12}
+{"name": "qasmbench/qec_en_n5", "dev": "ion", "L3": 10, "ours": 10, "ok": 1.1064772458083305e-15}
+{"name": "qasmbench/dnn_n8", "dev": "ion", "L3": 56, "ours": 56, "ok": 7.271077330459497e-12}
+{"name": "qasmbench/qft_n4", "dev": "ion", "L3": 6, "ours": 6, "ok": 8.25677129338078e-13}
+{"name": "qasmbench/qrng_n4", "dev": "ion", "L3": 0, "ours": 0, "ok": 0.0}
+{"name": "qasmbench/quantumwalks_n2", "dev": "ion", "L3": 3, "ours": 3, "ok": 0.0}
+{"name": "qasmbench/qpe_n9", "dev": "ion", "L3": 26, "ours": 25, "ok": 3.767719638121524e-12}
+{"name": "qasmbench/sat_n7", "dev": "ion", "L3": 50, "ours": 45, "ok": 4.104990170816919e-13}
+{"name": "qasmbench/teleportation_n3", "dev": "ion", "L3": 2, "ours": 2, "ok": 2.2683196179707318e-13}
+{"name": "qasmbench/simon_n6", "dev": "ion", "L3": 12, "ours": 6, "ok": 1.796403949549345e-15}
+{"name": "qasmbench/toffoli_n3", "dev": "ion", "L3": 5, "ours": 5, "ok": 4.425176808927489e-13}
+{"name": "qasmbench/vqe_n4", "dev": "ion", "L3": 9, "ours": 9, "ok": 4.794614486874145e-13}
+{"name": "qasmbench/wstate_n3", "dev": "ion", "L3": 6, "ours": 7, "ok": 1.5520353887242883e-13}
+{"name": "qasmbench/variational_n4", "dev": "ion", "L3": 8, "ours": 10, "ok": 7.557247386594697e-13}
+{"name": "qasmbench/ising_n10", "dev": "ion", "L3": 45, "ours": 45, "ok": 9.127567402241187e-12}
+{"name": "alg/qft_4", "dev": "ion", "L3": 12, "ours": 12, "ok": 1.0597739051203925e-12}
+{"name": "qasmbench/hhl_n7", "dev": "ion", "L3": 62, "ours": 64, "ok": 9.676356413909056e-12}
+{"name": "alg/qft_6", "dev": "ion", "L3": 24, "ours": 24, "ok": 1.774532052120886e-12}
+{"name": "alg/qaoa_6", "dev": "ion", "L3": 18, "ours": 19, "ok": 2.572346458323817e-12}
+{"name": "alg/heisenberg_6", "dev": "ion", "L3": 45, "ours": 45, "ok": 1.4178220215533354e-12}
+{"name": "alg/qft_8", "dev": "ion", "L3": 40, "ours": 40, "ok": 5.9054508563182605e-12}
+{"name": "alg/steane_encoder", "dev": "ion", "L3": 11, "ours": 11, "ok": 9.831955872718887e-16}
+{"name": "alg/qaoa_8", "dev": "ion", "L3": 24, "ours": 26, "ok": 1.1819912405801918e-12}
+{"name": "alg/efficientsu2_6", "dev": "ion", "L3": 15, "ours": 15, "ok": 9.589296589686333e-13}
+{"name": "random/grid_4q", "dev": "ion", "L3": 28, "ours": 24, "ok": 1.110576101750068e-12}
+{"name": "random/grid_6q", "dev": "ion", "L3": 44, "ours": 44, "ok": 1.0871085995999927e-12}
+{"name": "random/cont_4q", "dev": "ion", "L3": 29, "ours": 29, "ok": 1.5381074054838433e-12}
+{"name": "alg/heisenberg_8", "dev": "ion", "L3": 63, "ours": 63, "ok": 1.5112260106879754e-12}
+{"name": "random/cont_6q", "dev": "ion", "L3": 41, "ours": 41, "ok": 1.0903364654838476e-12}

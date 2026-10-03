@@ -1,0 +1,26 @@
+---
+prelude: >
+    First release of qcr: exact, hardware-aware local rewriting of quantum circuits, together with a complete
+    reproduction of Rosenhahn, Osborne & Hirche, *Optimization driven quantum circuit reduction*
+    (New J. Phys. 27, 104509, 2025) and exact Clifford ground truth for evaluating it.
+features:
+  - |
+    Added :class:`qcr.Optimizer`, a gate-set-agnostic, connectivity-aware local optimiser. Equivalence is
+    selected with :class:`qcr.Config`: exact including global phase (``mode="exact"``), up to phase
+    (``mode="phase"``), state/measurement-aware (``state_aware=True``) or approximate with a tracked
+    operator-norm error bound (``eps``). Costs are gate count, two-qubit-weighted count or calibrated
+    ``-log(1 - error)`` per gate.
+  - |
+    Added :class:`qcr.Database`, hashed databases of up to ~3e7 three-qubit equivalence classes keyed by
+    canonical orbit representatives (global phase, diagonal left action, stabiliser of ``|0>``, coupling-graph
+    automorphisms), with meet-in-the-middle lookup.
+  - |
+    Added device models :func:`qcr.heron` (IBM Heron via ``FakeTorino`` calibration, dead couplers removed),
+    :func:`qcr.ion` (all-to-all, arbitrary-angle Mølmer-Sørensen gates) and :func:`qcr.paper_device`
+    (the discrete alphabets of the original paper).
+  - |
+    Added :mod:`qcr.tableau` and :mod:`qcr.exact`: bit-packed Clifford tableaux, complete Cayley-graph
+    enumeration for up to three qubits and provably optimal window replacement.
+  - |
+    Added :mod:`qcr.compute_graph`, :mod:`qcr.reducer` and :mod:`qcr.rf`, a faithful Python port of the
+    reference method (V1 random sampling, V2 database lookup, V3 random-forest gate).

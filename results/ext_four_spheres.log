@@ -1,0 +1,14 @@
+  n=4 depth 1: |S|=36 0s
+  n=4 depth 2: |S|=710 0s
+  n=4 depth 3: |S|=10,056 0s
+  n=4 depth 4: |S|=112,993 0s
+  n=4 depth 5: |S|=1,053,220 2s
+  n=4 depth 6: |S|=8,286,600 16s
+ion_pm 11.103335879232501 11
+  n=4 depth 1: |S|=22 0s
+  n=4 depth 2: |S|=271 0s
+  n=4 depth 3: |S|=2,480 0s
+  n=4 depth 4: |S|=18,891 0s
+  n=4 depth 5: |S|=126,268 0s
+  n=4 depth 6: |S|=763,229 1s
+nisq 12.931795608015046 13

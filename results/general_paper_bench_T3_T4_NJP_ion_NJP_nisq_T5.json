@@ -1,0 +1,5341 @@
+[
+ {
+  "cfg": "T3",
+  "seed": 0,
+  "general": {
+   "rz": 5,
+   "rxx": 4,
+   "ry": 1
+  },
+  "seconds": 2.473784246998548,
+  "stats": {
+   "db": 44,
+   "mitm": 172,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "T3",
+  "seed": 1,
+  "general": {
+   "ry": 2,
+   "rxx": 3,
+   "rz": 3
+  },
+  "seconds": 2.2580902700065053,
+  "stats": {
+   "db": 68,
+   "mitm": 148,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "T3",
+  "seed": 2,
+  "general": {
+   "rx": 1,
+   "ry": 2,
+   "rxx": 4,
+   "rz": 4
+  },
+  "seconds": 4.5881865070041385,
+  "stats": {
+   "db": 24,
+   "mitm": 188,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "T3",
+  "seed": 3,
+  "general": {
+   "rz": 5,
+   "ry": 3,
+   "rxx": 5
+  },
+  "seconds": 2.744167283999559,
+  "stats": {
+   "db": 44,
+   "mitm": 168,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "T3",
+  "seed": 4,
+  "general": {
+   "rz": 6,
+   "rxx": 4,
+   "ry": 2
+  },
+  "seconds": 2.607260150994989,
+  "stats": {
+   "db": 60,
+   "mitm": 152,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "T3",
+  "seed": 5,
+  "general": {
+   "rz": 5,
+   "rxx": 4,
+   "ry": 1
+  },
+  "seconds": 2.525632292999944,
+  "stats": {
+   "db": 72,
+   "mitm": 160,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "T3",
+  "seed": 6,
+  "general": {
+   "ry": 3,
+   "rxx": 4,
+   "rz": 3
+  },
+  "seconds": 1.8682024219961022,
+  "stats": {
+   "db": 64,
+   "mitm": 144,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "T3",
+  "seed": 7,
+  "general": {
+   "rx": 1,
+   "ry": 3,
+   "rxx": 3,
+   "rz": 4
+  },
+  "seconds": 2.2908618500005105,
+  "stats": {
+   "db": 56,
+   "mitm": 164,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "T3",
+  "seed": 8,
+  "general": {
+   "rx": 1,
+   "rz": 2,
+   "rxx": 3,
+   "ry": 4
+  },
+  "seconds": 2.4132522150030127,
+  "stats": {
+   "db": 36,
+   "mitm": 176,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "T3",
+  "seed": 9,
+  "general": {
+   "rx": 1,
+   "rz": 6,
+   "rxx": 3,
+   "ry": 3
+  },
+  "seconds": 3.5318701030046213,
+  "stats": {
+   "db": 44,
+   "mitm": 176,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "T3",
+  "seed": 10,
+  "general": {
+   "rz": 5,
+   "rxx": 4,
+   "ry": 1
+  },
+  "seconds": 3.6953447579944623,
+  "stats": {
+   "db": 64,
+   "mitm": 156,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "T3",
+  "seed": 11,
+  "general": {
+   "rx": 1,
+   "ry": 2,
+   "rxx": 4,
+   "rz": 3
+  },
+  "seconds": 2.0607187040004646,
+  "stats": {
+   "db": 60,
+   "mitm": 164,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "T3",
+  "seed": 12,
+  "general": {
+   "rxx": 3,
+   "rz": 3,
+   "ry": 3
+  },
+  "seconds": 1.4794404960048269,
+  "stats": {
+   "db": 80,
+   "mitm": 156,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "T3",
+  "seed": 13,
+  "general": {
+   "rz": 3,
+   "rx": 1,
+   "ry": 4,
+   "rxx": 4
+  },
+  "seconds": 2.7666279830009444,
+  "stats": {
+   "db": 44,
+   "mitm": 184,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "T3",
+  "seed": 14,
+  "general": {
+   "rz": 2,
+   "ry": 2,
+   "rxx": 3,
+   "rx": 1
+  },
+  "seconds": 1.569094378995942,
+  "stats": {
+   "db": 68,
+   "mitm": 136,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "T3",
+  "seed": 15,
+  "general": {
+   "rx": 1,
+   "rz": 4,
+   "rxx": 4,
+   "ry": 1
+  },
+  "seconds": 2.149989323996124,
+  "stats": {
+   "db": 60,
+   "mitm": 148,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "T3",
+  "seed": 16,
+  "general": {
+   "ry": 4,
+   "rz": 3,
+   "rxx": 3
+  },
+  "seconds": 1.6912161889995332,
+  "stats": {
+   "db": 72,
+   "mitm": 120,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "T3",
+  "seed": 17,
+  "general": {
+   "rx": 2,
+   "rz": 6,
+   "rxx": 7,
+   "ry": 1
+  },
+  "seconds": 4.087602135005,
+  "stats": {
+   "db": 24,
+   "mitm": 176,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "T3",
+  "seed": 18,
+  "general": {
+   "ry": 3,
+   "rxx": 7,
+   "rz": 4
+  },
+  "seconds": 3.6414692040052614,
+  "stats": {
+   "db": 68,
+   "mitm": 135,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "T3",
+  "seed": 19,
+  "general": {
+   "rxx": 4,
+   "rz": 2,
+   "ry": 2
+  },
+  "seconds": 1.7658108420000644,
+  "stats": {
+   "db": 40,
+   "mitm": 184,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "T4",
+  "seed": 0,
+  "general": {
+   "cz": 7,
+   "rx": 7,
+   "rz": 3
+  },
+  "seconds": 3.3817847930040443,
+  "stats": {
+   "db": 68,
+   "mitm": 216,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "T4",
+  "seed": 1,
+  "general": {
+   "rx": 8,
+   "rz": 1,
+   "cz": 5
+  },
+  "seconds": 3.759076793001441,
+  "stats": {
+   "db": 88,
+   "mitm": 212,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "T4",
+  "seed": 2,
+  "general": {
+   "cz": 5,
+   "rx": 8
+  },
+  "seconds": 1.8253926039978978,
+  "stats": {
+   "db": 52,
+   "mitm": 224,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "T4",
+  "seed": 3,
+  "general": {
+   "cz": 5,
+   "rx": 7,
+   "rz": 2
+  },
+  "seconds": 1.9685455130020273,
+  "stats": {
+   "db": 60,
+   "mitm": 196,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "T4",
+  "seed": 4,
+  "general": {
+   "rx": 9,
+   "cz": 5,
+   "rz": 3
+  },
+  "seconds": 2.5612178899973514,
+  "stats": {
+   "db": 48,
+   "mitm": 224,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "T4",
+  "seed": 5,
+  "general": {
+   "cz": 5,
+   "rx": 7,
+   "rz": 2
+  },
+  "seconds": 2.9302500909980154,
+  "stats": {
+   "db": 76,
+   "mitm": 204,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "T4",
+  "seed": 6,
+  "general": {
+   "rx": 6,
+   "cz": 5,
+   "rz": 1
+  },
+  "seconds": 3.0602296409997507,
+  "stats": {
+   "db": 68,
+   "mitm": 212,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "T4",
+  "seed": 7,
+  "general": {
+   "rx": 6,
+   "cz": 4,
+   "rz": 2
+  },
+  "seconds": 3.1453207550002844,
+  "stats": {
+   "db": 84,
+   "mitm": 184,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "T4",
+  "seed": 8,
+  "general": {
+   "rz": 2,
+   "rx": 4,
+   "cz": 3
+  },
+  "seconds": 3.2542104089952772,
+  "stats": {
+   "db": 56,
+   "mitm": 232,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "T4",
+  "seed": 9,
+  "general": {
+   "cz": 6,
+   "rx": 6,
+   "rz": 2
+  },
+  "seconds": 4.952846027998021,
+  "stats": {
+   "db": 100,
+   "mitm": 200,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "T4",
+  "seed": 10,
+  "general": {
+   "rz": 2,
+   "rx": 6,
+   "cz": 4
+  },
+  "seconds": 2.0225841689971276,
+  "stats": {
+   "db": 68,
+   "mitm": 176,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "T4",
+  "seed": 11,
+  "general": {
+   "cz": 4,
+   "rx": 7,
+   "rz": 2
+  },
+  "seconds": 2.4890689630046836,
+  "stats": {
+   "db": 60,
+   "mitm": 192,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "T4",
+  "seed": 12,
+  "general": {
+   "rx": 6,
+   "cz": 5,
+   "rz": 1
+  },
+  "seconds": 3.184930544004601,
+  "stats": {
+   "db": 76,
+   "mitm": 192,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "T4",
+  "seed": 13,
+  "general": {
+   "rz": 3,
+   "cz": 3,
+   "rx": 5
+  },
+  "seconds": 2.6835087639992707,
+  "stats": {
+   "db": 48,
+   "mitm": 220,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "T4",
+  "seed": 14,
+  "general": {
+   "rx": 6,
+   "cz": 4,
+   "rz": 1
+  },
+  "seconds": 2.909727614001895,
+  "stats": {
+   "db": 60,
+   "mitm": 220,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "T4",
+  "seed": 15,
+  "general": {
+   "cz": 4,
+   "rx": 3,
+   "rz": 1
+  },
+  "seconds": 1.2527847429955727,
+  "stats": {
+   "db": 116,
+   "mitm": 72,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "T4",
+  "seed": 16,
+  "general": {
+   "rx": 6,
+   "rz": 2,
+   "cz": 3
+  },
+  "seconds": 3.293638232004014,
+  "stats": {
+   "db": 76,
+   "mitm": 200,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "T4",
+  "seed": 17,
+  "general": {
+   "cz": 6,
+   "rx": 4,
+   "rz": 2
+  },
+  "seconds": 2.099208504005219,
+  "stats": {
+   "db": 100,
+   "mitm": 108,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "T4",
+  "seed": 18,
+  "general": {
+   "rx": 6,
+   "rz": 2,
+   "cz": 3
+  },
+  "seconds": 2.3519464759956463,
+  "stats": {
+   "db": 84,
+   "mitm": 168,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "T4",
+  "seed": 19,
+  "general": {
+   "cz": 6,
+   "rx": 5,
+   "rz": 2
+  },
+  "seconds": 3.1534806429990567,
+  "stats": {
+   "db": 68,
+   "mitm": 196,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 0,
+  "general": {
+   "ry": 7,
+   "rxx": 11,
+   "rz": 4,
+   "rx": 1
+  },
+  "seconds": 8.565129786002217,
+  "stats": {
+   "db": 116,
+   "mitm": 132,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 1,
+  "general": {
+   "rz": 18,
+   "rxx": 29,
+   "ry": 21,
+   "rx": 2
+  },
+  "seconds": 7.664304498997808,
+  "stats": {
+   "db": 132,
+   "mitm": 76,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 2,
+  "general": {
+   "rz": 4,
+   "rxx": 11,
+   "ry": 7,
+   "rx": 3
+  },
+  "seconds": 4.850050114000624,
+  "stats": {
+   "db": 160,
+   "mitm": 56,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 3,
+  "general": {
+   "rz": 9,
+   "rxx": 14,
+   "ry": 11,
+   "rx": 1
+  },
+  "seconds": 5.724605221999809,
+  "stats": {
+   "db": 164,
+   "mitm": 68,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 4,
+  "general": {
+   "rx": 2,
+   "rz": 10,
+   "rxx": 10,
+   "ry": 6
+  },
+  "seconds": 9.20881134699448,
+  "stats": {
+   "db": 176,
+   "mitm": 66,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 5,
+  "general": {
+   "rz": 17,
+   "ry": 13,
+   "rxx": 24,
+   "rx": 1
+  },
+  "seconds": 8.195840198000951,
+  "stats": {
+   "db": 120,
+   "mitm": 104,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 6,
+  "general": {
+   "ry": 10,
+   "rxx": 14,
+   "rz": 5
+  },
+  "seconds": 15.97646895199432,
+  "stats": {
+   "db": 186,
+   "mitm": 63,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 7,
+  "general": {
+   "rxx": 26,
+   "rz": 15,
+   "ry": 14,
+   "rx": 1
+  },
+  "seconds": 8.314628505002474,
+  "stats": {
+   "db": 136,
+   "mitm": 28,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 8,
+  "general": {
+   "rx": 2,
+   "ry": 7,
+   "rxx": 8,
+   "rz": 7
+  },
+  "seconds": 7.980325397998968,
+  "stats": {
+   "db": 157,
+   "mitm": 74,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 9,
+  "general": {
+   "ry": 10,
+   "rz": 10,
+   "rxx": 13,
+   "rx": 1
+  },
+  "seconds": 11.965415676997509,
+  "stats": {
+   "db": 176,
+   "mitm": 81,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 10,
+  "general": {
+   "rx": 3,
+   "ry": 19,
+   "rxx": 27,
+   "rz": 12
+  },
+  "seconds": 12.489922891996684,
+  "stats": {
+   "db": 167,
+   "mitm": 72,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 11,
+  "general": {
+   "ry": 20,
+   "rxx": 28,
+   "rz": 14
+  },
+  "seconds": 6.107958541993867,
+  "stats": {
+   "db": 140,
+   "mitm": 60,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 12,
+  "general": {
+   "rxx": 22,
+   "rz": 17,
+   "ry": 10,
+   "rx": 4
+  },
+  "seconds": 9.226796076000028,
+  "stats": {
+   "db": 144,
+   "mitm": 68,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 13,
+  "general": {
+   "ry": 15,
+   "rxx": 17,
+   "rz": 7,
+   "rx": 1
+  },
+  "seconds": 6.414324017998297,
+  "stats": {
+   "db": 160,
+   "mitm": 68,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 14,
+  "general": {
+   "rz": 14,
+   "rxx": 17,
+   "ry": 4
+  },
+  "seconds": 5.626808753993828,
+  "stats": {
+   "db": 140,
+   "mitm": 76,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 15,
+  "general": {
+   "rxx": 22,
+   "rz": 6,
+   "ry": 14,
+   "rx": 2
+  },
+  "seconds": 9.920751345001918,
+  "stats": {
+   "db": 150,
+   "mitm": 63,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 16,
+  "general": {
+   "rz": 13,
+   "rxx": 20,
+   "ry": 14
+  },
+  "seconds": 11.128073972002312,
+  "stats": {
+   "db": 164,
+   "mitm": 88,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 17,
+  "general": {
+   "rz": 17,
+   "rxx": 23,
+   "rx": 4,
+   "ry": 6
+  },
+  "seconds": 5.0059011510020355,
+  "stats": {
+   "db": 140,
+   "mitm": 60,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 18,
+  "general": {
+   "rxx": 29,
+   "ry": 15,
+   "rx": 5,
+   "rz": 17
+  },
+  "seconds": 6.209122031999868,
+  "stats": {
+   "db": 108,
+   "mitm": 64,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 19,
+  "general": {
+   "ry": 11,
+   "rxx": 17,
+   "rz": 10,
+   "rx": 2
+  },
+  "seconds": 5.411062087994651,
+  "stats": {
+   "db": 138,
+   "mitm": 82,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 20,
+  "general": {
+   "rz": 14,
+   "rxx": 26,
+   "ry": 16,
+   "rx": 1
+  },
+  "seconds": 7.835006023997266,
+  "stats": {
+   "db": 170,
+   "mitm": 60,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 21,
+  "general": {
+   "ry": 12,
+   "rxx": 20,
+   "rz": 11,
+   "rx": 1
+  },
+  "seconds": 3.599642043998756,
+  "stats": {
+   "db": 156,
+   "mitm": 56,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 22,
+  "general": {
+   "rxx": 31,
+   "ry": 12,
+   "rz": 20,
+   "rx": 5
+  },
+  "seconds": 9.435694717998558,
+  "stats": {
+   "db": 188,
+   "mitm": 84,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 23,
+  "general": {
+   "rxx": 23,
+   "rz": 15,
+   "rx": 3,
+   "ry": 12
+  },
+  "seconds": 11.362906392001605,
+  "stats": {
+   "db": 192,
+   "mitm": 60,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 24,
+  "general": {
+   "rxx": 32,
+   "ry": 21,
+   "rz": 15,
+   "rx": 2
+  },
+  "seconds": 5.137034676998155,
+  "stats": {
+   "db": 148,
+   "mitm": 64,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 25,
+  "general": {
+   "rxx": 9,
+   "rz": 3,
+   "ry": 8
+  },
+  "seconds": 9.243427790999704,
+  "stats": {
+   "db": 156,
+   "mitm": 72,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 26,
+  "general": {
+   "ry": 11,
+   "rz": 7,
+   "rxx": 17,
+   "rx": 1
+  },
+  "seconds": 5.970463104000373,
+  "stats": {
+   "db": 148,
+   "mitm": 84,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 27,
+  "general": {
+   "ry": 9,
+   "rxx": 10,
+   "rz": 6
+  },
+  "seconds": 5.046842276999087,
+  "stats": {
+   "db": 180,
+   "mitm": 108,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 28,
+  "general": {
+   "rxx": 18,
+   "rz": 11,
+   "ry": 9,
+   "rx": 2
+  },
+  "seconds": 8.412074649000715,
+  "stats": {
+   "db": 142,
+   "mitm": 67,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 29,
+  "general": {
+   "rx": 3,
+   "ry": 11,
+   "rxx": 19,
+   "rz": 11
+  },
+  "seconds": 6.4172710929997265,
+  "stats": {
+   "db": 108,
+   "mitm": 116,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 30,
+  "general": {
+   "rz": 4,
+   "ry": 7,
+   "rxx": 5,
+   "rx": 1
+  },
+  "seconds": 4.581981962001009,
+  "stats": {
+   "db": 178,
+   "mitm": 74,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 31,
+  "general": {
+   "rxx": 19,
+   "rz": 10,
+   "rx": 3,
+   "ry": 12
+  },
+  "seconds": 5.3616079590065056,
+  "stats": {
+   "db": 148,
+   "mitm": 64,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 32,
+  "general": {
+   "rxx": 13,
+   "rz": 9,
+   "ry": 7,
+   "rx": 1
+  },
+  "seconds": 10.06335730599676,
+  "stats": {
+   "db": 116,
+   "mitm": 113,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 33,
+  "general": {
+   "rz": 24,
+   "rxx": 32,
+   "ry": 9,
+   "rx": 3
+  },
+  "seconds": 8.464494425999874,
+  "stats": {
+   "db": 144,
+   "mitm": 72,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 34,
+  "general": {
+   "rz": 14,
+   "rxx": 26,
+   "rx": 3,
+   "ry": 10
+  },
+  "seconds": 5.09219314299844,
+  "stats": {
+   "db": 152,
+   "mitm": 44,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 35,
+  "general": {
+   "ry": 9,
+   "rz": 11,
+   "rxx": 15
+  },
+  "seconds": 7.509776170998521,
+  "stats": {
+   "db": 187,
+   "mitm": 59,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 36,
+  "general": {
+   "ry": 11,
+   "rx": 2,
+   "rz": 17,
+   "rxx": 22
+  },
+  "seconds": 6.9934450759974425,
+  "stats": {
+   "db": 164,
+   "mitm": 32,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 37,
+  "general": {
+   "rz": 14,
+   "rxx": 29,
+   "ry": 26
+  },
+  "seconds": 22.512311193997448,
+  "stats": {
+   "db": 126,
+   "mitm": 100,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 38,
+  "general": {
+   "ry": 5,
+   "rxx": 12,
+   "rx": 2,
+   "rz": 8
+  },
+  "seconds": 4.450453981000464,
+  "stats": {
+   "db": 194,
+   "mitm": 52,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 39,
+  "general": {
+   "rz": 8,
+   "rxx": 13,
+   "ry": 10,
+   "rx": 3
+  },
+  "seconds": 5.65929955500178,
+  "stats": {
+   "db": 144,
+   "mitm": 148,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 40,
+  "general": {
+   "ry": 11,
+   "rxx": 26,
+   "rz": 13,
+   "rx": 4
+  },
+  "seconds": 7.047408477999852,
+  "stats": {
+   "db": 152,
+   "mitm": 56,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 41,
+  "general": {
+   "ry": 15,
+   "rxx": 21,
+   "rx": 1,
+   "rz": 12
+  },
+  "seconds": 6.551583737003966,
+  "stats": {
+   "db": 143,
+   "mitm": 85,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 42,
+  "general": {
+   "ry": 8,
+   "rxx": 18,
+   "rz": 11
+  },
+  "seconds": 12.540010148994043,
+  "stats": {
+   "db": 127,
+   "mitm": 92,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 43,
+  "general": {
+   "ry": 9,
+   "rxx": 18,
+   "rz": 11
+  },
+  "seconds": 6.3956825330024,
+  "stats": {
+   "db": 148,
+   "mitm": 84,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 44,
+  "general": {
+   "rz": 4,
+   "rxx": 11,
+   "ry": 12,
+   "rx": 1
+  },
+  "seconds": 4.812151905003702,
+  "stats": {
+   "db": 116,
+   "mitm": 128,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 45,
+  "general": {
+   "rxx": 20,
+   "rz": 10,
+   "ry": 16
+  },
+  "seconds": 5.922531866999634,
+  "stats": {
+   "db": 122,
+   "mitm": 101,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 46,
+  "general": {
+   "rz": 17,
+   "rxx": 20,
+   "ry": 11,
+   "rx": 1
+  },
+  "seconds": 4.7903135979941,
+  "stats": {
+   "db": 171,
+   "mitm": 48,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 47,
+  "general": {
+   "ry": 15,
+   "rxx": 25,
+   "rz": 9
+  },
+  "seconds": 4.6236184219960705,
+  "stats": {
+   "db": 132,
+   "mitm": 80,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 48,
+  "general": {
+   "rx": 3,
+   "rz": 17,
+   "rxx": 33,
+   "ry": 20
+  },
+  "seconds": 5.6486182320004446,
+  "stats": {
+   "db": 132,
+   "mitm": 48,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 49,
+  "general": {
+   "rxx": 16,
+   "ry": 12,
+   "rz": 8,
+   "rx": 1
+  },
+  "seconds": 8.139635601997725,
+  "stats": {
+   "db": 114,
+   "mitm": 96,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 50,
+  "general": {
+   "ry": 14,
+   "rxx": 21,
+   "rz": 9,
+   "rx": 3
+  },
+  "seconds": 7.002774788998067,
+  "stats": {
+   "db": 144,
+   "mitm": 60,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 51,
+  "general": {
+   "rz": 12,
+   "rxx": 21,
+   "ry": 11,
+   "rx": 4
+  },
+  "seconds": 11.034063627004798,
+  "stats": {
+   "db": 155,
+   "mitm": 59,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 52,
+  "general": {
+   "rxx": 26,
+   "ry": 13,
+   "rz": 13,
+   "rx": 1
+  },
+  "seconds": 5.635277845001838,
+  "stats": {
+   "db": 120,
+   "mitm": 100,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 53,
+  "general": {
+   "rz": 13,
+   "ry": 13,
+   "rxx": 21,
+   "rx": 1
+  },
+  "seconds": 4.127577488005045,
+  "stats": {
+   "db": 144,
+   "mitm": 44,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 54,
+  "general": {
+   "rxx": 27,
+   "ry": 11,
+   "rz": 15,
+   "rx": 2
+  },
+  "seconds": 12.56144651700015,
+  "stats": {
+   "db": 153,
+   "mitm": 78,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 55,
+  "general": {
+   "rz": 18,
+   "rxx": 33,
+   "rx": 1,
+   "ry": 18
+  },
+  "seconds": 12.377990382999997,
+  "stats": {
+   "db": 142,
+   "mitm": 65,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 56,
+  "general": {
+   "rz": 12,
+   "ry": 3,
+   "rxx": 11,
+   "rx": 2
+  },
+  "seconds": 10.459007822006242,
+  "stats": {
+   "db": 179,
+   "mitm": 46,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 57,
+  "general": {
+   "rx": 3,
+   "rxx": 20,
+   "rz": 13,
+   "ry": 9
+  },
+  "seconds": 9.846956923000107,
+  "stats": {
+   "db": 160,
+   "mitm": 92,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 58,
+  "general": {
+   "ry": 12,
+   "rxx": 28,
+   "rz": 14,
+   "rx": 2
+  },
+  "seconds": 8.268730724004854,
+  "stats": {
+   "db": 136,
+   "mitm": 28,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 59,
+  "general": {
+   "rxx": 19,
+   "rz": 12,
+   "ry": 9,
+   "rx": 3
+  },
+  "seconds": 4.420369243001915,
+  "stats": {
+   "db": 144,
+   "mitm": 52,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 60,
+  "general": {
+   "ry": 13,
+   "rxx": 18,
+   "rz": 9
+  },
+  "seconds": 4.590489800997602,
+  "stats": {
+   "db": 128,
+   "mitm": 96,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 61,
+  "general": {
+   "ry": 7,
+   "rxx": 18,
+   "rz": 15,
+   "rx": 2
+  },
+  "seconds": 7.1943117449991405,
+  "stats": {
+   "db": 144,
+   "mitm": 84,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 62,
+  "general": {
+   "rx": 3,
+   "rxx": 29,
+   "ry": 15,
+   "rz": 17
+  },
+  "seconds": 12.728331668004103,
+  "stats": {
+   "db": 135,
+   "mitm": 73,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 63,
+  "general": {
+   "rxx": 19,
+   "rz": 11,
+   "ry": 13
+  },
+  "seconds": 3.9597256889974233,
+  "stats": {
+   "db": 132,
+   "mitm": 88,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 64,
+  "general": {
+   "ry": 17,
+   "rxx": 30,
+   "rz": 18
+  },
+  "seconds": 4.759753441001521,
+  "stats": {
+   "db": 132,
+   "mitm": 52,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 65,
+  "general": {
+   "rxx": 32,
+   "rz": 19,
+   "ry": 18,
+   "rx": 3
+  },
+  "seconds": 5.567703762004385,
+  "stats": {
+   "db": 124,
+   "mitm": 44,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 66,
+  "general": {
+   "rxx": 32,
+   "rz": 19,
+   "ry": 18,
+   "rx": 2
+  },
+  "seconds": 4.484953098995902,
+  "stats": {
+   "db": 124,
+   "mitm": 72,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 67,
+  "general": {
+   "rxx": 24,
+   "ry": 13,
+   "rz": 14,
+   "rx": 2
+  },
+  "seconds": 7.214756667999609,
+  "stats": {
+   "db": 108,
+   "mitm": 88,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 68,
+  "general": {
+   "ry": 17,
+   "rxx": 31,
+   "rz": 17,
+   "rx": 1
+  },
+  "seconds": 7.59412928900565,
+  "stats": {
+   "db": 124,
+   "mitm": 52,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 69,
+  "general": {
+   "rxx": 13,
+   "ry": 8,
+   "rz": 8,
+   "rx": 2
+  },
+  "seconds": 15.460074846996577,
+  "stats": {
+   "db": 160,
+   "mitm": 62,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 70,
+  "general": {
+   "rxx": 24,
+   "rz": 18,
+   "ry": 12,
+   "rx": 1
+  },
+  "seconds": 8.597646679998434,
+  "stats": {
+   "db": 116,
+   "mitm": 100,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 71,
+  "general": {
+   "rxx": 17,
+   "rz": 13,
+   "ry": 7,
+   "rx": 2
+  },
+  "seconds": 6.5118417349949596,
+  "stats": {
+   "db": 156,
+   "mitm": 64,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 72,
+  "general": {
+   "rz": 4,
+   "rxx": 10,
+   "ry": 9
+  },
+  "seconds": 13.648112123999454,
+  "stats": {
+   "db": 120,
+   "mitm": 120,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 73,
+  "general": {
+   "rxx": 17,
+   "rz": 7,
+   "ry": 13,
+   "rx": 1
+  },
+  "seconds": 3.324679511002614,
+  "stats": {
+   "db": 140,
+   "mitm": 68,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 74,
+  "general": {
+   "rxx": 28,
+   "rz": 15,
+   "ry": 19,
+   "rx": 1
+  },
+  "seconds": 4.048560126997472,
+  "stats": {
+   "db": 120,
+   "mitm": 80,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 75,
+  "general": {
+   "ry": 8,
+   "rz": 21,
+   "rxx": 22,
+   "rx": 1
+  },
+  "seconds": 7.1836857390007935,
+  "stats": {
+   "db": 132,
+   "mitm": 72,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 76,
+  "general": {
+   "rz": 15,
+   "rxx": 24,
+   "ry": 9,
+   "rx": 4
+  },
+  "seconds": 6.47940902299888,
+  "stats": {
+   "db": 141,
+   "mitm": 61,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 77,
+  "general": {
+   "rxx": 29,
+   "rz": 14,
+   "ry": 18,
+   "rx": 2
+  },
+  "seconds": 10.16386575299839,
+  "stats": {
+   "db": 124,
+   "mitm": 108,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 78,
+  "general": {
+   "ry": 16,
+   "rxx": 31,
+   "rz": 22,
+   "rx": 1
+  },
+  "seconds": 6.859929190999537,
+  "stats": {
+   "db": 148,
+   "mitm": 64,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 79,
+  "general": {
+   "rz": 9,
+   "rxx": 10,
+   "ry": 5,
+   "rx": 3
+  },
+  "seconds": 4.804348518002371,
+  "stats": {
+   "db": 132,
+   "mitm": 120,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 80,
+  "general": {
+   "rxx": 12,
+   "ry": 10,
+   "rz": 7,
+   "rx": 1
+  },
+  "seconds": 3.4270936570028425,
+  "stats": {
+   "db": 180,
+   "mitm": 52,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 81,
+  "general": {
+   "ry": 17,
+   "rz": 8,
+   "rxx": 22,
+   "rx": 2
+  },
+  "seconds": 5.393593449000036,
+  "stats": {
+   "db": 148,
+   "mitm": 32,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 82,
+  "general": {
+   "ry": 13,
+   "rxx": 26,
+   "rz": 18,
+   "rx": 3
+  },
+  "seconds": 12.658523297999636,
+  "stats": {
+   "db": 145,
+   "mitm": 72,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 83,
+  "general": {
+   "rz": 10,
+   "rxx": 20,
+   "ry": 12,
+   "rx": 1
+  },
+  "seconds": 5.490585518004082,
+  "stats": {
+   "db": 120,
+   "mitm": 120,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 84,
+  "general": {
+   "rz": 11,
+   "rxx": 17,
+   "ry": 5,
+   "rx": 1
+  },
+  "seconds": 10.339067921995593,
+  "stats": {
+   "db": 160,
+   "mitm": 84,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 85,
+  "general": {
+   "ry": 15,
+   "rxx": 22,
+   "rz": 10,
+   "rx": 3
+  },
+  "seconds": 4.057010110002011,
+  "stats": {
+   "db": 132,
+   "mitm": 84,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 86,
+  "general": {
+   "rxx": 12,
+   "ry": 7,
+   "rz": 8,
+   "rx": 3
+  },
+  "seconds": 4.611682225004188,
+  "stats": {
+   "db": 180,
+   "mitm": 84,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 87,
+  "general": {
+   "ry": 9,
+   "rxx": 11,
+   "rz": 8
+  },
+  "seconds": 5.127721616001509,
+  "stats": {
+   "db": 146,
+   "mitm": 111,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 88,
+  "general": {
+   "ry": 14,
+   "rz": 7,
+   "rxx": 22,
+   "rx": 4
+  },
+  "seconds": 5.222760257995105,
+  "stats": {
+   "db": 152,
+   "mitm": 64,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 89,
+  "general": {
+   "rxx": 20,
+   "rz": 11,
+   "ry": 11,
+   "rx": 2
+  },
+  "seconds": 5.834798415999103,
+  "stats": {
+   "db": 140,
+   "mitm": 64,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 90,
+  "general": {
+   "ry": 12,
+   "rxx": 18,
+   "rz": 8,
+   "rx": 1
+  },
+  "seconds": 12.18603087199881,
+  "stats": {
+   "db": 181,
+   "mitm": 44,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 91,
+  "general": {
+   "rx": 7,
+   "rxx": 33,
+   "rz": 21,
+   "ry": 18
+  },
+  "seconds": 11.26263427700178,
+  "stats": {
+   "db": 120,
+   "mitm": 64,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 92,
+  "general": {
+   "rxx": 16,
+   "rz": 7,
+   "ry": 13,
+   "rx": 1
+  },
+  "seconds": 14.32619112800603,
+  "stats": {
+   "db": 159,
+   "mitm": 103,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 93,
+  "general": {
+   "rxx": 25,
+   "rz": 14,
+   "rx": 5,
+   "ry": 11
+  },
+  "seconds": 6.61627732499619,
+  "stats": {
+   "db": 172,
+   "mitm": 48,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 94,
+  "general": {
+   "ry": 19,
+   "rxx": 21,
+   "rz": 10,
+   "rx": 4
+  },
+  "seconds": 5.3243890430021565,
+  "stats": {
+   "db": 160,
+   "mitm": 36,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 95,
+  "general": {
+   "rxx": 19,
+   "rz": 11,
+   "ry": 15,
+   "rx": 2
+  },
+  "seconds": 7.538392426999053,
+  "stats": {
+   "db": 152,
+   "mitm": 80,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 96,
+  "general": {
+   "ry": 11,
+   "rxx": 11,
+   "rz": 6
+  },
+  "seconds": 9.591111615001864,
+  "stats": {
+   "db": 155,
+   "mitm": 106,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 97,
+  "general": {
+   "rz": 7,
+   "ry": 7,
+   "rxx": 9
+  },
+  "seconds": 4.814561719998892,
+  "stats": {
+   "db": 188,
+   "mitm": 48,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 98,
+  "general": {
+   "ry": 6,
+   "rxx": 12,
+   "rz": 4,
+   "rx": 1
+  },
+  "seconds": 11.734600832001888,
+  "stats": {
+   "db": 159,
+   "mitm": 85,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_ion",
+  "seed": 99,
+  "general": {
+   "rxx": 30,
+   "ry": 13,
+   "rx": 6,
+   "rz": 16
+  },
+  "seconds": 9.697033338998153,
+  "stats": {
+   "db": 136,
+   "mitm": 84,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 0,
+  "general": {
+   "rx": 20,
+   "cz": 16,
+   "rz": 5
+  },
+  "seconds": 4.348994687003142,
+  "stats": {
+   "db": 192,
+   "mitm": 116,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 1,
+  "general": {
+   "rx": 22,
+   "cz": 23,
+   "rz": 4
+  },
+  "seconds": 5.177843817000394,
+  "stats": {
+   "db": 200,
+   "mitm": 80,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 2,
+  "general": {
+   "rx": 26,
+   "cz": 22,
+   "rz": 5
+  },
+  "seconds": 16.531692156000645,
+  "stats": {
+   "db": 171,
+   "mitm": 97,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 3,
+  "general": {
+   "rx": 18,
+   "cz": 20,
+   "rz": 4
+  },
+  "seconds": 4.605948712996906,
+  "stats": {
+   "db": 192,
+   "mitm": 108,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 4,
+  "general": {
+   "rx": 27,
+   "rz": 9,
+   "cz": 23
+  },
+  "seconds": 11.747883346004528,
+  "stats": {
+   "db": 168,
+   "mitm": 112,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 5,
+  "general": {
+   "cz": 24,
+   "rx": 20,
+   "rz": 8
+  },
+  "seconds": 10.737205738994817,
+  "stats": {
+   "db": 180,
+   "mitm": 66,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 6,
+  "general": {
+   "rx": 21,
+   "cz": 19,
+   "rz": 2
+  },
+  "seconds": 18.241411953000352,
+  "stats": {
+   "db": 209,
+   "mitm": 42,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 7,
+  "general": {
+   "cz": 28,
+   "rz": 7,
+   "rx": 29
+  },
+  "seconds": 10.54769177900016,
+  "stats": {
+   "db": 184,
+   "mitm": 69,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 8,
+  "general": {
+   "rz": 7,
+   "cz": 21,
+   "rx": 17
+  },
+  "seconds": 9.297960229996534,
+  "stats": {
+   "db": 132,
+   "mitm": 156,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 9,
+  "general": {
+   "rz": 8,
+   "rx": 17,
+   "cz": 19
+  },
+  "seconds": 11.40543142399838,
+  "stats": {
+   "db": 185,
+   "mitm": 84,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 10,
+  "general": {
+   "cz": 21,
+   "rz": 5,
+   "rx": 21
+  },
+  "seconds": 6.629738155999803,
+  "stats": {
+   "db": 186,
+   "mitm": 59,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 11,
+  "general": {
+   "rz": 4,
+   "cz": 15,
+   "rx": 18
+  },
+  "seconds": 7.967161867003597,
+  "stats": {
+   "db": 205,
+   "mitm": 47,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 12,
+  "general": {
+   "rx": 30,
+   "cz": 26,
+   "rz": 8
+  },
+  "seconds": 13.637669118994381,
+  "stats": {
+   "db": 180,
+   "mitm": 84,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 13,
+  "general": {
+   "rx": 33,
+   "cz": 30,
+   "rz": 9
+  },
+  "seconds": 10.839067934000923,
+  "stats": {
+   "db": 144,
+   "mitm": 108,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 14,
+  "general": {
+   "cz": 15,
+   "rx": 14,
+   "rz": 3
+  },
+  "seconds": 6.423236112997984,
+  "stats": {
+   "db": 153,
+   "mitm": 77,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 15,
+  "general": {
+   "rx": 11,
+   "cz": 8,
+   "rz": 4
+  },
+  "seconds": 5.627538515997003,
+  "stats": {
+   "db": 176,
+   "mitm": 40,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 16,
+  "general": {
+   "cz": 32,
+   "rx": 33,
+   "rz": 4
+  },
+  "seconds": 3.9616306719981367,
+  "stats": {
+   "db": 184,
+   "mitm": 72,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 17,
+  "general": {
+   "rx": 16,
+   "rz": 9,
+   "cz": 21
+  },
+  "seconds": 3.840969049000705,
+  "stats": {
+   "db": 136,
+   "mitm": 88,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 18,
+  "general": {
+   "cz": 24,
+   "rx": 18,
+   "rz": 5
+  },
+  "seconds": 5.006771824999305,
+  "stats": {
+   "db": 156,
+   "mitm": 96,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 19,
+  "general": {
+   "rx": 20,
+   "cz": 18,
+   "rz": 3
+  },
+  "seconds": 6.3510118539998075,
+  "stats": {
+   "db": 204,
+   "mitm": 68,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 20,
+  "general": {
+   "cz": 22,
+   "rx": 21,
+   "rz": 5
+  },
+  "seconds": 11.930489402002422,
+  "stats": {
+   "db": 212,
+   "mitm": 81,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 21,
+  "general": {
+   "cz": 31,
+   "rz": 7,
+   "rx": 21
+  },
+  "seconds": 5.5946586550053325,
+  "stats": {
+   "db": 124,
+   "mitm": 96,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 22,
+  "general": {
+   "cz": 24,
+   "rx": 26,
+   "rz": 8
+  },
+  "seconds": 6.455480428994633,
+  "stats": {
+   "db": 213,
+   "mitm": 49,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 23,
+  "general": {
+   "rx": 28,
+   "cz": 25,
+   "rz": 6
+  },
+  "seconds": 6.371800576998794,
+  "stats": {
+   "db": 168,
+   "mitm": 81,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 24,
+  "general": {
+   "cz": 23,
+   "rz": 6,
+   "rx": 19
+  },
+  "seconds": 14.226367798000865,
+  "stats": {
+   "db": 157,
+   "mitm": 99,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 25,
+  "general": {
+   "rx": 23,
+   "cz": 22,
+   "rz": 2
+  },
+  "seconds": 9.15839187399979,
+  "stats": {
+   "db": 100,
+   "mitm": 144,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 26,
+  "general": {
+   "cz": 28,
+   "rx": 35,
+   "rz": 11
+  },
+  "seconds": 6.099732057999063,
+  "stats": {
+   "db": 136,
+   "mitm": 56,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 27,
+  "general": {
+   "rx": 22,
+   "cz": 23,
+   "rz": 5
+  },
+  "seconds": 8.065153556999576,
+  "stats": {
+   "db": 164,
+   "mitm": 104,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 28,
+  "general": {
+   "rx": 19,
+   "cz": 23,
+   "rz": 7
+  },
+  "seconds": 6.503918798996892,
+  "stats": {
+   "db": 220,
+   "mitm": 56,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 29,
+  "general": {
+   "cz": 28,
+   "rx": 26,
+   "rz": 6
+  },
+  "seconds": 5.64228820700373,
+  "stats": {
+   "db": 176,
+   "mitm": 80,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 30,
+  "general": {
+   "cz": 20,
+   "rx": 22,
+   "rz": 6
+  },
+  "seconds": 9.405359312004293,
+  "stats": {
+   "db": 187,
+   "mitm": 69,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 31,
+  "general": {
+   "rx": 15,
+   "cz": 17,
+   "rz": 6
+  },
+  "seconds": 11.063505974998407,
+  "stats": {
+   "db": 187,
+   "mitm": 93,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 32,
+  "general": {
+   "cz": 29,
+   "rx": 34,
+   "rz": 7
+  },
+  "seconds": 10.15196214900061,
+  "stats": {
+   "db": 136,
+   "mitm": 116,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 33,
+  "general": {
+   "rx": 19,
+   "cz": 13,
+   "rz": 6
+  },
+  "seconds": 4.531741368999064,
+  "stats": {
+   "db": 192,
+   "mitm": 80,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 34,
+  "general": {
+   "cz": 24,
+   "rx": 28,
+   "rz": 6
+  },
+  "seconds": 8.832502675999422,
+  "stats": {
+   "db": 143,
+   "mitm": 141,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 35,
+  "general": {
+   "cz": 18,
+   "rz": 5,
+   "rx": 16
+  },
+  "seconds": 11.33581651699933,
+  "stats": {
+   "db": 156,
+   "mitm": 105,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 36,
+  "general": {
+   "rx": 25,
+   "cz": 25,
+   "rz": 7
+  },
+  "seconds": 6.356627794004453,
+  "stats": {
+   "db": 150,
+   "mitm": 98,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 37,
+  "general": {
+   "rx": 18,
+   "cz": 16,
+   "rz": 2
+  },
+  "seconds": 5.66973791700002,
+  "stats": {
+   "db": 141,
+   "mitm": 120,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 38,
+  "general": {
+   "rz": 4,
+   "rx": 23,
+   "cz": 16
+  },
+  "seconds": 5.087420873998781,
+  "stats": {
+   "db": 172,
+   "mitm": 128,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 39,
+  "general": {
+   "rx": 30,
+   "rz": 4,
+   "cz": 27
+  },
+  "seconds": 9.10535370800062,
+  "stats": {
+   "db": 140,
+   "mitm": 120,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 40,
+  "general": {
+   "rz": 6,
+   "rx": 19,
+   "cz": 18
+  },
+  "seconds": 8.95646308400319,
+  "stats": {
+   "db": 141,
+   "mitm": 87,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 41,
+  "general": {
+   "rx": 12,
+   "cz": 16,
+   "rz": 6
+  },
+  "seconds": 7.6589857840008335,
+  "stats": {
+   "db": 136,
+   "mitm": 120,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 42,
+  "general": {
+   "rz": 7,
+   "rx": 23,
+   "cz": 22
+  },
+  "seconds": 7.734187689995451,
+  "stats": {
+   "db": 176,
+   "mitm": 44,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 43,
+  "general": {
+   "rx": 29,
+   "cz": 30,
+   "rz": 6
+  },
+  "seconds": 9.10617959699448,
+  "stats": {
+   "db": 172,
+   "mitm": 80,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 44,
+  "general": {
+   "rx": 26,
+   "cz": 25,
+   "rz": 8
+  },
+  "seconds": 8.1874183070031,
+  "stats": {
+   "db": 144,
+   "mitm": 92,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 45,
+  "general": {
+   "cz": 21,
+   "rz": 6,
+   "rx": 23
+  },
+  "seconds": 12.567094755999278,
+  "stats": {
+   "db": 183,
+   "mitm": 58,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 46,
+  "general": {
+   "rz": 6,
+   "rx": 23,
+   "cz": 22
+  },
+  "seconds": 3.231945432999055,
+  "stats": {
+   "db": 164,
+   "mitm": 40,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 47,
+  "general": {
+   "rx": 29,
+   "cz": 32,
+   "rz": 9
+  },
+  "seconds": 14.768402909998258,
+  "stats": {
+   "db": 161,
+   "mitm": 83,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 48,
+  "general": {
+   "cz": 25,
+   "rx": 24,
+   "rz": 8
+  },
+  "seconds": 11.465636444998381,
+  "stats": {
+   "db": 187,
+   "mitm": 56,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 49,
+  "general": {
+   "rx": 21,
+   "cz": 19,
+   "rz": 3
+  },
+  "seconds": 10.742796071004705,
+  "stats": {
+   "db": 156,
+   "mitm": 83,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 50,
+  "general": {
+   "cz": 31,
+   "rx": 28,
+   "rz": 8
+  },
+  "seconds": 8.893654756000615,
+  "stats": {
+   "db": 132,
+   "mitm": 80,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 51,
+  "general": {
+   "rx": 12,
+   "cz": 16,
+   "rz": 3
+  },
+  "seconds": 9.003679560002638,
+  "stats": {
+   "db": 196,
+   "mitm": 82,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 52,
+  "general": {
+   "rx": 12,
+   "cz": 9,
+   "rz": 3
+  },
+  "seconds": 7.5918884279963095,
+  "stats": {
+   "db": 193,
+   "mitm": 60,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 53,
+  "general": {
+   "cz": 20,
+   "rz": 4,
+   "rx": 18
+  },
+  "seconds": 6.331822989995999,
+  "stats": {
+   "db": 185,
+   "mitm": 92,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 54,
+  "general": {
+   "rz": 7,
+   "cz": 21,
+   "rx": 22
+  },
+  "seconds": 13.160206297005061,
+  "stats": {
+   "db": 186,
+   "mitm": 95,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 55,
+  "general": {
+   "cz": 31,
+   "rz": 9,
+   "rx": 22
+  },
+  "seconds": 6.376370153004245,
+  "stats": {
+   "db": 176,
+   "mitm": 52,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 56,
+  "general": {
+   "cz": 22,
+   "rx": 26,
+   "rz": 6
+  },
+  "seconds": 7.9332638699997915,
+  "stats": {
+   "db": 132,
+   "mitm": 96,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 57,
+  "general": {
+   "rx": 18,
+   "rz": 4,
+   "cz": 19
+  },
+  "seconds": 10.676514332997613,
+  "stats": {
+   "db": 170,
+   "mitm": 132,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 58,
+  "general": {
+   "rx": 18,
+   "rz": 5,
+   "cz": 14
+  },
+  "seconds": 8.4267378930017,
+  "stats": {
+   "db": 136,
+   "mitm": 124,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 59,
+  "general": {
+   "cz": 34,
+   "rz": 9,
+   "rx": 35
+  },
+  "seconds": 9.135716569995566,
+  "stats": {
+   "db": 180,
+   "mitm": 56,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 60,
+  "general": {
+   "rz": 10,
+   "rx": 31,
+   "cz": 30
+  },
+  "seconds": 16.89831336300267,
+  "stats": {
+   "db": 176,
+   "mitm": 60,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 61,
+  "general": {
+   "rx": 31,
+   "rz": 7,
+   "cz": 27
+  },
+  "seconds": 6.016437587000837,
+  "stats": {
+   "db": 136,
+   "mitm": 116,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 62,
+  "general": {
+   "rz": 4,
+   "rx": 18,
+   "cz": 13
+  },
+  "seconds": 3.9925710890020127,
+  "stats": {
+   "db": 160,
+   "mitm": 108,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 63,
+  "general": {
+   "cz": 27,
+   "rz": 8,
+   "rx": 24
+  },
+  "seconds": 10.535512029004167,
+  "stats": {
+   "db": 142,
+   "mitm": 100,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 64,
+  "general": {
+   "cz": 21,
+   "rz": 4,
+   "rx": 22
+  },
+  "seconds": 7.930289044001256,
+  "stats": {
+   "db": 132,
+   "mitm": 128,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 65,
+  "general": {
+   "rz": 3,
+   "rx": 21,
+   "cz": 16
+  },
+  "seconds": 8.240136508997239,
+  "stats": {
+   "db": 179,
+   "mitm": 80,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 66,
+  "general": {
+   "cz": 22,
+   "rx": 19,
+   "rz": 4
+  },
+  "seconds": 6.927972949997638,
+  "stats": {
+   "db": 183,
+   "mitm": 117,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 67,
+  "general": {
+   "cz": 17,
+   "rz": 7,
+   "rx": 18
+  },
+  "seconds": 7.0355409780022455,
+  "stats": {
+   "db": 202,
+   "mitm": 73,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 68,
+  "general": {
+   "rz": 7,
+   "rx": 30,
+   "cz": 35
+  },
+  "seconds": 9.241213171000709,
+  "stats": {
+   "db": 152,
+   "mitm": 64,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 69,
+  "general": {
+   "rx": 26,
+   "cz": 26,
+   "rz": 7
+  },
+  "seconds": 9.527140438003698,
+  "stats": {
+   "db": 205,
+   "mitm": 52,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 70,
+  "general": {
+   "cz": 21,
+   "rz": 10,
+   "rx": 20
+  },
+  "seconds": 4.865372040003422,
+  "stats": {
+   "db": 132,
+   "mitm": 108,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 71,
+  "general": {
+   "rx": 17,
+   "cz": 13,
+   "rz": 3
+  },
+  "seconds": 3.932982535996416,
+  "stats": {
+   "db": 160,
+   "mitm": 92,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 72,
+  "general": {
+   "cz": 29,
+   "rx": 27,
+   "rz": 8
+  },
+  "seconds": 7.7285270070060506,
+  "stats": {
+   "db": 165,
+   "mitm": 61,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 73,
+  "general": {
+   "cz": 16,
+   "rx": 17,
+   "rz": 4
+  },
+  "seconds": 6.583640652002941,
+  "stats": {
+   "db": 155,
+   "mitm": 135,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 74,
+  "general": {
+   "rx": 22,
+   "cz": 21,
+   "rz": 5
+  },
+  "seconds": 9.299870584000018,
+  "stats": {
+   "db": 156,
+   "mitm": 88,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 75,
+  "general": {
+   "rx": 23,
+   "cz": 24,
+   "rz": 6
+  },
+  "seconds": 10.107507783999608,
+  "stats": {
+   "db": 159,
+   "mitm": 84,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 76,
+  "general": {
+   "cz": 33,
+   "rx": 35,
+   "rz": 7
+  },
+  "seconds": 18.337274751000223,
+  "stats": {
+   "db": 144,
+   "mitm": 67,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 77,
+  "general": {
+   "rx": 17,
+   "cz": 15,
+   "rz": 3
+  },
+  "seconds": 17.40749899000366,
+  "stats": {
+   "db": 160,
+   "mitm": 120,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 78,
+  "general": {
+   "cz": 34,
+   "rx": 33,
+   "rz": 10
+  },
+  "seconds": 6.0435916960050236,
+  "stats": {
+   "db": 168,
+   "mitm": 40,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 79,
+  "general": {
+   "cz": 34,
+   "rz": 10,
+   "rx": 30
+  },
+  "seconds": 7.315229822001129,
+  "stats": {
+   "db": 162,
+   "mitm": 67,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 80,
+  "general": {
+   "rx": 28,
+   "cz": 27,
+   "rz": 6
+  },
+  "seconds": 10.676916231997893,
+  "stats": {
+   "db": 143,
+   "mitm": 105,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 81,
+  "general": {
+   "cz": 14,
+   "rx": 13,
+   "rz": 5
+  },
+  "seconds": 8.013235674996395,
+  "stats": {
+   "db": 183,
+   "mitm": 58,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 82,
+  "general": {
+   "rx": 27,
+   "cz": 22,
+   "rz": 6
+  },
+  "seconds": 11.810468377996585,
+  "stats": {
+   "db": 183,
+   "mitm": 42,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 83,
+  "general": {
+   "rx": 28,
+   "cz": 28,
+   "rz": 7
+  },
+  "seconds": 10.360744669000269,
+  "stats": {
+   "db": 151,
+   "mitm": 89,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 84,
+  "general": {
+   "cz": 21,
+   "rx": 20,
+   "rz": 5
+  },
+  "seconds": 12.812676516005013,
+  "stats": {
+   "db": 205,
+   "mitm": 105,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 85,
+  "general": {
+   "rx": 27,
+   "cz": 29,
+   "rz": 7
+  },
+  "seconds": 5.198469775998092,
+  "stats": {
+   "db": 146,
+   "mitm": 67,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 86,
+  "general": {
+   "rz": 6,
+   "cz": 20,
+   "rx": 19
+  },
+  "seconds": 9.94106659499812,
+  "stats": {
+   "db": 196,
+   "mitm": 68,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 87,
+  "general": {
+   "rz": 4,
+   "rx": 6,
+   "cz": 6
+  },
+  "seconds": 7.611998068001412,
+  "stats": {
+   "db": 189,
+   "mitm": 121,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 88,
+  "general": {
+   "rx": 36,
+   "cz": 35,
+   "rz": 10
+  },
+  "seconds": 5.503495422999549,
+  "stats": {
+   "db": 136,
+   "mitm": 52,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 89,
+  "general": {
+   "rx": 27,
+   "cz": 25,
+   "rz": 9
+  },
+  "seconds": 8.426804470997013,
+  "stats": {
+   "db": 162,
+   "mitm": 93,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 90,
+  "general": {
+   "rx": 19,
+   "cz": 22,
+   "rz": 4
+  },
+  "seconds": 3.4507003969993093,
+  "stats": {
+   "db": 196,
+   "mitm": 60,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 91,
+  "general": {
+   "cz": 16,
+   "rz": 6,
+   "rx": 16
+  },
+  "seconds": 6.7061000269968645,
+  "stats": {
+   "db": 168,
+   "mitm": 88,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 92,
+  "general": {
+   "cz": 19,
+   "rx": 23,
+   "rz": 6
+  },
+  "seconds": 7.265696157999628,
+  "stats": {
+   "db": 184,
+   "mitm": 40,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 93,
+  "general": {
+   "rz": 3,
+   "rx": 14,
+   "cz": 13
+  },
+  "seconds": 3.5930119219992775,
+  "stats": {
+   "db": 172,
+   "mitm": 88,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 94,
+  "general": {
+   "rx": 33,
+   "cz": 27,
+   "rz": 7
+  },
+  "seconds": 4.147302122000838,
+  "stats": {
+   "db": 164,
+   "mitm": 72,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 95,
+  "general": {
+   "rz": 8,
+   "cz": 27,
+   "rx": 22
+  },
+  "seconds": 9.249625076001394,
+  "stats": {
+   "db": 166,
+   "mitm": 64,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 96,
+  "general": {
+   "cz": 34,
+   "rx": 31,
+   "rz": 6
+  },
+  "seconds": 9.436843308998505,
+  "stats": {
+   "db": 156,
+   "mitm": 80,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 97,
+  "general": {
+   "rx": 20,
+   "cz": 27,
+   "rz": 7
+  },
+  "seconds": 5.862353933000122,
+  "stats": {
+   "db": 124,
+   "mitm": 152,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 98,
+  "general": {
+   "rx": 22,
+   "rz": 8,
+   "cz": 27
+  },
+  "seconds": 7.904224272002466,
+  "stats": {
+   "db": 194,
+   "mitm": 44,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "NJP_nisq",
+  "seed": 99,
+  "general": {
+   "rz": 10,
+   "cz": 21,
+   "rx": 15
+  },
+  "seconds": 5.23106727800041,
+  "stats": {
+   "db": 168,
+   "mitm": 100,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "T5",
+  "seed": 0,
+  "general": {
+   "cz": 232,
+   "rx": 87,
+   "rz": 28
+  },
+  "seconds": 9.642357019998599,
+  "stats": {
+   "db": 272,
+   "mitm": 0,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "T5",
+  "seed": 1,
+  "general": {
+   "cz": 223,
+   "rx": 88,
+   "rz": 46
+  },
+  "seconds": 7.169497110997327,
+  "stats": {
+   "db": 219,
+   "mitm": 0,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "T5",
+  "seed": 2,
+  "general": {
+   "cz": 199,
+   "rz": 33,
+   "rx": 72
+  },
+  "seconds": 11.04505496800266,
+  "stats": {
+   "db": 296,
+   "mitm": 0,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "T5",
+  "seed": 3,
+  "general": {
+   "rx": 93,
+   "cz": 235,
+   "rz": 44
+  },
+  "seconds": 11.009369682004035,
+  "stats": {
+   "db": 224,
+   "mitm": 0,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "T5",
+  "seed": 4,
+  "general": {
+   "cz": 213,
+   "rz": 42,
+   "rx": 77
+  },
+  "seconds": 13.386128532998555,
+  "stats": {
+   "db": 262,
+   "mitm": 0,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "T5",
+  "seed": 5,
+  "general": {
+   "cz": 202,
+   "rz": 36,
+   "rx": 79
+  },
+  "seconds": 9.11731771799532,
+  "stats": {
+   "db": 263,
+   "mitm": 0,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "T5",
+  "seed": 6,
+  "general": {
+   "rz": 40,
+   "cz": 187,
+   "rx": 86
+  },
+  "seconds": 6.853884702002688,
+  "stats": {
+   "db": 308,
+   "mitm": 0,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "T5",
+  "seed": 7,
+  "general": {
+   "cz": 194,
+   "rz": 39,
+   "rx": 71
+  },
+  "seconds": 9.311917840001115,
+  "stats": {
+   "db": 339,
+   "mitm": 0,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "T5",
+  "seed": 8,
+  "general": {
+   "cz": 190,
+   "rz": 43,
+   "rx": 75
+  },
+  "seconds": 5.340990983997472,
+  "stats": {
+   "db": 309,
+   "mitm": 0,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ },
+ {
+  "cfg": "T5",
+  "seed": 9,
+  "general": {
+   "rx": 94,
+   "cz": 197,
+   "rz": 32
+  },
+  "seconds": 6.317765642001177,
+  "stats": {
+   "db": 290,
+   "mitm": 0,
+   "resynth": 0,
+   "state": 0,
+   "out": 0,
+   "approx": 0,
+   "kept_input": false
+  },
+  "ok": true,
+  "legal": true
+ }
+]

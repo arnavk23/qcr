@@ -1,0 +1,483 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=2.3cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{graphicx,booktabs,multirow,xcolor,float,caption,subcaption}
+\usepackage{enumitem}
+\usepackage[colorlinks=true,linkcolor=blue!50!black,urlcolor=blue!50!black,citecolor=green!40!black]{hyperref}
+\usepackage{cleveref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+\newcommand{\Cl}{\mathcal C}
+\newcommand{\Cay}{\mathrm{Cay}}
+\newcommand{\ev}{\mathrm{ev}}
+\newcommand{\RXX}{\mathrm{RXX}}\newcommand{\RX}{\mathrm{RX}}\newcommand{\RY}{\mathrm{RY}}\newcommand{\RZ}{\mathrm{RZ}}
+\newcommand{\CZ}{\mathrm{CZ}}\newcommand{\SX}{\mathrm{SX}}
+\newcommand{\Sp}{\mathrm{Sp}}
+\newcommand{\op}[1]{\lVert#1\rVert}
+\input{ext_numbers.tex}
+\input{gen_numbers.tex}
+\input{gen_hw_table.tex}
+
+\title{\textbf{Local Circuit Rewriting, Made Exact}\\[4pt]
+\large Equivalence as a group action, certified ground truth, and a hardware-aware optimiser}
+\author{Draft extension of Rosenhahn, Osborne \& Hirche, arXiv:2502.14715}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Local term-replacement methods shorten a quantum circuit by repeatedly replacing a short sub-circuit with a cheaper
+equivalent one from a precomputed database. Rosenhahn, Osborne and Hirche~\cite{R25} recently proposed such a method and
+compared it with Qiskit. We make three contributions.
+(i) \emph{A framework.} Every useful notion of ``equivalent sub-circuit'' (exact, up to global phase, on the $|0\rangle$ input,
+before a computational-basis measurement, up to a symmetry of the chip, within $\varepsilon$) is the orbit relation of a group
+action on unitaries. The database is then keyed by a canonical form of the orbit, and soundness and error accumulation follow
+from two short propositions.
+(ii) \emph{A general optimiser.} It makes no assumption about the gate set. It uses hashed databases of up to $3.2\times10^7$
+three-qubit classes, meet-in-the-middle lookup, exact two-qubit resynthesis, and DAG-convex windows restricted to coupled
+qubits. It optimises a calibrated cost ($-\log$ fidelity per gate), which we select over gate count and two-qubit-weighted
+count by noisy simulation.
+(iii) \emph{Exact ground truth.} Every gate in~\cite{R25} is Clifford, so its benchmarks live in a finite group that we enumerate
+completely (92,897,280 three-qubit elements). This gives proven optima, an exactness theorem for local rewriting, a parity
+theorem, and a proof that random-circuit benchmarks converge to a known constant.
+Against this ground truth, the general optimiser (which does not use it) reaches the proven optimum on
+\TThreeAtOpt/20 and \TFourAtOpt/20 three-qubit benchmark circuits and produces \TThreeGenOverPaper$\times$ and \TFourGenOverPaper$\times$
+the length of the original method's output. On \HwCompared\ algorithm circuits (Nam/VOQC, QASMBench, QFT/QAOA/Trotter) compiled for an IBM Heron
+model, it removes 13\% of the gates of Qiskit level-3 output without ever adding a two-qubit gate. Its output has a lower noisy-simulation error than
+Qiskit level 3 on \HeronCalBeatsLThree/\HeronTvdCircuits\ circuits. All \PaperBenchN\ paper-benchmark outputs and all 720 hardware-suite outputs are verified numerically.
+\end{abstract}
+
+%=====================================================================
+\section{Introduction}
+Compiling a circuit into a device's native gates leaves redundancy, and on noisy hardware every gate costs fidelity.
+Rosenhahn, Osborne and Hirche~\cite{R25} proposed a simple, gate-set-agnostic remedy: view the circuit as a word over the
+native alphabet, sample a window of $2$--$8$ letters, and replace it by a shorter equivalent word, found by random sampling (V1),
+by lookup in an exhaustively enumerated database of short circuits (V2), or by a lookup gated by a random forest (V3). The method
+belongs to a long line of database-driven and peephole optimisers~\cite{prasad2006,golubitsky2012,nam2018,iten2022,quartz,queso,quarl,bravyi2021templates}.
+
+Two questions decide whether such a method is worth using, and~\cite{R25} answers neither. \emph{How far from optimal is it?} The paper
+compares only with Qiskit, so it cannot say whether its 45-gate output for a 3-qubit circuit is good (the optimum is about 10).
+\emph{Does it help on circuits and hardware that matter?} The paper's alphabets are discrete $\pm\pi/2$ rotations on all-to-all
+connectivity. Its benchmarks are random words over those alphabets, and its objective is the total gate count.
+
+This paper answers both questions. The answers rest on two pieces that we keep strictly separate:
+\begin{itemize}[nosep]
+\item a \textbf{general optimiser} (\S\ref{sec:framework}--\ref{sec:engine}) that uses no structure of the gate set. It runs on continuous-angle native gates,
+respects connectivity, and supports exact, state-aware and approximate equivalence;
+\item an \textbf{exact ground truth} (\S\ref{sec:theory}--\ref{sec:exact}) that \emph{does} use structure. All gates of~\cite{R25} are Clifford, so their circuits
+are elements of a finite group whose Cayley graph we enumerate completely. We use it only to evaluate; the optimiser never sees it.
+\end{itemize}
+
+\paragraph{Contributions.}
+\begin{enumerate}[nosep]
+\item A unifying model: equivalence notions are group actions, and database keys are canonical orbit representatives
+  (Table~\ref{tab:actions}). Soundness of state- and measurement-aware rewriting and an additive error bound for approximate rewriting
+  follow from this model (Props.~\ref{prop:sound},~\ref{prop:approx}).
+\item A general, connectivity-aware optimiser with exact global-phase handling and a calibrated cost model (\S\ref{sec:engine}).
+\item Theory for the discrete case: an exactness threshold (local = global optimality), a parity theorem, mixing of random-circuit
+  benchmarks, and universal counting lower bounds (\S\ref{sec:theory}).
+\item Exact ground truth for every 3-qubit circuit over both alphabets of~\cite{R25}, and certified bounds for 4 qubits (\S\ref{sec:exact}).
+\item Experiments: optimality gaps on the paper's own benchmarks, a hardware suite on IBM Heron and trapped-ion models against Qiskit and TKET,
+  selection of the objective by noisy simulation, and every output verified (\S\ref{sec:exp}).
+\item An explicit list of the original paper's weaknesses and of the limitations of ours (\S\ref{sec:limits}, \S\ref{sec:weak}).
+\end{enumerate}
+
+%=====================================================================
+\section{Framework}\label{sec:framework}
+\subsection{Circuits, devices, costs}
+A \emph{device} fixes $n$ physical qubits, a coupling graph $E$ (or all-to-all), native single-qubit gates, a native two-qubit gate allowed only on
+pairs in $E$, and which angles are continuous. We use two models.
+\textbf{IBM Heron} (Qiskit's \texttt{FakeTorino}, 133 qubits, heavy-hex): $\RZ(\theta)$ (virtual), $\SX$, $X$, $\CZ$, with per-qubit and per-pair
+calibrated errors. Eleven couplers have calibrated error $1.0$ and are removed.
+\textbf{Trapped ion} (all-to-all): $\RX,\RY,\RZ(\theta)$ and the M{\o}lmer--S{\o}rensen gate $\RXX(\theta)$ at any angle. No public
+calibration exists, so we use model errors $3\cdot10^{-5}$ (1q), $10^{-3}$ (2q), and treat $\RZ$ as virtual.
+A circuit is a word $u=\gamma_1\cdots\gamma_L$ of native gates with $\ev(u)=\gamma_L\cdots\gamma_1$. A \emph{cost} is additive,
+$c(u)=\sum_i c(\gamma_i)$. We compare
+\[
+c_{\rm count}\equiv1,\qquad c_{w2}=\begin{cases}10&\text{2q}\\1&\text{1q}\end{cases},\qquad c_{\rm cal}(\gamma)=-\log\bigl(1-e(\gamma)\bigr),
+\]
+where $e(\gamma)$ is the calibrated error of $\gamma$ on its physical qubits. Then $\exp(-c_{\rm cal}(u))$ is the estimated success probability
+(ESP)~\cite{nishio2020}: minimising $c_{\rm cal}$ maximises ESP. Virtual gates get a tie-breaking cost of $10^{-7}$.
+
+\subsection{Equivalence as a group action}
+A replacement $u\to v$ of a window is \emph{sound} if it does not change what the full program computes. What counts as ``the same''
+depends on context, and each notion we need is the orbit relation of a group $H$ acting on $U(2^k)$:
+\begin{table}[H]\centering\small
+\resizebox{\textwidth}{!}{\begin{tabular}{llll}\toprule
+notion & $U\sim V$ iff & group acting & canonical key\\\midrule
+exact & $V=U$ & trivial & $U$\\
+up to phase (as in~\cite{R25}) & $V=e^{i\varphi}U$ & $U(1)$, left & phase-normalised $U$\\
+input-aware (at circuit start) & $V|0\rangle=e^{i\varphi}U|0\rangle$ & stabiliser of $|0\rangle$; $U(1)$ & phase-normalised $U|0\rangle$\\
+output-aware (before measurement) & $V=DU$, $D$ diagonal & diagonal unitaries, left & rows phase-normalised\\
+symmetry & $V=P_\pi UP_\pi^{\dagger}$ & coupling-graph automorphisms & minimum over the orbit\\
+approximate & $\op{U-V}\le\varepsilon$ & none (a tolerance) & exact key, verified distance\\\bottomrule
+\end{tabular}}
+\caption{Equivalence notions. The database is keyed by a hash of the canonical form, so one lookup finds every member of the orbit.
+Notions compose: for example, output-aware equivalence modulo automorphisms uses keys minimised over the automorphism group of row-normalised matrices.}
+\label{tab:actions}
+\end{table}
+Exact equivalence including global phase is the only notion that stays sound when the circuit is later controlled or used as a
+sub-routine. ``Up to phase'' is what~\cite{R25} uses. We keep it only to compare with that paper.
+
+\begin{proposition}[Soundness of state- and measurement-aware rewriting]\label{prop:sound}
+Let the program be ``prepare $|0^n\rangle$, apply $\ev(u)$, measure all qubits in the computational basis''. Let $S$ be a convex window of
+$u$ on wires $W$.
+(a) If no gate precedes $S$ on any wire in $W$ and $\ev(v)|0_W\rangle=e^{i\varphi}\ev(S)|0_W\rangle$, replacing $S$ by $v$ does not change
+the output distribution.
+(b) If no gate follows $S$ on any wire in $W$ and $\ev(v)=D\,\ev(S)$ with $D$ diagonal, replacing $S$ by $v$ does not change the output distribution.
+Any sequence of such rewrites, each applied to the current circuit, preserves the output distribution.
+\end{proposition}
+\begin{proof}
+By convexity we may move $S$ to the front (a) or the back (b) of the circuit without changing $\ev(u)$.
+(a) The input factorises as $|0_W\rangle\otimes|0_{\bar W}\rangle$, so the final state changes only by $e^{i\varphi}$.
+(b) The final state changes from $|\psi\rangle$ to $(D\otimes I)|\psi\rangle$, and $|\langle x|(D\otimes I)|\psi\rangle|^2=|\langle x|\psi\rangle|^2$
+for every basis state $x$. The invariant is the output distribution of the current circuit, so soundness composes.
+\end{proof}
+\begin{proposition}[Approximate rewriting]\label{prop:approx}
+If rewrites $i=1,\dots,m$ replace windows $S_i$ by $v_i$ with $\op{\ev(v_i)-\ev(S_i)}\le\varepsilon_i$ in operator norm, then the final
+circuit $u'$ satisfies $\op{\ev(u')-\ev(u)}\le\sum_i\varepsilon_i$. In exact mode this includes global phase.
+\end{proposition}
+\begin{proof}
+Telescope over intermediate circuits. Each step changes one factor of a product of unitaries, and
+$\op{A(X-Y)B}=\op{X-Y}$ for unitary $A,B$.
+\end{proof}
+The optimiser tracks $\sum_i\varepsilon_i$ and reports it with the circuit. Equivalence tests are \emph{linear} in the operator error
+(norm distance, not $|\mathrm{tr}(U^\dagger V)|/2^k\approx1$, which accepts errors of order $\sqrt{\mathrm{tol}}$).
+
+\subsection{Local rewriting}
+\begin{definition}[Local rewriting]
+With window bound $w$ and database radius $r$,
+$\mathcal R(w,r)=\{u\to v:|u|\le w,\ \ev(u)\sim\ev(v),\ |v|\le r,\ c(v)<c(u)\}$. Two gates are \emph{independent} if they commute exactly.
+Words equal up to swapping adjacent independent gates are \emph{trace-equivalent}~\cite{cartier,diekert}. A word is $(w,r)$-\emph{reduced}
+if no trace-equivalent word has a factor that is the left side of a rule.
+\end{definition}
+The factors of trace-equivalent words are exactly the \emph{convex} subsets of the circuit DAG (a set is convex iff it is an interval of some
+topological order). V2 of~\cite{R25} applies $\mathcal R(8,5)$ to random contiguous factors and explores the trace class by random commuting
+swaps, which amounts to a stochastic enumeration of convex windows. We enumerate convex windows directly instead.
+
+%=====================================================================
+\section{The optimiser}\label{sec:engine}
+\paragraph{Databases.} For each device we fix a discrete grid of native gates on a 3-qubit local topology (all pairs for ions, the line $0$--$1$--$2$
+for heavy-hex). Heron: $\RZ\in\{\pm\frac\pi4,\pm\frac\pi2,\pi\}$, $\SX$, $X$, $\CZ$ (23 gates). Ion: $\RX,\RY,\RZ$ on the same angles and
+$\RXX(\pm\frac\pi4,\pm\frac\pi2)$ (57 gates). We enumerate words breadth-first and store, for each new class, a 64-bit hash of its canonical
+form (Table~\ref{tab:actions}), minimised over the topology's automorphisms. The deepest level stores keys only. Every hit is re-checked
+numerically before use.
+\begin{table}[H]\centering\small
+\begin{tabular}{lllrrr}\toprule
+device & topology & notion & depth & classes & build time\\\midrule
+Heron & line & phase & 9 & 6.31M & 6 min\\
+Heron & line & output-aware & 10 & 0.34M & $<$1 min\\
+Heron & line & input-aware & 14 & 1.41M & $<$1 min\\
+ion & triangle & phase & 6 & 28.4M & 38 min\\
+ion & triangle & output-aware & 6 & 7.36M & 27 min\\
+ion & triangle & input-aware & 7 & 31.6M & 23 min\\
+paper ion ($\pm\frac\pi2$) & triangle & phase & 9 & 2.93M & 7 min\\
+paper IBM ($\pm\frac\pi2$) & triangle & phase & 10 & 1.84M & 2 min\\\bottomrule
+\end{tabular}
+\caption{Hashed databases. The paper's databases were capped at 9--10 levels. They are \emph{not} told that the group is
+finite or Clifford.}\label{tab:dbs}
+\end{table}
+\paragraph{Lookup beyond the radius.} If a window $U$ is not in the database, meet-in-the-middle tries $U=R\,A$ with $A$ in a stored full ball of
+radius~2. This extends the reach by two gates at the cost of one hash lookup per element of that ball.
+\paragraph{Continuous angles.} Circuits from real compilers use arbitrary angles, which no finite grid contains. Windows on at most two
+\emph{coupled} wires are therefore also resynthesised analytically. On Heron we use KAK into $\RZ/\SX/X/\CZ$ with the minimal number of $\CZ$.
+On ions, a Weyl decomposition yields one $\RXX(\theta)$ per non-zero interaction coefficient. Single-qubit runs use Euler decompositions.
+\paragraph{Windows.} From each position $i$, a window grows by collecting later gates on a set of $\le3$ wires that commute (exactly, tolerance
+$10^{-10}$) past the gates they jump over. The result is a convex set. On Heron the wires must induce a connected subgraph, so every replacement
+is legal without routing. Every prefix of the window is tried, and the replacement with the largest cost saving is applied. Sweeps alternate with
+random exact-commutation shuffles until $p$ consecutive shuffles bring no gain ($p=4$ on the hardware suite; $p=8$ with 4 restarts on
+the paper's benchmarks).
+\paragraph{Global phase.} Inside windows the optimiser matches up to phase. It records each replacement's phase, snapped to the set the device can
+realise exactly ($\pi/4$ multiples on Heron, $\pi/2$ on ions). It then repairs the accumulated phase at the end with the cheapest gadget, or by absorbing
+$\pm i$ into an existing $\RXX$ on ions. Output is therefore equal \emph{including} global phase. Qiskit and TKET store the phase as metadata
+instead, so we also report that convention.
+\paragraph{Guarantee.} The optimiser never returns a circuit of higher cost than its input: if repair would exceed the savings, it returns the input.
+
+%=====================================================================
+\section{Theory for discrete gate sets}\label{sec:theory}
+The following results concern the alphabets of~\cite{R25}:
+$\Gamma_{\rm ion}=\{\RX,\RY,\RZ(\pm\frac\pi2)\}\cup\{\RXX(\pm\frac\pi2)\}$ and $\Gamma_{\rm ibm}=\{\RX,\RZ(\pm\frac\pi2)\}\cup\{\CZ\}$, modulo phase.
+\begin{lemma}[The alphabets generate the Clifford group]
+$\langle\Gamma\rangle=\Cl_n/U(1)$, of order $2^{n^2+2n}\prod_{j=1}^n(4^j-1)$. Verified by enumeration for $n\le3$ (24; 11,520; 92,897,280).
+The compute graph of depth $d$ in~\cite{R25} is the ball $B(d)$ of $\Cay(G,\Gamma)$. All 22 entries of~\cite[Table I]{R25} are reproduced exactly.
+\end{lemma}
+Write $|g|$ for the word length, $S(r)$ for the sphere, and $D$ for the diameter.
+
+\subsection{Exactness threshold and cascade}
+\begin{theorem}[Local = global above the diameter]\label{thm:exact}
+Let $G$ be finite with diameter $D$. If $w\ge D+1$ and $r\ge D$, every $(w,r)$-reduced word is a geodesic.
+\end{theorem}
+\begin{proof}
+Let $u$ be $(w,r)$-reduced. If $|u|>D$, its first $D+1$ letters form a factor $f$ with $|\ev(f)|\le D\le r$ and $|f|\le w$, so a rule applies, a
+contradiction. Hence $|u|\le D<w$, so $u$ is itself a factor of length $\le w$, and if it were not geodesic the rule $u\to v$ with $v$ geodesic would apply.
+\end{proof}
+\begin{proposition}[Cascade]\label{prop:cascade}
+Let $\ell(w)$ be the length of the fixed point of an exhaustive $\mathcal R(w,\infty)$ optimiser. If $\ell(w)\le w$ at any time, the next sweep returns a geodesic.
+\end{proposition}
+So the relevant window is $w^\star=\min\{w:\ell(w)\le w\}$, which we measure: $w^\star\approx\WStarIon$ (ion trap) and $\WStarIbm$ (IBM-style) for 3-qubit
+circuits, well below $D+1=\DiamIonThreePlusOne$. For continuous gate sets $G$ is infinite, $D=\infty$, and no finite window is exact. This is why
+ground truth must come from the discrete case.
+
+\subsection{Gate-count parity}
+\begin{theorem}[Parity]\label{thm:parity}
+(a) For $n\in\{1,2\}$ and both alphabets, $\Cay(\Cl_n,\Gamma)$ is bipartite, so every equivalent rewrite removes an even number of gates.
+(b) For $n\ge3$ and any generating set of $\Cl_n/U(1)$ that contains, for each qubit, a gate squaring to $X_i$ and one squaring to $Z_i$, the
+Cayley graph is not bipartite.
+\end{theorem}
+\begin{proof}
+A Cayley graph is bipartite iff some homomorphism $\chi:G\to\{\pm1\}$ has $\chi(\Gamma)=-1$. (a) For $n=1$, $\Cl_1/U(1)\cong S_4$, every
+$\pm\frac\pi2$ rotation is a 4-cycle, and $\chi=\mathrm{sgn}$. For $n=2$ we verify it exhaustively. (b) The Pauli group is normal with quotient
+$\Sp(2n,2)$. Since $\chi(X_i)=\chi(\gamma)^2=1$ (and likewise $Z_i$), $\chi$ factors through $\Sp(2n,2)$, which is simple and non-abelian for $n\ge3$. Hence $\chi\equiv1$.
+\end{proof}
+The shortest odd relation for $n=3$ has length $\rho=\OddRelIon$ (ion trap) and $\OddRelIbm$ (IBM-style). A parity change therefore needs a window of
+at least $\lceil\rho/2\rceil=\OddRelIonHalf$ gates, and Fig.~4 of~\cite{R25}, a $6\to3$ replacement on two qubits, cannot come from the stated gate set.
+
+\subsection{What random-circuit benchmarks measure}
+\begin{theorem}[Benchmarks mix]\label{thm:mix}
+Let $\Gamma=\Gamma^{-1}$, $\mu_L$ the law of $\ev(u)$ for $u$ uniform in $\Gamma^L$, and $\beta<1$ the largest non-trivial eigenvalue modulus of
+the random walk (excluding $-1$ if bipartite). Then $\|\mu_L-\pi_L\|_{TV}\le\frac12\sqrt{|G|}\,\beta^L$, with $\pi_L$ uniform on $G$ (or on the parity
+class). Hence $\mathbb E|\ev(u)|\to\frac1{|G|}\sum_d d\,|S(d)|$.
+\end{theorem}
+This is the standard $L^2$ bound~\cite{diaconis}. For $n=2$ (ion trap) $\beta=\BetaTwo$. Consequently a random length-300 benchmark has a
+\emph{constant} optimal answer: \MeanIonThree\ gates (3 qubits, ion trap) and \MeanIbmThree\ (IBM-style), independent of the input length beyond $L\approx\MixLThree$.
+
+\subsection{Lower bounds for every method}
+\begin{proposition}[Counting bound]\label{prop:count}
+For $g$ uniform in $G$, $\Pr[|g|\le d]\le|B(d)|/|G|$, and $|S(a+b)|\le|S(a)||S(b)|$. Exact spheres up to depth $k$ thus give lower bounds on
+$\mathbb E|g|$ for every method.
+\end{proposition}
+At $n=4$ ($|G|=1.21\times10^{13}$), spheres to depth 6 give $\mathbb E|g|\ge\LBFourIon$ (ion trap) and $\ge\LBFourIbm$ (IBM-style).
+At $n=3$ the same bound gives $\LBThreeCheck$, against a true value of \MeanIonThree.
+
+%=====================================================================
+\section{Exact ground truth}\label{sec:exact}
+A Clifford modulo phase is determined by its signed tableau. For $n\le3$ we pack it into 64 bits, apply gates through lookup tables, and
+run BFS as vectorised gathers. Membership is exact.
+\begin{table}[H]\centering\small
+\begin{tabular}{lrrrrl}\toprule
+alphabet&$n$&$|\Gamma|$&$|G|$&diameter&mean $|g|$ (uniform)\\\midrule
+ion trap&2&14&11,520&10&5.89\\
+IBM-style&2&9&11,520&11&6.92\\
+ion trap&3&24&92,897,280&\DiamIonThree&\MeanIonThree\\
+IBM-style&3&15&92,897,280&\DiamIbmThree&\MeanIbmThree\\\bottomrule
+\end{tabular}
+\caption{Exact Cayley-graph data (BFS: \BFSMinutes\ min, $\approx$6\,GB for $n=3$).}\label{tab:growth}
+\end{table}
+\begin{figure}[H]\centering\includegraphics[width=0.6\textwidth]{figs/ext_growth.png}
+\caption{Growth series of the 3-qubit Clifford group. The radius-5 database of~\cite{R25} (shaded) covers 0.15\% of the group (ion trap).
+Almost all elements lie at distance 10--14.}\label{fig:growth}
+\end{figure}
+For $n=3$, the numbers of elements needing exactly $0,1,\dots,6$ entangling gates are 13,824; 373,248; 5,971,968; 38,486,016; 42,052,608; 5,971,968; and 27,648 (mean \TwoQThreeMean). By local equivalence of $\RXX(\frac\pi2)$
+and $\CZ$, the distribution is the same for both alphabets.
+
+%=====================================================================
+\section{Experiments}\label{sec:exp}
+\paragraph{Verification.} Every output is checked against its input. Exact mode: $\op{(U-V)\psi}$ on random states (statevector on the active
+qubits). State-aware mode: the total-variation distance (TVD) of the output distributions on $|0^n\rangle$. Approximate mode: the measured
+error is compared with the tracked bound. Every output is also checked to be native and to use only coupled pairs.
+
+\subsection{The paper's benchmarks, with ground truth}
+We run the general optimiser with the paper's semantics (up to phase, gate count, $\pm\frac\pi2$ alphabets, all-to-all) on the paper's own
+settings and seeds. These are Tables III/IV (3 qubits, 300 gates, 20 circuits each), the journal's 4-qubit statistics (100 circuits), and Table V
+(15 qubits, 500 gates, 10 circuits). ``Original'' is our faithful port of the authors' V2, which reproduces the paper's single-circuit 3-qubit result (\FaithIon\ vs.\ 45).
+\begin{table}[H]\centering\small
+\resizebox{\textwidth}{!}{\begin{tabular}{lcccccc}\toprule
+setting & Qiskit L3 & original~\cite{R25} & Clifford CW-sem & \textbf{general} & optimum (or lower bound) & general at optimum\\\midrule
+T3: ion, 3q & \QThreeIon & \TThreePaper & -- & \textbf{\TThreeGen} & \TThreeOpt & \TThreeAtOpt/20\\
+T4: IBM-style, 3q & \QThreeIbm & \TFourPaper & -- & \textbf{\TFourGen} & \TFourOpt & \TFourAtOpt/20\\
+journal: ion, 4q & \QFourIon & \NjpIonPaper$^*$ & \NjpIonCliff & \textbf{\NjpIonGen} & $\ge$\LBFourIon & --\\
+journal: IBM-style, 4q & \QFourIbm & \NjpIbmPaper$^*$ & \NjpIbmCliff & \textbf{\NjpIbmGen} & $\ge$\LBFourIbm & --\\
+T5: IBM-style, 15q & \TFiveLThree & \TFivePaper & \TFiveCliff & \textbf{\TFiveGen} & -- & --\\\bottomrule
+\end{tabular}}
+\caption{Mean gate counts. $^*$Original and Qiskit L3 at 4 qubits: first 30 circuits. ``Clifford CW-sem'' uses adaptive commutation-aware windows with
+the exact Clifford tables (Appendix~\ref{app:cliff}); the general engine does not use them. Time per circuit: \TThreeGenSec\,s (T3) to \TFiveGenSec\,s (T5). All \PaperBenchOk/\PaperBenchN\ outputs verified and legal.}
+\label{tab:paperbench}
+\end{table}
+\begin{figure}[H]\centering\includegraphics[width=0.72\textwidth]{figs/gen_paper_bench.pdf}
+\caption{Output length relative to the original method on the same circuits (mean of per-circuit ratios).}\label{fig:paperbench}
+\end{figure}
+\paragraph{Findings.} (1) Without knowing that the group is finite or Clifford, the general engine is within 0.4 gates of the proven
+optimum on average and exactly optimal on 35 of 40 three-qubit circuits. The original method is $4.5\times$ / $3.0\times$ above the optimum.
+(2) At four qubits it is close to the Clifford-specific optimiser (ion: \NjpIonGen\ vs.\ \NjpIonCliff; IBM-style: \NjpIbmGen\ vs.\ \NjpIbmCliff),
+so knowing the group structure is not what makes the difference. Large databases and convex windows are.
+(3) At 15 qubits all methods, Qiskit L3 included, lie within 4\% of one another. Here the windows see only a small part of a highly entangled random circuit,
+and the input is already close to a local optimum.
+
+\subsection{Algorithms on hardware models}
+\paragraph{Suite.} We use \HwCircuits\ circuits of 2--\HeronMaxQubits\ qubits and up to \HeronMaxInput\ gates: Nam/VOQC arithmetic~\cite{nam2018} (Toffoli/Barenco ladders,
+adders, modular multiplication, GF$(2^4)$ multiplication, product formulas, QFT8), QASMBench~\cite{qasmbench} (small and medium circuits;
+circuits with classical feed-forward and four that do not parse are skipped), QFT, QAOA, Heisenberg Trotter, EfficientSU2, a Steane encoder, and
+random circuits. Each circuit is compiled for the device by Qiskit at level 1 (L1) and level 3 (L3) with the same coupling map and seed.
+Pipelines: TKET \texttt{FullPeepholeOptimise} on L1 followed by a rebase; ours on L1; ours on L3.
+\begin{table}[H]\centering\small
+\resizebox{\textwidth}{!}{\begin{tabular}{lccc c ccc}\toprule
+& \multicolumn{3}{c}{\textbf{IBM Heron}} && \multicolumn{3}{c}{\textbf{trapped ion}}\\\cmidrule{2-4}\cmidrule{6-8}
+pipeline (relative to Qiskit L3) & 2q gates & all gates & ESP && 2q gates & all gates & ESP\\\midrule
+\HwRows
+\bottomrule
+\end{tabular}}
+\caption{\HwCompared\ circuits per device. Count columns are ratios of summed counts; ESP is the geometric mean of per-circuit ratios.
+Nam pf1\_10/pf2\_10 are excluded because Qiskit L3 drops their $\sim10^{-7}$\,rad rotations (an approximation, not an exact
+rewrite): L3 reports \PfOneLThreeTwoq\ and \PfTwoLThreeTwoq\ two-qubit gates, against \PfOneOursTwoq\ and \PfTwoOursTwoq\ for our exact output.}
+\label{tab:hw}
+\end{table}
+\paragraph{Findings.} (1) \emph{Stacked on Qiskit L3, the optimiser never adds a two-qubit gate.} Heron: \HeronFromLThreeBetter\ circuits better, \HeronFromLThreeEqual\ equal.
+Ion: \IonFromLThreeBetter\ better, \IonFromLThreeEqual\ equal. ESP never decreases (0 of 58 on either device). On Heron it removes 13\% of all gates: $\SX/X$ pulses fall from \HeronLThreePulse\ to
+\HeronFromLThreePulse, virtual $\RZ$ from \HeronLThreeRz\ to \HeronFromLThreeRz, and $\CZ$ from \HeronLThreeTwoq\ to \HeronFromLThreeTwoq. On ions the total count can \emph{rise} (\IonFromLThreeTotalUp\ circuits) because the calibrated objective replaces
+$\RX/\RY$ pulses with virtual $\RZ$ gates (pulses \IonLThreePulse\ $\to$ \IonFromLThreePulse, $\RZ$ \IonLThreeRz\ $\to$ \IonFromLThreeRz). This is intended, but it means ``never worse'' holds for the objective and the two-qubit count, not for the total.
+(2) \emph{From L1, ours beats L3 on Heron} in all gates ($\times0.84$) and ESP ($\times1.21$), and matches it in two-qubit count. The ESP gain
+is not all ours: Qiskit's L1 layout already has $\times\HeronEspLOneOverLThree$ the ESP of its L3 layout (neither is noise-aware, and our optimiser
+never changes the layout), and our rewriting adds $\times\HeronEspOursOverLOne$ on top. On ions it removes 5\% of the MS gates that L3 leaves, through Weyl resynthesis with
+arbitrary-angle $\RXX$.
+(3) \emph{TKET} keeps its two-qubit counts close to L3 but uses $1.7$--$1.8\times$ as many gates after rebasing.
+(4) \emph{State/measurement-aware} rewriting gives the largest gains ($\times0.77$ / $\times0.62$ two-qubit gates). Part of this gain is trivial:
+\HeronStateEmpty\ (Heron) and \IonStateEmpty\ (ion) circuits are reversible logic on $|0\cdots0\rangle$ whose output is a fixed basis state, and they reduce to
+the empty circuit. Such programs are a property of the benchmark suite, so this mode should be read per circuit, not as an average.
+(5) The approximate mode with $\varepsilon=10^{-3}$ per replacement gives almost nothing beyond exact mode on these circuits, which contain few
+near-identity blocks. Measured errors (max $\HeronMaxApproxErr$) are always within the tracked bound.
+(6) Run time: median \HeronMedianSec\,s (Heron) and \IonMedianSec\,s (ion) per circuit and configuration, maximum \HeronMaxSec\,s. This is
+Python and single-threaded. Qiskit L3 takes well under a second.
+
+\subsection{Choosing the objective}\label{sec:objective}
+We ran the same optimiser with $c_{\rm count}$, $c_{w2}$ and $c_{\rm cal}$ and simulated each output with noise. Heron uses the calibrated FakeTorino gate
+errors of the actual physical qubits and pairs, remapped onto the active register. Ions use depolarizing noise at the model rates. We report the exact
+TVD between the ideal and noisy output distributions, computed from density matrices, on the \HeronTvdCircuits\ circuits with at most 8 active qubits.
+\begin{table}[H]\centering\small
+\begin{tabular}{lccccc}\toprule
+mean TVD & Qiskit L1 & Qiskit L3 & ours, count & ours, $w2$ & ours, calibrated\\\midrule
+Heron & \HeronTvdLOne & \HeronTvdLThree & \HeronTvdCount & \HeronTvdWTwo & \textbf{\HeronTvdCal}\\
+ion & \IonTvdLOne & \IonTvdLThree & \IonTvdCount & \IonTvdWTwo & \textbf{\IonTvdCal}\\\bottomrule
+\end{tabular}
+\caption{Noisy-simulation error by objective. Calibrated beats L3 on \HeronCalBeatsLThree/\HeronTvdCircuits\ (Heron) and \IonCalBeatsLThree/\IonTvdCircuits\ (ion)
+circuits.}\label{tab:tvd}
+\end{table}
+\begin{figure}[H]\centering\includegraphics[width=0.8\textwidth]{figs/gen_tvd.pdf}
+\caption{Per-circuit noisy TVD: Qiskit L3 against ours (calibrated, from L1). Points below the diagonal favour ours.}\label{fig:tvd}
+\end{figure}
+On both devices the calibrated cost is at least as good as the alternatives, and on Heron it is clearly better than plain count. The
+two-qubit-weighted count is almost as good, so on devices without calibration data it is a reasonable proxy. We use $c_{\rm cal}$ as the default.
+The ion comparison is conservative for our method: the simulation charges $\RZ$ a depolarizing error of $3\cdot10^{-5}$, while the cost model
+treats it as virtual.
+
+%=====================================================================
+\section{Limitations and threats to validity}\label{sec:limits}
+\begin{itemize}[leftmargin=*,nosep]
+\item \textbf{Verification.} Verification is numerical (random input states), not symbolic. On Heron, the routed layout of Nam pf2\_10 spans 20
+  physical qubits, more than the main run's statevector cap of 16, so its five L1-based outputs were verified in a separate re-run (same totals;
+  exact error $\le3.3\cdot10^{-11}$, approximate error $1.3\cdot10^{-4}$ within its bound $7.1\cdot10^{-4}$). All other \HeronRuns\ (Heron) and \IonRuns\ (ion) outputs, and the \PaperBenchN\ paper-benchmark
+  outputs, were verified in the run itself (exact error $\le\IonMaxExactErr$, state-aware TVD $\le\IonMaxStateErr$).
+\item \textbf{Noise models, not hardware.} ESP and TVD come from calibration snapshots and simulators. The Heron model contains gate errors only:
+  no readout, idle (decoherence during waiting), or crosstalk errors. The ion parameters are assumptions.
+\item \textbf{Global phase.} Our outputs are exact including phase. On Heron this costs \HeronPhaseGadgetGates\ single-qubit gates over the suite. With phase as
+  metadata, as Qiskit and TKET store it, our all-gate ratio from L1 improves from $\times0.838$ to $\times0.825$.
+\item \textbf{Baselines.} BQSKit was not available in our environment, and Quartz/QUESO were not run. Qiskit and TKET are used at their
+  defaults with one seed. Layout and routing are Qiskit's, and our optimiser does not change the layout.
+\item \textbf{Scale.} Windows have at most 3 qubits, and the code is single-threaded Python. Circuits beyond $\sim$1,000 gates were not tested.
+\item \textbf{Feed-forward.} Circuits with mid-circuit measurement and classical control are out of scope.
+\end{itemize}
+
+%=====================================================================
+\section{Weaknesses of the original paper}\label{sec:weak}
+\begin{enumerate}[leftmargin=*,nosep]
+\item \textbf{Missing structure.} The gate sets are Clifford, so the search space is a finite group with exact fingerprints and a complete
+  theory~\cite{aaronson2004,selinger2015,bravyi2022six}. None of it is used. The paper uses floating-point comparisons with inconsistent tolerances
+  ($10^{-5}$ in the text, $10^{-3}$/$10^{-4}$ in the code) and an $O(N)$ linear scan where an $O(1)$ key exists. It then adds a classifier (V3) to save time on that lookup.
+\item \textbf{No notion of optimality.} The paper compares only with Qiskit. Its 3-qubit result is \GapFactorIon$\times$ the optimum, which can be computed in minutes.
+\item \textbf{Equivalence notion.} Up-to-phase replacement is unsound under control, and the paper does not discuss it. Neither the state/measurement context
+  nor approximation is used, and no error is tracked.
+\item \textbf{Hardware model.} Discrete $\pm\pi/2$ angles, all-to-all connectivity, and total gate count as the objective. None of these matches IBM
+  ($\RZ(\theta)$, heavy-hex) or ion (continuous MS) hardware.
+\item \textbf{Evaluation protocol.} Random circuits mix (Thm.~\ref{thm:mix}), so ``from 300 gates'' measures the input length. Tables III--V use one
+  circuit each. Times compare MATLAB with compiled transpilers.
+\item \textbf{Search.} Windows are contiguous. Commutation is explored by random swaps, with no convergence criterion. The radius-5 database misses
+  windows whose optimum is 6--7 gates.
+\item \textbf{V3.} Features, forest and threshold are unreported. Reproduced recall is 30\% at the default threshold.
+\item \textbf{Hardware evidence.} One 2-qubit circuit, one run per chip, no error bars. In our reproduction the effect disappears at Qiskit level 3.
+\item \textbf{Reproducibility.} The released code contains only V2 and has visible bugs (\texttt{simplereduce} skips the last pair; the database excludes the
+  identity). The database used for Tables III--V is not stated.
+\end{enumerate}
+
+%=====================================================================
+\section{Open problems}\label{sec:agenda}
+\begin{enumerate}[leftmargin=*,nosep]
+\item \textbf{Local-to-global theory.} Characterise $w^\star(G,\Gamma)$. Prove the cascade threshold for random inputs from the growth series, and relate
+  it to Dehn presentations and $k$-local geodesics~\cite{gromov,epstein}.
+\item \textbf{Ground truth beyond Clifford.} With $\pm\pi/4$ angles the group is infinite (Clifford+T). Exact normal forms~\cite{giles2013,kmm2013}
+  could still give certified optima for small $T$-counts.
+\item \textbf{Larger windows.} 4-qubit databases via symmetry reduction, or a learned admissible heuristic for A$^\ast$ trained on exact tables.
+\item \textbf{Layout-aware rewriting.} Joint optimisation of layout and local rewriting, using calibrated costs.
+\item \textbf{Real hardware.} Runs with error bars at fixed transpiler settings, reporting two-qubit counts and ESP.
+\end{enumerate}
+
+\section{Conclusion}
+Local rewriting becomes reliable when ``equivalent'' is made precise. Each notion is a group action, the database stores its orbits, and
+soundness and error accumulation follow. A general optimiser built this way, without using the structure of any gate set, reaches proven optima on
+the original paper's 3-qubit benchmarks, at a quarter of the original method's output length. It also improves Qiskit level-3 output on real
+algorithms for Heron and ion models without ever adding a two-qubit gate. The Clifford ground truth is what makes such claims checkable.
+
+\appendix
+\section{Clifford-specific results}\label{app:cliff}
+For the paper's alphabets, the exact tables of \S\ref{sec:exact} give an \emph{exact-window} optimiser EW-$w$ (all windows of length $\le w$ on
+$\le3$ wires, replaced by optimal words) and its DAG-convex version CW-$w$.
+\begin{table}[H]\centering\small
+\begin{tabular}{lcccccc}\toprule
+3 qubits, 300 gates&optimum&original~\cite{R25}&EW-8&EW-16&Qiskit L3&paper (1 circuit)\\\midrule
+ion trap (20)&\OptIon&\FaithIon&\EWeightIon&\EWsixteenIon&\QThreeIon&45\\
+IBM-style (20)&\OptIbm&\FaithIbm&\EWeightIbm&\EWsixteenIbm&\QThreeIbm&72\\\midrule
+time per circuit (ion)&--&\FaithIonSec\,s&\EWeightIonSec\,s&\EWsixteenIonSec\,s&$<$0.1\,s&--\\\bottomrule
+\end{tabular}
+\caption{Mean gate counts in the setting of Tables III/IV of~\cite{R25}.}\label{tab:gap}
+\end{table}
+\begin{figure}[H]\centering
+\begin{subfigure}{0.49\textwidth}\includegraphics[width=\textwidth]{figs/ext_window.png}\caption{}\label{fig:window}\end{subfigure}
+\begin{subfigure}{0.49\textwidth}\includegraphics[width=\textwidth]{figs/ext_grid.png}\caption{}\label{fig:grid}\end{subfigure}
+\caption{(a) Fixed-point length of EW-$w$ against $w$, with the cascade transition near $w^\star$. (b) Mean excess over the optimum by window $w$
+and database radius $r$ (ion trap). The original operating point $(8,5)$ is marked.}
+\end{figure}
+\GapFindings
+\begin{table}[H]\centering\small
+\resizebox{\textwidth}{!}{\begin{tabular}{lccccccc}\toprule
+4 qubits, 300 gates, 100 circuits&lower bound&CW-24&EW-16&original&published~\cite{R25}&Qiskit L3&BQSKit L4~\cite{R25}\\\midrule
+ion trap: total&$\ge$\LBFourIon&\CWFourIon&\EWFourIon&\FaithFourIon&111&\QFourIon&126\\
+ion trap: RXX&--&\CWFourIonTwoQ&\EWFourIonTwoQ&\FaithFourIonTwoQ&43&\QFourIonTwoQ&28\\
+IBM-style: total&$\ge$\LBFourIbm&\CWFourIbm&\EWFourIbm&\FaithFourIbm&107&\QFourIbm&168\\
+IBM-style: CZ&--&\CWFourIbmTwoQ&\EWFourIbmTwoQ&\FaithFourIbmTwoQ&43&\QFourIbmTwoQ&37\\\bottomrule
+\end{tabular}}
+\caption{Journal benchmark. Original and Qiskit: first 30 circuits. Published and BQSKit numbers are from the journal version of~\cite{R25}.}\label{tab:four}
+\end{table}
+\FourFindings
+\paragraph{Adaptive windows.} CW-sem replaces CW-24's fixed 3-wire windows by windows that grow while gates commute into them. With the same
+exact oracle it reaches \NjpIonCliff\ (ion trap) and \NjpIbmCliff\ (IBM-style) gates on the same 100 circuits; these are the numbers used in Table~\ref{tab:paperbench}.
+
+\begin{thebibliography}{99}\small
+\bibitem{R25} B.~Rosenhahn, T.~J.~Osborne, C.~Hirche, Optimization driven quantum circuit reduction, arXiv:2502.14715 (2025); New J.\ Phys.\ \textbf{27}, 104509 (2025).
+\bibitem{prasad2006} A.~K.~Prasad, V.~V.~Shende, I.~L.~Markov, J.~P.~Hayes, K.~N.~Patel, Data structures and algorithms for simplifying reversible circuits, ACM JETC \textbf{2}(4), 277 (2006).
+\bibitem{golubitsky2012} O.~Golubitsky, D.~Maslov, A study of optimal 4-bit reversible Toffoli circuits and their synthesis, IEEE Trans.\ Comput.\ \textbf{61}(9), 1341 (2012).
+\bibitem{nam2018} Y.~Nam, N.~J.~Ross, Y.~Su, A.~M.~Childs, D.~Maslov, Automated optimization of large quantum circuits with continuous parameters, npj Quantum Inf.\ \textbf{4}, 23 (2018).
+\bibitem{iten2022} R.~Iten, R.~Moyard, T.~Metger, D.~Sutter, S.~Woerner, Exact and practical pattern matching for quantum circuit optimization, ACM Trans.\ Quantum Comput.\ \textbf{3}(1) (2022).
+\bibitem{quartz} M.~Xu, Z.~Li, O.~Padon, S.~Lin, J.~Pointing, A.~Hirth, H.~Ma, J.~Palsberg, A.~Aiken, U.~A.~Acar, Z.~Jia, Quartz: superoptimization of quantum circuits, PLDI (2022).
+\bibitem{queso} A.~Xu, A.~Molavi, L.~Pick, S.~Tannu, A.~Albarghouthi, Synthesizing quantum-circuit optimizers, PLDI (2023).
+\bibitem{quarl} Z.~Li et al., Quarl: a learning-based quantum circuit optimizer, OOPSLA (2024).
+\bibitem{bravyi2021templates} S.~Bravyi, R.~Shaydulin, S.~Hu, D.~Maslov, Clifford circuit optimization with templates and symbolic Pauli gates, Quantum \textbf{5}, 580 (2021).
+\bibitem{bravyi2022six} S.~Bravyi, J.~A.~Latone, D.~Maslov, 6-qubit optimal Clifford circuits, npj Quantum Inf.\ \textbf{8}, 79 (2022).
+\bibitem{aaronson2004} S.~Aaronson, D.~Gottesman, Improved simulation of stabilizer circuits, Phys.\ Rev.\ A \textbf{70}, 052328 (2004).
+\bibitem{selinger2015} P.~Selinger, Generators and relations for $n$-qubit Clifford operators, Log.\ Methods Comput.\ Sci.\ \textbf{11}(2) (2015).
+\bibitem{nishio2020} S.~Nishio, Y.~Pan, T.~Satoh, H.~Amano, R.~Van Meter, Extracting success from IBM's 20-qubit machines using error-aware compilation, ACM JETC \textbf{16}(3) (2020).
+\bibitem{qasmbench} A.~Li, S.~Stein, S.~Krishnamoorthy, J.~Ang, QASMBench: a low-level quantum benchmark suite for NISQ evaluation and simulation, ACM Trans.\ Quantum Comput.\ \textbf{4}(2) (2023).
+\bibitem{giles2013} B.~Giles, P.~Selinger, Exact synthesis of multiqubit Clifford+T circuits, Phys.\ Rev.\ A \textbf{87}, 032332 (2013).
+\bibitem{kmm2013} V.~Kliuchnikov, D.~Maslov, M.~Mosca, Fast and efficient exact synthesis of single-qubit unitaries generated by Clifford and T gates, Quantum Inf.\ Comput.\ \textbf{13}, 607 (2013).
+\bibitem{cartier} P.~Cartier, D.~Foata, Probl\`emes combinatoires de commutation et r\'earrangements, LNM 85, Springer (1969).
+\bibitem{diekert} V.~Diekert, G.~Rozenberg (eds.), The Book of Traces, World Scientific (1995).
+\bibitem{diaconis} P.~Diaconis, Group Representations in Probability and Statistics, IMS Lecture Notes 11 (1988).
+\bibitem{gromov} M.~Gromov, Hyperbolic groups, in Essays in Group Theory, MSRI Publ.\ 8, Springer (1987).
+\bibitem{epstein} D.~B.~A.~Epstein et al., Word Processing in Groups, Jones and Bartlett (1992).
+\end{thebibliography}
+\end{document}

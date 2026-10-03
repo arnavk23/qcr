@@ -1,0 +1,16 @@
+name: Feature request
+description: Suggest a new device model, equivalence mode, cost model or benchmark.
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What should we add?
+      description: Describe the feature and the problem it solves.
+    validations:
+      required: true
+  - type: textarea
+    id: refs
+    attributes:
+      label: References
+      description: Papers, datasets or devices this relates to.

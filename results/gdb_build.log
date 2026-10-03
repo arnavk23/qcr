@@ -1,0 +1,58 @@
+  DB[phase,line] depth 1: +15 (total 16) 0s
+  DB[phase,line] depth 2: +139 (total 155) 0s
+  DB[phase,line] depth 3: +959 (total 1,114) 0s
+  DB[phase,line] depth 4: +5,191 (total 6,305) 0s
+  DB[phase,line] depth 5: +23,982 (total 30,287) 1s
+  DB[phase,line] depth 6: +98,244 (total 128,531) 5s
+  DB[phase,line] depth 7: +370,638 (total 499,169) 25s
+  DB[phase,line] depth 8: +1,318,210 (total 1,817,379) 95s
+  DB[phase,line] depth 9: +4,497,174 (total 6,314,553) 343s
+('heron', 'line', 'phase') {'size': 6314553, 'levels': [1, 15, 139, 959, 5191, 23982, 98244, 370638, 1318210, 4497174], 'depth': 9, 'seconds': 343.6184813976288, 'pool': 23}
+  DB[out,line] depth 1: +4 (total 5) 0s
+  DB[out,line] depth 2: +19 (total 24) 0s
+  DB[out,line] depth 3: +68 (total 92) 0s
+  DB[out,line] depth 4: +244 (total 336) 0s
+  DB[out,line] depth 5: +796 (total 1,132) 0s
+  DB[out,line] depth 6: +2,562 (total 3,694) 0s
+  DB[out,line] depth 7: +7,988 (total 11,682) 0s
+  DB[out,line] depth 8: +24,889 (total 36,571) 1s
+  DB[out,line] depth 9: +75,842 (total 112,413) 5s
+  DB[out,line] depth 10: +229,558 (total 341,971) 18s
+('heron', 'line', 'out') {'size': 341971, 'levels': [1, 4, 19, 68, 244, 796, 2562, 7988, 24889, 75842, 229558], 'depth': 10, 'seconds': 17.837313413619995, 'pool': 23}
+  DB[state,line] depth 1: +4 (total 5) 0s
+  DB[state,line] depth 2: +17 (total 22) 0s
+  DB[state,line] depth 3: +45 (total 67) 0s
+  DB[state,line] depth 4: +129 (total 196) 0s
+  DB[state,line] depth 5: +311 (total 507) 0s
+  DB[state,line] depth 6: +763 (total 1,270) 0s
+  DB[state,line] depth 7: +1,762 (total 3,032) 0s
+  DB[state,line] depth 8: +4,123 (total 7,155) 0s
+  DB[state,line] depth 9: +9,616 (total 16,771) 0s
+  DB[state,line] depth 10: +23,026 (total 39,797) 0s
+  DB[state,line] depth 11: +55,475 (total 95,272) 1s
+  DB[state,line] depth 12: +136,311 (total 231,583) 2s
+  DB[state,line] depth 13: +335,695 (total 567,278) 6s
+  DB[state,line] depth 14: +844,355 (total 1,411,633) 26s
+('heron', 'line', 'state') {'size': 1411633, 'levels': [1, 4, 17, 45, 129, 311, 763, 1762, 4123, 9616, 23026, 55475, 136311, 335695, 844355], 'depth': 14, 'seconds': 26.078806161880493, 'pool': 23}
+  DB[phase,tri] depth 1: +19 (total 20) 0s
+  DB[phase,tri] depth 2: +363 (total 383) 0s
+  DB[phase,tri] depth 3: +6,553 (total 6,936) 1s
+  DB[phase,tri] depth 4: +110,998 (total 117,934) 17s
+  DB[phase,tri] depth 5: +1,758,813 (total 1,876,747) 258s
+  DB[phase,tri] depth 6: +26,525,957 (total 28,402,704) 2270s
+('ion', 'tri', 'phase') {'size': 28402704, 'levels': [1, 19, 363, 6553, 110998, 1758813, 26525957], 'depth': 6, 'seconds': 2272.150372982025, 'pool': 57}
+  DB[out,tri] depth 1: +13 (total 14) 0s
+  DB[out,tri] depth 2: +176 (total 190) 0s
+  DB[out,tri] depth 3: +2,532 (total 2,722) 0s
+  DB[out,tri] depth 4: +36,008 (total 38,730) 2s
+  DB[out,tri] depth 5: +500,350 (total 539,080) 38s
+  DB[out,tri] depth 6: +6,816,703 (total 7,355,783) 1628s
+('ion', 'tri', 'out') {'size': 7355783, 'levels': [1, 13, 176, 2532, 36008, 500350, 6816703], 'depth': 6, 'seconds': 1629.194911956787, 'pool': 57}
+  DB[state,tri] depth 1: +13 (total 14) 0s
+  DB[state,tri] depth 2: +160 (total 174) 0s
+  DB[state,tri] depth 3: +1,786 (total 1,960) 0s
+  DB[state,tri] depth 4: +19,317 (total 21,277) 1s
+  DB[state,tri] depth 5: +215,310 (total 236,587) 4s
+  DB[state,tri] depth 6: +2,465,426 (total 2,702,013) 120s
+  DB[state,tri] depth 7: +28,907,780 (total 31,609,793) 1370s
+('ion', 'tri', 'state') {'size': 31609793, 'levels': [1, 13, 160, 1786, 19317, 215310, 2465426, 28907780], 'depth': 7, 'seconds': 1374.0799396038055, 'pool': 57}

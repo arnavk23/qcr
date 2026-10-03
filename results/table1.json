@@ -1,0 +1,87 @@
+[
+ {
+  "qubits": 2,
+  "ops": 14,
+  "depth": 1,
+  "nodes": 15,
+  "edges": 14
+ },
+ {
+  "qubits": 2,
+  "ops": 14,
+  "depth": 2,
+  "nodes": 114,
+  "edges": 210
+ },
+ {
+  "qubits": 2,
+  "ops": 14,
+  "depth": 3,
+  "nodes": 584,
+  "edges": 1596
+ },
+ {
+  "qubits": 2,
+  "ops": 14,
+  "depth": 4,
+  "nodes": 2024,
+  "edges": 8176
+ },
+ {
+  "qubits": 2,
+  "ops": 14,
+  "depth": 5,
+  "nodes": 4512,
+  "edges": 28336
+ },
+ {
+  "qubits": 2,
+  "ops": 14,
+  "depth": 6,
+  "nodes": 7420,
+  "edges": 63168
+ },
+ {
+  "qubits": 2,
+  "build_seconds": 0.3135068416595459
+ },
+ {
+  "qubits": 3,
+  "ops": 24,
+  "depth": 1,
+  "nodes": 25,
+  "edges": 24
+ },
+ {
+  "qubits": 3,
+  "ops": 24,
+  "depth": 2,
+  "nodes": 337,
+  "edges": 600
+ },
+ {
+  "qubits": 3,
+  "ops": 24,
+  "depth": 3,
+  "nodes": 3215,
+  "edges": 8088
+ },
+ {
+  "qubits": 3,
+  "ops": 24,
+  "depth": 4,
+  "nodes": 23622,
+  "edges": 77160
+ },
+ {
+  "qubits": 3,
+  "ops": 24,
+  "depth": 5,
+  "nodes": 137572,
+  "edges": 566928
+ },
+ {
+  "qubits": 3,
+  "build_seconds": 7.900104999542236
+ }
+]
