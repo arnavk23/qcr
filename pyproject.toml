@@ -38,7 +38,7 @@ dependencies = [
 hardware = ["qiskit-ibm-runtime>=0.30", "qiskit-aer>=0.15"]
 tket = ["pytket>=1.30"]
 bqskit = ["bqskit>=1.2"]
-experiments = ["qcr[hardware,tket,bqskit]", "matplotlib>=3.7", "pylatexenc>=2.10"]
+experiments = ["qcr[hardware,tket,bqskit]", "matplotlib>=3.7", "pylatexenc>=2.10", "mqt.qcec>=3.0"]
 test = ["pytest>=8", "pytest-cov>=5"]
 lint = ["ruff>=0.16"]
 docs = ["sphinx>=7", "furo", "reno>=4"]

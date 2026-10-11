@@ -489,6 +489,7 @@ class Config:
     max_jump: int = 200
     patience: int = 8
     restarts: int = 1
+    log: bool = False  # record a rewrite log for qcr.certify.replay
 
 
 @dataclass
@@ -497,6 +498,7 @@ class Result:
     error_bound: float = 0.0
     stats: dict = field(default_factory=dict)
     seconds: float = 0.0
+    log: dict | None = None
 
 
 class Optimizer:
@@ -507,6 +509,7 @@ class Optimizer:
         self.stats = dict(db=0, mitm=0, resynth=0, state=0, out=0, approx=0)
         self.err = 0.0
         self.memo: dict = {}
+        self._events = None
 
     def cost(self, gates):
         return sum(self.costf(g) for g in gates)
@@ -675,6 +678,8 @@ class Optimizer:
                     self.err += err
                 self.stats[src] += 1
                 Sset = set(S)
+                if self._events is not None:
+                    self._events.append((i, list(S), list(word)))
                 rest = [g[t] for t in range(i, S[-1] + 1) if t not in Sset]
                 g = g[:i] + word + rest + g[S[-1] + 1 :]
                 i = max(0, i - self.cfg.w)
@@ -687,18 +692,26 @@ class Optimizer:
         t0 = time.perf_counter()
         rng = np.random.default_rng(seed)
         best_all, err_all = None, 0.0
+        log = self.cfg.log
         for _ in range(self.cfg.restarts):
             self.err = 0.0
+            self._events = [] if log else None
             best, C = self.sweep(gates)
+            chain = [("sweep", self._events)] if log else None
             fails = 0
             while fails < self.cfg.patience:
-                h, c = self.sweep(_shuffle_exact(best, rng))
+                swaps = [] if log else None
+                self._events = [] if log else None
+                h, c = self.sweep(_shuffle_exact(best, rng, swaps=swaps))
                 if self.cost(h) < self.cost(best) - 1e-12:
                     best, C, fails = h, C * c, 0
+                    if log:
+                        chain += [("shuffle", swaps), ("sweep", self._events)]
                 else:
                     fails += 1
             if best_all is None or self.cost(best) < self.cost(best_all):
-                best_all, err_all, C_all = best, self.err, C
+                best_all, err_all, C_all, chain_all = best, self.err, C, chain
+        self._events = None
         stats = dict(self.stats)
         if self.cfg.mode == "exact" and not self.cfg.state_aware:
             best_all, gcost = repair_phase(best_all, C_all, self.dev)
@@ -707,16 +720,19 @@ class Optimizer:
         stats["kept_input"] = self.cost(best_all) >= self.cost(gates) - 1e-12
         if stats["kept_input"]:
             best_all, err_all = list(gates), 0.0
-        return Result(best_all, err_all, stats, time.perf_counter() - t0)
+        cert = dict(chain=chain_all, kept_input=stats["kept_input"]) if log else None
+        return Result(best_all, err_all, stats, time.perf_counter() - t0, cert)
 
 
-def _shuffle_exact(gates, rng, p=0.6):
+def _shuffle_exact(gates, rng, p=0.6, swaps=None):
     g = list(gates)
     done = np.zeros(len(g), bool)
     for i in range(len(g) - 1):
         if not done[i] and rng.random() < p and commutes_exact(g[i], g[i + 1]):
             g[i], g[i + 1] = g[i + 1], g[i]
             done[i + 1] = True
+            if swaps is not None:
+                swaps.append(i)
     return g
 
 
