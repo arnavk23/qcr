@@ -95,7 +95,21 @@ def _closure(seg, wires):
 
 
 def _phase_diff(chk, a, b):
-    """Scalar c with circuit(b) = c circuit(a), where a and b differ only in a local patch."""
+    """Scalar c with circuit(b) = c circuit(a), where a and b differ in a few local patches.
+
+    Each patch whose new gates equal a scalar times its old gates contributes that scalar (a scalar commutes
+    with the rest of the circuit). If some patch is not a scalar on its own (e.g. a phase folded into an MS
+    gate and the rx gates next to it), the whole changed range is checked jointly instead."""
+    from difflib import SequenceMatcher
+
+    ops = [op for op in SequenceMatcher(None, a, b, autojunk=False).get_opcodes() if op[0] != "equal"]
+    try:
+        c = 1.0 + 0j
+        for _, i1, i2, j1, j2 in ops:
+            c *= _Checker.scalar(chk, a[i1:i2], b[j1:j2])
+        return c
+    except ValueError:
+        pass
     lo = 0
     while lo < min(len(a), len(b)) and a[lo] == b[lo]:
         lo += 1

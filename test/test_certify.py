@@ -55,6 +55,15 @@ class _Certify:
                 bad[k] = Gate(bad[k].name, bad[k].qubits, bad[k].theta + d)
                 self.assertFalse(replay(circ, res.log, bad)["ok"])
 
+    def test_phase_patches_far_apart(self):
+        """Two 2 pi shifts (each a global -1) at both ends of the circuit: accepted patch by patch."""
+        for circ, res in self._runs(1):
+            rot = [i for i, g in enumerate(res.gates) if g.name in ("rz", "rx", "ry")]
+            out = list(res.gates)
+            for k in (rot[0], rot[-1]):
+                out[k] = Gate(out[k].name, out[k].qubits, out[k].theta + 2 * pi)
+            self.assertTrue(replay(circ, res.log, out)["ok"])
+
     def test_rejects_tampered_log(self):
         for circ, res in self._runs(1):
             log = {**res.log, "chain": [list(x) for x in res.log["chain"]]}

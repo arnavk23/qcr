@@ -279,7 +279,7 @@ DBS = {}
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
-    ap.add_argument("mode", choices=["ours", "bqskit", "verify", "list"])
+    ap.add_argument("mode", choices=["ours", "bqskit", "verify", "recert", "list"])
     ap.add_argument("--devices", nargs="*", default=["heron", "ion"])
     ap.add_argument("--filter", default="")
     ap.add_argument("--max-gates", type=int, default=6000)
@@ -295,6 +295,33 @@ if __name__ == "__main__":
         raise SystemExit
     from qiskit import qasm2
 
+    if a.mode == "recert":  # re-run (deterministic) and re-check the outputs whose certificate failed
+        part = OUT / f"large_recert_{a.tag}.jsonl"
+        done = {(r["name"], r["device"], r["key"]) for r in map(json.loads, open(part))} if part.exists() else set()
+        rows = [json.loads(line) for line in open(OUT / f"large_{a.tag}.jsonl")]
+        for d in a.devices:
+            DBS[d] = load_dbs(d)
+        with open(part, "a") as f:
+            for r in rows:
+                for key, start in (("ours_exact_cal", "qiskit_L1"), ("ours_exact_cal_fromL3", "qiskit_L3")):
+                    if r[key]["certificate"]["ok"] or (r["name"], r["device"], key) in done:
+                        continue
+                    if not re.search(a.filter, r["name"]):
+                        continue
+                    gs = load_gates(r["name"], r["device"])
+                    dev = heron() if r["device"] == "heron" else ion(r["n"])
+                    res = Optimizer(dev, DBS[r["device"]], Config(**CONFIGS["exact_cal"], patience=4, log=True)).run(
+                        gs[start], seed=0
+                    )
+                    t = time.perf_counter()
+                    cert = replay(gs[start], res.log, gs[key]) | dict(seconds=time.perf_counter() - t)
+                    v = dict(
+                        name=r["name"], device=r["device"], key=key, same_output=res.gates == gs[key], certificate=cert
+                    )
+                    print(json.dumps(v), flush=True)
+                    f.write(json.dumps(v) + "\n")
+                    f.flush()
+        raise SystemExit
     if a.mode == "verify":  # statevector re-check of the saved outputs, smallest first, one at a time
         part = OUT / f"large_verify_{a.tag}.jsonl"
         done = {(r["name"], r["device"], r["key"]) for r in map(json.loads, open(part))} if part.exists() else set()
