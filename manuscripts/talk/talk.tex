@@ -139,6 +139,7 @@
         \item Proven optimum on 35/40 of the paper's 3-qubit circuits.
         \item On Qiskit L3 (58 algorithms) it never adds 2q gates and removes 13\,\% of gates on Heron.
         \item BQSKit needs fewer 2q gates but is approximate and slower.
+        \item Up to 95 qubits, it removes 19\,\% of gates on top of Qiskit L3 (Heron), each output with a replay certificate.
         \item Paper drafted, every output verified.
       \end{itemize}}
     \end{column}
@@ -897,6 +898,72 @@
   \two{\takeaway{Resynthesis finds cheaper entangling structure. Exact rewriting keeps the unitary, removes single-qubit gates, and stacks on top.}}
 \end{frame}
 
+\begin{frame}{Result 4. Large circuits, 14--95 qubits}
+  \begin{columns}[T]
+    \begin{column}{0.52\textwidth}
+      \centering\footnotesize\renewcommand{\arraystretch}{1.15}
+      \textbf{Relative to Qiskit L3}\\[0.3em]
+      \begin{tabular}{@{}l ccc c cc@{}}
+        \toprule
+        & \multicolumn{3}{c}{\textbf{Heron} (20)} && \multicolumn{2}{c}{\textbf{ion} (23)}\\
+        \cmidrule{2-4}\cmidrule{6-7}
+        & 2q & all & ESP && 2q & all\\
+        \midrule
+        Qiskit L1 & \(\times\)1.22 & \(\times\)1.13 & \(\times\)0.43 && \(\times\)1.36 & \(\times\)1.10\\
+        TKET & \(\times\)1.06 & \(\times\)1.92 & \(\times\)0.55 && \(\times\)1.35 & \(\times\)1.81\\
+        \midrule
+        ours from L1 & \(\times\)1.04 & \good{\(\times\)0.78} & \good{\(\times\)1.27} && \good{\(\times\)0.97} & \good{\(\times\)0.63}\\
+        ours from L3 & \good{\(\times\)0.98} & \good{\(\times\)0.81} & \good{\(\times\)1.38} && \(\times\)1.00 & \(\times\)1.01\\
+        \bottomrule
+      \end{tabular}\\[0.4em]
+      {\scriptsize\color{muted}40 Nam/VOQC circuits run so far (of 45). pf1/pf2 excluded because Qiskit L3 drops their \(10^{-7}\)\,rad rotations, and 3 circuits whose certificates await a re-check. BQSKit not run at this scale.}
+    \end{column}
+    \begin{column}{0.45\textwidth}
+      \two{
+      \begin{itemize}\setlength{\itemsep}{0.3em}\small
+        \item \textbf{Stacked on L3, Heron.} 19\,\% fewer gates and 2.1\,\% fewer CZ. Fewer CZ on 18/20 circuits, never more, and ESP \(\times\)1.38.
+        \item \textbf{Ion.} Never adds an MS gate and never lowers ESP. The total rises on 11/23 (pulses traded for free \(R_z\)).
+        \item \textbf{From L1.} Fewer gates than L3 on every Heron circuit, but more CZ on 14/20, since L3's routing finds structure that local windows miss. On ions, fewer MS than L3 on 10/23 and more on none.
+      \end{itemize}}
+    \end{column}
+  \end{columns}
+  \two{\takeaway{Larger circuits leave more for exact rewriting to remove, and the guarantees hold unchanged.}}
+\end{frame}
+
+\begin{frame}{Run time}
+  \begin{columns}[T]
+    \begin{column}{0.55\textwidth}
+      \centering\footnotesize\renewcommand{\arraystretch}{1.15}
+      \textbf{Median seconds per circuit}\\[0.3em]
+      \begin{tabular}{@{}l cc c cc@{}}
+        \toprule
+        & \multicolumn{2}{c}{60-circuit suite} && \multicolumn{2}{c}{large suite}\\
+        \cmidrule{2-3}\cmidrule{5-6}
+        & Heron & ion && Heron & ion\\
+        \midrule
+        Qiskit L1 & -- & -- && 0.09 & 0.04\\
+        Qiskit L3 & 0.03 & 0.01 && 0.12 & 0.05\\
+        TKET & 0.30 & 0.86 && 7.7 & 8.6\\
+        BQSKit L2 (8 workers) & 14.7 & 4.8 && -- & --\\
+        BQSKit L3 (8 workers) & 53.6 & 11.2 && -- & --\\
+        \midrule
+        ours from L1 & 10.4 & 3.0 && \bad{639} & 105\\
+        ours from L3 & 6.0 & 4.8 && 170 & 73.9\\
+        \bottomrule
+      \end{tabular}\\[0.4em]
+      {\scriptsize\color{muted}Ours is single-threaded Python. The large suite ran five circuits at a time on eight cores.}
+    \end{column}
+    \begin{column}{0.42\textwidth}
+      \two{
+      \begin{itemize}\setlength{\itemsep}{0.4em}\small
+        \item Small circuits, seconds, between BQSKit L2 and L3.
+        \item Large circuits, minutes, and up to 2.5\,h for one Heron circuit.
+        \item This is the main cost at scale. Non-overlapping windows could be swept in parallel, which is not done yet.
+      \end{itemize}}
+    \end{column}
+  \end{columns}
+\end{frame}
+
 \begin{frame}{Where do the gains come from? (honest accounting)}
   \begin{columns}[T]
     \begin{column}{0.48\textwidth}
@@ -1002,6 +1069,37 @@
   \end{columns}
 \end{frame}
 
+\begin{frame}{Verification beyond 25 qubits, replay certificates}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \textbf{The problem}
+      \begin{itemize}\setlength{\itemsep}{0.3em}\small
+        \item Statevector checks end near 25 qubits.
+        \item A decision-diagram checker (MQT QCEC) returned no result on routed 23-qubit adders, and its simulation fallback ran out of memory.
+      \end{itemize}
+      \vspace{0.4em}
+      \textbf{The idea}
+      \begin{itemize}\setlength{\itemsep}{0.3em}\small
+        \item The optimiser logs every accepted step, the swaps of each shuffle and each window replacement.
+        \item An independent checker replays the log. Swaps must commute, replacements must equal the old window times a scalar, all checked as small matrices on a few wires.
+        \item The final phase repair is checked patch by patch, and the scalars must multiply to 1.
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \two{
+      \textbf{On the large suite}
+      \begin{itemize}\setlength{\itemsep}{0.3em}\small
+        \item 151/156 outputs certified, up to 309,273 steps.
+        \item At most 3.8\,s per certificate (median 0.12\,s), against hours of optimisation.
+        \item Summed residuals \(<10^{-7}\).
+        \item 7 were rejected by the first checker, which checked the whole phase repair as one block on too many wires. 2 re-checked and accepted, 5 still to re-check.
+        \item Uses none of the optimiser's databases or rules, and logging does not change the output.
+      \end{itemize}}
+    \end{column}
+  \end{columns}
+  \two{\takeaway{Equivalence checking of the whole circuit becomes many tiny local checks, so cost grows with the steps, not the width.}}
+\end{frame}
+
 % ################################################################ PART VII
 \partslide{VII}{Wrap-up}{Lessons, limitations, critique of the original paper, and next steps.}
 
@@ -1044,8 +1142,8 @@
       \two{
       \begin{itemize}\setlength{\itemsep}{0.6em}
         \item \textbf{Baselines.} BQSKit (approximate) needs fewer 2q gates than we do. Quartz/QUESO were not run, and Qiskit, TKET and BQSKit use one seed.
-        \item \textbf{Local only.} Layout and routing are Qiskit's, windows have \(\le3\) qubits, and the code is single-threaded Python (median 10\,s, max 180\,s per circuit vs.\ \(<\)1\,s for Qiskit).
-        \item \textbf{Scope.} Circuits up to \(\sim\)1,000 gates, and no mid-circuit measurement or feed-forward.
+        \item \textbf{Local only.} Layout and routing are Qiskit's, windows have \(\le3\) qubits, and the code is single-threaded Python (median 10\,s per circuit on the 60-circuit suite, up to 2.5\,h on 95 qubits, vs.\ \(<\)1\,s for Qiskit).
+        \item \textbf{Scope.} Circuits up to 95 qubits and \(\sim\)4,500 gates. The 5 largest Nam circuits and 5 certificate re-checks are still to run. No mid-circuit measurement or feed-forward.
       \end{itemize}}
     \end{column}
   \end{columns}
@@ -1093,6 +1191,7 @@
           \item Proven optimum on 35/40 of the paper's 3-qubit circuits without Clifford knowledge.
           \item On 58 real algorithms, stacked on Qiskit L3, it never adds 2q gates, never lowers ESP and removes 13\,\% of gates on Heron.
           \item BQSKit's approximate resynthesis needs fewer 2q gates. Exact rewriting keeps the unitary, removes more single-qubit gates and is faster. Run after BQSKit, it removes a further 16\,\% of gates on Heron.
+          \item Up to 95 qubits, it removes 19\,\% of the gates on top of Qiskit L3 on Heron, verified by replay certificates.
         \end{itemize}
       \end{exampleblock}}
     \end{column}

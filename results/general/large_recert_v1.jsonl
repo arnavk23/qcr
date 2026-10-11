@@ -1,0 +1,2 @@
+{"name": "nam/gf2^5_mult", "device": "heron", "key": "ours_exact_cal_fromL3", "same_output": true, "certificate": {"ok": true, "steps": 11734, "err": 1.7807113592969505e-10, "phase": -1.110223024625156e-16, "seconds": 0.21426280500054418}}
+{"name": "nam/qcla_com_7", "device": "heron", "key": "ours_exact_cal", "same_output": true, "certificate": {"ok": true, "steps": 7296, "err": 2.967127491348953e-10, "phase": -4.44089209850062e-16, "seconds": 0.25427562200093234}}
