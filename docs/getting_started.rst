@@ -6,8 +6,14 @@ Installation
 
 .. code-block:: bash
 
+   pip install git+https://github.com/arnavk23/qcr.git   # latest version
+
+   git clone https://github.com/arnavk23/qcr.git && cd qcr   # development version
    pip install -e .                   # library
-   pip install -e ".[experiments]"    # + FakeTorino calibration, Aer, TKET, plotting
+   pip install -e ".[experiments]"    # + FakeTorino calibration, Aer, TKET, BQSKit, QCEC, plotting
+   pip install -e ".[dev]"            # + tests, lint, docs
+
+Linux and macOS are supported, with Python 3.10 to 3.14 and Qiskit 1.2 or newer.
 
 Optimising a circuit
 --------------------
@@ -35,6 +41,22 @@ Circuits are lists of :class:`qcr.Gate` over a device's native gates. Qiskit cir
    U, V = qcr.circuit_unitary(gates, 3), qcr.circuit_unitary(result.gates, 3)
    assert np.allclose(U, V, atol=1e-9)        # equal including global phase
    print(len(gates), "->", len(result.gates))  # 31 -> 23
+
+Certifying a result
+-------------------
+
+Comparing unitaries only works for a few qubits. For wide circuits, run the optimiser with ``log=True`` and replay
+the log with :func:`qcr.certify.replay`. It checks every accepted step on its own few wires, plus the global phase,
+without trusting the optimiser's databases or commutation rules. Logging never changes the output.
+
+.. code-block:: python
+
+   from qcr.certify import replay
+
+   opt = qcr.Optimizer(dev, dbs, qcr.Config(mode="exact", cost="calibrated", log=True))
+   result = opt.run(gates)
+   cert = replay(gates, result.log, result.gates)
+   assert cert["ok"]   # cert also reports the number of steps and a rounding-error bound
 
 Databases
 ---------
