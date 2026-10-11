@@ -11,6 +11,10 @@ API reference
    qcr.hardware
    qcr.gates
    qcr.verify
+   qcr.certify
+   qcr.layout
+   qcr.cliffordt
+   qcr.noise
    qcr.tableau
    qcr.exact
    qcr.compute_graph

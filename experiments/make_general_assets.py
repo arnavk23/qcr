@@ -223,6 +223,7 @@ for cfg in ("T3", "T4", "NJP_ion", "NJP_nisq", "T5"):
     op = [gap[(cfg, r["seed"])]["opt"] / paper(r) for r in P if (cfg, r["seed"]) in gap]
     bars.append((cfg, gen, st.mean(cw) if cw else None, st.mean(op) if op else None))
 
+
 # ---------------------------------------------------------------- BQSKit baseline
 def bq_macros():
     for dev, D in DEV.items():
@@ -236,7 +237,10 @@ def bq_macros():
             cmd(f"{D}BqMoreTwoqThan{nm}", sum(b(r)["twoq"] > r[k]["twoq"] for r in R))
             cmd(f"{D}BqHigherEspThan{nm}", sum(b(r)["success"] > r[k]["success"] + 1e-12 for r in R))
             cmd(f"{D}BqFewerAllThan{nm}", sum(b(r)["total"] < r[k]["total"] for r in R))
-        cmd(f"{D}BqAllOverOurs", f"{sum(b(r)['total'] for r in R) / sum(r['ours_exact_cal_fromL3']['total'] for r in R):.2f}")
+        cmd(
+            f"{D}BqAllOverOurs",
+            f"{sum(b(r)['total'] for r in R) / sum(r['ours_exact_cal_fromL3']['total'] for r in R):.2f}",
+        )
         cmd(f"{D}BqMeanSec", f"{st.mean(b(r)['seconds'] for r in A):.0f}")
         cmd(f"{D}BqLTwoMeanSec", f"{st.mean(r['bqskit_L2']['seconds'] for r in A):.0f}")
         cmd(f"{D}OursMeanSec", f"{st.mean(r['ours_exact_cal']['seconds'] for r in A):.0f}")
@@ -248,7 +252,10 @@ def bq_macros():
         if len(S) == len(R):
             s_, i_ = (lambda r: r["bqskit_L3_ours"]), (lambda r: r["bqskit_L3_stackin"])
             cmd(f"{D}StackAllOverBq", f"{sum(s_(r)['total'] for r in R) / sum(i_(r)['total'] for r in R):.2f}")
-            cmd(f"{D}StackAllSaved", f"{100 * (1 - sum(s_(r)['total'] for r in R) / sum(i_(r)['total'] for r in R)):.0f}\\%")
+            cmd(
+                f"{D}StackAllSaved",
+                f"{100 * (1 - sum(s_(r)['total'] for r in R) / sum(i_(r)['total'] for r in R)):.0f}\\%",
+            )
             cmd(f"{D}StackTwoqOverBq", f"{sum(s_(r)['twoq'] for r in R) / sum(i_(r)['twoq'] for r in R):.3f}")
             cmd(f"{D}StackEspOverBq", f"{gmratio(R, 'bqskit_L3_ours', 'success', base='bqskit_L3_stackin'):.3f}")
             cmd(f"{D}StackMaxErr", sci(max(s_(r)["verify"] for r in S if s_(r)["verify"] is not None)))
@@ -264,8 +271,24 @@ def bq_macros():
             cmd(f"{D}StackTwoq", sum(s_(r)["twoq"] for r in R))
             cmd(f"{D}StackAll", sum(s_(r)["total"] for r in R))
         else:  # stacking run not finished: placeholders keep the paper compiling
-            for nm in ("AllOverBq", "TwoqOverBq", "EspOverBq", "MaxErr", "TotalUp", "TwoqDown", "TwoqUp", "EspUp",
-                       "EspDown", "MeanSec", "AllSaved", "Unverified", "InTwoq", "InAll", "Twoq", "All"):
+            for nm in (
+                "AllOverBq",
+                "TwoqOverBq",
+                "EspOverBq",
+                "MaxErr",
+                "TotalUp",
+                "TwoqDown",
+                "TwoqUp",
+                "EspUp",
+                "EspDown",
+                "MeanSec",
+                "AllSaved",
+                "Unverified",
+                "InTwoq",
+                "InAll",
+                "Twoq",
+                "All",
+            ):
                 cmd(f"{D}Stack{nm}", "??")
     return True
 

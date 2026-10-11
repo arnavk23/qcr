@@ -8,7 +8,9 @@ from pathlib import Path
 
 EXT = Path(__file__).resolve().parents[1] / "manuscripts" / "extension"
 src = (EXT / "extension_paper.tex").read_text()
-pre = src[: src.index(r"\begin{document}")].replace(r"\raggedbottom", r"\usepackage{xr}\externaldocument{extension_paper}")
+pre = src[: src.index(r"\begin{document}")].replace(
+    r"\raggedbottom", r"\usepackage{xr}\externaldocument{extension_paper}"
+)
 body = src[src.index(r"\begin{document}") :]
 appendix_at = body.find(r"\begin{appendices}")
 
@@ -23,7 +25,9 @@ for m in pat.finditer(body):
         out.append(f"\\addcontentsline{{toc}}{{section}}{{{sec}}}\\markboth{{{sec}}}{{}}")
         out.append(f"\\begin{{center}}\\large\\bfseries {sec}\\end{{center}}")
         sec = None
-    out.append(env.replace(r"\begin{figure}[p]", r"\begin{figure}[h!]").replace(r"\begin{table}[p]", r"\begin{table}[h!]"))
+    out.append(
+        env.replace(r"\begin{figure}[p]", r"\begin{figure}[h!]").replace(r"\begin{table}[p]", r"\begin{table}[h!]")
+    )
     out.append(r"\clearpage")
 
 doc = (

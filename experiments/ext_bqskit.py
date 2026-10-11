@@ -131,8 +131,13 @@ def job(args, compiler=None, stack=False):
                 legal=all(dev.is_native(x) for x in r.gates),
                 verify=verify_exact(g, r.gates, "exact", False, r.error_bound),
             )
-    print(json.dumps({"name": name, "dev": devname} | {k: row[k].get("twoq", row[k].get("error")) for k in row
-                                                        if k.startswith(("qiskit", "bqskit"))}), flush=True)
+    print(
+        json.dumps(
+            {"name": name, "dev": devname}
+            | {k: row[k].get("twoq", row[k].get("error")) for k in row if k.startswith(("qiskit", "bqskit"))}
+        ),
+        flush=True,
+    )
     return row
 
 
@@ -145,9 +150,18 @@ def njp_job(kind, seed, compiler, level=4):
     t = time.perf_counter()
     g, pi, pf, act = bqskit_opt(circ, None, level, seed=seed, compiler=compiler, gate_set=gs)
     sec = time.perf_counter() - t
-    return dict(kind=kind, seed=seed, level=level, original=counts(circ), counts=counts(g), total=len(g),
-                twoq=sum(len(x.qubits) == 2 for x in g), seconds=sec, verify=verify_mapped(circ, g, act, pi, pf),
-                permuted=pi != list(range(len(act))) or pf != list(range(len(act))))
+    return dict(
+        kind=kind,
+        seed=seed,
+        level=level,
+        original=counts(circ),
+        counts=counts(g),
+        total=len(g),
+        twoq=sum(len(x.qubits) == 2 for x in g),
+        seconds=sec,
+        verify=verify_mapped(circ, g, act, pi, pf),
+        permuted=pi != list(range(len(act))) or pf != list(range(len(act))),
+    )
 
 
 DBS = {}

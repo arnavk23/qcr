@@ -242,11 +242,11 @@ def _figure_rows(rows, name, width=W):
 
 def examples():
     """Input and output circuits: a paper benchmark circuit, a real algorithm on Heron, a planted Clifford+T one."""
+    import gen_bench as gb
+    from ext_gap import oracle
     from qiskit import transpile
     from qiskit.transpiler import CouplingMap
 
-    import gen_bench as gb
-    from ext_gap import oracle
     from qcr.compute_graph import cached_build
     from qcr.gates import make_pool, random_circuit
     from qcr.general import Config, Optimizer
@@ -421,7 +421,10 @@ def hw_flow():
     B = J("general/bench_v2.json")
     EX = {"nam/pf1_10", "nam/pf2_10"}
     # BQSKit (ext_bqskit.py) on the same level-1 inputs, merged by (name, device)
-    for fn, src, dst in (("bqskit_v2.jsonl", "bqskit_L3", "bqskit_L3"), ("bqskit_stack_v1.jsonl", "bqskit_L3+ours", "bq_ours")):
+    for fn, src, dst in (
+        ("bqskit_v2.jsonl", "bqskit_L3", "bqskit_L3"),
+        ("bqskit_stack_v1.jsonl", "bqskit_L3+ours", "bq_ours"),
+    ):
         p = RESULTS / "general" / fn
         rows = {(r["name"], r["device"]): r for r in map(json.loads, open(p))} if p.exists() else {}
         for r in B:
