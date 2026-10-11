@@ -1,0 +1,80 @@
+<frozen site>:107: RuntimeWarning: Unexpected value in sys.prefix, expected /home/arnav/Downloads/ankur/.venv, got /home/arnav/Downloads/ankur/experiments/../.venv
+<frozen site>:107: RuntimeWarning: Unexpected value in sys.exec_prefix, expected /home/arnav/Downloads/ankur/.venv, got /home/arnav/Downloads/ankur/experiments/../.venv
+njp: 2 done, 198 to run
+/home/arnav/.local/lib/python3.14/site-packages/bqskit/passes/synthesis/leap.py:358: SmallSampleWarning: One or more sample arguments is too small; all returned values will be NaN. See documentation for sample size requirements.
+  m, y_int, _, _, _ = linregress(best_layers, best_dists)
+/home/arnav/.local/lib/python3.14/site-packages/bqskit/passes/synthesis/leap.py:358: SmallSampleWarning: One or more sample arguments is too small; all returned values will be NaN. See documentation for sample size requirements.
+  m, y_int, _, _, _ = linregress(best_layers, best_dists)
+/home/arnav/.local/lib/python3.14/site-packages/bqskit/passes/synthesis/leap.py:358: SmallSampleWarning: One or more sample arguments is too small; all returned values will be NaN. See documentation for sample size requirements.
+  m, y_int, _, _, _ = linregress(best_layers, best_dists)
+/home/arnav/.local/lib/python3.14/site-packages/bqskit/passes/synthesis/leap.py:358: SmallSampleWarning: One or more sample arguments is too small; all returned values will be NaN. See documentation for sample size requirements.
+  m, y_int, _, _, _ = linregress(best_layers, best_dists)
+{"kind": "ion", "seed": 1, "total": 113, "twoq": 25, "seconds": 110.19189333900067, "verify": 4.861136958950729e-08}
+{"kind": "nisq", "seed": 1, "total": 141, "twoq": 29, "seconds": 156.57076421199963, "verify": 2.9647738051387118e-08}
+{"kind": "ion", "seed": 2, "total": 101, "twoq": 24, "seconds": 112.95271966799919, "verify": 2.2047113001386823e-08}
+{"kind": "nisq", "seed": 2, "total": 182, "twoq": 40, "seconds": 200.00904782400175, "verify": 2.2067174547971426e-08}
+{"kind": "ion", "seed": 3, "total": 115, "twoq": 28, "seconds": 122.87968974999967, "verify": 2.7385636742008403e-08}
+{"kind": "nisq", "seed": 3, "total": 205, "twoq": 43, "seconds": 189.86823462499888, "verify": 3.444304419534575e-08}
+{"kind": "ion", "seed": 4, "total": 90, "twoq": 21, "seconds": 121.17417519999799, "verify": 1.1870021633068611e-08}
+<frozen site>:107: RuntimeWarning: Unexpected value in sys.prefix, expected /home/arnav/Downloads/ankur/.venv, got /home/arnav/Downloads/ankur/experiments/../.venv
+<frozen site>:107: RuntimeWarning: Unexpected value in sys.exec_prefix, expected /home/arnav/Downloads/ankur/.venv, got /home/arnav/Downloads/ankur/experiments/../.venv
+njp: 9 done, 191 to run
+/home/arnav/.local/lib/python3.14/site-packages/bqskit/passes/synthesis/leap.py:358: SmallSampleWarning: One or more sample arguments is too small; all returned values will be NaN. See documentation for sample size requirements.
+  m, y_int, _, _, _ = linregress(best_layers, best_dists)
+/home/arnav/.local/lib/python3.14/site-packages/bqskit/passes/synthesis/leap.py:358: SmallSampleWarning: One or more sample arguments is too small; all returned values will be NaN. See documentation for sample size requirements.
+  m, y_int, _, _, _ = linregress(best_layers, best_dists)
+/home/arnav/.local/lib/python3.14/site-packages/bqskit/passes/synthesis/leap.py:358: SmallSampleWarning: One or more sample arguments is too small; all returned values will be NaN. See documentation for sample size requirements.
+  m, y_int, _, _, _ = linregress(best_layers, best_dists)
+/home/arnav/.local/lib/python3.14/site-packages/bqskit/passes/synthesis/leap.py:358: SmallSampleWarning: One or more sample arguments is too small; all returned values will be NaN. See documentation for sample size requirements.
+  m, y_int, _, _, _ = linregress(best_layers, best_dists)
+{"kind": "nisq", "seed": 4, "total": 137, "twoq": 26, "seconds": 187.998158344, "verify": 3.5775345711549764e-08}
+{"kind": "ion", "seed": 5, "total": 125, "twoq": 27, "seconds": 168.194299441, "verify": 3.2382852496652136e-08}
+{"kind": "nisq", "seed": 5, "total": 176, "twoq": 37, "seconds": 214.92617736599993, "verify": 1.8702498334876475e-08}
+{"kind": "ion", "seed": 6, "total": 133, "twoq": 33, "seconds": 190.951438522, "verify": 4.339091853953191e-08}
+{"kind": "nisq", "seed": 6, "total": 206, "twoq": 44, "seconds": 219.26565719200016, "verify": 4.581313001480516e-08}
+{"kind": "ion", "seed": 7, "total": 123, "twoq": 27, "seconds": 116.83895784300012, "verify": 2.8852894725571387e-08}
+{"kind": "nisq", "seed": 7, "total": 141, "twoq": 28, "seconds": 225.62739084200007, "verify": 5.810046522308295e-08}
+{"kind": "ion", "seed": 8, "total": 105, "twoq": 23, "seconds": 106.13470228999995, "verify": 5.0873997794754655e-08}
+{"kind": "nisq", "seed": 8, "total": 197, "twoq": 41, "seconds": 220.8240465870001, "verify": 4.336499438503149e-08}
+{"kind": "ion", "seed": 9, "total": 104, "twoq": 22, "seconds": 169.60184228399999, "verify": 1.4537336574418885e-08}
+{"kind": "nisq", "seed": 9, "total": 170, "twoq": 35, "seconds": 252.85518358199988, "verify": 2.8671491663657024e-08}
+{"kind": "ion", "seed": 10, "total": 128, "twoq": 28, "seconds": 151.49687287899997, "verify": 3.507960752120427e-08}
+{"kind": "nisq", "seed": 10, "total": 168, "twoq": 35, "seconds": 152.12300491399992, "verify": 1.797184785377462e-08}
+{"kind": "ion", "seed": 11, "total": 146, "twoq": 32, "seconds": 138.19238320499971, "verify": 5.3299777674042475e-08}
+{"kind": "nisq", "seed": 11, "total": 124, "twoq": 29, "seconds": 191.02522545199963, "verify": 2.4902826348047812e-08}
+{"kind": "ion", "seed": 12, "total": 162, "twoq": 40, "seconds": 184.1324136620001, "verify": 3.291904605548251e-08}
+{"kind": "nisq", "seed": 12, "total": 224, "twoq": 45, "seconds": 249.2996133659999, "verify": 3.860082213929325e-08}
+{"kind": "ion", "seed": 13, "total": 92, "twoq": 20, "seconds": 117.73322421300009, "verify": 2.3406517200828273e-08}
+{"kind": "nisq", "seed": 13, "total": 170, "twoq": 37, "seconds": 210.03443229999993, "verify": 2.782604915334644e-08}
+{"kind": "ion", "seed": 14, "total": 110, "twoq": 26, "seconds": 123.13845823800011, "verify": 2.165669310893108e-08}
+{"kind": "nisq", "seed": 14, "total": 204, "twoq": 44, "seconds": 237.59695408400012, "verify": 2.9259388819876123e-08}
+{"kind": "ion", "seed": 15, "total": 115, "twoq": 25, "seconds": 152.89472912099973, "verify": 2.0747504190159164e-08}
+{"kind": "nisq", "seed": 15, "total": 139, "twoq": 28, "seconds": 161.64495259900013, "verify": 2.2791713974184505e-08}
+{"kind": "ion", "seed": 16, "total": 164, "twoq": 36, "seconds": 178.16233655200085, "verify": 6.508275341576851e-08}
+{"kind": "nisq", "seed": 16, "total": 184, "twoq": 38, "seconds": 246.41338135200021, "verify": 2.0724911214381948e-08}
+{"kind": "ion", "seed": 17, "total": 82, "twoq": 20, "seconds": 63.456082122000225, "verify": 2.3285916221544105e-08}
+{"kind": "nisq", "seed": 17, "total": 114, "twoq": 25, "seconds": 109.11992384400037, "verify": 1.6158609836746834e-08}
+{"kind": "ion", "seed": 18, "total": 91, "twoq": 20, "seconds": 137.92133049099994, "verify": 2.144103649625679e-08}
+{"kind": "nisq", "seed": 18, "total": 84, "twoq": 18, "seconds": 146.25512623299983, "verify": 1.6698247012678205e-08}
+{"kind": "ion", "seed": 19, "total": 121, "twoq": 28, "seconds": 118.80175878599948, "verify": 3.0732135266391174e-08}
+{"kind": "nisq", "seed": 19, "total": 180, "twoq": 40, "seconds": 175.82686040600038, "verify": 4.106068978929225e-08}
+{"kind": "ion", "seed": 20, "total": 120, "twoq": 29, "seconds": 136.4672593839996, "verify": 3.193643979261286e-08}
+{"kind": "nisq", "seed": 20, "total": 150, "twoq": 35, "seconds": 198.0918027079997, "verify": 3.499498742414492e-08}
+{"kind": "ion", "seed": 21, "total": 147, "twoq": 31, "seconds": 133.11298681300013, "verify": 2.5671655142783585e-08}
+{"kind": "nisq", "seed": 21, "total": 212, "twoq": 51, "seconds": 218.2476737220004, "verify": 4.23985193611605e-08}
+{"kind": "ion", "seed": 22, "total": 129, "twoq": 32, "seconds": 117.15768115999981, "verify": 2.5783924289743144e-08}
+{"kind": "nisq", "seed": 22, "total": 180, "twoq": 38, "seconds": 199.9170109759998, "verify": 2.6077410681754066e-08}
+{"kind": "ion", "seed": 23, "total": 143, "twoq": 33, "seconds": 130.61491387299975, "verify": 2.0051532323883253e-08}
+{"kind": "nisq", "seed": 23, "total": 129, "twoq": 28, "seconds": 196.33079283000006, "verify": 3.5866555316767704e-08}
+{"kind": "ion", "seed": 24, "total": 97, "twoq": 23, "seconds": 80.49422252000022, "verify": 2.6675033127554757e-08}
+{"kind": "nisq", "seed": 24, "total": 173, "twoq": 31, "seconds": 182.42497895799988, "verify": 2.2588638632552907e-08}
+{"kind": "ion", "seed": 25, "total": 134, "twoq": 33, "seconds": 155.86814913099988, "verify": 2.9429946583331267e-08}
+{"kind": "nisq", "seed": 25, "total": 152, "twoq": 35, "seconds": 160.10327897699972, "verify": 2.5760224276296052e-08}
+{"kind": "ion", "seed": 26, "total": 91, "twoq": 21, "seconds": 90.82884290499987, "verify": 2.300112137069061e-08}
+{"kind": "nisq", "seed": 26, "total": 139, "twoq": 30, "seconds": 159.82788489799987, "verify": 2.0084194097291857e-08}
+{"kind": "ion", "seed": 27, "total": 140, "twoq": 31, "seconds": 116.55870682600016, "verify": 2.9301916506777185e-08}
+{"kind": "nisq", "seed": 27, "total": 181, "twoq": 39, "seconds": 228.4474621290001, "verify": 3.858104008346388e-08}
+{"kind": "ion", "seed": 28, "total": 149, "twoq": 33, "seconds": 157.57734060300118, "verify": 2.70000908514307e-08}
+{"kind": "nisq", "seed": 28, "total": 160, "twoq": 34, "seconds": 245.67498234699997, "verify": 3.039195491551317e-08}
+{"kind": "ion", "seed": 29, "total": 115, "twoq": 26, "seconds": 104.49027659999956, "verify": 1.7789713551174702e-08}
+{"kind": "nisq", "seed": 29, "total": 183, "twoq": 39, "seconds": 192.13243064900053, "verify": 3.848952465878529e-08}

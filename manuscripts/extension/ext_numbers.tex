@@ -65,22 +65,36 @@
 \newcommand{\QFourIbmTwoQ}{47.3}
 \newcommand{\FourImprovementIbm}{45\%}
 \newcommand{\QThreeIbm}{104.0}
+\newcommand{\CWBqIonN}{30}
+\newcommand{\CWBqIonTwoQ}{27.0}
+\newcommand{\CWBqIonFewer}{16}
+\newcommand{\CWBqIonMore}{13}
+\newcommand{\CWBqIonTotalRatio}{0.46}
+\newcommand{\CWBqIbmN}{30}
+\newcommand{\CWBqIbmTwoQ}{28.1}
+\newcommand{\CWBqIbmFewer}{25}
+\newcommand{\CWBqIbmMore}{4}
+\newcommand{\CWBqIbmTotalRatio}{0.37}
 \newcommand{\GapFindings}{\paragraph{Findings.} (1) On its own benchmark the original method finishes \GapFactorIon$\times$ (ion trap) and
 \GapFactorIbm$\times$ (IBM-style) above the exact optimum. Our faithful port reproduces the paper's single-circuit number
 (\FaithIon\ vs.\ 45 gates), so the gap is a property of the method, not of our implementation. (2) EW-$w$ reaches the
 \emph{proven} optimum on all 20 circuits once $w\ge\WStarIon$ (ion trap) or $w\ge\WStarIbm$ (IBM-style), in a fraction of a second.
-This is the cascade of Prop.~\ref{prop:cascade}: the transition is sharp, between $w=8$ and $w=12$ (ion trap) or $w=16$ (IBM-style). (3) The grid (Fig.~\ref{fig:grid})
+This is the cascade of Prop.~\ref{prop:cascade}. The transition is sharp, between $w=8$ and $w=12$ (ion trap) or $w=16$ (IBM-style). (3) The grid (Fig.~\ref{fig:grid})
 shows that the \emph{database radius}, not the window or the search strategy, is the binding constraint. At $r=5$, enlarging the
 window from 8 to 16 lowers the mean excess only from 46 to 43 gates. At $w=8$, raising $r$ from 5 to $\infty$ lowers it from 46 to 18,
-and for $w\ge12$ with $r\ge8$ the excess is at most 2 gates (ion trap; IBM-style: from 72 to $\le$\,8). Theorem~\ref{thm:exact} predicts
-both requirements: windows long enough \emph{and} a database deep enough. The original method is limited by the second.
+and for $w\ge12$ with $r\ge8$ the excess is at most 2 gates (ion trap, and from 72 to $\le$\,8 for the IBM-style set). Theorem~\ref{thm:exact} predicts
+both requirements, windows long enough \emph{and} a database deep enough. The original method is limited by the second.
 }
 \newcommand{\FourFindings}{\paragraph{Findings.} (1) \emph{Convexity matters more than anything else at $n\ge4$.} With the same exact 3-qubit
 oracle, contiguous windows (EW-16) give \EWFourIon\ (ion trap) and \EWFourIbm\ (IBM-style) gates, no better than the
 published method. With DAG-convex windows (CW-24) the same oracle gives \CWFourIon\ and \CWFourIbm\ gates, i.e.\
 \FourImprovementIon\ and \FourImprovementIbm\ fewer than the published results, in about \CWFourSec\,s per circuit. (2)
-Two-qubit counts drop from 43 (published) to \CWFourIonTwoQ\ RXX and \CWFourIbmTwoQ\ CZ, on par with BQSKit L4 for the ion trap (28) and
-below it for the IBM-style set (37), although CW optimises total length, not two-qubit count. (3) The certified lower bounds
+Two-qubit counts drop from 43 (published) to \CWFourIonTwoQ\ RXX and \CWFourIbmTwoQ\ CZ, although CW optimises
+total length, not two-qubit count. On the first \CWBqIonN\ circuits, where we also ran BQSKit level~4
+(Table~\ref{tab:four}), CW-24 averages \CWBqIonTwoQ\ RXX against BQSKit's \BqFourIonTwoQ\ (fewer on \CWBqIonFewer, more
+on \CWBqIonMore) and \CWBqIbmTwoQ\ CZ against \BqFourIbmTwoQ\ (fewer on \CWBqIbmFewer, more on \CWBqIbmMore), with
+$\times$\CWBqIonTotalRatio\ and $\times$\CWBqIbmTotalRatio\ of BQSKit's total gates and exact outputs. The journal
+reports 28 and 37 two-qubit gates for BQSKit. (3) The certified lower bounds
 (\LBFourIon, \LBFourIbm) leave a gap of at most a factor $\approx5$. Closing it, either by tightening the bound (deeper spheres,
 meet-in-the-middle) or by better upper bounds (4-qubit oracles via symmetry reduction), is an open problem that our framework
 makes precise.

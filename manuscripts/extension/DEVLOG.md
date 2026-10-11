@@ -37,7 +37,7 @@
 
 ## Status
 - [x] Reproduction, Clifford ground truth, CW-sem on paper benchmarks (running)
-- [x] hardware.py  - [x] general.py v2  - [x] baselines (Qiskit L1/L3, TKET; BQSKit not installed)
+- [x] hardware.py  - [x] general.py v2  - [x] baselines (Qiskit L1/L3, TKET, BQSKit L2/L3)
 - [x] benchmarks (run 2 `bench_v2.json`, paper benchmarks `general_paper_bench_*.json`)
 - [x] objective selection (calibrated)  - [x] paper rewrite (2026-10-03, `extension_paper.tex`; v1 kept as
   superseded Clifford-only draft removed; numbers/tables/figs from `experiments/make_general_assets.py`)
@@ -82,3 +82,31 @@
     re-verified with `scripts/verify_large.py` (`results/general/verify_large_*.json`).
   * Suite is 2-12 qubits, <= 1008 gates. Noisy TVD uses exact density-matrix probabilities (no shot noise),
     gate errors only (no readout/idle/crosstalk); ion sim charges rz 3e-5 while the cost model treats it as free.
+
+## Paused 2026-10-03 (night) -- journal version in progress
+Done: Springer Nature conversion (`extension_paper.tex`, sn-jnl.cls, refs.bib); new figures
+(`experiments/make_paper_figs.py`: fig_paper_flow, fig_hw_flow, fig_compute_graph, fig_growth, fig_example_paper,
+fig_example_heron); new modules qcr/layout.py (open problem 4), qcr/cliffordt.py (open problem 2), qcr/noise.py;
+tests for them (19 pass). Open problem 5 (real hardware) dropped at the user's request.
+Fixed: Device.is_native rejected rotations by pi (angle compared without wrapping); no earlier result affected.
+
+Interrupted runs (both resume from their .jsonl and skip finished jobs):
+- open problem 2: 101/160 jobs in `results/ext_cliffordt.jsonl`
+  -> `cd experiments && ../.venv/bin/python ext_cliffordt.py`   (rebuilds the radius-5 ball, ~8 min, then 59 jobs)
+- open problem 4: 8/58 circuits in `results/general/bench_layout.jsonl`
+  -> `cd experiments && ../.venv/bin/python gen_layout.py layout`   (~5 min per circuit on 4 workers)
+Then: `python make_new_assets.py` (fills the ?? in new_numbers.tex),
+`python make_paper_figs.py growth examples cliffordt layout`, rebuild the paper (pdflatex, bibtex, pdflatex x2),
+update tests/docs/release notes/README, commit.
+- BQSKit baseline (2026-10-06): bqskit 1.2.1 installs fine (`pip install bqskit`, abi3 wheel for bqskitrs, works on
+  py3.14). `experiments/ext_bqskit.py` compiles the same qiskit_L1 input at levels 2 and 3 on the active-qubit
+  subgraph (Heron, dead couplers removed) / all-to-all (ion); output mapped back to physical qubits, checked up to
+  phase and BQSKit's final permutation (results/general/bqskit_v2.jsonl). BQSKit is approximate (~1e-8 per circuit).
+  Smoke test: BQSKit L3 has fewer 2q gates than ours on some Heron circuits (qft_4 17 vs 23, grid_4q 39 vs 47) but
+  more total gates.
+- BQSKit full run (`bqskit_v2.jsonl`, 120/120 rows, ~3.5 h, no errors, all legal). Sums over 60 circuits
+  (2q / all / geo-mean ESP): Heron ours-L1 3339/14500/0.740, ours-L3 2830/13418/0.652, BQSKit L2 2985/21879/0.736,
+  BQSKit L3 2533/19224/0.765; ion ours-L1 1483/6216/0.9746, ours-L3 1376/7430/0.9761, BQSKit L2 1325/5485/0.9773,
+  BQSKit L3 1302/5250/0.9777. BQSKit L3 beats us on 2q (Heron 41/60 vs ours-L1) and on ion everything; we keep
+  Heron total gates (x0.70) and exactness. BQSKit errors up to 1.4e-4 (nam/pf2_10 ion: drops the ~1e-7 rotations
+  like Qiskit L3; hhl_n7, cont_4q ~1e-4); pf2_10 Heron unverified (>16 active qubits). Paper claims need revising.

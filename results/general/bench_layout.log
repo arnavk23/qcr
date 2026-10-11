@@ -1,0 +1,19 @@
+<frozen site>:107: RuntimeWarning: Unexpected value in sys.prefix, expected /home/arnav/Downloads/ankur/.venv, got /home/arnav/Downloads/ankur/experiments/../.venv
+<frozen site>:107: RuntimeWarning: Unexpected value in sys.exec_prefix, expected /home/arnav/Downloads/ankur/.venv, got /home/arnav/Downloads/ankur/experiments/../.venv
+skip hhl_n10 QASM2ParseError
+skip qasmbench/inverseqft_n4 classical control flow
+skip qasmbench/ipea_n2 classical control flow
+skip qasmbench/qec_sm_n5 classical control flow
+skip qasmbench/shor_n5 classical control flow
+skip vqe_uccsd_n4 QASM2ParseError
+skip vqe_uccsd_n6 QASM2ParseError
+skip vqe_uccsd_n8 QASM2ParseError
+0 done, 58 to run
+{"name": "nam/barenco_tof_3", "esp_l3": 0.4974, "esp_joint": 0.8835, "choice": "coupling/seed1", "s": 327}
+{"name": "nam/mod5_4", "esp_l3": 0.4869, "esp_joint": 0.8745, "choice": "coupling/seed1", "s": 367}
+{"name": "nam/barenco_tof_4", "esp_l3": 0.684, "esp_joint": 0.7609, "choice": "noise-aware/seed1", "s": 803}
+{"name": "nam/barenco_tof_5", "esp_l3": 0.5661, "esp_joint": 0.6294, "choice": "coupling/seed1", "s": 1140}
+{"name": "nam/tof_3", "esp_l3": 0.8641, "esp_joint": 0.9179, "choice": "noise-aware/seed1", "s": 194}
+{"name": "nam/mod_mult_55", "esp_l3": 0.6663, "esp_joint": 0.7227, "choice": "coupling/seed0", "s": 771}
+{"name": "nam/tof_4", "esp_l3": 0.1769, "esp_joint": 0.8616, "choice": "noise-aware/seed0", "s": 340}
+{"name": "nam/tof_5", "esp_l3": 0.7499, "esp_joint": 0.7878, "choice": "noise-aware/seed0", "s": 433}

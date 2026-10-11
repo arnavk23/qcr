@@ -2,8 +2,8 @@
 \GapFactorIbm$\times$ (IBM-style) above the exact optimum. Our faithful port reproduces the paper's single-circuit number
 (\FaithIon\ vs.\ 45 gates), so the gap is a property of the method, not of our implementation. (2) EW-$w$ reaches the
 \emph{proven} optimum on all 20 circuits once $w\ge\WStarIon$ (ion trap) or $w\ge\WStarIbm$ (IBM-style), in a fraction of a second.
-This is the cascade of Prop.~\ref{prop:cascade}: the transition is sharp, between $w=8$ and $w=12$ (ion trap) or $w=16$ (IBM-style). (3) The grid (Fig.~\ref{fig:grid})
+This is the cascade of Prop.~\ref{prop:cascade}. The transition is sharp, between $w=8$ and $w=12$ (ion trap) or $w=16$ (IBM-style). (3) The grid (Fig.~\ref{fig:grid})
 shows that the \emph{database radius}, not the window or the search strategy, is the binding constraint. At $r=5$, enlarging the
 window from 8 to 16 lowers the mean excess only from 46 to 43 gates. At $w=8$, raising $r$ from 5 to $\infty$ lowers it from 46 to 18,
-and for $w\ge12$ with $r\ge8$ the excess is at most 2 gates (ion trap; IBM-style: from 72 to $\le$\,8). Theorem~\ref{thm:exact} predicts
-both requirements: windows long enough \emph{and} a database deep enough. The original method is limited by the second.
+and for $w\ge12$ with $r\ge8$ the excess is at most 2 gates (ion trap, and from 72 to $\le$\,8 for the IBM-style set). Theorem~\ref{thm:exact} predicts
+both requirements, windows long enough \emph{and} a database deep enough. The original method is limited by the second.

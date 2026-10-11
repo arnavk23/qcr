@@ -14,6 +14,7 @@
 """Numbers, tables and figures for the general-engine part of the extension paper.
 
 Inputs:  results/general/bench_v2.json (hardware suite, run 2),
+         results/general/bqskit_v2.jsonl, bqskit_stack_v1.jsonl, bqskit_njp_v1.jsonl (BQSKit baseline, ext_bqskit.py),
          results/general_paper_bench_*.json (paper benchmarks, general engine),
          results/quality_all.json, ext_bench_cliff_*.json, ext_gap3_*.json (reference numbers).
 Outputs: extension/gen_numbers.tex, extension/gen_hw_table.tex, extension/figs/gen_paper_bench.pdf,
@@ -67,6 +68,24 @@ def x(v, nd=2):
 # ---------------------------------------------------------------- hardware suite (run 2)
 B = json.load(open(RESULTS / "general" / "bench_v2.json"))
 DEV = {"heron": "Heron", "ion": "Ion"}
+
+
+def jsonl(name):
+    p = RESULTS / "general" / name
+    return [json.loads(l) for l in open(p)] if p.exists() else []
+
+
+# BQSKit runs on the same qiskit_L1 inputs; merged into the suite rows by (name, device)
+BQ = {(r["name"], r["device"]): r for r in jsonl("bqskit_v2.jsonl")}
+BQS = {(r["name"], r["device"]): r for r in jsonl("bqskit_stack_v1.jsonl")}
+for r in B:
+    for k in ("bqskit_L2", "bqskit_L3"):
+        if k in BQ.get((r["name"], r["device"]), {}):
+            r[k] = BQ[(r["name"], r["device"])][k]
+    if "bqskit_L3+ours" in BQS.get((r["name"], r["device"]), {}):
+        r["bqskit_L3_ours"] = BQS[(r["name"], r["device"])]["bqskit_L3+ours"]
+        # BQSKit is not deterministic across runs: the stacked run is compared with its own BQSKit L3 input
+        r["bqskit_L3_stackin"] = BQS[(r["name"], r["device"])]["bqskit_L3"]
 cmd("HwCircuits", len({r["name"] for r in B}))
 cmd("HwCompared", len({r["name"] for r in B} - EXCLUDE))
 PIPES = [
@@ -75,7 +94,11 @@ PIPES = [
     ("ours_exact_cal_fromL3", "ours, exact, from L3"),
     ("ours_approx_cal", "ours, approximate ($\\varepsilon=10^{-3}$), from L1"),
     ("ours_state_cal", "ours, state/measurement-aware, from L1"),
+    ("bqskit_L2", "BQSKit level 2 on L1 (approximate)"),
+    ("bqskit_L3", "BQSKit level 3 on L1 (approximate)"),
+    ("bqskit_L3_ours", "ours, exact, on BQSKit level 3"),
 ]
+PIPES = [(k, lab) for k, lab in PIPES if all(k in r and "twoq" in r[k] for r in B)]  # drop runs not finished
 rows = {}
 for dev, D in DEV.items():
     R = [r for r in B if r["device"] == dev and r["name"] not in EXCLUDE]
@@ -150,7 +173,7 @@ with open(EXT / "gen_hw_table.tex", "w") as fh:
     for k, label in PIPES:
         h, i = rows["heron"][k], rows["ion"][k]
         fh.write(f"{label} & {x(h[0])} & {x(h[1])} & {x(h[2])} && {x(i[0])} & {x(i[1])} & {x(i[2], 3)}\\\\\n")
-        if k == "tket":
+        if k in ("tket", "ours_state_cal"):
             fh.write("\\midrule\n")
     fh.write("}\n")
 
@@ -199,6 +222,67 @@ for cfg in ("T3", "T4", "NJP_ion", "NJP_nisq", "T5"):
         cmd(f"{nm}Opt", "--")
     op = [gap[(cfg, r["seed"])]["opt"] / paper(r) for r in P if (cfg, r["seed"]) in gap]
     bars.append((cfg, gen, st.mean(cw) if cw else None, st.mean(op) if op else None))
+
+# ---------------------------------------------------------------- BQSKit baseline
+def bq_macros():
+    for dev, D in DEV.items():
+        A = [r for r in B if r["device"] == dev and "bqskit_L3" in r]
+        if len(A) < len([r for r in B if r["device"] == dev]):
+            return False
+        R = [r for r in A if r["name"] not in EXCLUDE]
+        b = lambda r: r["bqskit_L3"]
+        for k, nm in (("ours_exact_cal", "OursLOne"), ("ours_exact_cal_fromL3", "OursLThree")):
+            cmd(f"{D}BqFewerTwoqThan{nm}", sum(b(r)["twoq"] < r[k]["twoq"] for r in R))
+            cmd(f"{D}BqMoreTwoqThan{nm}", sum(b(r)["twoq"] > r[k]["twoq"] for r in R))
+            cmd(f"{D}BqHigherEspThan{nm}", sum(b(r)["success"] > r[k]["success"] + 1e-12 for r in R))
+            cmd(f"{D}BqFewerAllThan{nm}", sum(b(r)["total"] < r[k]["total"] for r in R))
+        cmd(f"{D}BqAllOverOurs", f"{sum(b(r)['total'] for r in R) / sum(r['ours_exact_cal_fromL3']['total'] for r in R):.2f}")
+        cmd(f"{D}BqMeanSec", f"{st.mean(b(r)['seconds'] for r in A):.0f}")
+        cmd(f"{D}BqLTwoMeanSec", f"{st.mean(r['bqskit_L2']['seconds'] for r in A):.0f}")
+        cmd(f"{D}OursMeanSec", f"{st.mean(r['ours_exact_cal']['seconds'] for r in A):.0f}")
+        errs = [r[k]["verify"] for r in A for k in ("bqskit_L2", "bqskit_L3") if r[k]["verify"] is not None]
+        cmd(f"{D}BqMaxErr", sci(max(errs)))
+        cmd(f"{D}BqMedErr", sci(st.median(errs)))
+        cmd(f"{D}BqUnverified", sum(r[k]["verify"] is None for r in A for k in ("bqskit_L2", "bqskit_L3")))
+        S = [r for r in R if "bqskit_L3_ours" in r]
+        if len(S) == len(R):
+            s_, i_ = (lambda r: r["bqskit_L3_ours"]), (lambda r: r["bqskit_L3_stackin"])
+            cmd(f"{D}StackAllOverBq", f"{sum(s_(r)['total'] for r in R) / sum(i_(r)['total'] for r in R):.2f}")
+            cmd(f"{D}StackAllSaved", f"{100 * (1 - sum(s_(r)['total'] for r in R) / sum(i_(r)['total'] for r in R)):.0f}\\%")
+            cmd(f"{D}StackTwoqOverBq", f"{sum(s_(r)['twoq'] for r in R) / sum(i_(r)['twoq'] for r in R):.3f}")
+            cmd(f"{D}StackEspOverBq", f"{gmratio(R, 'bqskit_L3_ours', 'success', base='bqskit_L3_stackin'):.3f}")
+            cmd(f"{D}StackMaxErr", sci(max(s_(r)["verify"] for r in S if s_(r)["verify"] is not None)))
+            cmd(f"{D}StackTotalUp", sum(s_(r)["total"] > i_(r)["total"] for r in R))
+            cmd(f"{D}StackTwoqDown", sum(s_(r)["twoq"] < i_(r)["twoq"] for r in R))
+            cmd(f"{D}StackTwoqUp", sum(s_(r)["twoq"] > i_(r)["twoq"] for r in R))
+            cmd(f"{D}StackEspUp", sum(s_(r)["success"] > i_(r)["success"] + 1e-12 for r in R))
+            cmd(f"{D}StackEspDown", sum(s_(r)["success"] < i_(r)["success"] - 1e-12 for r in R))
+            cmd(f"{D}StackMeanSec", f"{st.mean(s_(r)['seconds'] for r in A):.0f}")
+            cmd(f"{D}StackUnverified", sum(s_(r)["verify"] is None for r in A))
+            cmd(f"{D}StackInTwoq", sum(i_(r)["twoq"] for r in R))
+            cmd(f"{D}StackInAll", sum(i_(r)["total"] for r in R))
+            cmd(f"{D}StackTwoq", sum(s_(r)["twoq"] for r in R))
+            cmd(f"{D}StackAll", sum(s_(r)["total"] for r in R))
+        else:  # stacking run not finished: placeholders keep the paper compiling
+            for nm in ("AllOverBq", "TwoqOverBq", "EspOverBq", "MaxErr", "TotalUp", "TwoqDown", "TwoqUp", "EspUp",
+                       "EspDown", "MeanSec", "AllSaved", "Unverified", "InTwoq", "InAll", "Twoq", "All"):
+                cmd(f"{D}Stack{nm}", "??")
+    return True
+
+
+BQ_DONE = bq_macros()
+N4 = jsonl("bqskit_njp_v1.jsonl")
+# level 4 is slow (~2-4 min per circuit): report the leading seeds done for both kinds (at least the 30 that the
+# original method and Qiskit use), so both rows cover the same circuits
+done4 = {k: {r["seed"] for r in N4 if r["kind"] == k} for k in ("ion", "nisq")}
+n4 = next((s for s in range(101) if not all(s in d for d in done4.values())), 100)
+cmd("BqFourN", n4 if n4 >= 30 else "??")
+for kind, nm in (("ion", "Ion"), ("nisq", "Ibm")):
+    K = [r for r in N4 if r["kind"] == kind and r["seed"] < n4] if n4 >= 30 else []
+    cmd(f"BqFour{nm}", f"{st.mean(r['total'] for r in K):.1f}" if K else "??")
+    cmd(f"BqFour{nm}TwoQ", f"{st.mean(r['twoq'] for r in K):.1f}" if K else "??")
+    cmd(f"BqFour{nm}Sec", f"{st.mean(r['seconds'] for r in K):.0f}" if K else "??")
+    cmd(f"BqFour{nm}MaxErr", sci(max(r["verify"] for r in K)) if K else "??")
 
 with open(EXT / "gen_numbers.tex", "w") as fh:
     fh.write("% generated by experiments/make_general_assets.py -- do not edit\n")

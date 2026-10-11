@@ -74,3 +74,14 @@ class TestHeron(QCRTestCase):
             raise unittest.SkipTest("qiskit-ibm-runtime not installed") from None
         self.assertEqual(dev.n, 133)
         self.assertTrue(all(dev.err2[("cz", p)] < 1.0 for p in dev.coupling if ("cz", p) in dev.err2))
+
+
+class TestAngleGrid(QCRTestCase):
+    """Angle-grid membership is decided modulo 2 pi."""
+
+    def test_pi_and_minus_pi_are_the_same_rotation(self):
+        dev = Device("grid", 1, None, ("rx",), "rxx", (), False, angle_grid=(pi,))
+        self.assertTrue(dev.is_native(Gate("rx", (0,), pi)))
+        self.assertTrue(dev.is_native(Gate("rx", (0,), -pi)))
+        self.assertTrue(dev.is_native(Gate("rx", (0,), 3 * pi)))
+        self.assertFalse(dev.is_native(Gate("rx", (0,), pi / 2)))

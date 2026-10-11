@@ -233,6 +233,24 @@ for k, tag, g2 in (("ion", "Ion", "rxx"), ("nisq", "Ibm", "cz")):
     t3 = qs.get("T3_ion_3q" if k == "ion" else "T4_nisq_3q")
     M[f"QThree{tag}"] = fmt(t3 and t3["totals"]["qiskit_L3"], 1)
 
+# CW-24 against our BQSKit level-4 run on the same leading seeds (bqskit_njp_v1.jsonl, ext_bqskit.py)
+bq4p = Path(RESULTS) / "general" / "bqskit_njp_v1.jsonl"
+bq4 = {(r["kind"], r["seed"]): r for r in map(json.loads, open(bq4p))} if bq4p.exists() else {}
+cwall = J("ext_four_cw_ion_nisq.json") or []
+for k, tag, g2 in (("ion", "Ion", "rxx"), ("nisq", "Ibm", "cz")):
+    S = [r for r in cwall if r["kind"] == k and (k, r["seed"]) in bq4]
+    if len(S) < 30:  # BQSKit level-4 run not finished: placeholders keep the paper compiling
+        for nm in ("N", "TwoQ", "Fewer", "More", "TotalRatio"):
+            M[f"CWBq{tag}{nm}"] = "??"
+        continue
+    b2 = [bq4[(k, r["seed"])] for r in S]
+    c2 = [r["counts"].get(g2, 0) for r in S]
+    M[f"CWBq{tag}N"] = fmt(len(S))
+    M[f"CWBq{tag}TwoQ"] = fmt(float(np.mean(c2)), 1)
+    M[f"CWBq{tag}Fewer"] = fmt(sum(c < b["twoq"] for c, b in zip(c2, b2)))
+    M[f"CWBq{tag}More"] = fmt(sum(c > b["twoq"] for c, b in zip(c2, b2)))
+    M[f"CWBq{tag}TotalRatio"] = fmt(float(np.mean([r["total"] for r in S]) / np.mean([b["total"] for b in b2])), 2)
+
 for k in ("GapFindings", "FourFindings"):
     M.setdefault(k, "")
 M["GapFindings"] = (EXT / "findings_gap.tex").read_text() if (EXT / "findings_gap.tex").exists() else ""

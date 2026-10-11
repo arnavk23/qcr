@@ -82,7 +82,7 @@
     \end{tikzpicture}
   \end{frame}}}
 
-\title[Circuit reduction: reproduction and extension]
+\title[Circuit reduction, reproduction and extension]
       {Optimisation-driven quantum circuit reduction}
 \author{\talkauthor}
 
@@ -129,16 +129,17 @@
       \two{
       \textbf{What I built}
       \begin{itemize}\setlength{\itemsep}{0.15em}
-        \item Theory: when local rewriting is globally optimal; parity; what random benchmarks measure.
-        \item A \textbf{general optimiser}: no Clifford assumption, real native gates, connectivity, calibrated noise,
-              exact / state-aware / approximate semantics.
+        \item Theory of local optimality, parity and random benchmarks.
+        \item A \textbf{general optimiser} for real native gates, connectivity and calibrated noise, with exact,
+              state-aware or approximate semantics.
       \end{itemize}
       \vspace{0.4em}
       \textbf{Where it stands}
       \begin{itemize}\setlength{\itemsep}{0.15em}
         \item Proven optimum on 35/40 of the paper's 3-qubit circuits.
-        \item On top of Qiskit L3 on 58 real algorithms: never more 2q gates, \(-13\,\%\) gates on IBM Heron.
-        \item Extension paper drafted (12 pages); every output verified.
+        \item On Qiskit L3 (58 algorithms) it never adds 2q gates and removes 13\,\% of gates on Heron.
+        \item BQSKit needs fewer 2q gates but is approximate and slower.
+        \item Paper drafted, every output verified.
       \end{itemize}}
     \end{column}
   \end{columns}
@@ -148,24 +149,24 @@
   \begin{columns}[T]
     \begin{column}{0.48\textwidth}
       \begin{enumerate}\setlength{\itemsep}{0.7em}
-        \item \textbf{The paper}: database-driven local rewriting
-        \item \textbf{Reproduction}: what holds, what needs qualifying
-        \item \textbf{Ground truth}: every gate is Clifford \(\Rightarrow\) exact optima
-        \item \textbf{Theory}: exactness, parity, mixing, lower bounds
+        \item \textbf{The paper.} Database-driven local rewriting
+        \item \textbf{Reproduction.} What holds and what needs qualifying
+        \item \textbf{Ground truth.} Every gate is Clifford \(\Rightarrow\) exact optima
+        \item \textbf{Theory.} Exactness, parity, mixing, lower bounds
       \end{enumerate}
     \end{column}
     \begin{column}{0.48\textwidth}
       \begin{enumerate}\setcounter{enumi}{4}\setlength{\itemsep}{0.7em}
-        \item \textbf{A general optimiser}: no Clifford crutch, real hardware
-        \item \textbf{Results}: paper benchmarks, standard suites, noisy simulation
-        \item \textbf{Wrap-up}: lessons, caveats, critique, next steps
+        \item \textbf{A general optimiser.} No Clifford crutch, real hardware
+        \item \textbf{Results.} Paper benchmarks, standard suites, BQSKit, noisy simulation
+        \item \textbf{Wrap-up.} Lessons, caveats, critique, next steps
       \end{enumerate}
     \end{column}
   \end{columns}
 \end{frame}
 
 % ################################################################ PART I
-\partslide{I}{The paper}{Rosenhahn, Osborne \& Hirche: shorten circuits by replacing short windows with shorter equivalents from a precomputed database.}
+\partslide{I}{The paper}{Rosenhahn, Osborne \& Hirche shorten circuits by replacing short windows with shorter equivalents from a precomputed database.}
 
 \begin{frame}{Why shorten circuits at all?}
   \begin{columns}[T]
@@ -174,32 +175,32 @@
         \item On NISQ hardware every gate costs fidelity. Roughly,
               \[\Pr[\text{success}] \approx \prod_{\text{gates } g} \bigl(1-e(g)\bigr),\]
               with two-qubit errors \(\sim10^{-3}\)--\(10^{-2}\), 10--100\(\times\) single-qubit ones.
-        \item Compiling to a device's \textbf{native alphabet} leaves redundancy:
-              one textbook gate becomes several native ones, and neighbours stop cancelling.
-        \item Goal: an equivalent circuit with fewer (or cheaper) native gates.
+        \item Compiling to a device's \textbf{native alphabet} leaves redundancy.
+              One textbook gate becomes several native ones, and neighbours stop cancelling.
+        \item The goal is an equivalent circuit with fewer (or cheaper) native gates.
       \end{itemize}
     \end{column}
     \begin{column}{0.51\textwidth}
       \two{
       \centering
       \includegraphics[width=\linewidth]{figs/Motivation1.png}\\[0.3em]
-      {\scriptsize\color{muted}The paper's motivating example: H + CNOT compiled to the ion-trap alphabet (8 gates)
+      {\scriptsize\color{muted}The paper's motivating example, H + CNOT compiled to the ion-trap alphabet (8 gates)
        and the shortest equivalent native word (4 gates). We confirmed by exhaustive search that no 3-gate version exists.}}
     \end{column}
   \end{columns}
-  \src{Figure: arXiv:2502.14715, Fig.~1}
+  \src{Figure from arXiv:2502.14715, Fig.~1}
 \end{frame}
 
-\begin{frame}{Step 1: the compute graph, a database of shortest circuits}
+\begin{frame}{Step 1. The compute graph, a database of shortest circuits}
   \begin{columns}[T]
     \begin{column}{0.47\textwidth}
       \begin{itemize}\setlength{\itemsep}{0.5em}
-        \item Fix a \textbf{discrete alphabet} on 2--3 qubits:
+        \item Fix a \textbf{discrete alphabet} on 2--3 qubits
           \begin{itemize}
-            \item ion trap: \(R_{x},R_y,R_z(\pm\tfrac{\pi}{2})\), \(R_{XX}(\pm\tfrac{\pi}{2})\)
-            \item IBM-style: \(R_x,R_z(\pm\tfrac{\pi}{2})\), CZ
+            \item ion trap, \(R_{x},R_y,R_z(\pm\tfrac{\pi}{2})\), \(R_{XX}(\pm\tfrac{\pi}{2})\)
+            \item IBM-style, \(R_x,R_z(\pm\tfrac{\pi}{2})\), CZ
           \end{itemize}
-        \item Breadth-first search over words: each node is a unitary (up to global phase), stored with its
+        \item Breadth-first search over words. Each node is a unitary (up to global phase), stored with its
               \emph{shortest} word.
         \item Depth \(d\) = maximal word length enumerated.
       \end{itemize}
@@ -211,7 +212,7 @@
         2q, 14 ops & 15 & 114 & 584 & 2,024 & 4,512\\
         3q, 24 ops & 25 & 337 & 3,215 & 23,622 & 137,572\\\bottomrule
       \end{tabular}\\[0.2em]
-      {\scriptsize\color{muted}Table I node counts: our rebuild matches the paper exactly.}}
+      {\scriptsize\color{muted}Table I node counts. Our rebuild matches the paper exactly.}}
     \end{column}
     \begin{column}{0.51\textwidth}
       \centering\includegraphics[width=0.9\linewidth]{figs/FullComputeGraphs2.png}\\[0.2em]
@@ -220,36 +221,36 @@
   \end{columns}
 \end{frame}
 
-\begin{frame}{Step 2: slide a window, replace, repeat}
+\begin{frame}{Step 2. Slide a window, replace, repeat}
   \begin{columns}[T]
     \begin{column}{0.49\textwidth}
       \centering\includegraphics[width=0.85\linewidth]{figs/CodeReduceTokens.png}\\[0.2em]
-      {\scriptsize\color{muted}Circuit as a word of tokens; windows are replaced by shorter database words (paper, Fig.~3).}
+      {\scriptsize\color{muted}Circuit as a word of tokens, with windows replaced by shorter database words (paper, Fig.~3).}
       \vspace{0.5em}
       \begin{itemize}\setlength{\itemsep}{0.3em}\small
         \item Pick a window of 2--8 gates on \(\le 3\) wires.
-        \item Look its unitary up; if a shorter word exists, substitute it.
-        \item Shuffle commuting gates to expose new windows; repeat until no progress.
+        \item Look its unitary up and substitute a shorter word if one exists.
+        \item Shuffle commuting gates to expose new windows, and repeat until no progress.
       \end{itemize}
     \end{column}
     \begin{column}{0.49\textwidth}
       \two{
       \centering\includegraphics[width=\linewidth]{figs/optVariantsW.png}\\[0.3em]
       \begin{itemize}\setlength{\itemsep}{0.3em}\small
-        \item \textbf{V1}: random sampling for a shorter equivalent word.
-        \item \textbf{V2}: database lookup.
-        \item \textbf{V3}: a random forest first predicts whether a window is reducible; only then look up.
+        \item \textbf{V1.} Random sampling for a shorter equivalent word.
+        \item \textbf{V2.} Database lookup.
+        \item \textbf{V3.} A random forest first predicts whether a window is reducible, and only then is it looked up.
       \end{itemize}}
     \end{column}
   \end{columns}
-  \src{Figures: arXiv:2502.14715, Figs.~3 and 6}
+  \src{Figures from arXiv:2502.14715, Figs.~3 and 6}
 \end{frame}
 
-\begin{frame}{Step 3: scaling up, and what the paper claims}
+\begin{frame}{Step 3. Scaling up, and what the paper claims}
   \begin{columns}[T]
     \begin{column}{0.47\textwidth}
       \centering\includegraphics[width=\linewidth]{figs/ScalableOpt2.png}\\[0.2em]
-      {\scriptsize\color{muted}Wire reduction / code reduction / wire lift: a 3-qubit database is applied inside an \(n\)-qubit circuit.}
+      {\scriptsize\color{muted}Wire reduction, code reduction and wire lift apply a 3-qubit database inside an \(n\)-qubit circuit.}
     \end{column}
     \begin{column}{0.51\textwidth}
       \two{
@@ -258,15 +259,15 @@
       \resizebox{\linewidth}{!}{\begin{tabular}{@{}lrr@{}}
         \toprule
         benchmark (random native circuits) & paper & Qiskit (theirs)\\\midrule
-        T.~III: ion, 3q, 300 gates & 45 & 176\\
-        T.~IV: IBM-style, 3q, 300 gates & 72 & 153\\
-        T.~V: IBM-style, 15q, 500 gates & 293 & 313\\
-        journal: 4q, 300 gates (ion / IBM) & 111 / 107 & --\\
-        T.~II time (s): V1 / V2 / V3 & \multicolumn{2}{l}{199 / 55 / 38}\\\bottomrule
+        T.~III, ion, 3q, 300 gates & 45 & 176\\
+        T.~IV, IBM-style, 3q, 300 gates & 72 & 153\\
+        T.~V, IBM-style, 15q, 500 gates & 293 & 313\\
+        journal, 4q, 300 gates (ion / IBM) & 111 / 107 & --\\
+        T.~II time (s), V1 / V2 / V3 & \multicolumn{2}{l}{199 / 55 / 38}\\\bottomrule
       \end{tabular}}
       \vspace{0.6em}
       \begin{itemize}\small
-        \item Fig.~9: reduced circuits give better results on IBM Brisbane and Kyiv.
+        \item Fig.~9 reports better results for reduced circuits on IBM Brisbane and Kyiv.
       \end{itemize}}
     \end{column}
   \end{columns}
@@ -282,18 +283,18 @@
       \textbf{Inputs}
       \begin{itemize}\setlength{\itemsep}{0.4em}
         \item arXiv PDF + LaTeX source, journal (NJP) PDF.
-        \item Official code \texttt{QCOptimDemo.zip}: linked only in the journal's ref.~[38]; \textbf{V2 only}, MATLAB.
-        \item Unspecified in the paper: database for Tables III--V, Table II protocol, forest details, transpiler level, Qiskit version.
+        \item Official code \texttt{QCOptimDemo.zip}, linked only in the journal's ref.~[38] (\textbf{V2 only}, MATLAB).
+        \item Not specified in the paper are the database for Tables III--V, the Table II protocol, forest details, the transpiler level and the Qiskit version.
       \end{itemize}
     \end{column}
     \begin{column}{0.48\textwidth}
       \two{
       \textbf{Built}
       \begin{itemize}\setlength{\itemsep}{0.4em}
-        \item \texttt{qcr/}: line-by-line Python port (graph builder, V1/V2/V3, wire reduction), with tests.
+        \item \texttt{qcr/}, a line-by-line Python port (graph builder, V1/V2/V3, wire reduction) with tests.
         \item An independent exact engine (Clifford tableaux) as a cross-check.
         \item Every output checked equivalent to its input (unitary error \(\sim10^{-12}\)).
-        \item Scripts + raw results for each table and figure; reproduction report (PDF).
+        \item Scripts and raw results for each table and figure, and a reproduction report (PDF).
       \end{itemize}}
     \end{column}
   \end{columns}
@@ -306,17 +307,17 @@
     \textbf{Claim} & \textbf{Status} & \textbf{Detail}\\
     \midrule
     Table I (compute graphs) & \good{exact} & identical node and edge counts\\
-    Figs.~1, 4, 5 (examples) & \good{yes} & same end points; Fig.~4 needs a different gate pool (parity, Part IV)\\
+    Figs.~1, 4, 5 (examples) & \good{yes} & same end points, but Fig.~4 needs a different gate pool (parity, Part IV)\\
         Tables III/IV, journal 4q & \qual{qualified} & only with the 24-operator, depth-5 database (unstated)\\
-    Table II: V1 \(>\) V2 \(>\) V3 & \qual{qualified} & V3 wins only with a tuned forest threshold\\
+    Table II, V1 \(>\) V2 \(>\) V3 & \qual{qualified} & V3 wins only with a tuned forest threshold\\
     Table V (15 qubits) & \bad{no longer} & ties a current Qiskit (2.5)\\
     Fig.~9 (hardware) & \qual{qualified} & real at Qiskit levels 0/1, disappears at level 3\\
     \bottomrule
   \end{tabularx}
-  \two{\takeaway{The headline claim (beats Qiskit on few-qubit random circuits) holds; the details around it need qualifying.}}
+  \two{\takeaway{The headline claim (beats Qiskit on few-qubit random circuits) holds, but the details around it need qualifying.}}
 \end{frame}
 
-\begin{frame}{Table II: V1 vs.\ V2 vs.\ V3}
+\begin{frame}{Table II, V1 vs.\ V2 vs.\ V3}
   \begin{columns}[T]
     \begin{column}{0.50\textwidth}
       \footnotesize\renewcommand{\arraystretch}{1.2}
@@ -328,15 +329,15 @@
         V3 forest, \(t=0.5\) & 171.8 & 16.9 & 79 & 915\\
         V3 forest, \(t=0.2\) & 33.7 & 5.3 & 98 & 1,216\\\bottomrule
       \end{tabular}}\\[0.3em]
-      {\scriptsize\color{muted}100 random 5-qubit ion circuits, length 100 \(\to\) target 60, cap 600\,s. Paper: 199 / 55 / 38\,s.}
+      {\scriptsize\color{muted}100 random 5-qubit ion circuits, length 100 \(\to\) target 60, cap 600\,s. The paper reports 199 / 55 / 38\,s.}
       \vspace{0.6em}
       \includegraphics[width=0.85\linewidth]{figs/repro_boxplot.png}
     \end{column}
     \begin{column}{0.48\textwidth}
       \two{
       \begin{itemize}\setlength{\itemsep}{0.6em}
-        \item V1 \(\gg\) V2 holds: the database is a real speed-up.
-        \item V3 depends entirely on the forest's \textbf{recall}: on held-out windows it flags only
+        \item V1 \(\gg\) V2 holds, so the database is a real speed-up.
+        \item V3 depends entirely on the forest's \textbf{recall}. On held-out windows it flags only
               \textbf{30\,\%} of reducible ones at the default threshold 0.5 (92\,\% at 0.2).
         \item At 0.5 it discards most reductions and is \emph{slower} than V2. The paper reports neither features,
               forest size, threshold nor accuracy.
@@ -346,7 +347,7 @@
   \end{columns}
 \end{frame}
 
-\begin{frame}{Tables III--V and the journal statistics: comparison with Qiskit}
+\begin{frame}{Tables III--V and the journal statistics against Qiskit}
   \centering\footnotesize\renewcommand{\arraystretch}{1.2}
   \resizebox{\textwidth}{!}{\begin{tabular}{@{}lrrrrr@{}}
     \toprule
@@ -362,20 +363,20 @@
   \begin{columns}[T]
     \begin{column}{0.48\textwidth}
       \begin{itemize}\setlength{\itemsep}{0.3em}\small
-        \item Few qubits: the method clearly beats Qiskit, as claimed; our port is even better than published.
+        \item With few qubits the method clearly beats Qiskit, as claimed, and our port is even better than published.
         \item But only with the larger database (24 operators, depth 5), which the paper does not state.
       \end{itemize}
     \end{column}
     \begin{column}{0.48\textwidth}
       \begin{itemize}\setlength{\itemsep}{0.3em}\small
-        \item Qiskit 2.5 is much stronger than the paper's Qiskit at 3 qubits (127 vs.\ 176; 104 vs.\ 153).
-        \item 15 qubits: our port reaches 335.9 (paper 293) and only ties Qiskit L3 (332.1, same CZ count). Random 15-qubit gate pairs rarely share wires, so 3-wire windows find little that Qiskit misses.
+        \item Qiskit 2.5 is much stronger than the paper's Qiskit at 3 qubits (127 vs.\ 176 and 104 vs.\ 153).
+        \item At 15 qubits our port reaches 335.9 (paper 293) and only ties Qiskit L3 (332.1, same CZ count). Random 15-qubit gate pairs rarely share wires, so 3-wire windows find little that Qiskit misses.
       \end{itemize}
     \end{column}
   \end{columns}}
 \end{frame}
 
-\begin{frame}{Fig.~9: the hardware experiment, in a noisy simulator}
+\begin{frame}{Fig.~9, the hardware experiment, in a noisy simulator}
   \begin{columns}[T]
     \begin{column}{0.52\textwidth}
       \centering\includegraphics[width=\linewidth]{figs/repro_hardware.png}\\[0.3em]
@@ -383,17 +384,17 @@
       \resizebox{\linewidth}{!}{\begin{tabular}{@{}lccc@{}}
         \toprule
         TVD to ideal (30 circuits) & level 0 & level 1 & level 3\\\midrule
-        Brisbane: long \(\to\) reduced & 0.059 \(\to\) 0.041 & 0.046 \(\to\) 0.037 & 0.018 vs.\ 0.019\\
-        Kyiv: long \(\to\) reduced & 0.024 \(\to\) 0.018 & 0.021 \(\to\) 0.018 & 0.012 vs.\ 0.012\\\bottomrule
+        Brisbane, long \(\to\) reduced & 0.059 \(\to\) 0.041 & 0.046 \(\to\) 0.037 & 0.018 vs.\ 0.019\\
+        Kyiv, long \(\to\) reduced & 0.024 \(\to\) 0.018 & 0.021 \(\to\) 0.018 & 0.012 vs.\ 0.012\\\bottomrule
       \end{tabular}}
     \end{column}
     \begin{column}{0.46\textwidth}
       \two{
       \begin{itemize}\setlength{\itemsep}{0.5em}
-        \item Levels 0/1: the reduced circuit is closer to ideal (22/30 and 20/30 circuits), as in the paper.
-        \item Level 3: Qiskit re-synthesises every 2-qubit block, both versions compile to \(\approx1.1\) CZ, the effect \textbf{vanishes}.
+        \item At levels 0/1 the reduced circuit is closer to ideal (22/30 and 20/30 circuits), as in the paper.
+        \item At level 3 Qiskit re-synthesises every 2-qubit block, both versions compile to \(\approx1.1\) CZ, and the effect \textbf{vanishes}.
         \item Plain Qiskit L3 on the \emph{long} circuit beats the reduced circuit at level 1 (0.018 vs.\ 0.037).
-        \item Paper: one circuit, one run per chip, no error bars, transpiler level not stated.
+        \item The paper uses one circuit, one run per chip and no error bars, and does not state the transpiler level.
       \end{itemize}}
     \end{column}
   \end{columns}
@@ -404,54 +405,54 @@
     \begin{column}{0.48\textwidth}
       \textbf{In the released code}
       \begin{enumerate}\setlength{\itemsep}{0.4em}\small
-        \item \texttt{simplereduce} never tests the last adjacent pair, and skips the pair after a deletion: the final circuit in the paper's Fig.~4
+        \item \texttt{simplereduce} never tests the last adjacent pair, and skips the pair after a deletion. The final circuit in the paper's Fig.~4
               still contains an inverse pair (true optimum 2, shown 4).
         \item The database excludes the identity, so identity blocks are never deleted by lookup.
-        \item Three tolerances: \(10^{-5}\) (paper), \(10^{-3}\) (optimiser), \(10^{-4}\) (graph builder).
+        \item There are three tolerances, \(10^{-5}\) (paper), \(10^{-3}\) (optimiser), \(10^{-4}\) (graph builder).
       \end{enumerate}
     \end{column}
     \begin{column}{0.48\textwidth}
       \two{
       \textbf{In the paper}
       \begin{enumerate}\setcounter{enumi}{3}\setlength{\itemsep}{0.4em}\small
-        \item Gate pool: Table I implies 14/24 operators, the demo uses 13/21.
-        \item Database for Tables III--V unstated; only the larger one reproduces Table III.
-        \item Table II: qubit count and target length unstated; forest unspecified.
-        \item Hardware: text says RX, RY, CX; tables say RX, RZ, CZ; transpiler level and shots unstated.
+        \item Table I implies a pool of 14/24 operators, but the demo uses 13/21.
+        \item The database for Tables III--V is unstated, and only the larger one reproduces Table III.
+        \item Table II states neither the qubit count nor the target length, and the forest is unspecified.
+        \item For the hardware runs the text says RX, RY, CX but the tables say RX, RZ, CZ, and the transpiler level and shots are unstated.
       \end{enumerate}}
     \end{column}
   \end{columns}
 \end{frame}
 
 % ################################################################ PART III
-\partslide{III}{Exact ground truth}{The observation the paper misses: every gate it uses is Clifford, so the search space is a finite group we can enumerate completely.}
+\partslide{III}{Exact ground truth}{The observation the paper misses. Every gate it uses is Clifford, so the search space is a finite group we can enumerate completely.}
 
-\begin{frame}{Key observation: every gate in the paper is Clifford}
+\begin{frame}{Key observation, every gate in the paper is Clifford}
   \begin{columns}[T]
     \begin{column}{0.48\textwidth}
       \begin{itemize}\setlength{\itemsep}{0.5em}
         \item \(\pm\tfrac{\pi}{2}\) rotations, \(R_{XX}(\pm\tfrac{\pi}{2})\) and CZ map Paulis to Paulis.
         \item So every circuit is an element of the finite \textbf{Clifford group} \(\mathcal C_n\) (mod phase), of order
               \[2^{n^2+2n}\prod_{j=1}^n (4^j-1)\]
-              \(n=1\): 24, \(n=2\): 11,520, \(n=3\): \textbf{92,897,280}.
+              (24 for \(n=1\), 11,520 for \(n=2\), \textbf{92,897,280} for \(n=3\)).
         \item The paper's ``compute graph'' is a ball in the \textbf{Cayley graph} of this group.
       \end{itemize}
     \end{column}
     \begin{column}{0.50\textwidth}
       \centering\includegraphics[width=0.78\linewidth]{figs/notes_1q_graph.png}\\
-      {\scriptsize\color{muted}One qubit: the complete compute graph has exactly 24 nodes and diameter 3.}
+      {\scriptsize\color{muted}For one qubit the complete compute graph has exactly 24 nodes and diameter 3.}
     \end{column}
   \end{columns}
-  \two{\takeaway{Optimality is no longer a vague question: each circuit has an exact shortest length, computable by search over one finite graph.}}
+  \two{\takeaway{Optimality is no longer a vague question. Each circuit has an exact shortest length, computable by search over one finite graph.}}
 \end{frame}
 
 \begin{frame}{Enumerating all 92.9 million 3-qubit Cliffords}
   \begin{columns}[T]
     \begin{column}{0.46\textwidth}
       \begin{itemize}\setlength{\itemsep}{0.5em}
-        \item A Clifford mod phase = its signed \textbf{tableau}; for \(n\le3\) it packs into one 64-bit word.
-        \item Gates act row-wise through lookup tables: each BFS level is a vectorised gather. Exact membership, no tolerance.
-        \item Full BFS: 25\,min, \(\approx\)6\,GB, per alphabet.
+        \item A Clifford mod phase is its signed \textbf{tableau}, which for \(n\le3\) packs into one 64-bit word.
+        \item Gates act row-wise through lookup tables, so each BFS level is a vectorised gather. Exact membership, no tolerance.
+        \item Full BFS takes 25\,min and \(\approx\)6\,GB per alphabet.
       \end{itemize}
       \vspace{0.4em}
       \two{
@@ -468,7 +469,7 @@
     \begin{column}{0.52\textwidth}
       \two{
       \centering\includegraphics[width=\linewidth]{figs/ext_growth.png}\\
-      {\scriptsize\color{muted}The paper's depth-5 database (shaded) covers 0.15\,\% of the group; almost all elements sit at distance 10--14.}}
+      {\scriptsize\color{muted}The paper's depth-5 database (shaded) covers 0.15\,\% of the group, and almost all elements sit at distance 10--14.}}
     \end{column}
   \end{columns}
 \end{frame}
@@ -493,7 +494,7 @@
     \begin{column}{0.48\textwidth}
       \begin{itemize}\setlength{\itemsep}{0.4em}\small
         \item Our port matches the paper's own single-circuit number (47.1 vs.\ 45), so this is the method, not the implementation.
-        \item Beating Qiskit by 2.7\(\times\) looked impressive; another 4.5\(\times\) was available.
+        \item Beating Qiskit by 2.7\(\times\) looked impressive, yet another 4.5\(\times\) was available.
       \end{itemize}
     \end{column}
   \end{columns}}
@@ -506,11 +507,11 @@
     \end{column}
     \begin{column}{0.46\textwidth}
       \begin{itemize}\setlength{\itemsep}{0.5em}
-        \item \textbf{Exact-window optimiser} EW-\(w\): replace every window of \(\le w\) gates on \(\le3\) wires by its \emph{proven} optimal word (table lookup).
+        \item \textbf{Exact-window optimiser} EW-\(w\) replaces every window of \(\le w\) gates on \(\le3\) wires by its \emph{proven} optimal word (table lookup).
       \end{itemize}
       \two{
       \begin{itemize}\setlength{\itemsep}{0.5em}
-        \item Sharp transition: \(w\ge12\) (ion) / \(w\ge16\) (IBM-style) reaches the \textbf{proven optimum on all 40 circuits}.
+        \item The transition is sharp. \(w\ge12\) (ion) / \(w\ge16\) (IBM-style) reaches the \textbf{proven optimum on all 40 circuits}.
         \item 0.1--0.2\,s per circuit, vs.\ 51\,s / 17\,s for the paper's method.
         \item Why so sharp? Once the circuit is shorter than the window, one more sweep is exact (the \emph{cascade}, Part IV).
       \end{itemize}}
@@ -518,53 +519,54 @@
   \end{columns}
 \end{frame}
 
-\begin{frame}{What actually limits the original method: window or database?}
+\begin{frame}{What limits the original method, window or database?}
   \begin{columns}[T]
     \begin{column}{0.50\textwidth}
       \centering\includegraphics[width=0.95\linewidth]{figs/ext_grid.png}\\
-      {\scriptsize\color{muted}Mean excess over the optimum (ion trap, 3 qubits) by window \(w\) and database radius \(r\). Red: the paper's \((8,5)\).}
+      {\scriptsize\color{muted}Mean excess over the optimum (ion trap, 3 qubits) by window \(w\) and database radius \(r\). The paper's \((8,5)\) is marked in red.}
     \end{column}
     \begin{column}{0.48\textwidth}
       \two{
       \begin{itemize}\setlength{\itemsep}{0.6em}
-        \item Larger window at \(r=5\): excess 46 \(\to\) 43. Barely helps.
-        \item Larger database at \(w=8\): excess 46 \(\to\) 18.
-        \item \(w\ge12\) and \(r\ge8\): excess \(\le 2\).
+        \item A larger window at \(r=5\) lowers the excess from 46 to 43 and barely helps.
+        \item A larger database at \(w=8\) lowers it from 46 to 18.
+        \item With \(w\ge12\) and \(r\ge8\) the excess is \(\le 2\).
       \end{itemize}
       \takeaway{The \textbf{database radius}, not the window or the search strategy, is the binding constraint. The theory predicts both are needed.}}
     \end{column}
   \end{columns}
 \end{frame}
 
-\begin{frame}{Four qubits: the journal benchmark}
+\begin{frame}{Four qubits, the journal benchmark}
   \centering\footnotesize\renewcommand{\arraystretch}{1.2}
-  \resizebox{\textwidth}{!}{\begin{tabular}{@{}lccccccc@{}}
+  \resizebox{\textwidth}{!}{\begin{tabular}{@{}lcccccccc@{}}
     \toprule
-    4q, 300 gates, 100 circuits & lower bound & CW-sem & CW-24 & contiguous EW-16 & port & published & Qiskit L3\\\midrule
-    ion trap: total & \(\ge\)11.1 & \good{45.6} & 56.7 & 110.3 & 78.8 & 111 & 164.9\\
-    IBM-style: total & \(\ge\)12.9 & \good{49.3} & 59.1 & 130.9 & 76.0 & 107 & 140.9\\
-    ion: RXX / IBM: CZ & -- & -- & 27.6 / 27.1 & 44.2 / 47.1 & 33.3 / 32.4 & 43 / 43 & 47.3 / 47.3\\\bottomrule
+    4q, 300 gates, 100 circuits & lower bound & CW-sem & CW-24 & contiguous EW-16 & port & published & Qiskit L3 & BQSKit L4\\\midrule
+    ion trap, total & \(\ge\)11.1 & \good{45.6} & 56.7 & 110.3 & 78.8 & 111 & 164.9 & 120.6\\
+    IBM-style, total & \(\ge\)12.9 & \good{49.3} & 59.1 & 130.9 & 76.0 & 107 & 140.9 & 165.2\\
+    RXX (ion) / CZ (IBM) & -- & -- & 27.6 / 27.1 & 44.2 / 47.1 & 33.3 / 32.4 & 43 / 43 & 47.3 / 47.3 & 27.6 / 35.1\\\bottomrule
   \end{tabular}}
   \vspace{0.8em}
   \two{
   \begin{itemize}\setlength{\itemsep}{0.4em}\small
-    \item Same exact 3-qubit oracle, different windows: contiguous windows (EW-16) are \emph{no better} than published;
-          \textbf{DAG-convex windows} (CW-24) cut the published results by 49\,\% / 45\,\%; adaptive commutation-aware windows (CW-sem) go further.
-    \item Two-qubit counts (27.6 RXX / 27.1 CZ) reach the journal's BQSKit numbers (28 / 37) without targeting them.
-    \item No exact optimum at 4 qubits (\(|G|=1.2\times10^{13}\)), but a certified lower bound; the remaining gap is at most \(\approx4\times\).
+    \item Same exact 3-qubit oracle, different windows. Contiguous windows (EW-16) are \emph{no better} than published,
+          \textbf{DAG-convex windows} (CW-24) cut the published results by 49\,\% / 45\,\%, and adaptive commutation-aware windows (CW-sem) go further.
+    \item \textbf{Against BQSKit L4} on the same 30 circuits, CW-24 has about the same RXX count (27.0 vs.\ 27.6) and fewer CZ (28.1 vs.\ 35.1, fewer on 25/30), with 0.46\(\times\) / 0.37\(\times\) of its total gates, without targeting 2q gates.
+    \item No exact optimum at 4 qubits (\(|G|=1.2\times10^{13}\)), but a certified lower bound, and the remaining gap is at most \(\approx4\times\).
   \end{itemize}}
+  \src{Port, Qiskit L3 and BQSKit L4 use the first 30 circuits. BQSKit L4 is our run, approximate (error \(<10^{-7}\)), all-to-all.}
 \end{frame}
 
 % ################################################################ PART IV
-\partslide{IV}{Theory}{Local rewriting as rewriting on a Cayley graph: when is it exact, what can it never do, and what do random benchmarks measure?}
+\partslide{IV}{Theory}{Local rewriting as rewriting on a Cayley graph. When is it exact, what can it never do, and what do random benchmarks measure?}
 
 \begin{frame}{The model}
   \begin{columns}[T]
     \begin{column}{0.48\textwidth}
       \begin{itemize}\setlength{\itemsep}{0.5em}
         \item Alphabet \(\Gamma\), group \(G=\langle\Gamma\rangle\), word length \(|g|\), ball \(B(r)\), diameter \(D\).
-        \item Compute graph of depth \(d\) \(=\) ball \(B(d)\) in \(\mathrm{Cay}(G,\Gamma)\); stored words are geodesics.
-        \item Rewriting system \(\mathcal R(w,r)\): replace a factor of length \(\le w\) by an equivalent geodesic of length \(\le r\).
+        \item Compute graph of depth \(d\) \(=\) ball \(B(d)\) in \(\mathrm{Cay}(G,\Gamma)\), and stored words are geodesics.
+        \item The rewriting system \(\mathcal R(w,r)\) replaces a factor of length \(\le w\) by an equivalent geodesic of length \(\le r\).
       \end{itemize}
     \end{column}
     \begin{column}{0.48\textwidth}
@@ -572,14 +574,14 @@
       \begin{itemize}\setlength{\itemsep}{0.5em}
         \item Swapping commuting neighbours = moves in the \textbf{trace monoid}.
         \item Factors of trace-equivalent words = \textbf{convex} sets of the circuit DAG.
-        \item So the paper's random commuting shuffles are a \emph{stochastic enumeration of convex windows}; we enumerate them directly.
+        \item So the paper's random commuting shuffles are a \emph{stochastic enumeration of convex windows}, and we enumerate them directly.
         \item The paper's V2 operates at \((w,r)=(8,5)\).
       \end{itemize}}
     \end{column}
   \end{columns}
 \end{frame}
 
-\begin{frame}{Theorem 1: local = global above the diameter}
+\begin{frame}{Theorem 1. Local = global above the diameter}
   \begin{block}{Exactness threshold}
     Let \(G\) be finite with diameter \(D\). If \(w\ge D+1\) and \(r\ge D\), every \((w,r)\)-reduced word is a geodesic.
   \end{block}
@@ -589,7 +591,7 @@
   \begin{columns}[T]
     \begin{column}{0.48\textwidth}
       \begin{block}{Cascade}
-        If at any time the current length \(\ell \le w\), the next sweep returns a geodesic. Relevant window:
+        If at any time the current length \(\ell \le w\), the next sweep returns a geodesic. The relevant window is
         \(w^\star=\min\{w:\ell(w)\le w\}\).
       \end{block}
     \end{column}
@@ -597,28 +599,28 @@
       \begin{itemize}\setlength{\itemsep}{0.3em}\small
         \item Measured \(w^\star\approx12\) (ion) / 16 (IBM-style) for 3 qubits, well below \(D+1=18\).
         \item The paper's \((8,5)\) is below both thresholds.
-        \item Continuous gate sets: \(D=\infty\), no finite window is exact. Hence ground truth must come from the discrete case.
+        \item For continuous gate sets \(D=\infty\) and no finite window is exact. Hence ground truth must come from the discrete case.
       \end{itemize}
     \end{column}
   \end{columns}}
 \end{frame}
 
-\begin{frame}{Theorem 2: gate-count parity}
+\begin{frame}{Theorem 2. Gate-count parity}
   \begin{block}{Parity}
-    (a) For \(n\le2\) the Cayley graph is \textbf{bipartite}: every equivalent rewrite removes an \emph{even} number of gates.\\
+    (a) For \(n\le2\) the Cayley graph is \textbf{bipartite}, so every equivalent rewrite removes an \emph{even} number of gates.\\
     (b) For \(n\ge3\), with any generating set containing square roots of each \(X_i\), \(Z_i\), it is \textbf{never} bipartite.
   \end{block}
-  \small\textit{Proof idea.} Bipartite \(\iff\) a sign character \(\chi\) with \(\chi(\Gamma)=-1\). For \(n\ge3\), \(\chi\) kills the Paulis and factors through \(\mathrm{Sp}(2n,2)\), which is simple: \(\chi\equiv1\).
+  \small\textit{Proof idea.} Bipartite \(\iff\) a sign character \(\chi\) with \(\chi(\Gamma)=-1\). For \(n\ge3\), \(\chi\) kills the Paulis and factors through \(\mathrm{Sp}(2n,2)\), which is simple, so \(\chi\equiv1\).
   \vspace{0.6em}
   \two{
   \begin{itemize}\setlength{\itemsep}{0.4em}
-    \item Exhaustive search, 3 qubits: the shortest odd relation has length \(\rho=11\) (ion) / 9 (IBM-style).
-          Changing parity needs a window of \(\ge6\) gates; smaller windows can never reach an optimum of the other parity.
-    \item The paper's Fig.~4 shows a \(6\to3\) replacement on two qubits: \textbf{impossible} with the stated gate set.
+    \item Exhaustive search at 3 qubits finds a shortest odd relation of length \(\rho=11\) (ion) / 9 (IBM-style).
+          Changing parity needs a window of \(\ge6\) gates, and smaller windows can never reach an optimum of the other parity.
+    \item The paper's Fig.~4 shows a \(6\to3\) replacement on two qubits, which is \textbf{impossible} with the stated gate set.
   \end{itemize}}
 \end{frame}
 
-\begin{frame}{Theorem 3: random-circuit benchmarks measure a constant}
+\begin{frame}{Theorem 3. Random-circuit benchmarks measure a constant}
   \begin{columns}[T]
     \begin{column}{0.48\textwidth}
       \begin{block}{Benchmarks mix}
@@ -626,7 +628,7 @@
         So \(\mathbb E[\text{optimal length}]\to\) the mean distance in \(G\).
       \end{block}
       \vspace{0.3em}
-      \small 2 qubits, ion trap: \(\beta=0.937\) (sparse diagonalisation).
+      \small For 2 qubits (ion trap) \(\beta=0.937\) (sparse diagonalisation).
     \end{column}
     \begin{column}{0.50\textwidth}
       \centering\includegraphics[width=\linewidth]{figs/ext_mixing.png}
@@ -646,23 +648,23 @@
     \begin{column}{0.48\textwidth}
       \two{
       \begin{itemize}\setlength{\itemsep}{0.5em}
-        \item Check at \(n=3\): bound 7.9 vs.\ truth 10.72.
-        \item \(n=4\) (\(1.2\times10^{13}\) elements), spheres to depth 6: \(\mathbb E|g|\ge\) \textbf{11.1} (ion) / \textbf{12.9} (IBM-style).
-        \item Best achieved: 45.6 / 49.3. Closing that gap is an open problem the framework makes precise.
+        \item Check at \(n=3\), bound 7.9 vs.\ truth 10.72.
+        \item \(n=4\) (\(1.2\times10^{13}\) elements), spheres to depth 6 give \(\mathbb E|g|\ge\) \textbf{11.1} (ion) / \textbf{12.9} (IBM-style).
+        \item The best achieved is 45.6 / 49.3. Closing that gap is an open problem the framework makes precise.
       \end{itemize}}
     \end{column}
   \end{columns}
 \end{frame}
 
 % ################################################################ PART V
-\partslide{V}{A general optimiser}{Drop the Clifford crutch: continuous angles, connectivity, calibrated noise, and a precise notion of ``equivalent''.}
+\partslide{V}{A general optimiser}{Drop the Clifford crutch and add continuous angles, connectivity, calibrated noise, and a precise notion of ``equivalent''.}
 
 \begin{frame}{Why go beyond Clifford?}
   \begin{columns}[T]
     \begin{column}{0.48\textwidth}
       \textbf{The Clifford results don't transfer}
       \begin{itemize}\setlength{\itemsep}{0.4em}
-        \item Real compilers emit \textbf{arbitrary angles} (\(R_z(\theta)\), MS\((\theta)\)): no finite group, no tables.
+        \item Real compilers emit \textbf{arbitrary angles} (\(R_z(\theta)\), MS\((\theta)\)), so there is no finite group and no table.
         \item Real chips have \textbf{connectivity} (heavy-hex) and per-gate \textbf{calibrated errors}.
         \item ``Up to global phase'' is \textbf{unsafe} once a block is controlled.
         \item Total gate count is the wrong objective when 2q gates dominate error.
@@ -672,17 +674,17 @@
       \two{
       \textbf{Design decisions}
       \begin{itemize}\setlength{\itemsep}{0.4em}
-        \item \textbf{No} Clifford assumption in the method; Clifford tables only to \emph{evaluate}.
-        \item Devices: IBM Heron (FakeTorino: \(R_z(\theta)\), \(\sqrt X\), \(X\), CZ, heavy-hex, calibrated) and a trapped-ion model
+        \item \textbf{No} Clifford assumption in the method. Clifford tables are used only to \emph{evaluate}.
+        \item Devices are IBM Heron (FakeTorino with \(R_z(\theta)\), \(\sqrt X\), \(X\), CZ, heavy-hex, calibrated) and a trapped-ion model
               (\(R_{x,y,z}(\theta)\), \(R_{XX}(\theta)\), all-to-all).
-        \item Semantics: exact incl.\ phase, state/measurement-aware, approximate with tracked error.
-        \item Objective: chosen by noisy simulation, not assumed.
+        \item Semantics are exact incl.\ phase, state/measurement-aware, or approximate with tracked error.
+        \item The objective is chosen by noisy simulation, not assumed.
       \end{itemize}}
     \end{column}
   \end{columns}
 \end{frame}
 
-\begin{frame}{One idea: equivalence = group action, key = canonical orbit}
+\begin{frame}{One idea, equivalence = group action and key = canonical orbit}
   \footnotesize\renewcommand{\arraystretch}{1.1}
   \begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{0.30\textwidth}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}p{0.28\textwidth}@{}}
     \toprule
@@ -699,19 +701,19 @@
   \vspace{0.6em}
   \uncover<2->{%
   \begin{block}{One engine, many semantics}
-    The database stores 64-bit hashes of canonical forms: one lookup finds the whole class.
+    The database stores 64-bit hashes of canonical forms, so one lookup finds the whole class.
     New semantics = new key function. Every hit is re-verified numerically.
   \end{block}}
 \end{frame}
 
 \begin{frame}{Why the relaxed semantics are safe}
   \begin{block}{Proposition 1 (state- and measurement-aware rewriting)}
-    Program: prepare \(|0^n\rangle\), run the circuit, measure all qubits. For a convex window \(S\) on wires \(W\):
-    (a) if nothing precedes \(S\) on \(W\) and \(V|0_W\rangle = e^{i\varphi}U|0_W\rangle\), or
-    (b) if nothing follows \(S\) on \(W\) and \(V = DU\) with \(D\) diagonal,
+    The program prepares \(|0^n\rangle\), runs the circuit and measures all qubits. Let \(S\) be a convex window on wires \(W\).
+    If (a) nothing precedes \(S\) on \(W\) and \(V|0_W\rangle = e^{i\varphi}U|0_W\rangle\), or
+    (b) nothing follows \(S\) on \(W\) and \(V = DU\) with \(D\) diagonal,
     then replacing \(U\) by \(V\) leaves the output distribution unchanged, and so does any sequence of such rewrites.
   \end{block}
-  \small\textit{Why.} (a) the input is a product state; (b) \(|\langle x|D\psi\rangle|^2=|\langle x|\psi\rangle|^2\). The invariant is the output distribution.
+  \small\textit{Why.} In (a) the input is a product state, and in (b) \(|\langle x|D\psi\rangle|^2=|\langle x|\psi\rangle|^2\). The invariant is the output distribution.
   \vspace{0.5em}
   \two{
   \begin{block}{Proposition 2 (approximate rewriting)}
@@ -728,7 +730,7 @@
           arr/.style={-{Stealth[length=2mm]},ibar,thick}]
         \node[box] (w) {\textbf{convex window} on \(\le3\) coupled wires\\{\scriptsize grown by exact commutation}};
         \node[box,below=of w] (d) {\textbf{database lookup} (canonical hash)};
-        \node[box,below=of d] (m) {\textbf{meet in the middle}: \(U=R\,A\), \(A\in B(2)\)};
+        \node[box,below=of d] (m) {\textbf{meet in the middle}, \(U=R\,A\), \(A\in B(2)\)};
         \node[box,below=of m] (r) {\textbf{analytic resynthesis} on \(\le2\) wires\\{\scriptsize KAK (min.\ CZ) / Weyl \(\to\) MS\((\theta)\) / Euler}};
         \node[box,below=of r,fill=igreen!12,draw=igreen] (a) {keep the \textbf{cheapest} legal replacement};
         \draw[arr] (w)--(d); \draw[arr] (d)--(m); \draw[arr] (m)--(r); \draw[arr] (r)--(a);
@@ -752,19 +754,19 @@
         paper IBM alphabet & phase & 1.84\,M & 10\\
         \bottomrule
       \end{tabular}}\\[0.3em]
-      {\scriptsize\color{muted}Grid: angles \(\pm\frac\pi4,\pm\frac\pi2,\pi\); 23 (Heron) / 57 (ion) local gates. Build: 18\,s -- 38\,min. Deepest level stored as keys only.}}
+      {\scriptsize\color{muted}Grid angles \(\pm\frac\pi4,\pm\frac\pi2,\pi\) give 23 (Heron) / 57 (ion) local gates. Builds take 18\,s to 38\,min. Deepest level stored as keys only.}}
     \end{column}
   \end{columns}
 \end{frame}
 
-\begin{frame}{Global phase and cost: the details that matter}
+\begin{frame}{Global phase and cost, the details that matter}
   \begin{columns}[T]
     \begin{column}{0.48\textwidth}
       \textbf{Exact including global phase}
       \begin{itemize}\setlength{\itemsep}{0.4em}
         \item Inside windows, match up to phase and record each phase.
-        \item Native gates reach only a \emph{discrete} set of phases: multiples of \(\pi/4\) (Heron), \(\pi/2\) (ion). Snap, or reject.
-        \item Repair once at the end with the cheapest gadget; on ions absorb \(\pm i\) into an existing MS gate:
+        \item Native gates reach only a \emph{discrete} set of phases, multiples of \(\pi/4\) (Heron) and \(\pi/2\) (ion). Snap, or reject.
+        \item Repair once at the end with the cheapest gadget. On ions absorb \(\pm i\) into an existing MS gate,
               \(R_{XX}(\theta\pm\pi)\,R_x(\pi)^{\otimes 2} = \pm i\,R_{XX}(\theta)\).
         \item Never return a costlier circuit than the input.
       \end{itemize}
@@ -779,8 +781,8 @@
         c_{\rm cal}(g)=-\log\bigl(1-e(g)\bigr)
       \]
       \begin{itemize}\setlength{\itemsep}{0.4em}
-        \item \(e^{-c_{\rm cal}}\) = estimated success probability (ESP): minimising \(c_{\rm cal}\) maximises ESP.
-        \item \(e(g)\) from FakeTorino calibration per qubit / pair; ion model \(3\cdot10^{-5}\) / \(10^{-3}\); \(R_z\) virtual.
+        \item \(e^{-c_{\rm cal}}\) = estimated success probability (ESP), so minimising \(c_{\rm cal}\) maximises ESP.
+        \item \(e(g)\) from FakeTorino calibration per qubit / pair, the ion model uses \(3\cdot10^{-5}\) / \(10^{-3}\), and \(R_z\) is virtual.
         \item Which one wins is decided by noisy simulation (Part VI).
       \end{itemize}}
     \end{column}
@@ -788,33 +790,33 @@
 \end{frame}
 
 % ################################################################ PART VI
-\partslide{VI}{Results}{First the paper's own benchmarks against ground truth, then 60 standard circuits on hardware models.}
+\partslide{VI}{Results}{First the paper's own benchmarks against ground truth, then 60 standard circuits on hardware models, against Qiskit, TKET and BQSKit.}
 
-\begin{frame}{Result 1: the paper's benchmarks, without Clifford knowledge}
+\begin{frame}{Result 1. The paper's benchmarks, without Clifford knowledge}
   \begin{columns}[c]
     \begin{column}{0.60\textwidth}
       \centering\includegraphics[width=\linewidth]{figs/gen_paper_bench.pdf}\\
-      {\scriptsize\color{muted}Output length / paper's method, same circuits and seeds. Paper semantics: up to phase, gate count, \(\pm\frac\pi2\) alphabets.}
+      {\scriptsize\color{muted}Output length / paper's method, same circuits and seeds, paper semantics (up to phase, gate count, \(\pm\frac\pi2\) alphabets).}
     \end{column}
     \begin{column}{0.38\textwidth}
       \two{
       \begin{itemize}\setlength{\itemsep}{0.5em}
-        \item \textbf{3 qubits}: proven optimum on \textbf{17/20} (ion) and \textbf{18/20} (IBM-style); mean 10.8 vs.\ optimum 10.4.
-        \item \textbf{4 qubits}: on par with the Clifford-specific optimiser (46.1 vs.\ 45.6; 51.4 vs.\ 49.3).
-        \item \textbf{15 qubits}: all methods within 4\,\%.
-        \item 3--9\,s per circuit; all 250 outputs verified and native.
+        \item \textbf{3 qubits.} Proven optimum on \textbf{17/20} (ion) and \textbf{18/20} (IBM-style), mean 10.8 vs.\ optimum 10.4.
+        \item \textbf{4 qubits.} On par with the Clifford-specific optimiser (46.1 vs.\ 45.6 and 51.4 vs.\ 49.3).
+        \item \textbf{15 qubits.} All methods within 4\,\%.
+        \item 3--9\,s per circuit, and all 250 outputs verified and native.
       \end{itemize}}
     \end{column}
   \end{columns}
-  \two{\takeaway{Knowing the group structure is not what makes the difference; large databases and convex windows are.}}
+  \two{\takeaway{Knowing the group structure is not what makes the difference. Large databases and convex windows are.}}
 \end{frame}
 
-\begin{frame}{Result 2: standard suites on hardware models --- setup}
+\begin{frame}{Result 2. Standard suites on hardware models, setup}
   \begin{columns}[T]
     \begin{column}{0.49\textwidth}
       \textbf{Circuits} (60 per device, 2--12 qubits, \(\le\)1,008 gates)
       \begin{itemize}\setlength{\itemsep}{0.3em}
-        \item Nam/VOQC arithmetic: Toffoli/Barenco ladders, adders, modular multiplication, \(\mathrm{GF}(2^4)\) multiplier, product formulas, QFT8
+        \item Nam/VOQC arithmetic (Toffoli/Barenco ladders, adders, modular multiplication, \(\mathrm{GF}(2^4)\) multiplier, product formulas, QFT8)
         \item QASMBench small/medium (4 with classical feed-forward and 4 unparsable skipped)
         \item QFT, QAOA, Heisenberg Trotter, EfficientSU2, Steane encoder
         \item Random non-Clifford circuits
@@ -826,16 +828,17 @@
       \begin{itemize}\setlength{\itemsep}{0.3em}
         \item Qiskit transpile, levels 1 and 3
         \item TKET \texttt{FullPeepholeOptimise} on L1 + rebase
-        \item ours on L1 output; \textbf{ours on L3 output}
+        \item BQSKit 1.2.1, levels 2 and 3 on L1 (approximate resynthesis)
+        \item ours on L1 output and \textbf{ours on L3 output}
       \end{itemize}
       \vspace{0.5em}
-      \textbf{Metrics}: 2q count, total, depth, ESP, noisy-simulation TVD (\(\le 8\) active qubits); every output verified, native, coupled.}
+      \textbf{Metrics.} 2q count, total, depth, ESP and noisy-simulation TVD (\(\le 8\) active qubits). Every output is verified, native and coupled.}
     \end{column}
   \end{columns}
 \end{frame}
 
-\begin{frame}{Result 2: relative to Qiskit level 3}
-  \centering\footnotesize\renewcommand{\arraystretch}{1.22}
+\begin{frame}{Result 2. Relative to Qiskit level 3}
+  \centering\footnotesize\renewcommand{\arraystretch}{1.0}
   \begin{tabular}{@{}l ccc c cc@{}}
     \toprule
     & \multicolumn{3}{c}{\textbf{IBM Heron} (58 circuits)} && \multicolumn{2}{c}{\textbf{trapped ion} (58 circuits)}\\
@@ -847,16 +850,51 @@
     ours, exact, from Qiskit L3         & \good{\(\times\)0.98} & \good{\(\times\)0.87} & \(\times\)1.03 && \(\times\)1.00 & \(\times\)1.00\\
     ours, approximate (\(\varepsilon=10^{-3}\)), from L1 & \(\times\)1.01 & \good{\(\times\)0.84} & \good{\(\times\)1.21} && \good{\(\times\)0.95} & \good{\(\times\)0.75}\\
     ours, state/measurement-aware       & \good{\(\times\)0.77} & \good{\(\times\)0.61} & \good{\(\times\)1.28} && \good{\(\times\)0.62} & \good{\(\times\)0.50}\\
+    \midrule
+    BQSKit L2 on L1 (approximate)       & \(\times\)0.89 & \(\times\)1.26 & \good{\(\times\)1.21} && \(\times\)0.96 & \good{\(\times\)0.74}\\
+    BQSKit L3 on L1 (approximate)       & \good{\(\times\)0.85} & \(\times\)1.20 & \good{\(\times\)1.22} && \good{\(\times\)0.94} & \good{\(\times\)0.71}\\
+    ours, exact, on BQSKit L3           & \good{\(\times\)0.85} & \(\times\)1.01 & \good{\(\times\)1.25} && \good{\(\times\)0.94} & \good{\(\times\)0.70}\\
     \bottomrule
   \end{tabular}
-  \vspace{0.6em}
+  \vspace{0.3em}
   \two{
   \begin{itemize}\setlength{\itemsep}{0.3em}\small
-    \item \textbf{Stacked on L3}: never more 2q gates (Heron 9 better / 49 equal; ion 1 / 57) and never lower ESP, on either device.
+    \item \textbf{Stacked on L3} ours never adds 2q gates (Heron 9 better and 49 equal, ion 1 and 57) and never lowers ESP.
     \item TKET keeps 2q counts close to L3 but needs 1.7--1.8\(\times\) the gates after rebasing.
+    \item BQSKit L3 has the fewest 2q gates, with approximate outputs. Ours on top of it gives the best ESP (next slide).
     \item Ion ESPs differ by \(<1\,\%\) across pipelines (MS error \(10^{-3}\)), so they are omitted.
   \end{itemize}}
-  \src{Ratios of summed counts; ESP: geometric mean of per-circuit ratios. Nam pf1\_10/pf2\_10 excluded: Qiskit L3 drops their \(10^{-7}\)\,rad rotations (approximate, not exact).}
+  \src{Ratios of summed counts, and the geometric mean of per-circuit ratios for ESP. Nam pf1\_10/pf2\_10 are excluded because Qiskit L3 drops their \(10^{-7}\)\,rad rotations (approximate, not exact).}
+\end{frame}
+
+\begin{frame}{Result 3. BQSKit, the strongest baseline}
+  \begin{columns}[T]
+    \begin{column}{0.47\textwidth}
+      \centering\footnotesize\renewcommand{\arraystretch}{1.2}
+      \textbf{Summed over 58 circuits (2q / all gates)}\\[0.3em]
+      \begin{tabular}{@{}lrr@{}}
+        \toprule
+        & Heron & ion\\\midrule
+        Qiskit L3 & 2,889 / 15,404 & 1,378 / 7,425\\
+        ours from L1 & 2,902 / \good{12,908} & 1,305 / 5,608\\
+        ours from L3 & 2,830 / 13,405 & 1,376 / 7,420\\
+        BQSKit L3 & \good{2,446} / 18,510 & 1,302 / 5,250\\
+        ours on BQSKit L3\(^\ast\) & 2,448 / 15,630 & \good{1,298} / \good{5,202}\\
+        \bottomrule
+      \end{tabular}\\[0.4em]
+      {\scriptsize\color{muted}Same Qiskit L1 input, native gates and couplers. BQSKit 1.2.1 at default settings, output mapped back to the physical qubits. \(^\ast\)On a separate BQSKit L3 run (2,459 / 18,601 and 1,301 / 5,276 before our pass).}
+    \end{column}
+    \begin{column}{0.51\textwidth}
+      \two{
+      \begin{itemize}\setlength{\itemsep}{0.25em}\small
+        \item \textbf{Heron.} Fewer 2q gates than ours on 39/58 circuits (more on 1), about the same ESP (\(\times\)1.22 vs.\ \(\times\)1.21), but 1.38\(\times\) the gates of ours on L3.
+        \item \textbf{Ion.} Fewer gates than all pipelines but our state-aware mode, and a higher ESP than ours on L3 on 45/58.
+        \item \textbf{The price.} Approximate (median error \(2\cdot10^{-8}\), max \(1.4\cdot10^{-4}\)), ours exact with phase. 98\,s per Heron circuit on 8 workers, ours 24\,s on one.
+        \item \textbf{Combined.} Ours on BQSKit's output never adds a 2q gate or lowers ESP, removes 16\,\% of the Heron gates (ion 1\,\%) and raises ESP on 54/58, in 34\,s.
+      \end{itemize}}
+    \end{column}
+  \end{columns}
+  \two{\takeaway{Resynthesis finds cheaper entangling structure. Exact rewriting keeps the unitary, removes single-qubit gates, and stacks on top.}}
 \end{frame}
 
 \begin{frame}{Where do the gains come from? (honest accounting)}
@@ -878,8 +916,8 @@
     \begin{column}{0.48\textwidth}
       \two{
       \begin{itemize}\setlength{\itemsep}{0.5em}\small
-        \item Heron: savings split between pulses and \(R_z\); a few CZ.
-        \item Ion: the calibrated objective \emph{trades} pulses for free \(R_z\). The total rises on 28/58 circuits, by design.
+        \item On Heron the savings are split between pulses and \(R_z\), plus a few CZ.
+        \item On ions the calibrated objective \emph{trades} pulses for free \(R_z\). The total rises on 28/58 circuits, by design.
               ``Never worse'' holds for the objective, 2q count and ESP, \textbf{not} for the total.
         \item ESP \(\times\)1.21 from L1 decomposes as \(\times\)1.11 (Qiskit's L1 layout already beats its L3 layout) \(\times\) \(\times\)1.09 (our rewriting).
               We never change the layout.
@@ -904,61 +942,61 @@
         ours, calibrated \(-\log F\) & \good{0.088} & \good{0.0084}\\
         \bottomrule
       \end{tabular}}\\[0.4em]
-      {\scriptsize\color{muted}Exact density-matrix probabilities (no shot noise). Heron: FakeTorino gate errors of the actual qubits. Ion: depolarising model.}
+      {\scriptsize\color{muted}Exact density-matrix probabilities (no shot noise). Heron uses FakeTorino gate errors of the actual qubits, ion a depolarising model.}
     \end{column}
     \begin{column}{0.50\textwidth}
       \two{
       \centering\includegraphics[width=\linewidth]{figs/gen_tvd.pdf}\\
       \begin{itemize}\setlength{\itemsep}{0.3em}\small
         \item Calibrated beats L3 on \textbf{39/49} (Heron) and 29/49 (ion) circuits.
-        \item Calibrated \(\approx\) 2q-weighted \(>\) count \(\Rightarrow\) calibrated is the default; 2q-weighted is a good proxy without calibration data.
+        \item Calibrated \(\approx\) 2q-weighted \(>\) count \(\Rightarrow\) calibrated is the default, and 2q-weighted is a good proxy without calibration data.
       \end{itemize}}
     \end{column}
   \end{columns}
 \end{frame}
 
-\begin{frame}{The other semantics: state-aware and approximate}
+\begin{frame}{The other semantics, state-aware and approximate}
   \begin{columns}[T]
     \begin{column}{0.48\textwidth}
       \begin{block}{State/measurement-aware}
         \begin{itemize}\setlength{\itemsep}{0.3em}
-          \item Largest gains: 2q gates \(\times\)0.77 (Heron) / \(\times\)0.62 (ion) relative to L3.
+          \item Largest gains, with 2q gates \(\times\)0.77 (Heron) / \(\times\)0.62 (ion) relative to L3.
           \item Output distributions agree to \(6\cdot10^{-12}\).
-          \item Valid only for a complete program: \(|0\cdots0\rangle\) in, full measurement out.
+          \item Valid only for a complete program, with \(|0\cdots0\rangle\) in and full measurement out.
         \end{itemize}
       \end{block}
-      \two{\small\color{iorange}Caveat: 5 (Heron) / 7 (ion) circuits are reversible logic on \(|0\cdots0\rangle\) with a fixed basis-state output; they reduce to the
+      \two{\small\color{iorange}Caveat. 5 (Heron) / 7 (ion) circuits are reversible logic on \(|0\cdots0\rangle\) with a fixed basis-state output, and they reduce to the
       empty circuit. Read this mode per circuit, not as an average.}
     \end{column}
     \begin{column}{0.48\textwidth}
       \two{
       \begin{block}{Approximate (\(\varepsilon=10^{-3}\) per replacement)}
         \begin{itemize}\setlength{\itemsep}{0.3em}
-          \item Almost no gain over exact on these suites: few near-identity blocks.
+          \item Almost no gain over exact on these suites, which have few near-identity blocks.
           \item Measured error always inside the tracked bound (max \(6.4\cdot10^{-4}\)).
-          \item Exception: Nam pf2\_10 (rotations \(\sim10^{-7}\)\,rad): 1,088 \(\to\) 529 gates, error \(1.3\cdot10^{-4}\) \(\le\) bound \(7.1\cdot10^{-4}\).
+          \item The exception is Nam pf2\_10 (rotations \(\sim10^{-7}\)\,rad), 1,088 \(\to\) 529 gates with error \(1.3\cdot10^{-4}\) \(\le\) bound \(7.1\cdot10^{-4}\).
         \end{itemize}
       \end{block}}
     \end{column}
   \end{columns}
 \end{frame}
 
-\begin{frame}{Verification: every number on these slides is checked}
+\begin{frame}{Every number on these slides is verified}
   \begin{columns}[T]
     \begin{column}{0.48\textwidth}
       \begin{itemize}\setlength{\itemsep}{0.5em}
-        \item \textbf{Exact mode}: \(\lVert (U-V)\psi\rVert\) on random states, statevector on the active qubits: \(\le 8.2\cdot10^{-11}\).
-        \item \textbf{State-aware}: TVD of output distributions: \(\le 6\cdot10^{-12}\).
-        \item \textbf{Approximate}: measured error \(\le\) tracked bound, all runs.
-        \item \textbf{Legality}: native gates only, 2q gates only on working couplers.
+        \item \textbf{Exact mode.} \(\lVert (U-V)\psi\rVert\) on random states (statevector on the active qubits) is \(\le 8.2\cdot10^{-11}\).
+        \item \textbf{State-aware.} The TVD of output distributions is \(\le 6\cdot10^{-12}\).
+        \item \textbf{Approximate.} Measured error \(\le\) tracked bound in all runs.
+        \item \textbf{Legality.} Native gates only, and 2q gates only on working couplers.
       \end{itemize}
     \end{column}
     \begin{column}{0.48\textwidth}
       \two{
       \begin{itemize}\setlength{\itemsep}{0.5em}
-        \item \textbf{Coverage}: 250/250 paper-benchmark outputs, 720/720 hardware-suite outputs.
-        \item Nam pf2\_10 on Heron is routed over 20 physical qubits, beyond the main run's 16-qubit cap: re-run and verified separately (same totals).
-        \item FakeTorino has 11 dead couplers (error 1.0); removed for \emph{all} pipelines after a first run put Qiskit L3 on them (ESP \(\sim10^{-22}\)).
+        \item \textbf{Coverage.} 250/250 paper-benchmark outputs and 720/720 hardware-suite outputs. BQSKit outputs are checked up to phase and qubit permutation (238/240, the 2 others exceed 16 qubits).
+        \item Nam pf2\_10 on Heron is routed over 20 physical qubits, beyond the main run's 16-qubit cap, so it was re-run and verified separately (same totals).
+        \item FakeTorino has 11 dead couplers (error 1.0), removed for \emph{all} pipelines after a first run put Qiskit L3 on them (ESP \(\sim10^{-22}\)).
       \end{itemize}}
     \end{column}
   \end{columns}
@@ -967,15 +1005,15 @@
 % ################################################################ PART VII
 \partslide{VII}{Wrap-up}{Lessons, limitations, critique of the original paper, and next steps.}
 
-\begin{frame}{Lesson: ``exact'' is easy to get subtly wrong}
-  Found on Nam \texttt{pf1\_10}/\texttt{pf2\_10} (rotations of \(\sim10^{-7}\)\,rad): outputs first verified only to \(10^{-6}\).
+\begin{frame}{Lesson, ``exact'' is easy to get subtly wrong}
+  Found on Nam \texttt{pf1\_10}/\texttt{pf2\_10} (rotations of \(\sim10^{-7}\)\,rad), whose outputs at first verified only to \(10^{-6}\).
   \vspace{0.6em}
   \begin{columns}[T]
     \begin{column}{0.49\textwidth}
       \begin{alertblock}{Pitfalls}
         \begin{itemize}
-          \item \texttt{np.allclose} has a default \emph{relative} tolerance \(10^{-5}\): near-commuting gates were swapped.
-          \item \(|\mathrm{tr}(U^\dagger V)|/d \approx 1\) is \emph{quadratic} in the error: accepts \(\lVert U-V\rVert \sim 10^{-4}\).
+          \item \texttt{np.allclose} has a default \emph{relative} tolerance \(10^{-5}\), so near-commuting gates were swapped.
+          \item \(|\mathrm{tr}(U^\dagger V)|/d \approx 1\) is \emph{quadratic} in the error and accepts \(\lVert U-V\rVert \sim 10^{-4}\).
           \item Native gates reach only a \emph{discrete} set of global phases.
         \end{itemize}
       \end{alertblock}
@@ -985,8 +1023,8 @@
       \begin{exampleblock}{Fixes}
         \begin{itemize}
           \item Linear operator-distance tests, one tolerance \(10^{-10}\), \texttt{rtol=0}.
-          \item Replacement phases snapped to the reachable set; residuals rejected or charged to \(\varepsilon\).
-          \item Ion: \(\pm i\) absorbed into an existing MS gate.
+          \item Replacement phases snapped to the reachable set, with residuals rejected or charged to \(\varepsilon\).
+          \item On ions \(\pm i\) is absorbed into an existing MS gate.
         \end{itemize}
       \end{exampleblock}}
     \end{column}
@@ -998,16 +1036,16 @@
   \begin{columns}[T]
     \begin{column}{0.48\textwidth}
       \begin{itemize}\setlength{\itemsep}{0.6em}
-        \item \textbf{Noise models, not hardware.} ESP and TVD from calibration snapshots; gate errors only (no readout, idle, crosstalk). Ion parameters are assumptions.
-        \item \textbf{Global phase is not free for us.} Strict mode costs 240 single-qubit gates over the Heron suite; with phase as metadata (as Qiskit/TKET do), all gates \(\times\)0.838 \(\to\) \(\times\)0.825.
+        \item \textbf{Noise models, not hardware.} ESP and TVD come from calibration snapshots, with gate errors only (no readout, idle or crosstalk). Ion parameters are assumptions.
+        \item \textbf{Global phase is not free for us.} Strict mode costs 240 single-qubit gates over the Heron suite. With phase as metadata (as Qiskit, TKET and BQSKit do), all gates \(\times\)0.838 \(\to\) \(\times\)0.825.
       \end{itemize}
     \end{column}
     \begin{column}{0.48\textwidth}
       \two{
       \begin{itemize}\setlength{\itemsep}{0.6em}
-        \item \textbf{Baselines.} No BQSKit (not installable here), no Quartz/QUESO; one seed for Qiskit and TKET.
-        \item \textbf{Local only.} Layout and routing are Qiskit's; windows \(\le3\) qubits; single-threaded Python (median 10\,s, max 180\,s per circuit vs.\ \(<\)1\,s for Qiskit).
-        \item \textbf{Scope.} Circuits up to \(\sim\)1,000 gates; no mid-circuit measurement / feed-forward.
+        \item \textbf{Baselines.} BQSKit (approximate) needs fewer 2q gates than we do. Quartz/QUESO were not run, and Qiskit, TKET and BQSKit use one seed.
+        \item \textbf{Local only.} Layout and routing are Qiskit's, windows have \(\le3\) qubits, and the code is single-threaded Python (median 10\,s, max 180\,s per circuit vs.\ \(<\)1\,s for Qiskit).
+        \item \textbf{Scope.} Circuits up to \(\sim\)1,000 gates, and no mid-circuit measurement or feed-forward.
       \end{itemize}}
     \end{column}
   \end{columns}
@@ -1017,20 +1055,20 @@
   \begin{columns}[T]
     \begin{column}{0.48\textwidth}
       \begin{enumerate}\setlength{\itemsep}{0.4em}\small
-        \item \textbf{Missing structure}: Clifford gate sets, but no tableaux, no exact keys; floating-point lookup with three tolerances; a classifier to speed up an avoidable \(O(N)\) scan.
-        \item \textbf{No notion of optimality}: only compared with Qiskit; 4.5\(\times\) from an optimum computable in minutes.
-        \item \textbf{Equivalence}: up-to-phase only, unsound under control; no state/measurement context; no error tracking.
-        \item \textbf{Hardware model}: discrete angles, all-to-all, total count. Matches neither IBM nor ion hardware.
+        \item \textbf{Missing structure.} Clifford gate sets, but no tableaux and no exact keys, floating-point lookup with three tolerances, and a classifier to speed up an avoidable \(O(N)\) scan.
+        \item \textbf{No notion of optimality.} Only compared with Qiskit, and 4.5\(\times\) from an optimum computable in minutes.
+        \item \textbf{Equivalence.} Up to phase only (unsound under control), with no state/measurement context and no error tracking.
+        \item \textbf{Hardware model.} Discrete angles, all-to-all, total count. Matches neither IBM nor ion hardware.
       \end{enumerate}
     \end{column}
     \begin{column}{0.48\textwidth}
       \two{
       \begin{enumerate}\setcounter{enumi}{4}\setlength{\itemsep}{0.4em}\small
-        \item \textbf{Evaluation}: random benchmarks mix, so ``from 300 gates'' measures input length; one circuit per table; MATLAB vs.\ compiled timings.
-        \item \textbf{Search}: contiguous windows, random swaps, no convergence criterion; radius 5 is the binding limit.
-        \item \textbf{V3}: unreported features/threshold; 30\,\% recall at default.
-        \item \textbf{Hardware evidence}: one 2-qubit circuit, no error bars; vanishes at Qiskit level 3.
-        \item \textbf{Reproducibility}: only V2 released, with visible bugs; database for Tables III--V unstated.
+        \item \textbf{Evaluation.} Random benchmarks mix, so ``from 300 gates'' measures input length. One circuit per table, and MATLAB vs.\ compiled timings.
+        \item \textbf{Search.} Contiguous windows, random swaps and no convergence criterion. Radius 5 is the binding limit.
+        \item \textbf{V3.} Unreported features and threshold, 30\,\% recall at default.
+        \item \textbf{Hardware evidence.} One 2-qubit circuit and no error bars. The effect vanishes at Qiskit level 3.
+        \item \textbf{Reproducibility.} Only V2 released, with visible bugs, and the database for Tables III--V unstated.
       \end{enumerate}}
     \end{column}
   \end{columns}
@@ -1042,8 +1080,8 @@
       \begin{block}{About the paper}
         \begin{itemize}\setlength{\itemsep}{0.3em}
           \item Reproduces, with qualifications on database, forest threshold, baselines and transpiler level.
-          \item Its gates are Clifford: exact optima show it is 3--4.5\(\times\) from optimal.
-          \item Theory explains why: radius 5 and window 8 sit below the exactness threshold; random benchmarks measure a constant.
+          \item Its gates are Clifford, and exact optima show it is 3--4.5\(\times\) from optimal.
+          \item Theory explains why. Radius 5 and window 8 sit below the exactness threshold, and random benchmarks measure a constant.
         \end{itemize}
       \end{block}
     \end{column}
@@ -1053,7 +1091,8 @@
         \begin{itemize}\setlength{\itemsep}{0.3em}
           \item A general optimiser built on ``equivalence = group action'', with soundness and error bounds.
           \item Proven optimum on 35/40 of the paper's 3-qubit circuits without Clifford knowledge.
-          \item On 58 real algorithms, stacked on Qiskit L3: never more 2q gates, never lower ESP, \(-13\,\%\) gates on Heron; lowest noisy error with the calibrated objective.
+          \item On 58 real algorithms, stacked on Qiskit L3, it never adds 2q gates, never lowers ESP and removes 13\,\% of gates on Heron.
+          \item BQSKit's approximate resynthesis needs fewer 2q gates. Exact rewriting keeps the unitary, removes more single-qubit gates and is faster. Run after BQSKit, it removes a further 16\,\% of gates on Heron.
         \end{itemize}
       \end{exampleblock}}
     \end{column}
@@ -1068,8 +1107,8 @@
         \item Layout-aware rewriting with calibrated costs (the biggest remaining lever on Heron).
         \item Cheaper exact phase repair on Heron.
         \item 4-qubit windows via symmetry reduction, or a learned admissible A\(^\ast\) heuristic trained on exact tables.
-        \item Ground truth beyond Clifford: exact Clifford+T normal forms for small \(T\)-counts.
-        \item BQSKit / Quartz baselines; real-hardware runs with error bars.
+        \item Ground truth beyond Clifford, with exact Clifford+T normal forms for small \(T\)-counts.
+        \item Reach BQSKit's 2q counts without approximation (larger windows, snapped resynthesis), a Quartz baseline, and real-hardware runs with error bars.
       \end{enumerate}
     \end{column}
     \begin{column}{0.48\textwidth}
@@ -1078,7 +1117,7 @@
       \begin{enumerate}\setlength{\itemsep}{0.4em}\small
         \item Is the target a short note on the reproduction + optimality gap, or a full paper on the general framework?
         \item Is real-hardware access available for an error-barred experiment?
-        \item Which venue fits: quantum-computing (theory + benchmarks) or a compiler venue?
+        \item Which venue fits, a quantum-computing one (theory + benchmarks) or a compiler venue?
         \item Should we contact the authors about the unstated database and the code bugs?
       \end{enumerate}}
     \end{column}
@@ -1092,7 +1131,7 @@
     \textbf{What} & \textbf{Where}\\\midrule
     Study notes (read instead of the paper) & \texttt{manuscripts/notes/notes.pdf}\\
     Reproduction report (every table and figure) & \texttt{manuscripts/reproduction/reproduction\_report.pdf}\\
-    Extension paper (12 pages) & \texttt{manuscripts/extension/extension\_paper.pdf}\\
+    Extension paper & \texttt{manuscripts/extension/extension\_paper.pdf}\\
     Python port, exact Clifford engine, general optimiser & \texttt{qcr/}\\
     Experiment scripts and raw results & \texttt{experiments/}, \texttt{results/}\\
     This talk & \texttt{manuscripts/talk/talk.pdf}\\\bottomrule
@@ -1112,7 +1151,7 @@
   \end{tikzpicture}
 \end{frame}}
 
-\begin{frame}{Backup: paper-benchmark numbers (mean total gate count)}
+\begin{frame}{Backup. Paper-benchmark numbers (mean total gate count)}
   \centering\renewcommand{\arraystretch}{1.25}
   \resizebox{\textwidth}{!}{\begin{tabular}{@{}lrrrrr@{}}
     \toprule
@@ -1125,10 +1164,10 @@
     T5 (IBM-style, 15q, 10)   & 332.1 & 335.9 & 324.6 & --   & \good{327.7}\\
     \bottomrule
   \end{tabular}}\\[0.6em]
-  {\footnotesize\color{muted}*first 30 circuits. General engine: up-to-phase semantics (as in the paper), total count, discrete \(\pm\pi/2\) alphabets, all-to-all.}
+  {\footnotesize\color{muted}*first 30 circuits. The general engine uses up-to-phase semantics (as in the paper), total count, discrete \(\pm\pi/2\) alphabets and all-to-all connectivity.}
 \end{frame}
 
-\begin{frame}{Backup: minimal entangling-gate counts, 3 qubits}
+\begin{frame}{Backup. Minimal entangling-gate counts, 3 qubits}
   \centering\renewcommand{\arraystretch}{1.25}
   \resizebox{\textwidth}{!}{\begin{tabular}{@{}lrrrrrrr@{}}
     \toprule
@@ -1136,16 +1175,16 @@
     3-qubit Cliffords & 13,824 & 373,248 & 5,971,968 & 38,486,016 & 42,052,608 & 5,971,968 & 27,648\\\bottomrule
   \end{tabular}}\\[0.8em]
   {\small Mean 3.51, maximum 6. Identical for both alphabets (\(R_{XX}(\frac\pi2)\) and CZ are locally equivalent).
-   For 2 qubits: 576 / 5,184 / 5,184 / 576 for 0--3, the known CNOT-count distribution.}
+   For 2 qubits the counts are 576 / 5,184 / 5,184 / 576 for 0--3, the known CNOT-count distribution.}
 \end{frame}
 
-\begin{frame}{Backup: worked examples from the reproduction}
+\begin{frame}{Backup. Worked examples from the reproduction}
   \begin{itemize}\setlength{\itemsep}{0.6em}
-    \item \textbf{Fig.~1}: the 8-gate and 4-gate Bell circuits both equal CNOT\,(\(H\otimes I\)) to \(10^{-13}\); no 3-gate circuit exists.
-    \item \textbf{Fig.~4 analogue} (2 qubits, 40 gates): \(40\to34\to26\to24\to20\to18\to16\to8\to4\); every step removes an even number of gates (parity theorem).
-          The paper's final circuit contains an inverse pair; the optimum is 2.
-    \item \textbf{Fig.~5 analogue} (3 qubits, 200 gates): \(200\to36\) in 31 replacements.
-    \item \textbf{Authors' demo circuit} (5 qubits, 300 gates): authors 140; our port 140 (132--148) with the demo database, 115 (112--117) with the 24-op depth-5 database.
+    \item \textbf{Fig.~1.} The 8-gate and 4-gate Bell circuits both equal CNOT\,(\(H\otimes I\)) to \(10^{-13}\), and no 3-gate circuit exists.
+    \item \textbf{Fig.~4 analogue} (2 qubits, 40 gates). \(40\to34\to26\to24\to20\to18\to16\to8\to4\), and every step removes an even number of gates (parity theorem).
+          The paper's final circuit contains an inverse pair, and the optimum is 2.
+    \item \textbf{Fig.~5 analogue} (3 qubits, 200 gates). \(200\to36\) in 31 replacements.
+    \item \textbf{Authors' demo circuit} (5 qubits, 300 gates). Authors 140, our port 140 (132--148) with the demo database and 115 (112--117) with the 24-op depth-5 database.
   \end{itemize}
 \end{frame}
 

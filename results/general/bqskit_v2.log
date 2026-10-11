@@ -1,0 +1,147 @@
+<frozen site>:107: RuntimeWarning: Unexpected value in sys.prefix, expected /home/arnav/Downloads/ankur/.venv, got /home/arnav/Downloads/ankur/experiments/../.venv
+<frozen site>:107: RuntimeWarning: Unexpected value in sys.exec_prefix, expected /home/arnav/Downloads/ankur/.venv, got /home/arnav/Downloads/ankur/experiments/../.venv
+skip hhl_n10 QASM2ParseError
+skip qasmbench/inverseqft_n4 classical control flow
+skip qasmbench/ipea_n2 classical control flow
+skip qasmbench/qec_sm_n5 classical control flow
+skip qasmbench/shor_n5 classical control flow
+skip vqe_uccsd_n4 QASM2ParseError
+skip vqe_uccsd_n6 QASM2ParseError
+skip vqe_uccsd_n8 QASM2ParseError
+60 circuits, 0 rows done, 120 to run
+/home/arnav/.local/lib/python3.14/site-packages/bqskit/passes/synthesis/leap.py:358: SmallSampleWarning: One or more sample arguments is too small; all returned values will be NaN. See documentation for sample size requirements.
+  m, y_int, _, _, _ = linregress(best_layers, best_dists)
+/home/arnav/.local/lib/python3.14/site-packages/bqskit/passes/synthesis/leap.py:358: SmallSampleWarning: One or more sample arguments is too small; all returned values will be NaN. See documentation for sample size requirements.
+  m, y_int, _, _, _ = linregress(best_layers, best_dists)
+/home/arnav/.local/lib/python3.14/site-packages/bqskit/passes/synthesis/leap.py:358: SmallSampleWarning: One or more sample arguments is too small; all returned values will be NaN. See documentation for sample size requirements.
+  m, y_int, _, _, _ = linregress(best_layers, best_dists)
+/home/arnav/.local/lib/python3.14/site-packages/bqskit/passes/synthesis/leap.py:358: SmallSampleWarning: One or more sample arguments is too small; all returned values will be NaN. See documentation for sample size requirements.
+  m, y_int, _, _, _ = linregress(best_layers, best_dists)
+{"name": "nam/barenco_tof_3", "dev": "heron", "qiskit_L1": 45, "bqskit_L2": 31, "bqskit_L3": 31}
+/home/arnav/.local/lib/python3.14/site-packages/bqskit/passes/synthesis/leap.py:358: SmallSampleWarning: One or more sample arguments is too small; all returned values will be NaN. See documentation for sample size requirements.
+  m, y_int, _, _, _ = linregress(best_layers, best_dists)
+/home/arnav/.local/lib/python3.14/site-packages/bqskit/passes/synthesis/leap.py:358: SmallSampleWarning: One or more sample arguments is too small; all returned values will be NaN. See documentation for sample size requirements.
+  m, y_int, _, _, _ = linregress(best_layers, best_dists)
+/home/arnav/.local/lib/python3.14/site-packages/bqskit/passes/synthesis/leap.py:358: SmallSampleWarning: One or more sample arguments is too small; all returned values will be NaN. See documentation for sample size requirements.
+  m, y_int, _, _, _ = linregress(best_layers, best_dists)
+/home/arnav/.local/lib/python3.14/site-packages/bqskit/passes/synthesis/leap.py:358: SmallSampleWarning: One or more sample arguments is too small; all returned values will be NaN. See documentation for sample size requirements.
+  m, y_int, _, _, _ = linregress(best_layers, best_dists)
+{"name": "nam/barenco_tof_4", "dev": "heron", "qiskit_L1": 93, "bqskit_L2": 58, "bqskit_L3": 56}
+{"name": "nam/barenco_tof_5", "dev": "heron", "qiskit_L1": 141, "bqskit_L2": 82, "bqskit_L3": 79}
+{"name": "nam/gf2^4_mult", "dev": "heron", "qiskit_L1": 255, "bqskit_L2": 186, "bqskit_L3": 177}
+{"name": "nam/mod5_4", "dev": "heron", "qiskit_L1": 58, "bqskit_L2": 29, "bqskit_L3": 29}
+{"name": "nam/mod_mult_55", "dev": "heron", "qiskit_L1": 99, "bqskit_L2": 80, "bqskit_L3": 77}
+{"name": "nam/mod_red_21", "dev": "heron", "qiskit_L1": 234, "bqskit_L2": 168, "bqskit_L3": 168}
+{"name": "nam/tof_3", "dev": "heron", "qiskit_L1": 30, "bqskit_L2": 22, "bqskit_L3": 22}
+{"name": "nam/tof_4", "dev": "heron", "qiskit_L1": 51, "bqskit_L2": 37, "bqskit_L3": 37}
+{"name": "nam/tof_5", "dev": "heron", "qiskit_L1": 72, "bqskit_L2": 46, "bqskit_L3": 46}
+{"name": "nam/vbe_adder_3", "dev": "heron", "qiskit_L1": 128, "bqskit_L2": 87, "bqskit_L3": 73}
+{"name": "nam/pf1_10", "dev": "heron", "qiskit_L1": 153, "bqskit_L2": 125, "bqskit_L3": 67}
+{"name": "nam/pf2_10", "dev": "heron", "qiskit_L1": 300, "bqskit_L2": 292, "bqskit_L3": 20}
+{"name": "nam/QFT8", "dev": "heron", "qiskit_L1": 128, "bqskit_L2": 88, "bqskit_L3": 83}
+{"name": "qasmbench/adder_n10", "dev": "heron", "qiskit_L1": 110, "bqskit_L2": 61, "bqskit_L3": 57}
+{"name": "qasmbench/adder_n4", "dev": "heron", "qiskit_L1": 16, "bqskit_L2": 14, "bqskit_L3": 14}
+{"name": "qasmbench/basis_change_n3", "dev": "heron", "qiskit_L1": 10, "bqskit_L2": 6, "bqskit_L3": 6}
+{"name": "qasmbench/bb84_n8", "dev": "heron", "qiskit_L1": 0, "bqskit_L2": 0, "bqskit_L3": 0}
+{"name": "qasmbench/bell_n4", "dev": "heron", "qiskit_L1": 7, "bqskit_L2": 5, "bqskit_L3": 5}
+{"name": "qasmbench/cat_state_n4", "dev": "heron", "qiskit_L1": 3, "bqskit_L2": 3, "bqskit_L3": 3}
+{"name": "qasmbench/deutsch_n2", "dev": "heron", "qiskit_L1": 1, "bqskit_L2": 1, "bqskit_L3": 1}
+{"name": "qasmbench/dnn_n2", "dev": "heron", "qiskit_L1": 42, "bqskit_L2": 3, "bqskit_L3": 3}
+{"name": "qasmbench/dnn_n8", "dev": "heron", "qiskit_L1": 237, "bqskit_L2": 109, "bqskit_L3": 109}
+{"name": "qasmbench/error_correctiond3_n5", "dev": "heron", "qiskit_L1": 58, "bqskit_L2": 29, "bqskit_L3": 24}
+{"name": "qasmbench/fredkin_n3", "dev": "heron", "qiskit_L1": 14, "bqskit_L2": 9, "bqskit_L3": 9}
+{"name": "qasmbench/grover_n2", "dev": "heron", "qiskit_L1": 2, "bqskit_L2": 2, "bqskit_L3": 2}
+{"name": "qasmbench/hhl_n7", "dev": "heron", "qiskit_L1": 322, "bqskit_L2": 175, "bqskit_L3": 170}
+{"name": "qasmbench/hs4_n4", "dev": "heron", "qiskit_L1": 4, "bqskit_L2": 4, "bqskit_L3": 4}
+{"name": "qasmbench/ising_n10", "dev": "heron", "qiskit_L1": 90, "bqskit_L2": 82, "bqskit_L3": 63}
+{"name": "qasmbench/iswap_n2", "dev": "heron", "qiskit_L1": 2, "bqskit_L2": 2, "bqskit_L3": 2}
+{"name": "qasmbench/linearsolver_n3", "dev": "heron", "qiskit_L1": 4, "bqskit_L2": 4, "bqskit_L3": 4}
+{"name": "qasmbench/lpn_n5", "dev": "heron", "qiskit_L1": 2, "bqskit_L2": 2, "bqskit_L3": 2}
+{"name": "qasmbench/pea_n5", "dev": "heron", "qiskit_L1": 60, "bqskit_L2": 25, "bqskit_L3": 25}
+{"name": "qasmbench/qaoa_n3", "dev": "heron", "qiskit_L1": 9, "bqskit_L2": 7, "bqskit_L3": 7}
+{"name": "qasmbench/qaoa_n6", "dev": "heron", "qiskit_L1": 84, "bqskit_L2": 60, "bqskit_L3": 58}
+{"name": "qasmbench/qec_en_n5", "dev": "heron", "qiskit_L1": 16, "bqskit_L2": 12, "bqskit_L3": 11}
+{"name": "qasmbench/qft_n4", "dev": "heron", "qiskit_L1": 21, "bqskit_L2": 15, "bqskit_L3": 14}
+{"name": "qasmbench/qpe_n9", "dev": "heron", "qiskit_L1": 85, "bqskit_L2": 69, "bqskit_L3": 66}
+{"name": "qasmbench/qrng_n4", "dev": "heron", "qiskit_L1": 0, "bqskit_L2": 0, "bqskit_L3": 0}
+{"name": "qasmbench/quantumwalks_n2", "dev": "heron", "qiskit_L1": 3, "bqskit_L2": 2, "bqskit_L3": 2}
+{"name": "qasmbench/sat_n7", "dev": "heron", "qiskit_L1": 132, "bqskit_L2": 94, "bqskit_L3": 94}
+{"name": "qasmbench/simon_n6", "dev": "heron", "qiskit_L1": 26, "bqskit_L2": 8, "bqskit_L3": 6}
+{"name": "qasmbench/teleportation_n3", "dev": "heron", "qiskit_L1": 2, "bqskit_L2": 2, "bqskit_L3": 2}
+{"name": "qasmbench/toffoli_n3", "dev": "heron", "qiskit_L1": 9, "bqskit_L2": 7, "bqskit_L3": 7}
+{"name": "qasmbench/variational_n4", "dev": "heron", "qiskit_L1": 16, "bqskit_L2": 8, "bqskit_L3": 8}
+{"name": "qasmbench/vqe_n4", "dev": "heron", "qiskit_L1": 9, "bqskit_L2": 9, "bqskit_L3": 9}
+{"name": "qasmbench/wstate_n3", "dev": "heron", "qiskit_L1": 15, "bqskit_L2": 9, "bqskit_L3": 9}
+{"name": "alg/qft_4", "dev": "heron", "qiskit_L1": 27, "bqskit_L2": 21, "bqskit_L3": 18}
+{"name": "alg/qft_6", "dev": "heron", "qiskit_L1": 78, "bqskit_L2": 66, "bqskit_L3": 54}
+{"name": "alg/qft_8", "dev": "heron", "qiskit_L1": 149, "bqskit_L2": 121, "bqskit_L3": 120}
+{"name": "alg/qaoa_6", "dev": "heron", "qiskit_L1": 81, "bqskit_L2": 71, "bqskit_L3": 68}
+{"name": "alg/qaoa_8", "dev": "heron", "qiskit_L1": 96, "bqskit_L2": 78, "bqskit_L3": 78}
+{"name": "alg/heisenberg_6", "dev": "heron", "qiskit_L1": 90, "bqskit_L2": 45, "bqskit_L3": 45}
+{"name": "alg/heisenberg_8", "dev": "heron", "qiskit_L1": 126, "bqskit_L2": 63, "bqskit_L3": 63}
+{"name": "alg/efficientsu2_6", "dev": "heron", "qiskit_L1": 15, "bqskit_L2": 15, "bqskit_L3": 15}
+{"name": "alg/steane_encoder", "dev": "heron", "qiskit_L1": 35, "bqskit_L2": 28, "bqskit_L3": 27}
+{"name": "random/grid_4q", "dev": "heron", "qiskit_L1": 75, "bqskit_L2": 46, "bqskit_L3": 39}
+{"name": "random/cont_4q", "dev": "heron", "qiskit_L1": 70, "bqskit_L2": 55, "bqskit_L3": 52}
+{"name": "random/grid_6q", "dev": "heron", "qiskit_L1": 150, "bqskit_L2": 119, "bqskit_L3": 105}
+{"name": "random/cont_6q", "dev": "heron", "qiskit_L1": 108, "bqskit_L2": 88, "bqskit_L3": 88}
+{"name": "nam/barenco_tof_3", "dev": "ion", "qiskit_L1": 24, "bqskit_L2": 20, "bqskit_L3": 20}
+{"name": "nam/barenco_tof_4", "dev": "ion", "qiskit_L1": 48, "bqskit_L2": 40, "bqskit_L3": 39}
+{"name": "nam/barenco_tof_5", "dev": "ion", "qiskit_L1": 72, "bqskit_L2": 60, "bqskit_L3": 59}
+{"name": "nam/gf2^4_mult", "dev": "ion", "qiskit_L1": 99, "bqskit_L2": 83, "bqskit_L3": 83}
+{"name": "nam/mod5_4", "dev": "ion", "qiskit_L1": 28, "bqskit_L2": 16, "bqskit_L3": 16}
+{"name": "nam/mod_mult_55", "dev": "ion", "qiskit_L1": 48, "bqskit_L2": 41, "bqskit_L3": 41}
+{"name": "nam/mod_red_21", "dev": "ion", "qiskit_L1": 105, "bqskit_L2": 86, "bqskit_L3": 86}
+{"name": "nam/tof_3", "dev": "ion", "qiskit_L1": 18, "bqskit_L2": 15, "bqskit_L3": 15}
+{"name": "nam/tof_4", "dev": "ion", "qiskit_L1": 30, "bqskit_L2": 25, "bqskit_L3": 25}
+{"name": "nam/tof_5", "dev": "ion", "qiskit_L1": 42, "bqskit_L2": 35, "bqskit_L3": 35}
+{"name": "nam/vbe_adder_3", "dev": "ion", "qiskit_L1": 62, "bqskit_L2": 46, "bqskit_L3": 45}
+{"name": "nam/pf1_10", "dev": "ion", "qiskit_L1": 60, "bqskit_L2": 0, "bqskit_L3": 0}
+{"name": "nam/pf2_10", "dev": "ion", "qiskit_L1": 120, "bqskit_L2": 0, "bqskit_L3": 0}
+{"name": "nam/QFT8", "dev": "ion", "qiskit_L1": 56, "bqskit_L2": 28, "bqskit_L3": 28}
+{"name": "qasmbench/adder_n10", "dev": "ion", "qiskit_L1": 65, "bqskit_L2": 49, "bqskit_L3": 49}
+{"name": "qasmbench/adder_n4", "dev": "ion", "qiskit_L1": 10, "bqskit_L2": 7, "bqskit_L3": 7}
+{"name": "qasmbench/basis_change_n3", "dev": "ion", "qiskit_L1": 10, "bqskit_L2": 6, "bqskit_L3": 5}
+{"name": "qasmbench/bb84_n8", "dev": "ion", "qiskit_L1": 0, "bqskit_L2": 0, "bqskit_L3": 0}
+{"name": "qasmbench/bell_n4", "dev": "ion", "qiskit_L1": 7, "bqskit_L2": 3, "bqskit_L3": 3}
+{"name": "qasmbench/cat_state_n4", "dev": "ion", "qiskit_L1": 3, "bqskit_L2": 3, "bqskit_L3": 3}
+{"name": "qasmbench/deutsch_n2", "dev": "ion", "qiskit_L1": 1, "bqskit_L2": 1, "bqskit_L3": 1}
+{"name": "qasmbench/dnn_n2", "dev": "ion", "qiskit_L1": 42, "bqskit_L2": 3, "bqskit_L3": 3}
+{"name": "qasmbench/dnn_n8", "dev": "ion", "qiskit_L1": 192, "bqskit_L2": 56, "bqskit_L3": 56}
+{"name": "qasmbench/error_correctiond3_n5", "dev": "ion", "qiskit_L1": 49, "bqskit_L2": 25, "bqskit_L3": 11}
+{"name": "qasmbench/fredkin_n3", "dev": "ion", "qiskit_L1": 8, "bqskit_L2": 7, "bqskit_L3": 6}
+{"name": "qasmbench/grover_n2", "dev": "ion", "qiskit_L1": 2, "bqskit_L2": 2, "bqskit_L3": 2}
+{"name": "qasmbench/hhl_n7", "dev": "ion", "qiskit_L1": 196, "bqskit_L2": 62, "bqskit_L3": 62}
+{"name": "qasmbench/hs4_n4", "dev": "ion", "qiskit_L1": 4, "bqskit_L2": 4, "bqskit_L3": 4}
+{"name": "qasmbench/ising_n10", "dev": "ion", "qiskit_L1": 90, "bqskit_L2": 44, "bqskit_L3": 42}
+{"name": "qasmbench/iswap_n2", "dev": "ion", "qiskit_L1": 2, "bqskit_L2": 2, "bqskit_L3": 2}
+{"name": "qasmbench/linearsolver_n3", "dev": "ion", "qiskit_L1": 4, "bqskit_L2": 3, "bqskit_L3": 3}
+{"name": "qasmbench/lpn_n5", "dev": "ion", "qiskit_L1": 2, "bqskit_L2": 2, "bqskit_L3": 2}
+{"name": "qasmbench/pea_n5", "dev": "ion", "qiskit_L1": 42, "bqskit_L2": 9, "bqskit_L3": 9}
+{"name": "qasmbench/qaoa_n3", "dev": "ion", "qiskit_L1": 6, "bqskit_L2": 4, "bqskit_L3": 4}
+{"name": "qasmbench/qaoa_n6", "dev": "ion", "qiskit_L1": 54, "bqskit_L2": 18, "bqskit_L3": 18}
+{"name": "qasmbench/qec_en_n5", "dev": "ion", "qiskit_L1": 10, "bqskit_L2": 10, "bqskit_L3": 9}
+{"name": "qasmbench/qft_n4", "dev": "ion", "qiskit_L1": 12, "bqskit_L2": 6, "bqskit_L3": 6}
+{"name": "qasmbench/qpe_n9", "dev": "ion", "qiskit_L1": 43, "bqskit_L2": 26, "bqskit_L3": 26}
+{"name": "qasmbench/qrng_n4", "dev": "ion", "qiskit_L1": 0, "bqskit_L2": 0, "bqskit_L3": 0}
+{"name": "qasmbench/quantumwalks_n2", "dev": "ion", "qiskit_L1": 3, "bqskit_L2": 2, "bqskit_L3": 2}
+{"name": "qasmbench/sat_n7", "dev": "ion", "qiskit_L1": 60, "bqskit_L2": 50, "bqskit_L3": 50}
+{"name": "qasmbench/simon_n6", "dev": "ion", "qiskit_L1": 14, "bqskit_L2": 4, "bqskit_L3": 4}
+{"name": "qasmbench/teleportation_n3", "dev": "ion", "qiskit_L1": 2, "bqskit_L2": 2, "bqskit_L3": 2}
+{"name": "qasmbench/toffoli_n3", "dev": "ion", "qiskit_L1": 6, "bqskit_L2": 5, "bqskit_L3": 5}
+{"name": "qasmbench/variational_n4", "dev": "ion", "qiskit_L1": 16, "bqskit_L2": 8, "bqskit_L3": 8}
+{"name": "qasmbench/vqe_n4", "dev": "ion", "qiskit_L1": 9, "bqskit_L2": 9, "bqskit_L3": 9}
+{"name": "qasmbench/wstate_n3", "dev": "ion", "qiskit_L1": 9, "bqskit_L2": 5, "bqskit_L3": 5}
+{"name": "alg/qft_4", "dev": "ion", "qiskit_L1": 18, "bqskit_L2": 12, "bqskit_L3": 12}
+{"name": "alg/qft_6", "dev": "ion", "qiskit_L1": 39, "bqskit_L2": 24, "bqskit_L3": 24}
+{"name": "alg/qft_8", "dev": "ion", "qiskit_L1": 68, "bqskit_L2": 40, "bqskit_L3": 40}
+{"name": "alg/qaoa_6", "dev": "ion", "qiskit_L1": 36, "bqskit_L2": 18, "bqskit_L3": 18}
+{"name": "alg/qaoa_8", "dev": "ion", "qiskit_L1": 48, "bqskit_L2": 24, "bqskit_L3": 24}
+{"name": "alg/heisenberg_6", "dev": "ion", "qiskit_L1": 90, "bqskit_L2": 45, "bqskit_L3": 45}
+{"name": "alg/heisenberg_8", "dev": "ion", "qiskit_L1": 126, "bqskit_L2": 63, "bqskit_L3": 63}
+{"name": "alg/efficientsu2_6", "dev": "ion", "qiskit_L1": 15, "bqskit_L2": 15, "bqskit_L3": 15}
+{"name": "alg/steane_encoder", "dev": "ion", "qiskit_L1": 11, "bqskit_L2": 11, "bqskit_L3": 11}
+{"name": "random/grid_4q", "dev": "ion", "qiskit_L1": 36, "bqskit_L2": 28, "bqskit_L3": 27}
+{"name": "random/cont_4q", "dev": "ion", "qiskit_L1": 31, "bqskit_L2": 29, "bqskit_L3": 29}
+{"name": "random/grid_6q", "dev": "ion", "qiskit_L1": 45, "bqskit_L2": 43, "bqskit_L3": 43}
+{"name": "random/cont_6q", "dev": "ion", "qiskit_L1": 42, "bqskit_L2": 41, "bqskit_L3": 41}
