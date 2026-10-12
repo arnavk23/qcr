@@ -17,7 +17,7 @@ from math import pi
 import numpy as np
 
 from qcr.gates import Gate, circuit_unitary
-from qcr.general import GRIDS, Config, Database, Optimizer, commutes_exact, equivalent_local
+from qcr.general import GRIDS, Config, Database, Optimizer, commutes_exact, equivalent_local, repair_phase
 from qcr.hardware import Device, ion
 
 from .base import QCRTestCase
@@ -41,6 +41,12 @@ class TestPrimitives(QCRTestCase):
         U = np.eye(8, dtype=complex)
         V = circuit_unitary([Gate("rz", (0,), 1e-6)], 3)
         self.assertFalse(equivalent_local(U, V, "phase"))
+
+    def test_phase_repair_tolerates_float_drift(self):
+        """Regression: on QFTAdd32 (Heron) the phase product drifted 1.2e-9 from i and no gadget matched."""
+        circ = [Gate("rz", (0,), 0.3), Gate("cz", (0, 1)), Gate("sx", (1,))]
+        out, _ = repair_phase(circ, 1j * (1 - 1.24e-9), line(2))
+        np.testing.assert_allclose(circuit_unitary(out, 2), -1j * circuit_unitary(circ, 2), atol=1e-12)
 
 
 class _OptimizerModes:

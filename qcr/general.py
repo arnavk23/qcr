@@ -812,6 +812,12 @@ def _absorb_into_rxx(gates, s):
 
 def repair_phase(gates, C, dev: Device):
     """Return (gates', extra_cost) with circuit(gates') = C^{-1} circuit(gates)."""
+    # C is a product of snapped phases, but thousands of float multiplications drift
+    # past 1e-9 on large circuits; snap it back (same 1e-6 slack as certify's final check)
+    ph = reachable_phases(dev)
+    near = ph[np.argmin(np.abs(ph - C))]
+    if abs(near - C) < 1e-6:
+        C = near
     if abs(C - 1) < 1e-9:
         return gates, 0
     need = 1 / C
