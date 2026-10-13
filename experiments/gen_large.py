@@ -29,6 +29,7 @@ import re
 import time
 
 import numpy as np
+import runstatus
 from gen_bench import CONFIGS, OUT, ROOT, load_dbs, metrics, qk_to_gates, tket_opt
 
 from qcr.certify import replay
@@ -65,6 +66,34 @@ def large_circuits(min_qubits=13, max_qubits=133, max_gates=6000):
 
 
 def qcec_check(qa, qb, approx=False):
+    """_qcec_check in a child process, killed after its own timeouts plus a margin: QCEC's timeout is not
+    always honoured (on a 30-qubit BQSKit output its approximate DD check ran for hours)."""
+    ctx = mp.get_context("spawn")
+    q = ctx.Queue()
+    p = ctx.Process(target=_qcec_child, args=(qa, qb, approx, q))
+    t = time.perf_counter()
+    p.start()
+    p.join(2 * QCEC_TIMEOUT + 300)
+    if p.is_alive():
+        p.kill()
+        p.join()
+        return dict(
+            method="qcec_approx" if approx else "qcec",
+            result="no_information",
+            hard_timeout=True,
+            seconds=time.perf_counter() - t,
+        )
+    try:
+        return q.get(timeout=10)
+    except Exception:  # noqa: BLE001  child crashed before reporting
+        return dict(method="qcec", result="no_information", exitcode=p.exitcode)
+
+
+def _qcec_child(qa, qb, approx, q):
+    q.put(_qcec_check(qa, qb, approx))
+
+
+def _qcec_check(qa, qb, approx=False):
     """Exact DD check first (or process fidelity >= 1 - 1e-6 for BQSKit's numerically synthesised outputs).
     If that times out, fall back to QCEC's simulation checker with random stabilizer stimuli, which is a
     probabilistic check of the same kind as the statevector one (result 'probably_equivalent')."""
@@ -78,7 +107,7 @@ def qcec_check(qa, qb, approx=False):
         result=str(r.equivalence).split(".")[-1],
         seconds=time.perf_counter() - t,
     )
-    if out["result"] == "no_information":
+    if out["result"] == "no_information" and not approx:  # QCEC's simulation checker has no approximate mode
         t = time.perf_counter()
         r = qcec.verify(
             qa,
@@ -127,8 +156,8 @@ def check_mapped(a, b, act, pi, pf):
     from qiskit.synthesis import synth_permutation_basic
 
     n = len(act)
-    if n <= 16:
-        return dict(method="statevector", err=verify_mapped(a, b, act, pi, pf))
+    if n <= SV_MAX:  # QCEC's approximate DD check gives no_information here after its full timeout
+        return dict(method="statevector", err=verify_mapped(a, b, act, pi, pf, max_n=SV_MAX))
     m = {q: i for i, q in enumerate(act)}
     qa = QuantumCircuit(n)
     qa.compose(to_qiskit([g.remap(m) for g in a], n), inplace=True)
@@ -227,13 +256,28 @@ def job(args):
     return row
 
 
-def bqskit_job(name, devname, qc, levels, comp, timeout):
+def safe_job(args):
+    """job, but a failure comes back as a record instead of ending the whole pool run."""
+    try:
+        return job(args)
+    except Exception:  # noqa: BLE001
+        import traceback
+
+        return dict(_error=traceback.format_exc()[-3000:], name=args[0], device=args[1])
+
+
+def bqskit_job(name, devname, qc, levels, comp, timeout, cut=None):
+    """cut: {level: input size of a smaller circuit that already timed out}; such levels are not attempted."""
     from ext_bqskit import bqskit_opt
 
     dev, _, l1, _ = l1_input(qc, devname)
-    row = dict(name=name, device=devname, n=qc.num_qubits, qiskit_L1=metrics(l1, dev))
+    row = dict(name=name, device=devname, n=qc.num_qubits, input_size=qc.size(), qiskit_L1=metrics(l1, dev))
     for lv in levels:
         key = f"bqskit_L{lv}"
+        if cut and lv in cut:
+            row[key] = dict(error="skipped", reason=f"not attempted: a {cut[lv]}-gate input already timed out")
+            continue
+        runstatus.phase("compile", limit=timeout + 600, job=f"{name} {devname} L{lv}")
         t = time.perf_counter()
         try:
             g, pi, pf, act = bqskit_opt(l1, dev, lv, compiler=TimedCompiler(comp, timeout))
@@ -244,9 +288,12 @@ def bqskit_job(name, devname, qc, levels, comp, timeout):
             row[key] = dict(error=f"{type(e).__name__}: {e}"[:300], seconds=time.perf_counter() - t)
             continue
         sec = time.perf_counter() - t
-        row[key] = metrics(g, dev) | dict(
-            seconds=sec, legal=all(dev.is_native(x) for x in g), verify=check_mapped(l1, g, act, pi, pf)
-        )
+        runstatus.phase("check", limit=2 * QCEC_TIMEOUT + 1800, job=f"{name} {devname} L{lv}", active=len(act))
+        try:
+            ver = check_mapped(l1, g, act, pi, pf)
+        except Exception as e:  # noqa: BLE001  a failed check is recorded, it must not end the run
+            ver = dict(error=f"{type(e).__name__}: {e}"[:300])
+        row[key] = metrics(g, dev) | dict(seconds=sec, legal=all(dev.is_native(x) for x in g), verify=ver)
     print(
         json.dumps(
             {"name": name, "dev": devname, "n": row["n"]}
@@ -289,6 +336,8 @@ if __name__ == "__main__":
     ap.add_argument("--procs", type=int, default=4)
     ap.add_argument("--tag", default="v1")
     a = ap.parse_args()
+    if a.mode != "list":
+        runstatus.start(f"large_{a.mode}_{a.tag}")
     circs = {k: v for k, v in large_circuits(max_gates=a.max_gates).items() if re.search(a.filter, k)}
     print(len(circs), "circuits:", ", ".join(f"{k}({v.num_qubits}q,{v.size()})" for k, v in circs.items()), flush=True)
     if a.mode == "list":
@@ -308,6 +357,7 @@ if __name__ == "__main__":
                         continue
                     if not re.search(a.filter, r["name"]):
                         continue
+                    runstatus.phase("recert", limit=8 * 3600, job=f"{r['name']} {r['device']} {key}")
                     gs = load_gates(r["name"], r["device"])
                     dev = heron() if r["device"] == "heron" else ion(r["n"])
                     res = Optimizer(dev, DBS[r["device"]], Config(**CONFIGS["exact_cal"], patience=4, log=True)).run(
@@ -321,6 +371,7 @@ if __name__ == "__main__":
                     print(json.dumps(v), flush=True)
                     f.write(json.dumps(v) + "\n")
                     f.flush()
+                    runstatus.row_done()
         raise SystemExit
     if a.mode == "verify":  # statevector re-check of the saved outputs, smallest first, one at a time
         part = OUT / f"large_verify_{a.tag}.jsonl"
@@ -337,6 +388,7 @@ if __name__ == "__main__":
                     act = len({q for g in gs[start] + gs[key] for q in g.qubits})
                     if act > SV_MAX:  # routing can pull in more physical qubits than the circuit has
                         continue
+                    runstatus.phase("statevector", limit=4 * 3600, job=f"{r['name']} {r['device']} {key}", active=act)
                     t = time.perf_counter()
                     v = dict(
                         name=r["name"],
@@ -352,6 +404,7 @@ if __name__ == "__main__":
                     print(json.dumps(v), flush=True)
                     f.write(json.dumps(v) + "\n")
                     f.flush()
+                    runstatus.row_done()
         raise SystemExit
     if a.mode == "ours":
         for d in a.devices:
@@ -360,10 +413,17 @@ if __name__ == "__main__":
         done = {(r["name"], r["device"]) for r in map(json.loads, open(part))} if part.exists() else set()
         jobs = [(k, d, qasm2.dumps(v)) for k, v in circs.items() for d in a.devices if (k, d) not in done]
         print(f"{len(done)} rows done, {len(jobs)} to run", flush=True)
+        runstatus.progress(len(done), len(done) + len(jobs))
+        runstatus.phase("pool", jobs=len(jobs), procs=a.procs)
         with mp.get_context("fork").Pool(a.procs, maxtasksperchild=1) as p, open(part, "a") as f:
-            for r in p.imap_unordered(job, jobs):
+            for r in p.imap_unordered(safe_job, jobs):
+                if "_error" in r:  # recorded, not written as a row, so a resume retries it
+                    print(f"FAILED {r['name']} {r['device']}\n{r['_error']}", flush=True)
+                    runstatus.problem(f"{r['name']} {r['device']} failed:\n{r['_error'][-800:]}")
+                    continue
                 f.write(json.dumps(r) + "\n")
                 f.flush()
+                runstatus.row_done()
     else:
         from bqskit.compiler import Compiler
 
@@ -376,7 +436,21 @@ if __name__ == "__main__":
             if v.num_qubits <= a.bq_max_qubits and (k, d) not in done
         ]
         print(f"{len(done)} rows done, {len(jobs)} to run", flush=True)
+        runstatus.progress(len(done), len(done) + len(jobs))
+        # once a (device, level) times out, larger inputs on it are not attempted (jobs run smallest first)
+        cut = {}
+        for r in map(json.loads, open(part)) if part.exists() else []:
+            for lv in a.levels:
+                if r.get(f"bqskit_L{lv}", {}).get("error") == "timeout" and r["name"] in circs:
+                    size = circs[r["name"]].size()
+                    cut[r["device"], lv] = min(size, cut.get((r["device"], lv), size))
         with Compiler(num_workers=a.procs) as comp, open(part, "a") as f:
             for k, d, v in jobs:
-                f.write(json.dumps(bqskit_job(k, d, v, a.levels, comp, a.bq_timeout)) + "\n")
+                skip = {lv: s for (dd, lv), s in cut.items() if dd == d and v.size() >= s}
+                row = bqskit_job(k, d, v, a.levels, comp, a.bq_timeout, skip)
+                for lv in a.levels:
+                    if row[f"bqskit_L{lv}"].get("error") == "timeout":
+                        cut[d, lv] = min(v.size(), cut.get((d, lv), v.size()))
+                f.write(json.dumps(row) + "\n")
                 f.flush()
+                runstatus.row_done()
