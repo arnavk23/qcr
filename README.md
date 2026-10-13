@@ -200,15 +200,6 @@ tools/               fetch_external.sh (third-party benchmarks, authors' demo, p
 cache/, external/    generated / downloaded, not tracked
 ```
 
-## Manuscripts
-
-| | |
-|---|---|
-| [Study notes](manuscripts/notes/notes.pdf) | the paper explained from scratch |
-| [Reproduction report](manuscripts/reproduction/reproduction_report.pdf) | every table and figure re-run, with verdicts |
-| [Extension paper](manuscripts/extension/extension_paper.pdf) | framework, theory, ground truth, hardware results, limitations |
-| [Talk](manuscripts/talk/talk.pdf) | 53-slide narrative presentation |
-
 ## Contributing
 
 Contributions are welcome. Please read the [contributing guide](CONTRIBUTING.md) and follow the
