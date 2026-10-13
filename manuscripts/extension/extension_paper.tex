@@ -680,7 +680,9 @@ gates, and \LargeIonN\ ion circuits with up to \LargeIonMaxInput\ input gates. B
 \begin{table}[t]
 \caption{Large circuits, relative to Qiskit level 3 (\LargeHeronN\ Heron and \LargeIonN\ ion circuits of up to
 \LargeHeronMaxQubits\ qubits). Count columns are ratios of summed counts, and ESP is the geometric mean of per-circuit
-ratios. Every output of our optimiser has an accepted replay certificate.}\label{tab:large}
+ratios over the \LargeHeronEspN\ Heron and \LargeIonEspN\ ion circuits whose Qiskit level-3 ESP is at least
+$\LargeEspMin$. Below that, ESP is dominated by noise and a ratio of two such numbers swings by orders of magnitude.
+Every output of our optimiser has an accepted replay certificate.}\label{tab:large}
 \begin{tabular*}{\textwidth}{@{\extracolsep\fill}lccc c ccc}
 \toprule
 & \multicolumn{3}{c}{IBM Heron} && \multicolumn{3}{c}{trapped ion}\\\cmidrule{2-4}\cmidrule{6-8}
@@ -691,14 +693,16 @@ pipeline & 2q & all & ESP && 2q & all & ESP\\
 \end{tabular*}
 \end{table}
 
-\paragraph{Results.} Table~\ref{tab:large} shows the picture of the 60-circuit suite with larger margins on Heron. Stacked
+\paragraph{Results.} For gate counts, Table~\ref{tab:large} shows the picture of the 60-circuit suite with larger margins on Heron. Stacked
 on Qiskit level~3, the optimiser removes \LargeHeronFromLThreeAllSaved\ of all gates and \LargeHeronFromLThreeTwoqSaved\ of the
 two-qubit gates on Heron. It removes two-qubit gates on \LargeHeronFromLThreeBetter\ of \LargeHeronN\ circuits, never adds
-one, and raises ESP by $\times$\LargeHeronFromLThreeEsp\ in the geometric mean. On ions it never adds a two-qubit gate and
+one, and raises ESP by $\times$\LargeHeronFromLThreeEsp\ in the geometric mean over the circuits of
+Table~\ref{tab:large} (median $\times$\LargeHeronFromLThreeEspMedAll\ over all \LargeHeronN). On ions it never adds a two-qubit gate and
 never lowers ESP. The total never rises on Heron and rises on \LargeIonFromLThreeTotalUp\ ion circuits, again
 because the calibrated cost trades pulses for virtual $\RZ$ gates. Starting from level~1, the optimiser ends with fewer gates
 than level~3 on all \LargeHeronN\ Heron circuits but with more two-qubit gates on \LargeHeronLOneTwoqMore\ of them, since
-level~3 routing and resynthesis find entangling structure that local rewriting does not reach. On ions, where no routing is
+level~3 routing and resynthesis find entangling structure that local rewriting does not reach. Its ESP from level~1
+is also lower, because at this scale the level-3 layout and routing matter more than the gates rewriting removes. On ions, where no routing is
 needed, it uses fewer two-qubit gates than level~3 on \LargeIonLOneTwoqFewer\ circuits and more on none.
 
 \paragraph{Certificates.} Of the \LargeOutputs\ outputs of our optimiser, \LargeCertOk\ have an accepted replay certificate.

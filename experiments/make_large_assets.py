@@ -59,6 +59,10 @@ def sec(v):
     return f"{v:.2f}" if v < 1 else f"{v:.1f}" if v < 100 else f"{v:,.0f}".replace(",", "{,}")
 
 
+# ESP below this is noise-dominated: at ~1e-10 a ratio of two such numbers swings by orders of magnitude and a
+# geometric mean over the suite flips with one circuit, so the ESP column only uses circuits Qiskit L3 brings above it
+ESP_MIN = 1e-3
+
 L = jsonl("large_v1.jsonl")
 RC = {(r["name"], r["device"], r["key"]): r for r in jsonl("large_recert_v1.jsonl")}
 OURS = ("ours_exact_cal", "ours_exact_cal_fromL3")
@@ -95,10 +99,13 @@ PIPES = [
     ("ours_exact_cal_fromL3", "ours, exact, from L3"),
 ]
 rows = {}
+cmd("LargeEspMin", "10^{-3}")
 for dev, D in DEV.items():
     A = [r for r in L if r["device"] == dev]
     R = [r for r in A if not pf(r) and (r["name"], dev) not in unproven]
-    rows[dev] = {k: (sumratio(R, k, "twoq"), sumratio(R, k, "total"), gmratio(R, k, "success")) for k, _ in PIPES}
+    E = [r for r in R if r["qiskit_L3"]["success"] >= ESP_MIN]
+    rows[dev] = {k: (sumratio(R, k, "twoq"), sumratio(R, k, "total"), gmratio(E, k, "success")) for k, _ in PIPES}
+    cmd(f"Large{D}EspN", len(E))
     cmd(f"Large{D}N", len(R))
     cmd(f"Large{D}PfN", sum(map(pf, A)))
     cmd(f"Large{D}Pending", sum(not pf(r) and (r["name"], dev) in unproven for r in A))
@@ -114,9 +121,16 @@ for dev, D in DEV.items():
         f"Large{D}FromLThreeSuccDown",
         sum(r["ours_exact_cal_fromL3"]["success"] < r["qiskit_L3"]["success"] - 1e-12 for r in R),
     )
-    cmd(f"Large{D}FromLThreeAllSaved", f"{100 * (1 - sumratio(R, 'ours_exact_cal_fromL3', 'total')):.0f}\\%")
+    cmd(
+        f"Large{D}FromLThreeAllSaved",
+        f"{100 * (1 - sumratio(R, 'ours_exact_cal_fromL3', 'total')) + 0:.0f}\\%".replace("-0\\%", "0\\%"),
+    )
     cmd(f"Large{D}FromLThreeTwoqSaved", f"{100 * (1 - sumratio(R, 'ours_exact_cal_fromL3', 'twoq')):.1f}\\%")
-    cmd(f"Large{D}FromLThreeEsp", f"{gmratio(R, 'ours_exact_cal_fromL3', 'success'):.2f}")
+    cmd(f"Large{D}FromLThreeEsp", f"{gmratio(E, 'ours_exact_cal_fromL3', 'success'):.2f}")
+    cmd(
+        f"Large{D}FromLThreeEspMedAll",
+        f"{st.median(r['ours_exact_cal_fromL3']['success'] / r['qiskit_L3']['success'] for r in R):.2f}",
+    )
     cmd(f"Large{D}LOneTwoqFewer", sum(r["ours_exact_cal"]["twoq"] < r["qiskit_L3"]["twoq"] for r in R))
     cmd(f"Large{D}LOneTwoqMore", sum(r["ours_exact_cal"]["twoq"] > r["qiskit_L3"]["twoq"] for r in R))
     cmd(f"Large{D}LOneAllFewer", sum(r["ours_exact_cal"]["total"] < r["qiskit_L3"]["total"] for r in R))
