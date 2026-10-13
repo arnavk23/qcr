@@ -38,6 +38,7 @@ from qcr.hardware import coupling_list, heron, ion, qiskit_basis
 from qcr.verify import to_qiskit
 
 QCEC_TIMEOUT = 900.0
+BQ_QCEC_TIMEOUT = 300.0  # BQSKit outputs over 24 qubits: QCEC approx gave no_information even at 19 qubits
 SV_MAX = 24  # dense statevector check up to here (256 MB per state)
 SIMS = 32
 
@@ -65,15 +66,15 @@ def large_circuits(min_qubits=13, max_qubits=133, max_gates=6000):
     return dict(sorted(circs.items(), key=lambda kv: kv[1].size()))
 
 
-def qcec_check(qa, qb, approx=False):
+def qcec_check(qa, qb, approx=False, timeout=QCEC_TIMEOUT):
     """_qcec_check in a child process, killed after its own timeouts plus a margin: QCEC's timeout is not
     always honoured (on a 30-qubit BQSKit output its approximate DD check ran for hours)."""
     ctx = mp.get_context("spawn")
     q = ctx.Queue()
-    p = ctx.Process(target=_qcec_child, args=(qa, qb, approx, q))
+    p = ctx.Process(target=_qcec_child, args=(qa, qb, approx, q, timeout))
     t = time.perf_counter()
     p.start()
-    p.join(2 * QCEC_TIMEOUT + 300)
+    p.join(2 * timeout + 300)
     if p.is_alive():
         p.kill()
         p.join()
@@ -89,11 +90,11 @@ def qcec_check(qa, qb, approx=False):
         return dict(method="qcec", result="no_information", exitcode=p.exitcode)
 
 
-def _qcec_child(qa, qb, approx, q):
-    q.put(_qcec_check(qa, qb, approx))
+def _qcec_child(qa, qb, approx, q, timeout):
+    q.put(_qcec_check(qa, qb, approx, timeout))
 
 
-def _qcec_check(qa, qb, approx=False):
+def _qcec_check(qa, qb, approx=False, timeout=QCEC_TIMEOUT):
     """Exact DD check first (or process fidelity >= 1 - 1e-6 for BQSKit's numerically synthesised outputs).
     If that times out, fall back to QCEC's simulation checker with random stabilizer stimuli, which is a
     probabilistic check of the same kind as the statevector one (result 'probably_equivalent')."""
@@ -101,7 +102,7 @@ def _qcec_check(qa, qb, approx=False):
 
     kw = dict(check_approximate_equivalence=True, approximate_checking_threshold=1 - 1e-6) if approx else {}
     t = time.perf_counter()
-    r = qcec.verify(qa, qb, run_zx_checker=False, run_simulation_checker=False, timeout=QCEC_TIMEOUT, **kw)
+    r = qcec.verify(qa, qb, run_zx_checker=False, run_simulation_checker=False, timeout=timeout, **kw)
     out = dict(
         method="qcec_approx" if approx else "qcec",
         result=str(r.equivalence).split(".")[-1],
@@ -116,7 +117,7 @@ def _qcec_check(qa, qb, approx=False):
             run_alternating_checker=False,
             max_sims=SIMS,
             state_type=qcec.pyqcec.StateType.stabilizer,
-            timeout=QCEC_TIMEOUT,
+            timeout=timeout,
             **kw,
         )
         out |= dict(sim_result=str(r.equivalence).split(".")[-1], sim_seconds=time.perf_counter() - t, sims=SIMS)
@@ -165,7 +166,7 @@ def check_mapped(a, b, act, pi, pf):
     qb = QuantumCircuit(n)
     qb.compose(synth_permutation_basic(list(np.argsort(pi))), inplace=True)
     qb.compose(to_qiskit([g.remap(m) for g in b], n), inplace=True)
-    return qcec_check(qa, qb, approx=True)
+    return qcec_check(qa, qb, approx=True, timeout=BQ_QCEC_TIMEOUT)
 
 
 GATES = OUT / "large_gates"
@@ -288,7 +289,7 @@ def bqskit_job(name, devname, qc, levels, comp, timeout, cut=None):
             row[key] = dict(error=f"{type(e).__name__}: {e}"[:300], seconds=time.perf_counter() - t)
             continue
         sec = time.perf_counter() - t
-        runstatus.phase("check", limit=2 * QCEC_TIMEOUT + 1800, job=f"{name} {devname} L{lv}", active=len(act))
+        runstatus.phase("check", limit=2 * BQ_QCEC_TIMEOUT + 1800, job=f"{name} {devname} L{lv}", active=len(act))
         try:
             ver = check_mapped(l1, g, act, pi, pf)
         except Exception as e:  # noqa: BLE001  a failed check is recorded, it must not end the run
