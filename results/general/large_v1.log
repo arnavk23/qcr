@@ -1,0 +1,119 @@
+45 circuits: nam/csla_mux_3(15q,210), nam/rc_adder_6(14q,244), nam/tof_10(19q,323), nam/gf2^5_mult(15q,447), nam/QFTAdd8(16q,476), nam/pf1_20(20q,520), nam/csum_mux_9(30q,532), nam/qcla_com_7(24q,559), nam/barenco_tof_10(19q,578), nam/QFT16(16q,586), nam/Adder8(23q,637), nam/gf2^6_mult(18q,639), nam/qcla_adder_10(36q,657), nam/pf1_30(30q,780), nam/gf2^7_mult(21q,865), nam/pf2_20(20q,1020), nam/pf1_40(40q,1040), nam/qcla_mod_7(26q,1120), nam/adder_8(24q,1128), nam/gf2^8_mult(24q,1139), nam/pf1_50(50q,1300), nam/gf2^9_mult(27q,1419), nam/Adder16(47q,1437), nam/pf2_30(30q,1530), nam/pf1_60(60q,1560), nam/QFT32(32q,1562), nam/gf2^10_mult(30q,1747), nam/pf1_70(70q,1820), nam/QFTAdd16(32q,1822), nam/pf2_40(40q,2040), nam/pf1_80(80q,2080), nam/pf1_90(90q,2340), nam/pf2_50(50q,2550), nam/pf1_100(100q,2600), nam/Adder32(95q,3037), nam/pf2_60(60q,3060), nam/QFT64(64q,3514), nam/pf2_70(70q,3570), nam/pf2_80(80q,4080), nam/gf2^16_mult(48q,4459), nam/pf2_90(90q,4590), nam/QFTAdd32(64q,4814), nam/pf2_100(100q,5100), nam/pf4_20(20q,5100), nam/mod_adder_1024(28q,5425)
+0 rows done, 90 to run
+{"name": "nam/rc_adder_6", "dev": "ion", "n": 14, "L1": 91, "L3": 76, "ours": 73, "sec": 9, "cert": true}
+{"name": "nam/csla_mux_3", "dev": "ion", "n": 15, "L1": 74, "L3": 64, "ours": 64, "sec": 14, "cert": true}
+{"name": "nam/rc_adder_6", "dev": "heron", "n": 14, "L1": 187, "L3": 157, "ours": 134, "sec": 58, "cert": true}
+{"name": "nam/csla_mux_3", "dev": "heron", "n": 15, "L1": 194, "L3": 148, "ours": 165, "sec": 84, "cert": true}
+{"name": "nam/tof_10", "dev": "ion", "n": 19, "L1": 102, "L3": 85, "ours": 75, "sec": 15, "cert": true}
+{"name": "nam/tof_10", "dev": "heron", "n": 19, "L1": 249, "L3": 186, "ours": 217, "sec": 94, "cert": true}
+{"name": "nam/gf2^5_mult", "dev": "ion", "n": 15, "L1": 154, "L3": 129, "ours": 129, "sec": 18, "cert": true}
+{"name": "nam/QFTAdd8", "dev": "ion", "n": 16, "L1": 184, "L3": 92, "ours": 92, "sec": 132, "cert": true}
+{"name": "nam/pf1_20", "dev": "heron", "n": 20, "L1": 120, "L3": 0, "ours": 120, "sec": 219, "cert": true}
+{"name": "nam/pf1_20", "dev": "ion", "n": 20, "L1": 120, "L3": 0, "ours": 120, "sec": 240, "cert": true}
+{"name": "nam/gf2^5_mult", "dev": "heron", "n": 15, "L1": 490, "L3": 380, "ours": 400, "sec": 189, "cert": true}
+{"name": "nam/csum_mux_9", "dev": "ion", "n": 30, "L1": 168, "L3": 140, "ours": 138, "sec": 20, "cert": true}
+{"name": "nam/QFTAdd8", "dev": "heron", "n": 16, "L1": 523, "L3": 363, "ours": 437, "sec": 243, "cert": true}
+{"name": "nam/qcla_com_7", "dev": "ion", "n": 24, "L1": 174, "L3": 151, "ours": 140, "sec": 25, "cert": true}
+{"name": "nam/barenco_tof_10", "dev": "ion", "n": 19, "L1": 192, "L3": 160, "ours": 152, "sec": 21, "cert": true}
+{"name": "nam/csum_mux_9", "dev": "heron", "n": 30, "L1": 480, "L3": 417, "ours": 438, "sec": 217, "cert": true}
+{"name": "nam/barenco_tof_10", "dev": "heron", "n": 19, "L1": 450, "L3": 423, "ours": 388, "sec": 134, "cert": true}
+{"name": "nam/qcla_com_7", "dev": "heron", "n": 24, "L1": 423, "L3": 379, "ours": 361, "sec": 256, "cert": false}
+{"name": "nam/QFT16", "dev": "ion", "n": 16, "L1": 228, "L3": 114, "ours": 114, "sec": 198, "cert": true}
+{"name": "nam/Adder8", "dev": "ion", "n": 23, "L1": 243, "L3": 205, "ours": 166, "sec": 24, "cert": true}
+{"name": "nam/gf2^6_mult", "dev": "ion", "n": 18, "L1": 221, "L3": 185, "ours": 185, "sec": 21, "cert": true}
+{"name": "nam/qcla_adder_10", "dev": "ion", "n": 36, "L1": 215, "L3": 189, "ours": 182, "sec": 42, "cert": true}
+{"name": "nam/qcla_adder_10", "dev": "heron", "n": 36, "L1": 593, "L3": 501, "ours": 510, "sec": 348, "cert": true}
+{"name": "nam/Adder8", "dev": "heron", "n": 23, "L1": 555, "L3": 456, "ours": 475, "sec": 285, "cert": true}
+{"name": "nam/pf1_30", "dev": "heron", "n": 30, "L1": 471, "L3": 0, "ours": 443, "sec": 281, "cert": true}
+{"name": "nam/gf2^6_mult", "dev": "heron", "n": 18, "L1": 665, "L3": 563, "ours": 586, "sec": 407, "cert": true}
+{"name": "nam/QFT16", "dev": "heron", "n": 16, "L1": 588, "L3": 442, "ours": 425, "sec": 925, "cert": true}
+{"name": "nam/gf2^7_mult", "dev": "ion", "n": 21, "L1": 300, "L3": 251, "ours": 251, "sec": 21, "cert": true}
+{"name": "nam/pf2_20", "dev": "heron", "n": 20, "L1": 240, "L3": 0, "ours": 238, "sec": 186, "cert": true}
+{"name": "nam/pf1_30", "dev": "ion", "n": 30, "L1": 180, "L3": 0, "ours": 180, "sec": 372, "cert": true}
+{"name": "nam/pf2_20", "dev": "ion", "n": 20, "L1": 240, "L3": 0, "ours": 238, "sec": 78, "cert": true}
+{"name": "nam/pf1_40", "dev": "heron", "n": 40, "L1": 240, "L3": 0, "ours": 240, "sec": 453, "cert": true}
+{"name": "nam/qcla_mod_7", "dev": "ion", "n": 26, "L1": 366, "L3": 315, "ours": 303, "sec": 41, "cert": true}
+{"name": "nam/pf1_40", "dev": "ion", "n": 40, "L1": 240, "L3": 0, "ours": 240, "sec": 566, "cert": true}
+{"name": "nam/adder_8", "dev": "ion", "n": 24, "L1": 409, "L3": 340, "ours": 322, "sec": 56, "cert": true}
+{"name": "nam/gf2^7_mult", "dev": "heron", "n": 21, "L1": 918, "L3": 760, "ours": 807, "sec": 439, "cert": true}
+{"name": "nam/gf2^8_mult", "dev": "ion", "n": 24, "L1": 405, "L3": 341, "ours": 341, "sec": 48, "cert": true}
+{"name": "nam/qcla_mod_7", "dev": "heron", "n": 26, "L1": 1086, "L3": 843, "ours": 918, "sec": 558, "cert": false}
+{"name": "nam/adder_8", "dev": "heron", "n": 24, "L1": 919, "L3": 743, "ours": 739, "sec": 489, "cert": true}
+{"name": "nam/pf1_50", "dev": "ion", "n": 50, "L1": 300, "L3": 0, "ours": 300, "sec": 822, "cert": true}
+{"name": "nam/pf1_50", "dev": "heron", "n": 50, "L1": 834, "L3": 0, "ours": 775, "sec": 1226, "cert": true}
+{"name": "nam/gf2^9_mult", "dev": "ion", "n": 27, "L1": 494, "L3": 413, "ours": 413, "sec": 71, "cert": true}
+{"name": "nam/gf2^8_mult", "dev": "heron", "n": 24, "L1": 1368, "L3": 1143, "ours": 1186, "sec": 1099, "cert": true}
+{"name": "nam/pf2_30", "dev": "ion", "n": 30, "L1": 360, "L3": 0, "ours": 358, "sec": 142, "cert": true}
+{"name": "nam/pf2_30", "dev": "heron", "n": 30, "L1": 960, "L3": 0, "ours": 878, "sec": 762, "cert": true}
+{"name": "nam/Adder16", "dev": "ion", "n": 47, "L1": 547, "L3": 461, "ours": 411, "sec": 61, "cert": true}
+{"name": "nam/pf1_60", "dev": "ion", "n": 60, "L1": 360, "L3": 0, "ours": 360, "sec": 1212, "cert": true}
+{"name": "nam/pf1_60", "dev": "heron", "n": 60, "L1": 360, "L3": 0, "ours": 360, "sec": 1703, "cert": true}
+{"name": "nam/QFT32", "dev": "ion", "n": 32, "L1": 612, "L3": 306, "ours": 306, "sec": 310, "cert": true}
+{"name": "nam/Adder16", "dev": "heron", "n": 47, "L1": 1411, "L3": 1087, "ours": 1221, "sec": 1139, "cert": false}
+{"name": "nam/gf2^10_mult", "dev": "ion", "n": 30, "L1": 609, "L3": 509, "ours": 509, "sec": 37, "cert": true}
+{"name": "nam/gf2^9_mult", "dev": "heron", "n": 27, "L1": 1688, "L3": 1423, "ours": 1438, "sec": 2240, "cert": true}
+{"name": "nam/pf1_70", "dev": "heron", "n": 70, "L1": 1209, "L3": 0, "ours": 1128, "sec": 1228, "cert": true}
+{"name": "nam/pf1_70", "dev": "ion", "n": 70, "L1": 420, "L3": 0, "ours": 420, "sec": 1351, "cert": true}
+{"name": "nam/QFTAdd16", "dev": "ion", "n": 32, "L1": 716, "L3": 358, "ours": 358, "sec": 1211, "cert": true}
+{"name": "nam/pf2_40", "dev": "heron", "n": 40, "L1": 480, "L3": 0, "ours": 478, "sec": 853, "cert": true}
+{"name": "nam/pf2_40", "dev": "ion", "n": 40, "L1": 480, "L3": 0, "ours": 478, "sec": 529, "cert": true}
+{"name": "nam/gf2^10_mult", "dev": "heron", "n": 30, "L1": 2286, "L3": 1804, "ours": 2021, "sec": 1807, "cert": true}
+{"name": "nam/pf1_90", "dev": "heron", "n": 90, "L1": 1755, "L3": 0, "ours": 1011, "sec": 663, "cert": true}
+{"name": "nam/pf1_90", "dev": "ion", "n": 90, "L1": 540, "L3": 0, "ours": 0, "sec": 20, "cert": true}
+{"name": "nam/pf1_80", "dev": "ion", "n": 80, "L1": 480, "L3": 0, "ours": 480, "sec": 3558, "cert": true}
+{"name": "nam/pf2_50", "dev": "ion", "n": 50, "L1": 600, "L3": 0, "ours": 598, "sec": 1286, "cert": true}
+{"name": "nam/pf2_50", "dev": "heron", "n": 50, "L1": 1602, "L3": 0, "ours": 1489, "sec": 3669, "cert": true}
+{"name": "nam/pf1_100", "dev": "ion", "n": 100, "L1": 600, "L3": 0, "ours": 0, "sec": 15, "cert": true}
+{"name": "nam/pf1_100", "dev": "heron", "n": 100, "L1": 1770, "L3": 0, "ours": 1016, "sec": 615, "cert": false}
+{"name": "nam/pf1_80", "dev": "heron", "n": 80, "L1": 1407, "L3": 0, "ours": 1305, "sec": 6185, "cert": true}
+{"name": "nam/QFT32", "dev": "heron", "n": 32, "L1": 1764, "L3": 1476, "ours": 1444, "sec": 3626, "cert": true}
+{"name": "nam/pf2_60", "dev": "ion", "n": 60, "L1": 720, "L3": 0, "ours": 718, "sec": 3206, "cert": true}
+{"name": "nam/QFTAdd16", "dev": "heron", "n": 32, "L1": 2150, "L3": 1692, "ours": 1732, "sec": 7537, "cert": true}
+{"name": "nam/Adder32", "dev": "ion", "n": 95, "L1": 1155, "L3": 973, "ours": 835, "sec": 381, "cert": true}
+{"name": "nam/pf2_60", "dev": "heron", "n": 60, "L1": 720, "L3": 0, "ours": 718, "sec": 8577, "cert": true}
+{"name": "nam/QFT64", "dev": "ion", "n": 64, "L1": 1380, "L3": 690, "ours": 690, "sec": 4226, "cert": true}
+{"name": "nam/pf2_70", "dev": "ion", "n": 70, "L1": 840, "L3": 0, "ours": 838, "sec": 2297, "cert": true}
+{"name": "nam/pf2_80", "dev": "ion", "n": 80, "L1": 960, "L3": 0, "ours": 958, "sec": 2284, "cert": true}
+{"name": "nam/pf2_70", "dev": "heron", "n": 70, "L1": 2184, "L3": 0, "ours": 2023, "sec": 7184, "cert": false}
+{"name": "nam/Adder32", "dev": "heron", "n": 95, "L1": 3180, "L3": 2637, "ours": 2782, "sec": 7998, "cert": true}
+{"name": "nam/gf2^16_mult", "dev": "ion", "n": 48, "L1": 1581, "L3": 1325, "ours": 1325, "sec": 187, "cert": true}
+{"name": "nam/pf2_80", "dev": "heron", "n": 80, "L1": 2769, "L3": 0, "ours": 2586, "sec": 7554, "cert": true}
+<frozen site>:107: RuntimeWarning: Unexpected value in sys.prefix, expected /home/arnav/Downloads/ankur/.venv, got /home/arnav/Downloads/ankur/experiments/../.venv
+<frozen site>:107: RuntimeWarning: Unexpected value in sys.exec_prefix, expected /home/arnav/Downloads/ankur/.venv, got /home/arnav/Downloads/ankur/experiments/../.venv
+45 circuits: nam/csla_mux_3(15q,210), nam/rc_adder_6(14q,244), nam/tof_10(19q,323), nam/gf2^5_mult(15q,447), nam/QFTAdd8(16q,476), nam/pf1_20(20q,520), nam/csum_mux_9(30q,532), nam/qcla_com_7(24q,559), nam/barenco_tof_10(19q,578), nam/QFT16(16q,586), nam/Adder8(23q,637), nam/gf2^6_mult(18q,639), nam/qcla_adder_10(36q,657), nam/pf1_30(30q,780), nam/gf2^7_mult(21q,865), nam/pf2_20(20q,1020), nam/pf1_40(40q,1040), nam/qcla_mod_7(26q,1120), nam/adder_8(24q,1128), nam/gf2^8_mult(24q,1139), nam/pf1_50(50q,1300), nam/gf2^9_mult(27q,1419), nam/Adder16(47q,1437), nam/pf2_30(30q,1530), nam/pf1_60(60q,1560), nam/QFT32(32q,1562), nam/gf2^10_mult(30q,1747), nam/pf1_70(70q,1820), nam/QFTAdd16(32q,1822), nam/pf2_40(40q,2040), nam/pf1_80(80q,2080), nam/pf1_90(90q,2340), nam/pf2_50(50q,2550), nam/pf1_100(100q,2600), nam/Adder32(95q,3037), nam/pf2_60(60q,3060), nam/QFT64(64q,3514), nam/pf2_70(70q,3570), nam/pf2_80(80q,4080), nam/gf2^16_mult(48q,4459), nam/pf2_90(90q,4590), nam/QFTAdd32(64q,4814), nam/pf2_100(100q,5100), nam/pf4_20(20q,5100), nam/mod_adder_1024(28q,5425)
+78 rows done, 12 to run
+{"name": "nam/pf2_90", "dev": "ion", "n": 90, "L1": 1080, "L3": 0, "ours": 1078, "sec": 4210, "cert": true}
+{"name": "nam/pf2_90", "dev": "heron", "n": 90, "L1": 3309, "L3": 0, "ours": 3067, "sec": 10537, "cert": true}
+{"name": "nam/QFTAdd32", "dev": "ion", "n": 64, "L1": 1900, "L3": 950, "ours": 950, "sec": 8670, "cert": true}
+{"name": "nam/pf2_100", "dev": "ion", "n": 100, "L1": 1200, "L3": 0, "ours": 1198, "sec": 4349, "cert": true}
+{"name": "nam/pf4_20", "dev": "heron", "n": 20, "L1": 1192, "L3": 0, "ours": 1182, "sec": 1943, "cert": true}
+{"name": "nam/pf4_20", "dev": "ion", "n": 20, "L1": 1200, "L3": 0, "ours": 1182, "sec": 732, "cert": true}
+{"name": "nam/pf2_100", "dev": "heron", "n": 100, "L1": 3543, "L3": 0, "ours": 3302, "sec": 12211, "cert": true}
+{"name": "nam/mod_adder_1024", "dev": "ion", "n": 28, "L1": 1702, "L3": 1426, "ours": 1255, "sec": 216, "cert": true}
+{"name": "nam/gf2^16_mult", "dev": "heron", "n": 48, "L1": 5904, "L3": 4832, "ours": 5208, "sec": 23090, "cert": true}
+{"name": "nam/mod_adder_1024", "dev": "heron", "n": 28, "L1": 5098, "L3": 4121, "ours": 4399, "sec": 13885, "cert": true}
+multiprocessing.pool.RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "/usr/lib/python3.14/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ~~~~^^^^^^^^^^^^^^^
+  File "/home/arnav/Downloads/ankur/experiments/gen_large.py", line 204, in job
+    r = Optimizer(dev, DBS[devname], Config(**CONFIGS["exact_cal"], patience=4, log=True)).run(start, seed=0)
+  File "/home/arnav/Downloads/ankur/qcr/general.py", line 717, in run
+    best_all, gcost = repair_phase(best_all, C_all, self.dev)
+                      ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/arnav/Downloads/ankur/qcr/general.py", line 838, in repair_phase
+    raise RuntimeError(f"no phase gadget for {need}")
+RuntimeError: no phase gadget for (-0+0.9999999987599406j)
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/arnav/Downloads/ankur/experiments/gen_large.py", line 364, in <module>
+    for r in p.imap_unordered(job, jobs):
+             ~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/usr/lib/python3.14/multiprocessing/pool.py", line 873, in next
+    raise value
+RuntimeError: no phase gadget for (-0+0.9999999987599406j)
