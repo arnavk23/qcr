@@ -148,6 +148,7 @@ with open(EXT / "large_numbers.tex", "w") as fh:
 # ---------------------------------------------------------------- run-time table (median seconds per circuit)
 B = json.load(open(RESULTS / "general" / "bench_v2.json"))
 BQ = jsonl("bqskit_v2.jsonl")
+LB = jsonl("large_bqskit_v1.jsonl")  # BQSKit on the large suite (the smaller circuits only, the run was stopped)
 TIMED = [
     ("qiskit_L1", "Qiskit level 1"),
     ("qiskit_L3", "Qiskit level 3"),
@@ -171,7 +172,7 @@ with open(EXT / "large_numbers.tex", "a") as fh:
         for dev in DEV:
             cells.append(med([r for r in (BQ if k.startswith("bqskit") else B) if r["device"] == dev], k))
         for dev in DEV:
-            cells.append(med([r for r in L if r["device"] == dev], k))
+            cells.append(med([r for r in (LB if k.startswith("bqskit") else L) if r["device"] == dev], k))
         sep = "\\midrule\n" if k == "ours_exact_cal" else ""
         fh.write(f"{sep}{lab} & {cells[0]} & {cells[1]} && {cells[2]} & {cells[3]}\\\\\n")
     fh.write("}\n")

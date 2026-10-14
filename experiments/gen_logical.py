@@ -38,7 +38,7 @@ from pathlib import Path
 import numpy as np
 import runstatus
 from gen_bench import OUT, qk_to_gates
-from gen_large import qcec_check
+from gen_large import _qcec_check
 
 from qcr.gates import to_qasm
 from qcr.general import GRIDS, Config, Database, Optimizer
@@ -54,7 +54,7 @@ SUITE = [  # the 26 circuits of the VOQC, Quartz and QUESO evaluations
 ]  # fmt: skip
 LOG = ROOT / "results" / "logical"
 TOOLS = Path.home() / "tools"
-SV_MAX = 24
+SV_MAX = 20  # statevector checks of 21-24 qubits take 15-40 min each; QCEC is fast on these unrouted circuits
 DB = {}
 
 
@@ -95,7 +95,7 @@ def check(a, b, n):
         return dict(method="statevector", err=worst, ok=worst < 1e-6)
     from qcr.verify import to_qiskit
 
-    r = qcec_check(to_qiskit(a, n), to_qiskit(b, n))
+    r = _qcec_check(to_qiskit(a, n), to_qiskit(b, n))  # in-process: pool workers may not start child processes
     return r | dict(ok=r["result"] in ("equivalent", "equivalent_up_to_global_phase"))
 
 
@@ -138,6 +138,14 @@ def t_voqc(path, n, a):
         return _from_qasm_str(o.read_text())
 
 
+def t_voqc_ours(path, n, a):
+    """VOQC first, then ours on its output (the stacking we also use after BQSKit)."""
+    with tempfile.TemporaryDirectory() as td:
+        mid = Path(td) / "voqc.qasm"
+        mid.write_text(to_qasm(t_voqc(path, n, a), n))
+        return t_ours(mid, n, a)
+
+
 def t_queso(path, n, a):
     jar = next((TOOLS / "src" / "queso" / "target").glob("*with-dependencies.jar"))
     env = dict(os.environ, JAVA_HOME=str(TOOLS / "jdk17"))
@@ -147,20 +155,26 @@ def t_queso(path, n, a):
         cmd = [java, "-Xmx3g", "--enable-preview", "-cp", str(jar), "Optimizer", "-c", str(path), "-g", "nam",
                "-r", "rules_q3_s6_nam.txt", "-sr", "rules_q3_s3_nam_symb.txt",
                "-t", str(int(a.queso_sec)), "-o", td, "-j", "nam"]  # fmt: skip
-        subprocess.run(cmd, check=True, capture_output=True, timeout=a.queso_sec + 600, env=env, cwd=rules)
+        subprocess.run(
+            cmd, check=True, capture_output=True, timeout=2 * a.queso_sec, env=env, cwd=rules
+        )  # QUESO overruns -t on large inputs
         return _from_qasm_str(next(Path(td).glob("optimized_*.qasm")).read_text())
 
 
 def _from_qasm_str(txt):
     from qiskit import QuantumCircuit, transpile
 
+    # VOQC writes rotations as rzq(a,b) = Rz(a/b * pi)
+    txt = re.sub(r"rzq\((-?\d+),\s*(-?\d+)\)", lambda m: f"rz(pi*{m[1]}/{m[2]})", txt)
     qc = QuantumCircuit.from_qasm_str(txt)
     if not set(qc.count_ops()) <= {"h", "x", "rz", "cx", "barrier"}:  # e.g. rzq / u1 spellings: rebase only, no opt
         qc = transpile(qc, basis_gates=["h", "x", "rz", "cx"], optimization_level=0)
     return qk_to_gates(qc)
 
 
-TOOL_FNS = dict(qiskit=t_qiskit, tket=t_tket, ours=t_ours, voqc=t_voqc, queso=t_queso)
+TOOL_FNS = dict(
+    qiskit=t_qiskit, tket=t_tket, ours=t_ours, voqc=t_voqc, voqc_ours=t_voqc_ours, queso=t_queso, queso5=t_queso
+)  # queso5: --queso-sec 300
 
 
 def available(tool):
@@ -168,7 +182,8 @@ def available(tool):
         "voqc": (TOOLS / "bin" / "voqc_nam").exists(),
         "queso": (TOOLS / "queso_rules" / "rules_q3_s6_nam.txt").exists()
         and any((TOOLS / "src" / "queso" / "target").glob("*with-dependencies.jar")),
-    }.get(tool, True)
+        "voqc_ours": (TOOLS / "bin" / "voqc_nam").exists(),
+    }.get(tool.rstrip("5"), True)
 
 
 def job(args):
