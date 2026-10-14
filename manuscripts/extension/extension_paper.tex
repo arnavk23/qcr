@@ -28,7 +28,7 @@
 \newcommand{\Cay}{\mathrm{Cay}}
 \newcommand{\ev}{\mathrm{ev}}
 \newcommand{\RXX}{\mathrm{RXX}}\newcommand{\RX}{\mathrm{RX}}\newcommand{\RY}{\mathrm{RY}}\newcommand{\RZ}{\mathrm{RZ}}
-\newcommand{\CZ}{\mathrm{CZ}}\newcommand{\SX}{\mathrm{SX}}
+\newcommand{\CZ}{\mathrm{CZ}}\newcommand{\SX}{\mathrm{SX}}\newcommand{\CNOT}{\mathrm{CNOT}}
 \newcommand{\Sp}{\mathrm{Sp}}
 \newcommand{\op}[1]{\lVert#1\rVert}
 \newcommand{\Dw}{\mathbb D[\omega]}
@@ -40,6 +40,7 @@
 \input{gen_hw_table.tex}
 \input{new_numbers.tex}
 \input{large_numbers.tex}
+\input{robust_numbers.tex}
 
 \raggedbottom
 
@@ -73,7 +74,10 @@ The two combine. Run on BQSKit's output, our optimiser removes a further \HeronS
 Heron, never adds a two-qubit gate and never lowers the estimated success probability.
 On \LargeHeronN\ arithmetic circuits of up to \LargeHeronMaxQubits\ qubits it removes \LargeHeronFromLThreeAllSaved\ of the gates
 left by Qiskit's level~3 on Heron. Each of these outputs carries a replay certificate, a log of local steps that an
-independent checker verifies a few qubits at a time. Every reported output is verified.}
+independent checker verifies a few qubits at a time. At the logical level, on \LogicalCircuits\ standard circuits in the
+Nam gate set, it removes more gates than QUESO, Qiskit and TKET and fewer than VOQC, whose global rotation merging it
+complements. Run after VOQC it gives the best result, \LogicalVoqcOursSaved\ fewer gates than the input. Every reported
+output is verified.}
 
 \keywords{quantum circuit optimization, peephole optimization, Clifford group, Clifford+T, Cayley graph, exact
 synthesis, qubit mapping, noise-aware compilation}
@@ -116,7 +120,8 @@ structure of the gate set and \emph{exact ground truth} that does, used only for
   long benchmark circuits whose optimum is planted and certified (Section~\ref{sec:exact}).
 \item \emph{Experiments} on the original benchmarks, on certified Clifford+T benchmarks, and on \HwCompared\ algorithm
   circuits for IBM Heron and trapped-ion models and on arithmetic circuits of up to \LargeHeronMaxQubits\ qubits, against
-  Qiskit, TKET~\cite{tket2021} and BQSKit~\cite{bqskit}, with every output verified, beyond the reach of statevector
+  Qiskit, TKET~\cite{tket2021} and BQSKit~\cite{bqskit}, and at the logical level against VOQC~\cite{voqc} and
+  QUESO~\cite{queso}, with repeated seeds, an ablation of every component, and every output verified, beyond the reach of statevector
   simulation by \emph{replay certificates} (Sections~\ref{sec:engine} and~\ref{sec:exp}).
 \end{enumerate}
 Section~\ref{sec:related} reviews related work, Section~\ref{sec:prelim} fixes notation, Section~\ref{sec:discussion}
@@ -516,7 +521,9 @@ output distributions on $|0^n\rangle$ (maximum $\IonMaxStateErr$), approximate m
 Clifford+T outputs by exact equality in $\Dw$. Every output is also checked to be native and to use only coupled pairs.
 All \PaperBenchN\ paper-benchmark outputs, all 720 hardware-suite outputs, and all Clifford+T and layout outputs pass.
 BQSKit outputs are checked in the same way, up to global phase and BQSKit's final qubit permutation. Outputs of the
-large-circuit suite (Section~\ref{sec:large}) are checked by replay certificates.
+large-circuit suite (Section~\ref{sec:large}) are checked by replay certificates, and those on at most 24 active qubits
+also by statevector. Outputs of the logical-level comparison (Section~\ref{sec:logical}), of every tool, are checked up to
+global phase, by statevector up to 20 qubits and by the decision-diagram checker of~\cite{qcec} above.
 
 \subsection{The original benchmarks against ground truth}
 
@@ -634,13 +641,23 @@ all gates. $\SX/X$ pulses fall from
 \HeronLThreePulse\ to \HeronFromLThreePulse, virtual $\RZ$ from \HeronLThreeRz\ to \HeronFromLThreeRz, and $\CZ$ from
 \HeronLThreeTwoq\ to \HeronFromLThreeTwoq\ (Fig.~\ref{fig:exheron}). On ions the total can rise (\IonFromLThreeTotalUp\
 circuits) because the calibrated objective trades $\RX/\RY$ pulses for virtual $\RZ$ gates (pulses \IonLThreePulse\ $\to$
-\IonFromLThreePulse). The guarantee is on the objective and the two-qubit count, not on the total. Starting from level 1,
+\IonFromLThreePulse). The guarantee is on the objective and the two-qubit count, not on the total. Starting from level 1 (seed 0, see the robustness check below),
 the optimiser beats level 3 on Heron in all gates and ESP. Part of the ESP gain ($\times$\HeronEspLOneOverLThree) is due to
 Qiskit's level-1 layout already being better than its level-3 layout, our rewriting adding $\times$\HeronEspOursOverLOne.
 State/measurement-aware rewriting gives the largest reductions, but \HeronStateEmpty\ (Heron) and \IonStateEmpty\ (ion)
 circuits are reversible logic on $|0\cdots0\rangle$ with a fixed output and reduce to the empty circuit, so this mode should
 be read per circuit. Median run time is \HeronMedianSec\,s (Heron) and \IonMedianSec\,s (ion) per circuit in single-threaded
 Python.
+
+\paragraph{Robustness.} All numbers above use transpiler seed 0. We repeated the suite with \SeedN\ transpiler seeds for
+Qiskit and our optimiser (\SeedOutputs\ verified outputs). Stacked on level~3 the result barely moves. Over the seeds the
+Heron ratios are $\times$\SeedHeronLThreeTwoqMean\ $\pm$ \SeedHeronLThreeTwoqSd\ in two-qubit gates and
+$\times$\SeedHeronLThreeAllMean\ $\pm$ \SeedHeronLThreeAllSd\ in all gates, with ESP between $\times$\SeedHeronLThreeEspMin\ and
+$\times$\SeedHeronLThreeEspMax. Starting from level~1, the all-gate ratio is equally stable
+($\times$\SeedHeronLOneAllMean\ $\pm$ \SeedHeronLOneAllSd), but the ESP gain is not. It ranges from
+$\times$\SeedHeronLOneEspMin\ to $\times$\SeedHeronLOneEspMax\ (mean $\times$\SeedHeronLOneEspMean), because it depends on the
+layout Qiskit picks at level~1. Seed 0 happens to give the largest value. The optimiser's own randomness, the commuting
+shuffles, changes the total gate count by at most \SeedHeronOptSpread\ over five optimiser seeds on a fixed input.
 
 \paragraph{Comparison with resynthesis.} BQSKit is the strongest baseline in the suite (Table~\ref{tab:hw}). Given the same
 level-1 input, its level~3 uses fewer two-qubit gates than our exact optimiser on \HeronBqFewerTwoqThanOursLOne\ of
@@ -666,6 +683,36 @@ where the calibrated cost trades cheap gates for fewer expensive ones. Each rewr
 differ from BQSKit's by at most $\HeronStackMaxErr$ (floating-point rounding). The extra step takes \HeronStackMeanSec\,s
 per Heron circuit and \IonStackMeanSec\,s per ion circuit on average.
 
+\subsection{What each component contributes}\label{sec:ablation}
+
+Table~\ref{tab:ablation} switches off one part of the optimiser at a time on the same \AblationCircuits\ circuits per
+device. On top of Qiskit level~3 on Heron the full optimiser removes \AblationFullSaved\ of all gates. The window length
+matters most. With $w=8$ the saving falls to \AblationWEightSaved\ and with $w=4$ to \AblationWFourSaved. The database comes
+next. Without it the saving is \AblationNoDbSaved, and restricting it to words of at most three gates gives
+\AblationRadiusThreeSaved. This is the hardware counterpart of Section~\ref{sec:exact}, where window length and database
+radius decide how close local rewriting gets to the optimum. Analytic resynthesis contributes most of the rest on Heron
+(\AblationNoResynthSaved\ without it) and is what reduces the M{\o}lmer--S{\o}rensen count on ions. Without it, starting from
+level~1, the ion circuits need \AblationIonNoResynthTwoq\ the two-qubit gates of level~3 instead of
+\AblationIonFullTwoq. Convex windows and the commuting shuffles add a little each, and meet in the middle almost
+nothing on this suite (\AblationNoMitmSaved). The calibrated cost gives the highest ESP. Counting gates instead removes a
+similar number of gates but raises ESP only by \AblationHeronCountEsp\ instead of \AblationHeronCalEsp.
+
+\begin{table}[t]
+\caption{Ablation on the hardware suite (\AblationCircuits\ circuits per device, seed 0), relative to Qiskit level~3. Each
+row changes one component of the full optimiser. Count columns are ratios of summed counts, ESP is the geometric mean of
+per-circuit ratios. All outputs verified.}\label{tab:ablation}
+\footnotesize
+\begin{tabular*}{\textwidth}{@{\extracolsep\fill}lccc c cc c cc}
+\toprule
+& \multicolumn{3}{c}{Heron, from L3} && \multicolumn{2}{c}{Heron, from L1} && \multicolumn{2}{c}{ion, from L1}\\
+\cmidrule{2-4}\cmidrule{6-7}\cmidrule{9-10}
+variant & saved & 2q & ESP && all & 2q && all & 2q\\
+\midrule
+\AblationRows
+\botrule
+\end{tabular*}
+\end{table}
+
 \subsection{Large circuits}\label{sec:large}
 
 \paragraph{Suite.} To test scale we ran the same pipelines on \LargeCircuits\ circuits of the Nam/VOQC
@@ -675,7 +722,7 @@ The product-formula circuits pf1 and pf2 (\LargeHeronPfN\ per device) are exclud
 for Table~\ref{tab:hw}, as Qiskit level~3 removes almost all of their gates. Circuits with a certificate awaiting
 re-check (\LargeHeronPending\ on Heron, \LargeIonPending\ on ions, see below) are excluded as well. This leaves
 \LargeHeronN\ Heron circuits of \LargeHeronMinQubits--\LargeHeronMaxQubits\ qubits with up to \LargeHeronMaxInput\ input
-gates, and \LargeIonN\ ion circuits with up to \LargeIonMaxInput\ input gates. BQSKit was not run on this suite.
+gates, and \LargeIonN\ ion circuits with up to \LargeIonMaxInput\ input gates. BQSKit levels~2 and~3 ran on the \LargeBqCircuits\ smallest circuits of the suite before the run was stopped for time.
 
 \begin{table}[t]
 \caption{Large circuits, relative to Qiskit level 3 (\LargeHeronN\ Heron and \LargeIonN\ ion circuits of up to
@@ -705,24 +752,34 @@ level~3 routing and resynthesis find entangling structure that local rewriting d
 is also lower, because at this scale the level-3 layout and routing matter more than the gates rewriting removes. On ions, where no routing is
 needed, it uses fewer two-qubit gates than level~3 on \LargeIonLOneTwoqFewer\ circuits and more on none.
 
+\paragraph{Resynthesis at scale.} On the \LargeBqHeronN\ comparable circuits of up to \LargeBqHeronMaxQubits\ qubits that
+BQSKit completed, the picture of the 60-circuit suite holds. Relative to Qiskit level~3 on Heron, BQSKit level~3 reaches
+\LargeHeronBqLThreeTwoq\ two-qubit gates, fewer than ours stacked on level~3 (\LargeHeronOursLThreeTwoq), but
+\LargeHeronBqLThreeAll\ in all gates, against \LargeHeronOursLThreeAll\ for ours. On ions BQSKit level~3 reaches
+\LargeIonBqLThreeTwoq\ and \LargeIonBqLThreeAll, and ours from level~1 \LargeIonOursLOneTwoq\ and
+\LargeIonOursLOneAll. BQSKit's outputs on at most 24 qubits differ from their inputs by up to $\LargeBqMaxErr$. Its
+\LargeBqUnchecked\ outputs on more qubits could not be checked, as the decision-diagram checker returned no result.
+
 \paragraph{Certificates.} Of the \LargeOutputs\ outputs of our optimiser, \LargeCertOk\ have an accepted replay certificate.
 A certificate replays up to \LargeCertMaxSteps\ steps in at most \LargeCertMaxSec\,s (median \LargeCertMedSec\,s), against up
 to hours for the optimisation itself, and the summed residuals stay below $\LargeCertMaxErr$. The first version of the
 checker rejected \LargeCertFirstRejected\ certificates. It checked the whole phase repair as one block, which exceeds its
 limit of 12 wires when the repair touches two distant parts of a wide circuit. The current checker treats each repaired
 patch separately. The optimiser is deterministic. Rerunning it on the \LargeCertRechecked\ cases re-checked so far reproduced
-their outputs exactly, and the current checker accepted both. The remaining \LargeCertPending\ are excluded from Table~\ref{tab:large} until
-their re-check is done.
+their outputs exactly, and the current checker accepted both. The remaining \LargeCertPending\ were not re-checked and are excluded from Table~\ref{tab:large}.
 
 \paragraph{Run time.} Table~\ref{tab:runtime} lists median run times. Qiskit needs well under a second per circuit and
 TKET a few seconds. On the 60-circuit suite our optimiser takes seconds per circuit, like BQSKit level~2 and less than
 BQSKit level~3, which used eight worker processes. On the large suite it takes minutes and up to \LargeHeronMaxSec\,h per
-circuit, in single-threaded Python with five circuits sharing eight cores. Run time is the main cost of the method at this
+circuit, in single-threaded Python with several circuits sharing eight cores. BQSKit level~3 needs a median of
+several minutes per Heron circuit on the part of the suite it completed. Run time is the main cost of the method at this
 scale. Sweeps over non-overlapping windows could run in parallel, which we have not done.
 
 \begin{table}[t]
-\caption{Median run time per circuit in seconds. BQSKit was run only on the 60-circuit suite, and Qiskit level~1 was not
-timed there. The large suite ran five circuits at a time on eight cores.}\label{tab:runtime}
+\caption{Median run time per circuit in seconds. Qiskit level~1 was not timed on the 60-circuit suite. On the large suite
+BQSKit covers only the \LargeBqCircuits\ smallest circuits, so its medians are over easier circuits than the others, and
+part of its run shared the machine with an unrelated job. The large suite ran several circuits at a time on eight
+cores.}\label{tab:runtime}
 \begin{tabular*}{\textwidth}{@{\extracolsep\fill}lcc c cc}
 \toprule
 & \multicolumn{2}{c}{60-circuit suite} && \multicolumn{2}{c}{large suite}\\\cmidrule{2-3}\cmidrule{5-6}
@@ -732,6 +789,38 @@ pipeline & Heron & ion && Heron & ion\\
 \botrule
 \end{tabular*}
 \end{table}
+
+\subsection{Logical-level comparison}\label{sec:logical}
+
+Quartz~\cite{quartz}, QUESO~\cite{queso} and VOQC~\cite{voqc} are evaluated in a different setting, the Nam gate set
+$\{H, X, \RZ, \CNOT\}$ with all-to-all connectivity and total gate count as the objective, on \LogicalCircuits\ arithmetic and
+Toffoli circuits of~\cite{nam2018}. Our optimiser runs there unchanged, with a database over this gate set, equality up to
+global phase and the gate count as cost. Every tool starts from the same input files, the decompositions distributed with
+QUESO. VOQC runs its full Nam pass sequence and QUESO its recommended rule sets with a budget of five minutes per circuit
+(the QUESO paper uses one hour, which we could afford only for \LogicalQuesoHourN\ small circuits, where it improved the total
+from \LogicalQuesoFiveOnHourTotal\ to \LogicalQuesoHourTotal\ gates). All \LogicalOutputs\ outputs are equal to their inputs
+up to global phase.
+
+\begin{table}[t]
+\caption{Logical level, Nam gate set, summed over \LogicalCircuits\ circuits. Changes are relative to the input. The last
+column counts the circuits on which a tool is best or tied among the single tools. All outputs verified.}\label{tab:logical}
+\small
+\begin{tabular*}{\textwidth}{@{\extracolsep\fill}lccccc}
+\toprule
+tool & gates & change & CNOT & change & best on\\
+\midrule
+\LogicalRows
+\botrule
+\end{tabular*}
+\end{table}
+
+Table~\ref{tab:logical} shows a clear order. VOQC removes \LogicalVoqcSaved\ of the gates and is best on most circuits. Our
+optimiser removes \LogicalOursSaved\ and is second, ahead of QUESO with five minutes, Qiskit and TKET. VOQC's advantage
+comes from rotation merging over phase polynomials, which combines $\RZ$ gates arbitrarily far apart, while our windows see
+three qubits at a time. Our windows in turn find rewrites VOQC does not. On \texttt{mod5\_4} ours reaches
+\LogicalModFiveOurs\ gates against \LogicalModFiveVoqc\ for VOQC. As with resynthesis, the two combine. Our optimiser applied to
+VOQC's output improves it on \LogicalVoqcOursBeatsVoqc\ of \LogicalCircuits\ circuits and gives the best result overall,
+\LogicalVoqcOursSaved\ fewer gates and \LogicalVoqcOursCxSaved\ fewer CNOTs than the input. Quartz was not run.
 
 \subsection{Choosing the objective}
 
@@ -803,8 +892,10 @@ structure, also on certified Clifford+T circuits.
 cheaper entangling structure inside blocks that no stored rewrite reaches, and is therefore better at reducing two-qubit
 gates. Exact local rewriting is faster, keeps the unitary including global phase, and removes more single-qubit gates.
 The two are complementary rather than competing. Applied after resynthesis, exact rewriting keeps BQSKit's
-two-qubit savings and removes a further \HeronStackAllSaved\ of the gates on Heron at no cost in accuracy. A practical
-pipeline would use resynthesis for the entangling structure and exact rewriting to clean up.
+two-qubit savings and removes a further \HeronStackAllSaved\ of the gates on Heron at no cost in accuracy. The same holds
+for VOQC's global rotation merging at the logical level, where exact local rewriting on top gives the best result of all
+tools. A practical pipeline would use a global or resynthesis pass for structure that windows cannot see and exact local
+rewriting to clean up.
 
 \paragraph{Limitations.}
 (i) \emph{Noise models, not hardware.} ESP and TVD come from calibration snapshots. The simulations contain gate,
@@ -812,12 +903,14 @@ relaxation and readout errors but no idle errors or crosstalk, and no real-hardw
 (ii) \emph{Global phase.} Our outputs are exact including phase, which costs \HeronPhaseGadgetGates\ single-qubit gates
 over the Heron suite. With phase as metadata, as Qiskit, TKET and BQSKit store it, the all-gate ratio from level 1 improves from
 $\times0.838$ to $\times0.825$.
-(iii) \emph{Baselines.} Quartz and QUESO were not run. Qiskit, TKET and BQSKit use their default settings, and BQSKit
-level~4 was run only on the four-qubit benchmark (Table~\ref{tab:four}). BQSKit was not run on the large suite.
+(iii) \emph{Baselines.} Quartz was not run, and QUESO had five minutes per circuit instead of one hour. Qiskit, TKET and
+BQSKit use their default settings, BQSKit level~4 was run only on the four-qubit benchmark (Table~\ref{tab:four}), and on the
+large suite BQSKit covers only the \LargeBqCircuits\ smallest circuits. BQSKit is not deterministic, so its numbers carry a
+run-to-run spread that we did not measure beyond the two runs of Section~\ref{sec:exp}.
 (iv) \emph{Scale.} Windows have at most three qubits, the code is single-threaded Python, and feed-forward circuits are out
 of scope. Circuits of up to \LargeHeronMaxQubits\ qubits and \LargeIonMaxInput\ gates were tested, where one run takes up to a few
-hours. The \LargeCertPending\ outputs whose certificates await re-check, and the largest circuits of the Nam suite, are not yet
-reported.
+hours. Two 64-qubit Heron runs (QFT64 and QFTAdd32) did not finish, and the \LargeCertPending\ outputs whose certificates
+were not re-checked are left out of Table~\ref{tab:large}.
 (v) \emph{Clifford+T ground truth} is certified for two qubits and lengths up to \CTCertified, and three-qubit Clifford+T balls
 grow too fast for the present implementation.
 (vi) \emph{Verification} is numerical (random input states) for the 60-circuit hardware suite and by replay certificates for

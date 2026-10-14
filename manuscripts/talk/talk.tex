@@ -108,7 +108,7 @@
 \end{frame}}
 
 % ================================================================ storyline
-\begin{frame}{The story in one slide}\small
+\begin{frame}{The story in one slide}\footnotesize
   \begin{columns}[T]
     \begin{column}{0.48\textwidth}
       \textbf{What I was asked to do}
@@ -140,6 +140,7 @@
         \item On Qiskit L3 (58 algorithms) it never adds 2q gates and removes 13\,\% of gates on Heron.
         \item BQSKit needs fewer 2q gates but is approximate and slower.
         \item Up to 95 qubits, it removes 19\,\% of gates on top of Qiskit L3 (Heron), each output with a replay certificate.
+        \item Nam gate set (26 circuits), second to VOQC alone, and VOQC + ours best of all (\(-25\,\%\)).
         \item Paper drafted, every output verified.
       \end{itemize}}
     \end{column}
@@ -865,7 +866,7 @@
     \item BQSKit L3 has the fewest 2q gates, with approximate outputs. Ours on top of it gives the best ESP (next slide).
     \item Ion ESPs differ by \(<1\,\%\) across pipelines (MS error \(10^{-3}\)), so they are omitted.
   \end{itemize}}
-  \src{Ratios of summed counts, and the geometric mean of per-circuit ratios for ESP. Nam pf1\_10/pf2\_10 are excluded because Qiskit L3 drops their \(10^{-7}\)\,rad rotations (approximate, not exact).}
+  \src{Seed 0. Over 5 seeds ESP from L1 is \(\times\)1.10 \(\pm\) 0.11 (Result 5). Ratios of summed counts, geometric mean for ESP. Nam pf1\_10/pf2\_10 are excluded because Qiskit L3 drops their \(10^{-7}\)\,rad rotations (approximate, not exact).}
 \end{frame}
 
 \begin{frame}{Result 3. BQSKit, the strongest baseline}
@@ -903,27 +904,28 @@
     \begin{column}{0.52\textwidth}
       \centering\footnotesize\renewcommand{\arraystretch}{1.15}
       \textbf{Relative to Qiskit L3}\\[0.3em]
-      \begin{tabular}{@{}l ccc c cc@{}}
+      \resizebox{\linewidth}{!}{\begin{tabular}{@{}l ccc c cc@{}}
         \toprule
-        & \multicolumn{3}{c}{\textbf{Heron} (20)} && \multicolumn{2}{c}{\textbf{ion} (23)}\\
+        & \multicolumn{3}{c}{\textbf{Heron} (22)} && \multicolumn{2}{c}{\textbf{ion} (25)}\\
         \cmidrule{2-4}\cmidrule{6-7}
-        & 2q & all & ESP && 2q & all\\
+        & 2q & all & ESP\(^\ast\) && 2q & all\\
         \midrule
-        Qiskit L1 & \(\times\)1.22 & \(\times\)1.13 & \(\times\)0.43 && \(\times\)1.36 & \(\times\)1.10\\
-        TKET & \(\times\)1.06 & \(\times\)1.92 & \(\times\)0.55 && \(\times\)1.35 & \(\times\)1.81\\
+        Qiskit L1 & \(\times\)1.22 & \(\times\)1.13 & \(\times\)0.24 && \(\times\)1.40 & \(\times\)1.13\\
+        TKET & \(\times\)1.07 & \(\times\)1.96 & \(\times\)0.27 && \(\times\)1.39 & \(\times\)1.87\\
         \midrule
-        ours from L1 & \(\times\)1.04 & \good{\(\times\)0.78} & \good{\(\times\)1.27} && \good{\(\times\)0.97} & \good{\(\times\)0.63}\\
-        ours from L3 & \good{\(\times\)0.98} & \good{\(\times\)0.81} & \good{\(\times\)1.38} && \(\times\)1.00 & \(\times\)1.01\\
+        ours from L1 & \(\times\)1.05 & \good{\(\times\)0.78} & \(\times\)0.43 && \good{\(\times\)0.96} & \good{\(\times\)0.68}\\
+        ours from L3 & \good{\(\times\)0.98} & \good{\(\times\)0.81} & \good{\(\times\)1.12} && \(\times\)1.00 & \(\times\)1.00\\
         \bottomrule
-      \end{tabular}\\[0.4em]
-      {\scriptsize\color{muted}40 Nam/VOQC circuits run so far (of 45). pf1/pf2 excluded because Qiskit L3 drops their \(10^{-7}\)\,rad rotations, and 3 circuits whose certificates await a re-check. BQSKit not run at this scale.}
+      \end{tabular}}\\[0.4em]
+      {\scriptsize\color{muted}45 Nam/VOQC circuits, 88 of 90 runs (QFT64, QFTAdd32 on Heron did not finish). pf circuits excluded,
+       and 5 outputs whose certificates were not re-checked. \(^\ast\)ESP over the 13 Heron circuits with L3 ESP \(\ge10^{-3}\).}
     \end{column}
     \begin{column}{0.45\textwidth}
       \two{
       \begin{itemize}\setlength{\itemsep}{0.3em}\small
-        \item \textbf{Stacked on L3, Heron.} 19\,\% fewer gates and 2.1\,\% fewer CZ. Fewer CZ on 18/20 circuits, never more, and ESP \(\times\)1.38.
-        \item \textbf{Ion.} Never adds an MS gate and never lowers ESP. The total rises on 11/23 (pulses traded for free \(R_z\)).
-        \item \textbf{From L1.} Fewer gates than L3 on every Heron circuit, but more CZ on 14/20, since L3's routing finds structure that local windows miss. On ions, fewer MS than L3 on 10/23 and more on none.
+        \item \textbf{Stacked on L3, Heron.} 19\,\% fewer gates and 2.1\,\% fewer CZ. Fewer CZ on 20/22, never more, ESP \(\times\)1.12 (median \(\times\)1.14).
+        \item \textbf{From L1.} Fewer gates than L3 everywhere but lower ESP, since L3's layout matters more than what we remove.
+        \item \textbf{BQSKit} on the 14 comparable circuits it finished (\(\le\)36 qubits). Heron 2q \(\times\)0.91 vs.\ ours \(\times\)0.98, but all gates \(\times\)1.35 vs.\ \(\times\)0.82. Its 22 outputs over 24 qubits could not be checked.
       \end{itemize}}
     \end{column}
   \end{columns}
@@ -941,27 +943,117 @@
         \cmidrule{2-3}\cmidrule{5-6}
         & Heron & ion && Heron & ion\\
         \midrule
-        Qiskit L1 & -- & -- && 0.09 & 0.04\\
+        Qiskit L1 & -- & -- && 0.11 & 0.04\\
         Qiskit L3 & 0.03 & 0.01 && 0.12 & 0.05\\
-        TKET & 0.30 & 0.86 && 7.7 & 8.6\\
-        BQSKit L2 (8 workers) & 14.7 & 4.8 && -- & --\\
-        BQSKit L3 (8 workers) & 53.6 & 11.2 && -- & --\\
+        TKET & 0.30 & 0.86 && 8.2 & 9.6\\
+        BQSKit L2 (8 workers) & 14.7 & 4.8 && 132\(^\ast\) & 34\(^\ast\)\\
+        BQSKit L3 (8 workers) & 53.6 & 11.2 && 842\(^\ast\) & 138\(^\ast\)\\
         \midrule
-        ours from L1 & 10.4 & 3.0 && \bad{639} & 105\\
-        ours from L3 & 6.0 & 4.8 && 170 & 73.9\\
+        ours from L1 & 10.4 & 3.0 && \bad{853} & 187\\
+        ours from L3 & 6.0 & 4.8 && 117 & 57.1\\
         \bottomrule
       \end{tabular}\\[0.4em]
-      {\scriptsize\color{muted}Ours is single-threaded Python. The large suite ran five circuits at a time on eight cores.}
+      {\scriptsize\color{muted}Ours is single-threaded Python. The large suite ran several circuits at a time on eight cores.
+       \(^\ast\)BQSKit only on the 18 smallest large circuits.}
     \end{column}
     \begin{column}{0.42\textwidth}
       \two{
       \begin{itemize}\setlength{\itemsep}{0.4em}\small
         \item Small circuits, seconds, between BQSKit L2 and L3.
-        \item Large circuits, minutes, and up to 2.5\,h for one Heron circuit.
+        \item Large circuits, minutes, and up to 6.4\,h for one Heron circuit. BQSKit L3 needs about 14\,min per Heron circuit even on the smaller half.
         \item This is the main cost at scale. Non-overlapping windows could be swept in parallel, which is not done yet.
       \end{itemize}}
     \end{column}
   \end{columns}
+\end{frame}
+
+\begin{frame}{Result 5. Robust over seeds}
+  \begin{columns}[T]
+    \begin{column}{0.55\textwidth}
+      \centering\footnotesize\renewcommand{\arraystretch}{1.2}
+      \textbf{60-circuit suite, 5 transpiler seeds (mean \(\pm\) sd)}\\[0.3em]
+      \resizebox{\linewidth}{!}{\begin{tabular}{@{}lcc@{}}
+        \toprule
+        relative to Qiskit L3 (same seed) & Heron & ion\\\midrule
+        ours on L3, 2q gates & \(\times\)0.975 \(\pm\) 0.004 & \(\times\)0.998 \(\pm\) 0.002\\
+        ours on L3, all gates & \(\times\)0.868 \(\pm\) 0.005 & \(\times\)0.997 \(\pm\) 0.002\\
+        ours on L3, ESP & \(\times\)1.03 (1.03--1.04) & \(\times\)1.00\\
+        ours on L1, all gates & \(\times\)0.844 \(\pm\) 0.006 & \(\times\)0.756 \(\pm\) 0.002\\
+        ours on L1, ESP & \bad{\(\times\)1.10 \(\pm\) 0.11} & \(\times\)1.00\\\bottomrule
+      \end{tabular}}\\[0.4em]
+      {\scriptsize\color{muted}1,624 outputs, all verified. The optimiser's own seed changes totals by at most 0.5\,\%.}
+    \end{column}
+    \begin{column}{0.42\textwidth}
+      \two{
+      \begin{itemize}\setlength{\itemsep}{0.5em}\small
+        \item Gate counts are stable to \(\pm\)0.5\,\% whatever the seed.
+        \item ESP from L1 ranges 0.97--1.21. It follows Qiskit's L1 layout, not our rewriting.
+        \item The earlier \(\times\)1.21 was seed 0, the best case. The paper now reports the spread.
+      \end{itemize}}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Result 6. What each component contributes}
+  \begin{columns}[T]
+    \begin{column}{0.52\textwidth}
+      \centering\footnotesize\renewcommand{\arraystretch}{1.1}
+      \textbf{Heron, on top of Qiskit L3 (58 circuits)}\\[0.3em]
+      \begin{tabular}{@{}lc@{}}
+        \toprule
+        variant & gates removed\\\midrule
+        full optimiser & \good{13.0\,\%}\\\midrule
+        no meet in the middle & 12.3\,\%\\
+        contiguous windows & 11.7\,\%\\
+        gate-count cost & 11.6\,\%\\
+        no commuting shuffles & 10.3\,\%\\
+        no resynthesis & 8.2\,\%\\
+        window \(w=8\) & 7.9\,\%\\
+        database radius \(\le3\) & 6.2\,\%\\
+        no database & 5.8\,\%\\
+        window \(w=4\) & \bad{1.3\,\%}\\\bottomrule
+      \end{tabular}
+    \end{column}
+    \begin{column}{0.45\textwidth}
+      \two{
+      \begin{itemize}\setlength{\itemsep}{0.45em}\small
+        \item \textbf{Window length} matters most, then the \textbf{database} and its radius, exactly the two knobs of Part III.
+        \item \textbf{Resynthesis} is essential on ions. Without it the MS count from L1 rises from \(\times\)0.95 to \(\times\)1.29 of L3.
+        \item Meet in the middle adds almost nothing here.
+        \item Gate-count cost removes as many gates but gives less ESP (\(\times\)1.010 vs.\ \(\times\)1.027).
+      \end{itemize}}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Result 7. Logical level, against VOQC and QUESO}
+  \begin{columns}[T]
+    \begin{column}{0.55\textwidth}
+      \centering\footnotesize\renewcommand{\arraystretch}{1.15}
+      \textbf{Nam gate set \(\{H,X,R_z,\mathrm{CNOT}\}\), 26 circuits}\\[0.3em]
+      \begin{tabular}{@{}lrrr@{}}
+        \toprule
+        tool & gates & change & CNOT\\\midrule
+        input & 10,481 & & 4,612\\\midrule
+        TKET & 11,762 & \(+12.2\,\%\) & 4,489\\
+        Qiskit L3 & 10,391 & \(-0.9\,\%\) & 4,511\\
+        QUESO (5 min) & 9,765 & \(-6.8\,\%\) & 4,465\\
+        ours & 9,480 & \(-9.6\,\%\) & 4,426\\
+        VOQC & 8,417 & \(-19.7\,\%\) & 4,314\\\midrule
+        VOQC, then ours & \good{7,833} & \good{\(-25.3\,\%\)} & \good{4,007}\\\bottomrule
+      \end{tabular}\\[0.4em]
+      {\scriptsize\color{muted}Same input files as the VOQC/Quartz/QUESO papers (from QUESO). All 159 outputs equal up to phase. QUESO had 5 min per circuit, not 1 h.}
+    \end{column}
+    \begin{column}{0.42\textwidth}
+      \two{
+      \begin{itemize}\setlength{\itemsep}{0.45em}\small
+        \item \textbf{VOQC wins alone.} Its rotation merging over phase polynomials joins \(R_z\) gates far apart. Our windows see 3 qubits.
+        \item \textbf{We find what it misses.} mod5\_4: 35 gates vs.\ 56.
+        \item \textbf{Stacked}, ours improves VOQC on 21/26 and is best overall.
+      \end{itemize}}
+    \end{column}
+  \end{columns}
+  \two{\takeaway{Same lesson as with BQSKit. A global pass plus exact local cleanup beats either alone.}}
 \end{frame}
 
 \begin{frame}{Where do the gains come from? (honest accounting)}
@@ -986,7 +1078,7 @@
         \item On Heron the savings are split between pulses and \(R_z\), plus a few CZ.
         \item On ions the calibrated objective \emph{trades} pulses for free \(R_z\). The total rises on 28/58 circuits, by design.
               ``Never worse'' holds for the objective, 2q count and ESP, \textbf{not} for the total.
-        \item ESP \(\times\)1.21 from L1 decomposes as \(\times\)1.11 (Qiskit's L1 layout already beats its L3 layout) \(\times\) \(\times\)1.09 (our rewriting).
+        \item With seed 0, ESP \(\times\)1.21 from L1 decomposes as \(\times\)1.11 (Qiskit's L1 layout already beats its L3 layout) \(\times\) \(\times\)1.09 (our rewriting).
               We never change the layout.
       \end{itemize}}
     \end{column}
@@ -1134,16 +1226,16 @@
   \begin{columns}[T]
     \begin{column}{0.48\textwidth}
       \begin{itemize}\setlength{\itemsep}{0.6em}
-        \item \textbf{Noise models, not hardware.} ESP and TVD come from calibration snapshots, with gate errors only (no readout, idle or crosstalk). Ion parameters are assumptions.
+        \item \textbf{Noise models, not hardware.} ESP and TVD come from calibration snapshots. Ion parameters are assumptions. The hardware driver is ready and tested on a fake backend, waiting for IBM access.
         \item \textbf{Global phase is not free for us.} Strict mode costs 240 single-qubit gates over the Heron suite. With phase as metadata (as Qiskit, TKET and BQSKit do), all gates \(\times\)0.838 \(\to\) \(\times\)0.825.
       \end{itemize}
     \end{column}
     \begin{column}{0.48\textwidth}
       \two{
       \begin{itemize}\setlength{\itemsep}{0.6em}
-        \item \textbf{Baselines.} BQSKit (approximate) needs fewer 2q gates than we do. Quartz/QUESO were not run, and Qiskit, TKET and BQSKit use one seed.
-        \item \textbf{Local only.} Layout and routing are Qiskit's, windows have \(\le3\) qubits, and the code is single-threaded Python (median 10\,s per circuit on the 60-circuit suite, up to 2.5\,h on 95 qubits, vs.\ \(<\)1\,s for Qiskit).
-        \item \textbf{Scope.} Circuits up to 95 qubits and \(\sim\)4,500 gates. The 5 largest Nam circuits and 5 certificate re-checks are still to run. No mid-circuit measurement or feed-forward.
+        \item \textbf{Baselines.} BQSKit (approximate) needs fewer 2q gates, and VOQC beats us alone on the Nam set. Quartz was not run, QUESO had 5 min, BQSKit covers only the smaller large circuits.
+        \item \textbf{Local only.} Layout and routing are Qiskit's, windows have \(\le3\) qubits, and the code is single-threaded Python (median 10\,s per circuit on the 60-circuit suite, up to 6.4\,h on large circuits, vs.\ \(<\)1\,s for Qiskit).
+        \item \textbf{Scope.} Circuits up to 95 qubits and \(\sim\)5,400 gates. Two 64-qubit Heron runs did not finish and 5 certificates were not re-checked. No mid-circuit measurement or feed-forward.
       \end{itemize}}
     \end{column}
   \end{columns}
@@ -1172,7 +1264,7 @@
   \end{columns}
 \end{frame}
 
-\begin{frame}{Summary}
+\begin{frame}{Summary}\footnotesize
   \begin{columns}[T]
     \begin{column}{0.48\textwidth}
       \begin{block}{About the paper}
@@ -1186,12 +1278,13 @@
     \begin{column}{0.48\textwidth}
       \two{
       \begin{exampleblock}{About the extension}
-        \begin{itemize}\setlength{\itemsep}{0.3em}
+        \begin{itemize}\setlength{\itemsep}{0.1em}
           \item A general optimiser built on ``equivalence = group action'', with soundness and error bounds.
           \item Proven optimum on 35/40 of the paper's 3-qubit circuits without Clifford knowledge.
           \item On 58 real algorithms, stacked on Qiskit L3, it never adds 2q gates, never lowers ESP and removes 13\,\% of gates on Heron.
           \item BQSKit's approximate resynthesis needs fewer 2q gates. Exact rewriting keeps the unitary, removes more single-qubit gates and is faster. Run after BQSKit, it removes a further 16\,\% of gates on Heron.
           \item Up to 95 qubits, it removes 19\,\% of the gates on top of Qiskit L3 on Heron, verified by replay certificates.
+          \item Stable over 5 seeds. On the Nam set VOQC then ours is the best of six tools (\(-25\,\%\)).
         \end{itemize}
       \end{exampleblock}}
     \end{column}
@@ -1207,7 +1300,7 @@
         \item Cheaper exact phase repair on Heron.
         \item 4-qubit windows via symmetry reduction, or a learned admissible A\(^\ast\) heuristic trained on exact tables.
         \item Ground truth beyond Clifford, with exact Clifford+T normal forms for small \(T\)-counts.
-        \item Reach BQSKit's 2q counts without approximation (larger windows, snapped resynthesis), a Quartz baseline, and real-hardware runs with error bars.
+        \item Reach BQSKit's 2q counts and VOQC's rotation merging without approximation (larger windows, phase-polynomial passes), a Quartz baseline, and the real-hardware run (driver ready).
       \end{enumerate}
     \end{column}
     \begin{column}{0.48\textwidth}

@@ -135,6 +135,7 @@
         \item Proven optimum on \textbf{35/40} of the paper's 3-qubit circuits.
         \item After Qiskit L3 on 58 algorithms it never adds a 2q gate and removes \textbf{13\,\%} of gates (Heron).
         \item Up to 95 qubits it removes \textbf{19\,\%} on top of Qiskit L3, every output certified.
+        \item On the standard Nam set, VOQC then ours is the best of six tools (\textbf{\(-25\,\%\)}).
       \end{itemize}}
     \end{column}
   \end{columns}
@@ -335,7 +336,7 @@ results jump. Approximate and state-aware modes also exist; headline numbers use
     \item \textbf{BQSKit} finds better 2q structure but is approximate and leaves many 1q gates. Ours on top keeps its
           2q savings and removes \textbf{16\,\%} more gates on Heron, exactly.
   \end{itemize}}
-  \src{Nam/VOQC, QASMBench, QFT, QAOA, Trotter, EfficientSU2, Steane, random. 2--12 qubits. Ratios of summed counts, geometric mean for ESP.}
+  \src{Seed 0. Over 5 seeds the gate ratios move by at most 0.5\,\% and ESP from L1 is \(\times\)1.10 \(\pm\) 0.11. Nam/VOQC, QASMBench, QFT, QAOA, Trotter, EfficientSU2, Steane, random, 2--12 qubits.}
 \end{frame}
 \note{If asked why ESP from L1 beats L3: part of it is Qiskit's L1 layout being better on these circuits (x1.11), our
 rewriting adds x1.09. On ions the calibrated cost trades pulses for free Rz, so the total can rise; the guarantee is on
@@ -394,7 +395,7 @@ the objective and the 2q count. BQSKit takes 98 s per Heron circuit on 8 workers
         \item \textbf{Stacked on L3, Heron.} 19\,\% fewer gates, fewer CZ on 20/22 circuits, never more.
         \item \textbf{From L1.} Fewer gates than L3 everywhere, but lower ESP: at this scale Qiskit's L3 layout matters more than what we remove.
         \item \textbf{Cost.} Minutes per circuit, up to 6\,h for the largest, single-threaded Python.
-        \item \textbf{Running.} BQSKit on this suite (up to 40 qubits).
+        \item \textbf{BQSKit} (14 circuits it finished, \(\le\)36 qubits). Heron 2q \(\times\)0.91 vs.\ ours \(\times\)0.98, all gates \(\times\)1.35 vs.\ \(\times\)0.82.
       \end{itemize}}
     \end{column}
   \end{columns}
@@ -402,6 +403,74 @@ the objective and the 2q count. BQSKit takes 98 s per Heron circuit on 8 workers
 \end{frame}
 \note{If asked why ESP is restricted: around 50 qubits ESP is about 1e-10, ratios of such numbers swing by orders of
 magnitude and one circuit flipped the old geometric mean. The median over all circuits is x1.14.}
+
+\begin{frame}{Result 4. Robust over seeds, and what each part contributes}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \centering\footnotesize\renewcommand{\arraystretch}{1.15}
+      \textbf{5 transpiler seeds, Heron (mean \(\pm\) sd vs.\ L3)}\\[0.3em]
+      \begin{tabular}{@{}lc@{}}
+        \toprule
+        ours on L3, all gates & \(\times\)0.868 \(\pm\) 0.005\\
+        ours on L3, 2q gates & \(\times\)0.975 \(\pm\) 0.004\\
+        ours on L3, ESP & \(\times\)1.03 (1.03--1.04)\\
+        ours on L1, ESP & \bad{\(\times\)1.10 \(\pm\) 0.11}\\\bottomrule
+      \end{tabular}\\[0.6em]
+      {\scriptsize\color{muted}Gate counts are stable. ESP from L1 follows Qiskit's L1 layout, and seed 0 (\(\times\)1.21) was the best case.}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \two{
+      \centering\footnotesize\renewcommand{\arraystretch}{1.05}
+      \textbf{Ablation, gates removed on top of L3 (Heron)}\\[0.3em]
+      \begin{tabular}{@{}lc@{}}
+        \toprule
+        full optimiser & \good{13.0\,\%}\\\midrule
+        contiguous windows & 11.7\,\%\\
+        no resynthesis & 8.2\,\%\\
+        window \(w=8\) & 7.9\,\%\\
+        database radius \(\le3\) & 6.2\,\%\\
+        no database & 5.8\,\%\\
+        window \(w=4\) & \bad{1.3\,\%}\\\bottomrule
+      \end{tabular}}
+    \end{column}
+  \end{columns}
+  \two{\takeaway{Window length and database depth do the work, the same two knobs as in Part II.}}
+\end{frame}
+\note{Seeds: 1,624 outputs, all verified. The optimiser's own randomness moves totals by at most 0.5 percent. Ablation:
+meet in the middle adds almost nothing (12.3 percent without it). On ions resynthesis is essential for MS gates. A
+gate-count cost removes as many gates but gives less ESP than the calibrated cost.}
+
+\begin{frame}{Result 5. Against VOQC and QUESO, on their own benchmark}
+  \begin{columns}[T]
+    \begin{column}{0.55\textwidth}
+      \centering\footnotesize\renewcommand{\arraystretch}{1.15}
+      \textbf{Nam gate set \(\{H,X,R_z,\mathrm{CNOT}\}\), 26 circuits}\\[0.3em]
+      \begin{tabular}{@{}lrrr@{}}
+        \toprule
+        tool & gates & change & CNOT\\\midrule
+        input & 10,481 & & 4,612\\\midrule
+        TKET & 11,762 & \(+12.2\,\%\) & 4,489\\
+        Qiskit L3 & 10,391 & \(-0.9\,\%\) & 4,511\\
+        QUESO (5 min) & 9,765 & \(-6.8\,\%\) & 4,465\\
+        ours & 9,480 & \(-9.6\,\%\) & 4,426\\
+        VOQC & 8,417 & \(-19.7\,\%\) & 4,314\\\midrule
+        VOQC, then ours & \good{7,833} & \good{\(-25.3\,\%\)} & \good{4,007}\\\bottomrule
+      \end{tabular}\\[0.4em]
+      {\scriptsize\color{muted}Same input files as the published comparisons. All 159 outputs equal up to phase.}
+    \end{column}
+    \begin{column}{0.42\textwidth}
+      \two{
+      \begin{itemize}\setlength{\itemsep}{0.45em}\small
+        \item \textbf{VOQC wins alone.} It merges \(R_z\) gates across the whole circuit, our windows see 3 qubits.
+        \item \textbf{We find what it misses.} mod5\_4: 35 gates vs.\ 56.
+        \item \textbf{Together} best overall, ours improves VOQC on 21/26.
+      \end{itemize}}
+    \end{column}
+  \end{columns}
+  \two{\takeaway{Same lesson as with BQSKit. A global pass plus exact local cleanup beats either alone.}}
+\end{frame}
+\note{QUESO had 5 minutes per circuit (its paper uses 1 hour; on 3 small circuits 1 hour improved it from 305 to 282 gates).
+Quartz was not run. Ours takes a median of 11 s per circuit here, VOQC well under a second.}
 
 \begin{frame}{Every output is verified, even beyond 25 qubits}
   \begin{columns}[T]
@@ -436,29 +505,31 @@ magnitude and one circuit flipped the old geometric mean. The median over all ci
       \begin{itemize}\setlength{\itemsep}{0.35em}\small
         \item Noise models, no real-hardware runs yet.
         \item Windows of at most 3 qubits, single-threaded Python, hours at 100 qubits.
-        \item Baselines are Qiskit, TKET and BQSKit at default settings and one seed.
+        \item VOQC beats us alone on the Nam set, BQSKit on 2q gates.
+        \item Quartz not run, QUESO at 5 min, BQSKit on the smaller large circuits only.
       \end{itemize}
     \end{column}
     \begin{column}{0.48\textwidth}
       \two{
       \textbf{Next}
       \begin{itemize}\setlength{\itemsep}{0.35em}\small
-        \item BQSKit on the large suite and the 5 re-checks (running).
-        \item VOQC, Quartz and QUESO on the Nam gate set.
-        \item Several seeds with error bars, and an ablation of window, radius, convexity and cost.
-        \item Real IBM hardware, last.
+        \item Real IBM hardware. The driver is ready and tested on a fake backend, it needs an IBM account.
+        \item Reach VOQC's rotation merging and BQSKit's 2q counts exactly (phase-polynomial passes, larger windows).
+        \item Quartz baseline, QUESO with its full hour.
       \end{itemize}}
     \end{column}
   \end{columns}
 \end{frame}
 
 \begin{frame}{Summary}
-  \begin{enumerate}\setlength{\itemsep}{0.8em}
+  \begin{enumerate}\setlength{\itemsep}{0.6em}
     \item The original method is \textbf{3--4.5\(\times\)} off the proven optimum, and the database radius is why.
     \item A general optimiser with deep databases and convex windows reaches the optimum on \textbf{35/40} circuits
           without knowing the group.
     \item On real algorithms it is a safe post-pass: after Qiskit L3 it never adds a 2q gate and removes 13--19\,\% of
           gates, and after BQSKit it removes 16\,\% more.
+    \item The gains are stable over seeds, and window length and database depth drive them.
+    \item Against VOQC and QUESO, ours is second alone and VOQC followed by ours is best.
     \item Every output is verified, by simulation or by replay certificate.
   \end{enumerate}
 \end{frame}
