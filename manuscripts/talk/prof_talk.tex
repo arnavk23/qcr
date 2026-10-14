@@ -1,0 +1,537 @@
+% Short version of talk.tex for the advisor: same theme, same figures, one idea per frame.
+% Build: pdflatex prof_talk.tex (twice). Figures: figs/. Speaker notes are \note{} blocks (hidden by default).
+\documentclass[aspectratio=169,10pt]{beamer}
+
+% ---------------------------------------------------------------- talk metadata (edit these)
+\newcommand{\talkauthor}{Arnav Kapoor}
+\newcommand{\talkinstitute}{IISER Bhopal}
+\newcommand{\talkevent}{Progress update}
+
+% ---------------------------------------------------------------- theme
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{booktabs,tabularx,colortbl,xcolor,amsmath,amssymb}
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta,shapes.misc,calc}
+
+\definecolor{ibar}{HTML}{0B3C6E}
+\definecolor{iaccent}{HTML}{2A78D6}
+\definecolor{iorange}{HTML}{EB6834}
+\definecolor{igreen}{HTML}{0F8A5F}
+\definecolor{ired}{HTML}{C0392B}
+\definecolor{ifoot}{HTML}{E9EEF4}
+\definecolor{ink}{HTML}{1F1F1E}
+\definecolor{muted}{HTML}{6B6A63}
+
+\usefonttheme{professionalfonts}
+\setbeamertemplate{navigation symbols}{}
+\setbeamercovered{invisible}
+\setbeamercolor{normal text}{fg=ink,bg=white}
+\setbeamercolor{structure}{fg=ibar}
+\setbeamercolor{alerted text}{fg=iorange}
+\setbeamercolor{frametitle}{fg=white,bg=ibar}
+\setbeamerfont{frametitle}{size=\large,series=\bfseries}
+\setbeamercolor{block title}{fg=white,bg=ibar}
+\setbeamercolor{block body}{bg=ifoot}
+\setbeamercolor{block title alerted}{fg=white,bg=iorange}
+\setbeamercolor{block body alerted}{bg=iorange!8}
+\setbeamercolor{block title example}{fg=white,bg=igreen}
+\setbeamercolor{block body example}{bg=igreen!8}
+\setbeamertemplate{blocks}[rounded][shadow=false]
+\setbeamertemplate{itemize item}{\color{iaccent}\raisebox{0.15ex}{\scriptsize$\blacksquare$}}
+\setbeamertemplate{itemize subitem}{\color{muted}\textendash}
+\setbeamertemplate{enumerate item}{\color{ibar}\bfseries\insertenumlabel.}
+
+% title bar with the current part on the right
+\setbeamertemplate{frametitle}{%
+  \nointerlineskip
+  \begin{beamercolorbox}[wd=\paperwidth,ht=2.6ex,dp=1.3ex,leftskip=1.2em,rightskip=1.2em]{frametitle}
+    \usebeamerfont{frametitle}\insertframetitle\hfill{\normalfont\footnotesize\color{white!70!ibar}\insertsectionhead}
+  \end{beamercolorbox}
+  \vspace{-0.2ex}{\color{iaccent}\rule{\paperwidth}{1.2pt}}\vspace{0.2ex}}
+
+\setbeamertemplate{footline}{%
+  \leavevmode\hbox{\scriptsize%
+  \begin{beamercolorbox}[wd=.30\paperwidth,ht=2.4ex,dp=1ex,leftskip=1em]{author in head/foot}%
+    \color{white}\talkauthor\end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.48\paperwidth,ht=2.4ex,dp=1ex,center]{title in head/foot}%
+    \color{ink}\insertshorttitle\end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.22\paperwidth,ht=2.4ex,dp=1ex,right,rightskip=1em]{date in head/foot}%
+    \color{ink}\insertframenumber/\inserttotalframenumber\end{beamercolorbox}}}
+\setbeamercolor{author in head/foot}{bg=ibar}
+\setbeamercolor{title in head/foot}{bg=ifoot}
+\setbeamercolor{date in head/foot}{bg=ifoot}
+
+\newcommand{\good}[1]{\textcolor{igreen}{\textbf{#1}}}
+\newcommand{\bad}[1]{\textcolor{ired}{\textbf{#1}}}
+\newcommand{\qual}[1]{\textcolor{iorange}{\textbf{#1}}}
+\newcommand{\src}[1]{\par\vfill\hfill{\tiny\color{muted}#1}}
+\newcommand{\takeaway}[1]{\par\vfill{\setlength{\fboxsep}{5pt}\colorbox{ifoot}{\parbox{\dimexpr\linewidth-10pt}{\small\color{ibar}\textbf{Takeaway.} #1}}}}
+\newcommand{\two}{\uncover<2->}   % second half of a slide (text only: tables are never split)
+
+% part divider
+\newcommand{\partslide}[3]{%
+  \section{#2}
+  {\setbeamertemplate{footline}{}
+  \begin{frame}[plain]
+    \begin{tikzpicture}[remember picture,overlay]
+      \fill[ibar] (current page.south west) rectangle (current page.north east);
+      \node[anchor=west,text=white!60!ibar,font=\Large\bfseries] at ([xshift=3em,yshift=2.2em]current page.west) {Part #1};
+      \node[anchor=west,text=white,font=\huge\bfseries] at ([xshift=3em,yshift=-0.4em]current page.west) {#2};
+      \node[anchor=north west,text=white!85!ibar,text width=0.8\paperwidth,font=\normalsize] at ([xshift=3em,yshift=-2.4em]current page.west) {#3};
+    \end{tikzpicture}
+  \end{frame}}}
+
+
+\title[Shorter circuits, proven optimal]{Making quantum circuits shorter, and proving how short they can get}
+\author{\talkauthor}
+
+\begin{document}
+
+% ================================================================ title
+{\setbeamertemplate{footline}{}
+\begin{frame}[plain]
+  \begin{tikzpicture}[remember picture,overlay]
+    \fill[ibar] (current page.north west) rectangle ([yshift=-0.55\paperheight]current page.north east);
+    \fill[iaccent] ([yshift=-0.55\paperheight]current page.north west) rectangle ([yshift=-0.565\paperheight]current page.north east);
+    \node[anchor=north west,text=white,font=\small] at ([xshift=2em,yshift=-1.6em]current page.north west) {\talkevent};
+    \node[anchor=south west,text=white,text width=0.88\paperwidth,align=left]
+      at ([xshift=2em,yshift=0.50\paperheight]current page.south west)
+      {{\LARGE\bfseries Making quantum circuits shorter,\\[0.2em] and proving how short they can get}\\[0.6em]
+       {\large Exact ground truth for local rewriting, and a general hardware-aware optimiser}};
+    \node[anchor=north west,text width=0.8\paperwidth,align=left]
+      at ([xshift=2em,yshift=0.40\paperheight]current page.south west)
+      {{\large\bfseries \talkauthor}\\[0.3em]{\color{muted}\talkinstitute}\\[1.4em]
+       {\footnotesize\color{muted}Building on B.~Rosenhahn, T.~J.~Osborne, C.~Hirche,
+        \emph{Optimization driven quantum circuit reduction}, New J.\ Phys.\ \textbf{27}, 104509 (2025)}};
+  \end{tikzpicture}
+\end{frame}}
+
+% ================================================================ story
+\begin{frame}{The story in one slide}\small
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \textbf{The starting point}
+      \begin{itemize}\setlength{\itemsep}{0.15em}
+        \item A recent paper shortens circuits by swapping small pieces for shorter ones from a precomputed table.
+        \item It is compared only with Qiskit, on random circuits.
+      \end{itemize}
+      \vspace{0.5em}
+      \textbf{What we found}
+      \begin{itemize}\setlength{\itemsep}{0.15em}
+        \item Every gate it uses is \textbf{Clifford}, so the true optimum is computable.
+        \item Against it, the method is \textbf{3--4.5\(\times\)} too long, and we can say why.
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \two{
+      \textbf{What we built}
+      \begin{itemize}\setlength{\itemsep}{0.15em}
+        \item A \textbf{general optimiser} for real native gates, connectivity and calibrated noise, exact including phase.
+      \end{itemize}
+      \vspace{0.5em}
+      \textbf{Where it stands}
+      \begin{itemize}\setlength{\itemsep}{0.15em}
+        \item Proven optimum on \textbf{35/40} of the paper's 3-qubit circuits.
+        \item After Qiskit L3 on 58 algorithms it never adds a 2q gate and removes \textbf{13\,\%} of gates (Heron).
+        \item Up to 95 qubits it removes \textbf{19\,\%} on top of Qiskit L3, every output certified.
+        \item On the standard Nam set, VOQC then ours is the best of six tools (\textbf{\(-25\,\%\)}).
+      \end{itemize}}
+    \end{column}
+  \end{columns}
+\end{frame}
+\note{One-slide summary. If the meeting is short, this slide and the summary at the end are enough.}
+
+% ################################################################ PART I
+\partslide{I}{The method we start from}{Replace short windows of a circuit with shorter equivalents from a precomputed database.}
+
+\begin{frame}{Why shorten circuits at all?}
+  \begin{columns}[T]
+    \begin{column}{0.47\textwidth}
+      \begin{itemize}\setlength{\itemsep}{0.6em}
+        \item On today's hardware every gate costs fidelity. Roughly,
+              \[\Pr[\text{success}] \approx \prod_{\text{gates } g} \bigl(1-e(g)\bigr),\]
+              the \textbf{ESP}. Two-qubit errors are 10--100\(\times\) single-qubit ones.
+        \item Compiling to a device's \textbf{native gates} leaves redundancy.
+        \item Goal: an \emph{equivalent} circuit with fewer, or cheaper, native gates.
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.51\textwidth}
+      \two{
+      \centering
+      \includegraphics[width=\linewidth]{figs/Motivation1.png}\\[0.3em]
+      {\scriptsize\color{muted}H + CNOT compiled to ion-trap gates (8 gates) and the shortest equivalent (4 gates).}}
+    \end{column}
+  \end{columns}
+  \src{Figure from arXiv:2502.14715, Fig.~1}
+\end{frame}
+\note{100 gates at 99 percent each give 37 percent success, 50 gates give 61 percent. That is the whole motivation.}
+
+\begin{frame}{The method: a database and a sliding window}
+  \begin{columns}[T]
+    \begin{column}{0.49\textwidth}
+      \centering\includegraphics[width=0.7\linewidth]{figs/FullComputeGraphs2.png}\\[0.2em]
+      {\scriptsize\color{muted}\textbf{Compute graph.} Nodes are circuits (as matrices), edges add one gate. Everything within
+       radius \(r\) of the identity is stored with its shortest form. The paper uses \(r=5\)--\(6\).}
+    \end{column}
+    \begin{column}{0.49\textwidth}
+      \two{
+      \centering\includegraphics[width=0.66\linewidth]{figs/CodeReduceTokens.png}\\[0.2em]
+      {\scriptsize\color{muted}\textbf{Window.} Take 2--8 gates on \(\le3\) wires, look them up, substitute a shorter word,
+       shuffle commuting gates, repeat.}}
+    \end{column}
+  \end{columns}
+  \two{\takeaway{Two knobs decide everything later: the window length \(w\) and the database radius \(r\).}}
+  \src{Figures from arXiv:2502.14715, Figs.~2 and 3}
+\end{frame}
+\note{V1 searches randomly, V2 looks up the database, V3 adds a random forest that predicts reducible windows. The
+database grows exponentially with r, which is why the paper keeps it small.}
+
+% ################################################################ PART II
+\partslide{II}{Exact ground truth}{Every gate the paper uses is Clifford, so the search space is a finite group we can enumerate completely.}
+
+\begin{frame}{Every gate in the paper is Clifford}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \begin{itemize}\setlength{\itemsep}{0.5em}
+        \item \(\pm\tfrac{\pi}{2}\) rotations, \(R_{XX}(\pm\tfrac{\pi}{2})\) and CZ map Paulis to Paulis.
+        \item So every circuit is an element of the finite \textbf{Clifford group}: 24 elements for 1 qubit,
+              11,520 for 2, \textbf{92,897,280} for 3.
+        \item We enumerated all of them for 3 qubits and stored the exact shortest length of each (25\,min, 6\,GB).
+      \end{itemize}
+      \two{\takeaway{Optimality is no longer vague. Each test circuit has a proven shortest length.}}
+    \end{column}
+    \begin{column}{0.50\textwidth}
+      \centering\includegraphics[width=\linewidth]{figs/ext_growth.png}\\
+      {\scriptsize\color{muted}Elements by optimal length (3 qubits). The paper's depth-5 database (shaded) covers 0.15\,\% of the group.}
+    \end{column}
+  \end{columns}
+\end{frame}
+\note{The compute graph in the paper is just a ball in the Cayley graph of this group. The optimiser we test later never
+uses this table, it is only the referee. Beyond Clifford we computed exact 2-qubit Clifford+T distances.}
+
+\begin{frame}{How far from optimal is the paper's method?}
+  \begin{columns}[T]
+    \begin{column}{0.46\textwidth}
+      \centering\footnotesize\renewcommand{\arraystretch}{1.25}
+      \small 3 qubits, 300 random gates, 20 circuits per row\\[0.4em]
+      \begin{tabular}{@{}lccc@{}}
+        \toprule
+        & \textbf{optimum} & paper's method & Qiskit L3\\\midrule
+        ion trap  & \textbf{10.4} & 47.1 & 127.2\\
+        IBM-style & \textbf{12.2} & 36.8 & 104.0\\\bottomrule
+      \end{tabular}
+      \vspace{0.8em}
+      \two{
+      \begin{alertblock}{The gap}
+        The method's output is \textbf{4.5\(\times\)} (ion) and \textbf{3.0\(\times\)} (IBM-style) the optimum, on its own benchmark.
+        Our port matches its published number (47.1 vs.\ 45), so this is the method, not our code.
+      \end{alertblock}}
+    \end{column}
+    \begin{column}{0.52\textwidth}
+      \centering\includegraphics[width=\linewidth]{figs/fig_example_paper.pdf}\\
+      {\scriptsize\color{muted}A typical circuit: 80 gates in, the paper's method stops at 24, the proven optimum is 11.}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Why it falls short: the database is too small}
+  \begin{columns}[T]
+    \begin{column}{0.50\textwidth}
+      \centering\includegraphics[width=0.88\linewidth]{figs/ext_window.png}\\
+      {\scriptsize\color{muted}With exact lookups, a window of \(w\ge12\) (ion) or \(16\) (IBM-style) reaches the proven optimum on all 40 circuits.}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \two{
+      \centering\includegraphics[width=0.62\linewidth]{figs/ext_grid.png}\\
+      {\scriptsize\color{muted}Mean excess over the optimum by window \(w\) and radius \(r\). The paper's \((8,5)\) in red.}
+      \begin{itemize}\setlength{\itemsep}{0.2em}\small
+        \item Larger window at \(r=5\): excess 46 \(\to\) 43.
+        \item Larger database at \(w=8\): 46 \(\to\) 18.
+        \item \(w\ge12\) and \(r\ge8\): excess \(\le2\).
+      \end{itemize}}
+    \end{column}
+  \end{columns}
+  \two{\takeaway{The database radius is the binding constraint. Our theorem predicts that both knobs must be large enough.}}
+\end{frame}
+\note{Why so sharp: once the window is longer than the group's diameter region, one more sweep is exact (the cascade
+theorem). At 4 qubits the group has 1.2e13 elements, so we prove a lower bound instead; the remaining gap is at most
+about 4 times.}
+
+% ################################################################ PART III
+\partslide{III}{A general optimiser}{Drop the Clifford crutch and add continuous angles, connectivity, calibrated noise, and exactness including phase.}
+
+\begin{frame}{The engine}
+  \begin{columns}[T]
+    \begin{column}{0.52\textwidth}
+      \begin{tikzpicture}[node distance=0.32cm, every node/.style={font=\footnotesize},
+          box/.style={draw=ibar,fill=ifoot,rounded corners=2pt,minimum width=4.9cm,minimum height=0.62cm,align=center},
+          arr/.style={-{Stealth[length=2mm]},ibar,thick}]
+        \node[box] (w) {\textbf{convex window} on \(\le3\) coupled wires\\{\scriptsize grown by exact commutation}};
+        \node[box,below=of w] (d) {\textbf{database lookup} (canonical hash)};
+        \node[box,below=of d] (m) {\textbf{meet in the middle}, \(U=R\,A\), \(A\in B(2)\)};
+        \node[box,below=of m] (r) {\textbf{analytic resynthesis} on \(\le2\) wires\\{\scriptsize KAK (min.\ CZ) / Weyl \(\to\) MS\((\theta)\) / Euler}};
+        \node[box,below=of r,fill=igreen!12,draw=igreen] (a) {keep the \textbf{cheapest} legal replacement};
+        \draw[arr] (w)--(d); \draw[arr] (d)--(m); \draw[arr] (m)--(r); \draw[arr] (r)--(a);
+        \draw[arr] (a.east) -- ++(0.35,0) |- node[pos=0.25,right,align=left,font=\scriptsize\color{muted}]{sweep +\\ random\\ commuting\\ shuffles} (w.east);
+      \end{tikzpicture}
+    \end{column}
+    \begin{column}{0.46\textwidth}
+      \two{
+      \begin{itemize}\setlength{\itemsep}{0.45em}\small
+        \item \textbf{Cost} \(c_{\rm cal}(g)=-\log(1-e(g))\) from calibration, so minimising cost maximises ESP.
+        \item \textbf{Exact including global phase}: phases are tracked and repaired once at the end.
+        \item \textbf{Never worse} than its input, by construction.
+        \item \textbf{Any gate set}: databases of 0.3--31\,M classes for IBM Heron and trapped ions.
+        \item Runs \emph{after} any compiler, as a post-pass.
+      \end{itemize}}
+    \end{column}
+  \end{columns}
+\end{frame}
+\note{Convex windows can reach past gates on other qubits that commute out of the way, which is what made the 4-qubit
+results jump. Approximate and state-aware modes also exist; headline numbers use exact mode.}
+
+% ################################################################ PART IV
+\partslide{IV}{Results}{The paper's benchmarks against ground truth, 60 algorithm circuits on hardware models, and circuits up to 100 qubits.}
+
+\begin{frame}{Result 1. The paper's benchmarks, without Clifford knowledge}
+  \begin{columns}[c]
+    \begin{column}{0.60\textwidth}
+      \centering\includegraphics[width=\linewidth]{figs/gen_paper_bench.pdf}\\
+      {\scriptsize\color{muted}Output length relative to the paper's method, same circuits and seeds.}
+    \end{column}
+    \begin{column}{0.38\textwidth}
+      \two{
+      \begin{itemize}\setlength{\itemsep}{0.5em}
+        \item \textbf{3 qubits.} Proven optimum on \textbf{35/40}, mean 10.8 vs.\ optimum 10.4.
+        \item \textbf{4 qubits.} On par with the Clifford-specific optimiser.
+        \item \textbf{15 qubits.} All methods within 4\,\% (random circuits leave little local structure).
+        \item \textbf{Clifford+T, 2 qubits.} Optimal on 99/99 random and 41/41 planted circuits.
+      \end{itemize}}
+    \end{column}
+  \end{columns}
+  \two{\takeaway{Knowing the group is not what matters. Large databases and convex windows are.}}
+\end{frame}
+
+\begin{frame}{Result 2. 60 algorithm circuits, relative to Qiskit level 3}
+  \centering\footnotesize\renewcommand{\arraystretch}{1.05}
+  \begin{tabular}{@{}l ccc c cc@{}}
+    \toprule
+    & \multicolumn{3}{c}{\textbf{IBM Heron} (58 circuits)} && \multicolumn{2}{c}{\textbf{trapped ion} (58 circuits)}\\
+    \cmidrule{2-4}\cmidrule{6-7}
+    \textbf{pipeline} & 2q gates & all gates & ESP && 2q gates & all gates\\
+    \midrule
+    TKET                                & \(\times\)1.02 & \(\times\)1.71 & \(\times\)1.16 && \(\times\)1.27 & \(\times\)1.79\\
+    ours, exact, from Qiskit L1         & \(\times\)1.00 & \good{\(\times\)0.84} & \good{\(\times\)1.21} && \good{\(\times\)0.95} & \good{\(\times\)0.76}\\
+    ours, exact, from Qiskit L3         & \good{\(\times\)0.98} & \good{\(\times\)0.87} & \(\times\)1.03 && \(\times\)1.00 & \(\times\)1.00\\
+    \midrule
+    BQSKit L3 on L1 (approximate)       & \good{\(\times\)0.85} & \(\times\)1.20 & \good{\(\times\)1.22} && \good{\(\times\)0.94} & \good{\(\times\)0.71}\\
+    ours, exact, on BQSKit L3           & \good{\(\times\)0.85} & \(\times\)1.01 & \good{\(\times\)1.25} && \good{\(\times\)0.94} & \good{\(\times\)0.70}\\
+    \bottomrule
+  \end{tabular}
+  \vspace{0.5em}
+  \two{
+  \begin{itemize}\setlength{\itemsep}{0.3em}\small
+    \item \textbf{Stacked on L3} ours never adds a 2q gate and never lowers ESP.
+    \item \textbf{BQSKit} finds better 2q structure but is approximate and leaves many 1q gates. Ours on top keeps its
+          2q savings and removes \textbf{16\,\%} more gates on Heron, exactly.
+  \end{itemize}}
+  \src{Seed 0. Over 5 seeds the gate ratios move by at most 0.5\,\% and ESP from L1 is \(\times\)1.10 \(\pm\) 0.11. Nam/VOQC, QASMBench, QFT, QAOA, Trotter, EfficientSU2, Steane, random, 2--12 qubits.}
+\end{frame}
+\note{If asked why ESP from L1 beats L3: part of it is Qiskit's L1 layout being better on these circuits (x1.11), our
+rewriting adds x1.09. On ions the calibrated cost trades pulses for free Rz, so the total can rise; the guarantee is on
+the objective and the 2q count. BQSKit takes 98 s per Heron circuit on 8 workers, ours 24 s on one.}
+
+\begin{frame}{Which objective? Let noisy simulation decide}
+  \begin{columns}[c]
+    \begin{column}{0.46\textwidth}
+      \centering\renewcommand{\arraystretch}{1.2}\small
+      \begin{tabular}{@{}lcc@{}}
+        \toprule
+        & \multicolumn{2}{c}{\textbf{mean TVD} (49 circuits)}\\
+        \textbf{pipeline / objective} & Heron & ion\\
+        \midrule
+        Qiskit L3                  & 0.137 & 0.0091\\
+        ours, total count          & 0.096 & 0.0092\\
+        ours, 2q-weighted          & \good{0.088} & \good{0.0084}\\
+        ours, calibrated           & \good{0.088} & \good{0.0084}\\
+        \bottomrule
+      \end{tabular}\\[0.4em]
+      {\scriptsize\color{muted}Exact density-matrix simulation with FakeTorino errors (Heron) or a depolarising model (ion).}
+    \end{column}
+    \begin{column}{0.52\textwidth}
+      \two{
+      \centering\includegraphics[width=\linewidth]{figs/gen_tvd.pdf}\\
+      {\small Calibrated beats Qiskit L3 on \textbf{39/49} Heron circuits.}}
+    \end{column}
+  \end{columns}
+  \two{\takeaway{Counting 2q gates with weight 10 is almost as good as full calibration, a useful proxy when no calibration exists.}}
+\end{frame}
+
+\begin{frame}{Result 3. Large circuits, 14--100 qubits}
+  \begin{columns}[T]
+    \begin{column}{0.52\textwidth}
+      \centering\footnotesize\renewcommand{\arraystretch}{1.15}
+      \textbf{Relative to Qiskit L3}\\[0.3em]
+      \resizebox{\linewidth}{!}{\begin{tabular}{@{}l ccc c cc@{}}
+        \toprule
+        & \multicolumn{3}{c}{\textbf{Heron} (22)} && \multicolumn{2}{c}{\textbf{ion} (25)}\\
+        \cmidrule{2-4}\cmidrule{6-7}
+        & 2q & all & ESP\(^\ast\) && 2q & all\\
+        \midrule
+        Qiskit L1 & \(\times\)1.22 & \(\times\)1.13 & \(\times\)0.24 && \(\times\)1.40 & \(\times\)1.13\\
+        TKET & \(\times\)1.07 & \(\times\)1.96 & \(\times\)0.27 && \(\times\)1.39 & \(\times\)1.87\\
+        \midrule
+        ours from L1 & \(\times\)1.05 & \good{\(\times\)0.78} & \(\times\)0.43 && \good{\(\times\)0.96} & \good{\(\times\)0.68}\\
+        ours from L3 & \good{\(\times\)0.98} & \good{\(\times\)0.81} & \good{\(\times\)1.12} && \(\times\)1.00 & \(\times\)1.00\\
+        \bottomrule
+      \end{tabular}}\\[0.4em]
+      {\scriptsize\color{muted}45 Nam/VOQC circuits, 88 of 90 runs done. pf circuits excluded (Qiskit L3 drops their
+       \(10^{-7}\)\,rad rotations). \(^\ast\)Over the 13 Heron circuits whose ESP is at least \(10^{-3}\).}
+    \end{column}
+    \begin{column}{0.45\textwidth}
+      \two{
+      \begin{itemize}\setlength{\itemsep}{0.35em}\small
+        \item \textbf{Stacked on L3, Heron.} 19\,\% fewer gates, fewer CZ on 20/22 circuits, never more.
+        \item \textbf{From L1.} Fewer gates than L3 everywhere, but lower ESP: at this scale Qiskit's L3 layout matters more than what we remove.
+        \item \textbf{Cost.} Minutes per circuit, up to 6\,h for the largest, single-threaded Python.
+        \item \textbf{BQSKit} (14 circuits it finished, \(\le\)36 qubits). Heron 2q \(\times\)0.91 vs.\ ours \(\times\)0.98, all gates \(\times\)1.35 vs.\ \(\times\)0.82.
+      \end{itemize}}
+    \end{column}
+  \end{columns}
+  \two{\takeaway{Larger circuits leave more to remove, and the guarantees hold unchanged.}}
+\end{frame}
+\note{If asked why ESP is restricted: around 50 qubits ESP is about 1e-10, ratios of such numbers swing by orders of
+magnitude and one circuit flipped the old geometric mean. The median over all circuits is x1.14.}
+
+\begin{frame}{Result 4. Robust over seeds, and what each part contributes}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \centering\footnotesize\renewcommand{\arraystretch}{1.15}
+      \textbf{5 transpiler seeds, Heron (mean \(\pm\) sd vs.\ L3)}\\[0.3em]
+      \begin{tabular}{@{}lc@{}}
+        \toprule
+        ours on L3, all gates & \(\times\)0.868 \(\pm\) 0.005\\
+        ours on L3, 2q gates & \(\times\)0.975 \(\pm\) 0.004\\
+        ours on L3, ESP & \(\times\)1.03 (1.03--1.04)\\
+        ours on L1, ESP & \bad{\(\times\)1.10 \(\pm\) 0.11}\\\bottomrule
+      \end{tabular}\\[0.6em]
+      {\scriptsize\color{muted}Gate counts are stable. ESP from L1 follows Qiskit's L1 layout, and seed 0 (\(\times\)1.21) was the best case.}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \two{
+      \centering\footnotesize\renewcommand{\arraystretch}{1.05}
+      \textbf{Ablation, gates removed on top of L3 (Heron)}\\[0.3em]
+      \begin{tabular}{@{}lc@{}}
+        \toprule
+        full optimiser & \good{13.0\,\%}\\\midrule
+        contiguous windows & 11.7\,\%\\
+        no resynthesis & 8.2\,\%\\
+        window \(w=8\) & 7.9\,\%\\
+        database radius \(\le3\) & 6.2\,\%\\
+        no database & 5.8\,\%\\
+        window \(w=4\) & \bad{1.3\,\%}\\\bottomrule
+      \end{tabular}}
+    \end{column}
+  \end{columns}
+  \two{\takeaway{Window length and database depth do the work, the same two knobs as in Part II.}}
+\end{frame}
+\note{Seeds: 1,624 outputs, all verified. The optimiser's own randomness moves totals by at most 0.5 percent. Ablation:
+meet in the middle adds almost nothing (12.3 percent without it). On ions resynthesis is essential for MS gates. A
+gate-count cost removes as many gates but gives less ESP than the calibrated cost.}
+
+\begin{frame}{Result 5. Against VOQC and QUESO, on their own benchmark}
+  \begin{columns}[T]
+    \begin{column}{0.55\textwidth}
+      \centering\footnotesize\renewcommand{\arraystretch}{1.15}
+      \textbf{Nam gate set \(\{H,X,R_z,\mathrm{CNOT}\}\), 26 circuits}\\[0.3em]
+      \begin{tabular}{@{}lrrr@{}}
+        \toprule
+        tool & gates & change & CNOT\\\midrule
+        input & 10,481 & & 4,612\\\midrule
+        TKET & 11,762 & \(+12.2\,\%\) & 4,489\\
+        Qiskit L3 & 10,391 & \(-0.9\,\%\) & 4,511\\
+        QUESO (5 min) & 9,765 & \(-6.8\,\%\) & 4,465\\
+        ours & 9,480 & \(-9.6\,\%\) & 4,426\\
+        VOQC & 8,417 & \(-19.7\,\%\) & 4,314\\\midrule
+        VOQC, then ours & \good{7,833} & \good{\(-25.3\,\%\)} & \good{4,007}\\\bottomrule
+      \end{tabular}\\[0.4em]
+      {\scriptsize\color{muted}Same input files as the published comparisons. All 159 outputs equal up to phase.}
+    \end{column}
+    \begin{column}{0.42\textwidth}
+      \two{
+      \begin{itemize}\setlength{\itemsep}{0.45em}\small
+        \item \textbf{VOQC wins alone.} It merges \(R_z\) gates across the whole circuit, our windows see 3 qubits.
+        \item \textbf{We find what it misses.} mod5\_4: 35 gates vs.\ 56.
+        \item \textbf{Together} best overall, ours improves VOQC on 21/26.
+      \end{itemize}}
+    \end{column}
+  \end{columns}
+  \two{\takeaway{Same lesson as with BQSKit. A global pass plus exact local cleanup beats either alone.}}
+\end{frame}
+\note{QUESO had 5 minutes per circuit (its paper uses 1 hour; on 3 small circuits 1 hour improved it from 305 to 282 gates).
+Quartz was not run. Ours takes a median of 11 s per circuit here, VOQC well under a second.}
+
+\begin{frame}{Every output is verified, even beyond 25 qubits}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \begin{itemize}\setlength{\itemsep}{0.45em}\small
+        \item \textbf{Up to 24 qubits.} \(\lVert (U-V)\psi\rVert\) on random states: 250/250 paper outputs, 720/720 suite
+              outputs, 57 large outputs (max \(1.4\cdot10^{-10}\)).
+        \item \textbf{Clifford, Clifford+T.} Exact arithmetic.
+        \item \textbf{Beyond.} Statevector is out of reach, and MQT QCEC gave no answer on routed 23-qubit adders.
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \two{
+      \textbf{Replay certificates}
+      \begin{itemize}\setlength{\itemsep}{0.3em}\small
+        \item The optimiser logs every step. An independent checker replays it with small matrices on a few wires.
+        \item \textbf{171/176} large outputs certified, up to 544,922 steps, at most 6.8\,s each.
+        \item 5 more were rejected by an older checker limit and are being re-checked.
+      \end{itemize}}
+    \end{column}
+  \end{columns}
+  \two{\takeaway{Checking a whole circuit becomes many tiny local checks, so cost grows with the steps, not the width.}}
+\end{frame}
+
+% ################################################################ PART V
+\partslide{V}{Wrap-up}{Where it stands and what comes next.}
+
+\begin{frame}{Limitations and next steps}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \textbf{Limitations}
+      \begin{itemize}\setlength{\itemsep}{0.35em}\small
+        \item Noise models, no real-hardware runs yet.
+        \item Windows of at most 3 qubits, single-threaded Python, hours at 100 qubits.
+        \item VOQC beats us alone on the Nam set, BQSKit on 2q gates.
+        \item Quartz not run, QUESO at 5 min, BQSKit on the smaller large circuits only.
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \two{
+      \textbf{Next}
+      \begin{itemize}\setlength{\itemsep}{0.35em}\small
+        \item Real IBM hardware. The driver is ready and tested on a fake backend, it needs an IBM account.
+        \item Reach VOQC's rotation merging and BQSKit's 2q counts exactly (phase-polynomial passes, larger windows).
+        \item Quartz baseline, QUESO with its full hour.
+      \end{itemize}}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Summary}
+  \begin{enumerate}\setlength{\itemsep}{0.6em}
+    \item The original method is \textbf{3--4.5\(\times\)} off the proven optimum, and the database radius is why.
+    \item A general optimiser with deep databases and convex windows reaches the optimum on \textbf{35/40} circuits
+          without knowing the group.
+    \item On real algorithms it is a safe post-pass: after Qiskit L3 it never adds a 2q gate and removes 13--19\,\% of
+          gates, and after BQSKit it removes 16\,\% more.
+    \item The gains are stable over seeds, and window length and database depth drive them.
+    \item Against VOQC and QUESO, ours is second alone and VOQC followed by ours is best.
+    \item Every output is verified, by simulation or by replay certificate.
+  \end{enumerate}
+\end{frame}
+
+\end{document}

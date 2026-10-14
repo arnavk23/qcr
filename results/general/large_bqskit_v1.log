@@ -1,0 +1,152 @@
+<frozen site>:107: RuntimeWarning: Unexpected value in sys.prefix, expected /home/arnav/Downloads/ankur/.venv, got /home/arnav/Downloads/ankur/experiments/../.venv
+<frozen site>:107: RuntimeWarning: Unexpected value in sys.exec_prefix, expected /home/arnav/Downloads/ankur/.venv, got /home/arnav/Downloads/ankur/experiments/../.venv
+45 circuits: nam/csla_mux_3(15q,210), nam/rc_adder_6(14q,244), nam/tof_10(19q,323), nam/gf2^5_mult(15q,447), nam/QFTAdd8(16q,476), nam/pf1_20(20q,520), nam/csum_mux_9(30q,532), nam/qcla_com_7(24q,559), nam/barenco_tof_10(19q,578), nam/QFT16(16q,586), nam/Adder8(23q,637), nam/gf2^6_mult(18q,639), nam/qcla_adder_10(36q,657), nam/pf1_30(30q,780), nam/gf2^7_mult(21q,865), nam/pf2_20(20q,1020), nam/pf1_40(40q,1040), nam/qcla_mod_7(26q,1120), nam/adder_8(24q,1128), nam/gf2^8_mult(24q,1139), nam/pf1_50(50q,1300), nam/gf2^9_mult(27q,1419), nam/Adder16(47q,1437), nam/pf2_30(30q,1530), nam/pf1_60(60q,1560), nam/QFT32(32q,1562), nam/gf2^10_mult(30q,1747), nam/pf1_70(70q,1820), nam/QFTAdd16(32q,1822), nam/pf2_40(40q,2040), nam/pf1_80(80q,2080), nam/pf1_90(90q,2340), nam/pf2_50(50q,2550), nam/pf1_100(100q,2600), nam/Adder32(95q,3037), nam/pf2_60(60q,3060), nam/QFT64(64q,3514), nam/pf2_70(70q,3570), nam/pf2_80(80q,4080), nam/gf2^16_mult(48q,4459), nam/pf2_90(90q,4590), nam/QFTAdd32(64q,4814), nam/pf2_100(100q,5100), nam/pf4_20(20q,5100), nam/mod_adder_1024(28q,5425)
+0 rows done, 56 to run
+/home/arnav/.local/lib/python3.14/site-packages/bqskit/passes/synthesis/leap.py:358: SmallSampleWarning: One or more sample arguments is too small; all returned values will be NaN. See documentation for sample size requirements.
+  m, y_int, _, _, _ = linregress(best_layers, best_dists)
+/home/arnav/.local/lib/python3.14/site-packages/bqskit/passes/synthesis/leap.py:358: SmallSampleWarning: One or more sample arguments is too small; all returned values will be NaN. See documentation for sample size requirements.
+  m, y_int, _, _, _ = linregress(best_layers, best_dists)
+/home/arnav/.local/lib/python3.14/site-packages/bqskit/passes/synthesis/leap.py:358: SmallSampleWarning: One or more sample arguments is too small; all returned values will be NaN. See documentation for sample size requirements.
+  m, y_int, _, _, _ = linregress(best_layers, best_dists)
+/home/arnav/.local/lib/python3.14/site-packages/bqskit/passes/synthesis/leap.py:358: SmallSampleWarning: One or more sample arguments is too small; all returned values will be NaN. See documentation for sample size requirements.
+  m, y_int, _, _, _ = linregress(best_layers, best_dists)
+/home/arnav/.local/lib/python3.14/site-packages/bqskit/passes/synthesis/leap.py:358: SmallSampleWarning: One or more sample arguments is too small; all returned values will be NaN. See documentation for sample size requirements.
+  m, y_int, _, _, _ = linregress(best_layers, best_dists)
+/home/arnav/.local/lib/python3.14/site-packages/bqskit/passes/synthesis/leap.py:358: SmallSampleWarning: One or more sample arguments is too small; all returned values will be NaN. See documentation for sample size requirements.
+  m, y_int, _, _, _ = linregress(best_layers, best_dists)
+/home/arnav/.local/lib/python3.14/site-packages/bqskit/passes/synthesis/leap.py:358: SmallSampleWarning: One or more sample arguments is too small; all returned values will be NaN. See documentation for sample size requirements.
+  m, y_int, _, _, _ = linregress(best_layers, best_dists)
+/home/arnav/.local/lib/python3.14/site-packages/bqskit/passes/synthesis/leap.py:358: SmallSampleWarning: One or more sample arguments is too small; all returned values will be NaN. See documentation for sample size requirements.
+  m, y_int, _, _, _ = linregress(best_layers, best_dists)
+{"name": "nam/csla_mux_3", "dev": "heron", "n": 15, "qiskit_L1": 194, "bqskit_L2": 157, "bqskit_L3": 154}
+{"name": "nam/csla_mux_3", "dev": "ion", "n": 15, "qiskit_L1": 74, "bqskit_L2": 64, "bqskit_L3": 61}
+{"name": "nam/rc_adder_6", "dev": "heron", "n": 14, "qiskit_L1": 187, "bqskit_L2": 118, "bqskit_L3": 117}
+{"name": "nam/rc_adder_6", "dev": "ion", "n": 14, "qiskit_L1": 91, "bqskit_L2": 76, "bqskit_L3": 71}
+<frozen site>:107: RuntimeWarning: Unexpected value in sys.prefix, expected /home/arnav/Downloads/ankur/.venv, got /home/arnav/Downloads/ankur/experiments/../.venv
+<frozen site>:107: RuntimeWarning: Unexpected value in sys.exec_prefix, expected /home/arnav/Downloads/ankur/.venv, got /home/arnav/Downloads/ankur/experiments/../.venv
+45 circuits: nam/csla_mux_3(15q,210), nam/rc_adder_6(14q,244), nam/tof_10(19q,323), nam/gf2^5_mult(15q,447), nam/QFTAdd8(16q,476), nam/pf1_20(20q,520), nam/csum_mux_9(30q,532), nam/qcla_com_7(24q,559), nam/barenco_tof_10(19q,578), nam/QFT16(16q,586), nam/Adder8(23q,637), nam/gf2^6_mult(18q,639), nam/qcla_adder_10(36q,657), nam/pf1_30(30q,780), nam/gf2^7_mult(21q,865), nam/pf2_20(20q,1020), nam/pf1_40(40q,1040), nam/qcla_mod_7(26q,1120), nam/adder_8(24q,1128), nam/gf2^8_mult(24q,1139), nam/pf1_50(50q,1300), nam/gf2^9_mult(27q,1419), nam/Adder16(47q,1437), nam/pf2_30(30q,1530), nam/pf1_60(60q,1560), nam/QFT32(32q,1562), nam/gf2^10_mult(30q,1747), nam/pf1_70(70q,1820), nam/QFTAdd16(32q,1822), nam/pf2_40(40q,2040), nam/pf1_80(80q,2080), nam/pf1_90(90q,2340), nam/pf2_50(50q,2550), nam/pf1_100(100q,2600), nam/Adder32(95q,3037), nam/pf2_60(60q,3060), nam/QFT64(64q,3514), nam/pf2_70(70q,3570), nam/pf2_80(80q,4080), nam/gf2^16_mult(48q,4459), nam/pf2_90(90q,4590), nam/QFTAdd32(64q,4814), nam/pf2_100(100q,5100), nam/pf4_20(20q,5100), nam/mod_adder_1024(28q,5425)
+4 rows done, 52 to run
+Traceback (most recent call last):
+  File "/home/arnav/Downloads/ankur/experiments/gen_large.py", line 393, in <module>
+    row = bqskit_job(k, d, v, a.levels, comp, a.bq_timeout, skip)
+  File "/home/arnav/Downloads/ankur/experiments/gen_large.py", line 252, in bqskit_job
+    seconds=sec, legal=all(dev.is_native(x) for x in g), verify=check_mapped(l1, g, act, pi, pf)
+                                                                ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/home/arnav/Downloads/ankur/experiments/gen_large.py", line 139, in check_mapped
+    return qcec_check(qa, qb, approx=True)
+  File "/home/arnav/Downloads/ankur/experiments/gen_large.py", line 83, in qcec_check
+    r = qcec.verify(
+        qa,
+    ...<6 lines>...
+        **kw,
+    )
+  File "/home/arnav/Downloads/ankur/.venv/lib/python3.14/site-packages/mqt/qcec/verify.py", line 81, in verify
+    ecm.run()
+    ~~~~~~~^^
+ValueError: Approximate equivalence checking requires the alternating, construction, or HSF decision diagram checker.
+<frozen site>:107: RuntimeWarning: Unexpected value in sys.prefix, expected /home/arnav/Downloads/ankur/.venv, got /home/arnav/Downloads/ankur/experiments/../.venv
+<frozen site>:107: RuntimeWarning: Unexpected value in sys.exec_prefix, expected /home/arnav/Downloads/ankur/.venv, got /home/arnav/Downloads/ankur/experiments/../.venv
+45 circuits: nam/csla_mux_3(15q,210), nam/rc_adder_6(14q,244), nam/tof_10(19q,323), nam/gf2^5_mult(15q,447), nam/QFTAdd8(16q,476), nam/pf1_20(20q,520), nam/csum_mux_9(30q,532), nam/qcla_com_7(24q,559), nam/barenco_tof_10(19q,578), nam/QFT16(16q,586), nam/Adder8(23q,637), nam/gf2^6_mult(18q,639), nam/qcla_adder_10(36q,657), nam/pf1_30(30q,780), nam/gf2^7_mult(21q,865), nam/pf2_20(20q,1020), nam/pf1_40(40q,1040), nam/qcla_mod_7(26q,1120), nam/adder_8(24q,1128), nam/gf2^8_mult(24q,1139), nam/pf1_50(50q,1300), nam/gf2^9_mult(27q,1419), nam/Adder16(47q,1437), nam/pf2_30(30q,1530), nam/pf1_60(60q,1560), nam/QFT32(32q,1562), nam/gf2^10_mult(30q,1747), nam/pf1_70(70q,1820), nam/QFTAdd16(32q,1822), nam/pf2_40(40q,2040), nam/pf1_80(80q,2080), nam/pf1_90(90q,2340), nam/pf2_50(50q,2550), nam/pf1_100(100q,2600), nam/Adder32(95q,3037), nam/pf2_60(60q,3060), nam/QFT64(64q,3514), nam/pf2_70(70q,3570), nam/pf2_80(80q,4080), nam/gf2^16_mult(48q,4459), nam/pf2_90(90q,4590), nam/QFTAdd32(64q,4814), nam/pf2_100(100q,5100), nam/pf4_20(20q,5100), nam/mod_adder_1024(28q,5425)
+4 rows done, 52 to run
+/home/arnav/.local/lib/python3.14/site-packages/bqskit/passes/synthesis/leap.py:358: SmallSampleWarning: One or more sample arguments is too small; all returned values will be NaN. See documentation for sample size requirements.
+  m, y_int, _, _, _ = linregress(best_layers, best_dists)
+/home/arnav/.local/lib/python3.14/site-packages/bqskit/passes/synthesis/leap.py:358: SmallSampleWarning: One or more sample arguments is too small; all returned values will be NaN. See documentation for sample size requirements.
+  m, y_int, _, _, _ = linregress(best_layers, best_dists)
+/home/arnav/.local/lib/python3.14/site-packages/bqskit/passes/synthesis/leap.py:358: SmallSampleWarning: One or more sample arguments is too small; all returned values will be NaN. See documentation for sample size requirements.
+  m, y_int, _, _, _ = linregress(best_layers, best_dists)
+/home/arnav/.local/lib/python3.14/site-packages/bqskit/passes/synthesis/leap.py:358: SmallSampleWarning: One or more sample arguments is too small; all returned values will be NaN. See documentation for sample size requirements.
+  m, y_int, _, _, _ = linregress(best_layers, best_dists)
+/home/arnav/.local/lib/python3.14/site-packages/bqskit/passes/synthesis/leap.py:358: SmallSampleWarning: One or more sample arguments is too small; all returned values will be NaN. See documentation for sample size requirements.
+  m, y_int, _, _, _ = linregress(best_layers, best_dists)
+/home/arnav/.local/lib/python3.14/site-packages/bqskit/passes/synthesis/leap.py:358: SmallSampleWarning: One or more sample arguments is too small; all returned values will be NaN. See documentation for sample size requirements.
+  m, y_int, _, _, _ = linregress(best_layers, best_dists)
+/home/arnav/.local/lib/python3.14/site-packages/bqskit/passes/synthesis/leap.py:358: SmallSampleWarning: One or more sample arguments is too small; all returned values will be NaN. See documentation for sample size requirements.
+  m, y_int, _, _, _ = linregress(best_layers, best_dists)
+/home/arnav/.local/lib/python3.14/site-packages/bqskit/passes/synthesis/leap.py:358: SmallSampleWarning: One or more sample arguments is too small; all returned values will be NaN. See documentation for sample size requirements.
+  m, y_int, _, _, _ = linregress(best_layers, best_dists)
+{"name": "nam/tof_10", "dev": "heron", "n": 19, "qiskit_L1": 249, "bqskit_L2": 202, "bqskit_L3": 199}
+{"name": "nam/tof_10", "dev": "ion", "n": 19, "qiskit_L1": 102, "bqskit_L2": 85, "bqskit_L3": 85}
+{"name": "nam/gf2^5_mult", "dev": "heron", "n": 15, "qiskit_L1": 490, "bqskit_L2": 383, "bqskit_L3": 379}
+{"name": "nam/gf2^5_mult", "dev": "ion", "n": 15, "qiskit_L1": 154, "bqskit_L2": 129, "bqskit_L3": 129}
+{"name": "nam/QFTAdd8", "dev": "heron", "n": 16, "qiskit_L1": 523, "bqskit_L2": 421, "bqskit_L3": 384}
+{"name": "nam/QFTAdd8", "dev": "ion", "n": 16, "qiskit_L1": 184, "bqskit_L2": 92, "bqskit_L3": 92}
+{"name": "nam/pf1_20", "dev": "heron", "n": 20, "qiskit_L1": 120, "bqskit_L2": 120, "bqskit_L3": 14}
+{"name": "nam/pf1_20", "dev": "ion", "n": 20, "qiskit_L1": 120, "bqskit_L2": 0, "bqskit_L3": 0}
+<frozen site>:107: RuntimeWarning: Unexpected value in sys.prefix, expected /home/arnav/Downloads/ankur/.venv, got /home/arnav/Downloads/ankur/experiments/../.venv
+<frozen site>:107: RuntimeWarning: Unexpected value in sys.exec_prefix, expected /home/arnav/Downloads/ankur/.venv, got /home/arnav/Downloads/ankur/experiments/../.venv
+45 circuits: nam/csla_mux_3(15q,210), nam/rc_adder_6(14q,244), nam/tof_10(19q,323), nam/gf2^5_mult(15q,447), nam/QFTAdd8(16q,476), nam/pf1_20(20q,520), nam/csum_mux_9(30q,532), nam/qcla_com_7(24q,559), nam/barenco_tof_10(19q,578), nam/QFT16(16q,586), nam/Adder8(23q,637), nam/gf2^6_mult(18q,639), nam/qcla_adder_10(36q,657), nam/pf1_30(30q,780), nam/gf2^7_mult(21q,865), nam/pf2_20(20q,1020), nam/pf1_40(40q,1040), nam/qcla_mod_7(26q,1120), nam/adder_8(24q,1128), nam/gf2^8_mult(24q,1139), nam/pf1_50(50q,1300), nam/gf2^9_mult(27q,1419), nam/Adder16(47q,1437), nam/pf2_30(30q,1530), nam/pf1_60(60q,1560), nam/QFT32(32q,1562), nam/gf2^10_mult(30q,1747), nam/pf1_70(70q,1820), nam/QFTAdd16(32q,1822), nam/pf2_40(40q,2040), nam/pf1_80(80q,2080), nam/pf1_90(90q,2340), nam/pf2_50(50q,2550), nam/pf1_100(100q,2600), nam/Adder32(95q,3037), nam/pf2_60(60q,3060), nam/QFT64(64q,3514), nam/pf2_70(70q,3570), nam/pf2_80(80q,4080), nam/gf2^16_mult(48q,4459), nam/pf2_90(90q,4590), nam/QFTAdd32(64q,4814), nam/pf2_100(100q,5100), nam/pf4_20(20q,5100), nam/mod_adder_1024(28q,5425)
+12 rows done, 44 to run
+/usr/lib/python3.14/multiprocessing/resource_tracker.py:396: UserWarning: resource_tracker: There appear to be 3 leaked semaphore objects to clean up at shutdown: {'/loky-1214191-x75mp64a', '/loky-1214191-31lhf0gz', '/loky-1214191-0ora3psh'}
+  warnings.warn(
+<frozen site>:107: RuntimeWarning: Unexpected value in sys.prefix, expected /home/arnav/Downloads/ankur/.venv, got /home/arnav/Downloads/ankur/experiments/../.venv
+<frozen site>:107: RuntimeWarning: Unexpected value in sys.exec_prefix, expected /home/arnav/Downloads/ankur/.venv, got /home/arnav/Downloads/ankur/experiments/../.venv
+45 circuits: nam/csla_mux_3(15q,210), nam/rc_adder_6(14q,244), nam/tof_10(19q,323), nam/gf2^5_mult(15q,447), nam/QFTAdd8(16q,476), nam/pf1_20(20q,520), nam/csum_mux_9(30q,532), nam/qcla_com_7(24q,559), nam/barenco_tof_10(19q,578), nam/QFT16(16q,586), nam/Adder8(23q,637), nam/gf2^6_mult(18q,639), nam/qcla_adder_10(36q,657), nam/pf1_30(30q,780), nam/gf2^7_mult(21q,865), nam/pf2_20(20q,1020), nam/pf1_40(40q,1040), nam/qcla_mod_7(26q,1120), nam/adder_8(24q,1128), nam/gf2^8_mult(24q,1139), nam/pf1_50(50q,1300), nam/gf2^9_mult(27q,1419), nam/Adder16(47q,1437), nam/pf2_30(30q,1530), nam/pf1_60(60q,1560), nam/QFT32(32q,1562), nam/gf2^10_mult(30q,1747), nam/pf1_70(70q,1820), nam/QFTAdd16(32q,1822), nam/pf2_40(40q,2040), nam/pf1_80(80q,2080), nam/pf1_90(90q,2340), nam/pf2_50(50q,2550), nam/pf1_100(100q,2600), nam/Adder32(95q,3037), nam/pf2_60(60q,3060), nam/QFT64(64q,3514), nam/pf2_70(70q,3570), nam/pf2_80(80q,4080), nam/gf2^16_mult(48q,4459), nam/pf2_90(90q,4590), nam/QFTAdd32(64q,4814), nam/pf2_100(100q,5100), nam/pf4_20(20q,5100), nam/mod_adder_1024(28q,5425)
+12 rows done, 44 to run
+/usr/lib/python3.14/multiprocessing/resource_tracker.py:396: UserWarning: resource_tracker: There appear to be 3 leaked semaphore objects to clean up at shutdown: {'/loky-1224937-ne6olkzy', '/loky-1224937-a2p3mh_s', '/loky-1224937-7tpfovda'}
+  warnings.warn(
+<frozen site>:107: RuntimeWarning: Unexpected value in sys.prefix, expected /home/arnav/Downloads/ankur/.venv, got /home/arnav/Downloads/ankur/experiments/../.venv
+<frozen site>:107: RuntimeWarning: Unexpected value in sys.exec_prefix, expected /home/arnav/Downloads/ankur/.venv, got /home/arnav/Downloads/ankur/experiments/../.venv
+45 circuits: nam/csla_mux_3(15q,210), nam/rc_adder_6(14q,244), nam/tof_10(19q,323), nam/gf2^5_mult(15q,447), nam/QFTAdd8(16q,476), nam/pf1_20(20q,520), nam/csum_mux_9(30q,532), nam/qcla_com_7(24q,559), nam/barenco_tof_10(19q,578), nam/QFT16(16q,586), nam/Adder8(23q,637), nam/gf2^6_mult(18q,639), nam/qcla_adder_10(36q,657), nam/pf1_30(30q,780), nam/gf2^7_mult(21q,865), nam/pf2_20(20q,1020), nam/pf1_40(40q,1040), nam/qcla_mod_7(26q,1120), nam/adder_8(24q,1128), nam/gf2^8_mult(24q,1139), nam/pf1_50(50q,1300), nam/gf2^9_mult(27q,1419), nam/Adder16(47q,1437), nam/pf2_30(30q,1530), nam/pf1_60(60q,1560), nam/QFT32(32q,1562), nam/gf2^10_mult(30q,1747), nam/pf1_70(70q,1820), nam/QFTAdd16(32q,1822), nam/pf2_40(40q,2040), nam/pf1_80(80q,2080), nam/pf1_90(90q,2340), nam/pf2_50(50q,2550), nam/pf1_100(100q,2600), nam/Adder32(95q,3037), nam/pf2_60(60q,3060), nam/QFT64(64q,3514), nam/pf2_70(70q,3570), nam/pf2_80(80q,4080), nam/gf2^16_mult(48q,4459), nam/pf2_90(90q,4590), nam/QFTAdd32(64q,4814), nam/pf2_100(100q,5100), nam/pf4_20(20q,5100), nam/mod_adder_1024(28q,5425)
+12 rows done, 44 to run
+/home/arnav/.local/lib/python3.14/site-packages/bqskit/passes/synthesis/leap.py:358: SmallSampleWarning: One or more sample arguments is too small; all returned values will be NaN. See documentation for sample size requirements.
+  m, y_int, _, _, _ = linregress(best_layers, best_dists)
+/home/arnav/.local/lib/python3.14/site-packages/bqskit/passes/synthesis/leap.py:358: SmallSampleWarning: One or more sample arguments is too small; all returned values will be NaN. See documentation for sample size requirements.
+  m, y_int, _, _, _ = linregress(best_layers, best_dists)
+/home/arnav/.local/lib/python3.14/site-packages/bqskit/passes/synthesis/leap.py:358: SmallSampleWarning: One or more sample arguments is too small; all returned values will be NaN. See documentation for sample size requirements.
+  m, y_int, _, _, _ = linregress(best_layers, best_dists)
+/home/arnav/.local/lib/python3.14/site-packages/bqskit/passes/synthesis/leap.py:358: SmallSampleWarning: One or more sample arguments is too small; all returned values will be NaN. See documentation for sample size requirements.
+  m, y_int, _, _, _ = linregress(best_layers, best_dists)
+/home/arnav/.local/lib/python3.14/site-packages/bqskit/passes/synthesis/leap.py:358: SmallSampleWarning: One or more sample arguments is too small; all returned values will be NaN. See documentation for sample size requirements.
+  m, y_int, _, _, _ = linregress(best_layers, best_dists)
+/home/arnav/.local/lib/python3.14/site-packages/bqskit/passes/synthesis/leap.py:358: SmallSampleWarning: One or more sample arguments is too small; all returned values will be NaN. See documentation for sample size requirements.
+  m, y_int, _, _, _ = linregress(best_layers, best_dists)
+/home/arnav/.local/lib/python3.14/site-packages/bqskit/passes/synthesis/leap.py:358: SmallSampleWarning: One or more sample arguments is too small; all returned values will be NaN. See documentation for sample size requirements.
+  m, y_int, _, _, _ = linregress(best_layers, best_dists)
+/home/arnav/.local/lib/python3.14/site-packages/bqskit/passes/synthesis/leap.py:358: SmallSampleWarning: One or more sample arguments is too small; all returned values will be NaN. See documentation for sample size requirements.
+  m, y_int, _, _, _ = linregress(best_layers, best_dists)
+{"name": "nam/csum_mux_9", "dev": "heron", "n": 30, "qiskit_L1": 480, "bqskit_L2": 414, "bqskit_L3": 393}
+{"name": "nam/csum_mux_9", "dev": "ion", "n": 30, "qiskit_L1": 168, "bqskit_L2": 140, "bqskit_L3": 138}
+{"name": "nam/qcla_com_7", "dev": "heron", "n": 24, "qiskit_L1": 423, "bqskit_L2": 291, "bqskit_L3": 284}
+{"name": "nam/qcla_com_7", "dev": "ion", "n": 24, "qiskit_L1": 174, "bqskit_L2": 143, "bqskit_L3": 133}
+{"name": "nam/barenco_tof_10", "dev": "heron", "n": 19, "qiskit_L1": 450, "bqskit_L2": 335, "bqskit_L3": 332}
+{"name": "nam/barenco_tof_10", "dev": "ion", "n": 19, "qiskit_L1": 192, "bqskit_L2": 160, "bqskit_L3": 159}
+Wed Oct 14 11:20:24 AM IST 2026 collab idle, resuming BQSKit
+<frozen site>:107: RuntimeWarning: Unexpected value in sys.prefix, expected /home/arnav/Downloads/ankur/.venv, got /home/arnav/Downloads/ankur/experiments/../.venv
+<frozen site>:107: RuntimeWarning: Unexpected value in sys.exec_prefix, expected /home/arnav/Downloads/ankur/.venv, got /home/arnav/Downloads/ankur/experiments/../.venv
+45 circuits: nam/csla_mux_3(15q,210), nam/rc_adder_6(14q,244), nam/tof_10(19q,323), nam/gf2^5_mult(15q,447), nam/QFTAdd8(16q,476), nam/pf1_20(20q,520), nam/csum_mux_9(30q,532), nam/qcla_com_7(24q,559), nam/barenco_tof_10(19q,578), nam/QFT16(16q,586), nam/Adder8(23q,637), nam/gf2^6_mult(18q,639), nam/qcla_adder_10(36q,657), nam/pf1_30(30q,780), nam/gf2^7_mult(21q,865), nam/pf2_20(20q,1020), nam/pf1_40(40q,1040), nam/qcla_mod_7(26q,1120), nam/adder_8(24q,1128), nam/gf2^8_mult(24q,1139), nam/pf1_50(50q,1300), nam/gf2^9_mult(27q,1419), nam/Adder16(47q,1437), nam/pf2_30(30q,1530), nam/pf1_60(60q,1560), nam/QFT32(32q,1562), nam/gf2^10_mult(30q,1747), nam/pf1_70(70q,1820), nam/QFTAdd16(32q,1822), nam/pf2_40(40q,2040), nam/pf1_80(80q,2080), nam/pf1_90(90q,2340), nam/pf2_50(50q,2550), nam/pf1_100(100q,2600), nam/Adder32(95q,3037), nam/pf2_60(60q,3060), nam/QFT64(64q,3514), nam/pf2_70(70q,3570), nam/pf2_80(80q,4080), nam/gf2^16_mult(48q,4459), nam/pf2_90(90q,4590), nam/QFTAdd32(64q,4814), nam/pf2_100(100q,5100), nam/pf4_20(20q,5100), nam/mod_adder_1024(28q,5425)
+18 rows done, 38 to run
+/home/arnav/.local/lib/python3.14/site-packages/bqskit/passes/synthesis/leap.py:358: SmallSampleWarning: One or more sample arguments is too small; all returned values will be NaN. See documentation for sample size requirements.
+  m, y_int, _, _, _ = linregress(best_layers, best_dists)
+/home/arnav/.local/lib/python3.14/site-packages/bqskit/passes/synthesis/leap.py:358: SmallSampleWarning: One or more sample arguments is too small; all returned values will be NaN. See documentation for sample size requirements.
+  m, y_int, _, _, _ = linregress(best_layers, best_dists)
+/home/arnav/.local/lib/python3.14/site-packages/bqskit/passes/synthesis/leap.py:358: SmallSampleWarning: One or more sample arguments is too small; all returned values will be NaN. See documentation for sample size requirements.
+  m, y_int, _, _, _ = linregress(best_layers, best_dists)
+/home/arnav/.local/lib/python3.14/site-packages/bqskit/passes/synthesis/leap.py:358: SmallSampleWarning: One or more sample arguments is too small; all returned values will be NaN. See documentation for sample size requirements.
+  m, y_int, _, _, _ = linregress(best_layers, best_dists)
+/home/arnav/.local/lib/python3.14/site-packages/bqskit/passes/synthesis/leap.py:358: SmallSampleWarning: One or more sample arguments is too small; all returned values will be NaN. See documentation for sample size requirements.
+  m, y_int, _, _, _ = linregress(best_layers, best_dists)
+/home/arnav/.local/lib/python3.14/site-packages/bqskit/passes/synthesis/leap.py:358: SmallSampleWarning: One or more sample arguments is too small; all returned values will be NaN. See documentation for sample size requirements.
+  m, y_int, _, _, _ = linregress(best_layers, best_dists)
+/home/arnav/.local/lib/python3.14/site-packages/bqskit/passes/synthesis/leap.py:358: SmallSampleWarning: One or more sample arguments is too small; all returned values will be NaN. See documentation for sample size requirements.
+  m, y_int, _, _, _ = linregress(best_layers, best_dists)
+/home/arnav/.local/lib/python3.14/site-packages/bqskit/passes/synthesis/leap.py:358: SmallSampleWarning: One or more sample arguments is too small; all returned values will be NaN. See documentation for sample size requirements.
+  m, y_int, _, _, _ = linregress(best_layers, best_dists)
+{"name": "nam/QFT16", "dev": "heron", "n": 16, "qiskit_L1": 588, "bqskit_L2": 423, "bqskit_L3": 394}
+{"name": "nam/QFT16", "dev": "ion", "n": 16, "qiskit_L1": 228, "bqskit_L2": 114, "bqskit_L3": 114}
+{"name": "nam/Adder8", "dev": "heron", "n": 23, "qiskit_L1": 555, "bqskit_L2": 374, "bqskit_L3": 363}
+{"name": "nam/Adder8", "dev": "ion", "n": 23, "qiskit_L1": 243, "bqskit_L2": 168, "bqskit_L3": 165}
+{"name": "nam/gf2^6_mult", "dev": "heron", "n": 18, "qiskit_L1": 665, "bqskit_L2": 560, "bqskit_L3": 543}
+{"name": "nam/gf2^6_mult", "dev": "ion", "n": 18, "qiskit_L1": 221, "bqskit_L2": 185, "bqskit_L3": 185}
+{"name": "nam/qcla_adder_10", "dev": "heron", "n": 36, "qiskit_L1": 593, "bqskit_L2": 468, "bqskit_L3": 445}
+{"name": "nam/qcla_adder_10", "dev": "ion", "n": 36, "qiskit_L1": 215, "bqskit_L2": 185, "bqskit_L3": 176}
+{"name": "nam/pf1_30", "dev": "heron", "n": 30, "qiskit_L1": 471, "bqskit_L2": 421, "bqskit_L3": 222}
+{"name": "nam/pf1_30", "dev": "ion", "n": 30, "qiskit_L1": 180, "bqskit_L2": 0, "bqskit_L3": 0}
+{"name": "nam/gf2^7_mult", "dev": "heron", "n": 21, "qiskit_L1": 918, "bqskit_L2": 759, "bqskit_L3": 724}
+{"name": "nam/gf2^7_mult", "dev": "ion", "n": 21, "qiskit_L1": 300, "bqskit_L2": 251, "bqskit_L3": 251}
+{"name": "nam/pf2_20", "dev": "heron", "n": 20, "qiskit_L1": 240, "bqskit_L2": 236, "bqskit_L3": 4}
+{"name": "nam/pf2_20", "dev": "ion", "n": 20, "qiskit_L1": 240, "bqskit_L2": 0, "bqskit_L3": 0}
+{"name": "nam/pf1_40", "dev": "heron", "n": 40, "qiskit_L1": 240, "bqskit_L2": 240, "bqskit_L3": 26}
+{"name": "nam/pf1_40", "dev": "ion", "n": 40, "qiskit_L1": 240, "bqskit_L2": 0, "bqskit_L3": 0}
+{"name": "nam/qcla_mod_7", "dev": "heron", "n": 26, "qiskit_L1": 1086, "bqskit_L2": 799, "bqskit_L3": 767}
+{"name": "nam/qcla_mod_7", "dev": "ion", "n": 26, "qiskit_L1": 366, "bqskit_L2": 308, "bqskit_L3": 293}
+Wed Oct 14 08:03:29 PM IST 2026 stopped at the user's request after 36/56 rows

@@ -1,0 +1,10 @@
+45 circuits: nam/csla_mux_3(15q,210), nam/rc_adder_6(14q,244), nam/tof_10(19q,323), nam/gf2^5_mult(15q,447), nam/QFTAdd8(16q,476), nam/pf1_20(20q,520), nam/csum_mux_9(30q,532), nam/qcla_com_7(24q,559), nam/barenco_tof_10(19q,578), nam/QFT16(16q,586), nam/Adder8(23q,637), nam/gf2^6_mult(18q,639), nam/qcla_adder_10(36q,657), nam/pf1_30(30q,780), nam/gf2^7_mult(21q,865), nam/pf2_20(20q,1020), nam/pf1_40(40q,1040), nam/qcla_mod_7(26q,1120), nam/adder_8(24q,1128), nam/gf2^8_mult(24q,1139), nam/pf1_50(50q,1300), nam/gf2^9_mult(27q,1419), nam/Adder16(47q,1437), nam/pf2_30(30q,1530), nam/pf1_60(60q,1560), nam/QFT32(32q,1562), nam/gf2^10_mult(30q,1747), nam/pf1_70(70q,1820), nam/QFTAdd16(32q,1822), nam/pf2_40(40q,2040), nam/pf1_80(80q,2080), nam/pf1_90(90q,2340), nam/pf2_50(50q,2550), nam/pf1_100(100q,2600), nam/Adder32(95q,3037), nam/pf2_60(60q,3060), nam/QFT64(64q,3514), nam/pf2_70(70q,3570), nam/pf2_80(80q,4080), nam/gf2^16_mult(48q,4459), nam/pf2_90(90q,4590), nam/QFTAdd32(64q,4814), nam/pf2_100(100q,5100), nam/pf4_20(20q,5100), nam/mod_adder_1024(28q,5425)
+0 rows done, 90 to run
+{"name": "nam/rc_adder_6", "dev": "ion", "n": 14, "L1": 91, "L3": 76, "ours": 73, "sec": 7}
+{"name": "nam/csla_mux_3", "dev": "ion", "n": 15, "L1": 74, "L3": 64, "ours": 64, "sec": 10}
+{"name": "nam/rc_adder_6", "dev": "heron", "n": 14, "L1": 187, "L3": 157, "ours": 134, "sec": 48}
+{"name": "nam/csla_mux_3", "dev": "heron", "n": 15, "L1": 194, "L3": 148, "ours": 165, "sec": 70}
+{"name": "nam/tof_10", "dev": "ion", "n": 19, "L1": 102, "L3": 85, "ours": 75, "sec": 16}
+{"name": "nam/tof_10", "dev": "heron", "n": 19, "L1": 249, "L3": 186, "ours": 217, "sec": 78}
+{"name": "nam/gf2^5_mult", "dev": "ion", "n": 15, "L1": 154, "L3": 129, "ours": 129, "sec": 17}
+{"name": "nam/QFTAdd8", "dev": "ion", "n": 16, "L1": 184, "L3": 92, "ours": 92, "sec": 138}

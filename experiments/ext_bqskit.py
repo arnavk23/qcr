@@ -72,10 +72,10 @@ def bqskit_opt(gates, dev, level, seed=0, compiler=None, gate_set=None):
     return res, list(pi), list(pf), act
 
 
-def verify_mapped(a, b, act, pi, pf, trials=3):
+def verify_mapped(a, b, act, pi, pf, trials=3, max_n=16):
     """max ||phase*P_f A v - B P_i v|| over random v (A on logical, B on physical indices)."""
     n = len(act)
-    if n > 16:
+    if n > max_n:
         return None
     m = {q: i for i, q in enumerate(act)}
     A, B = [g.remap(m) for g in a], [g.remap(m) for g in b]

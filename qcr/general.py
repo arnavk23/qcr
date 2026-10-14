@@ -54,7 +54,7 @@ from math import pi
 
 import numpy as np
 
-from .gates import Gate, circuit_unitary, gate_matrix
+from .gates import SYMMETRIC, Gate, circuit_unitary, gate_matrix
 from .hardware import Device
 
 K = 3
@@ -176,7 +176,10 @@ class GridAlphabet:
             for q in range(K):
                 for t in angles:
                     p.append(Gate(name, (q,), 0.0 if t is None else t))
-        for a, b in TOPO_PAIRS[topo]:
+        pairs = TOPO_PAIRS[topo]
+        if self.two_q not in SYMMETRIC:  # directed gates (cx) in both orientations
+            pairs = pairs + [(b, a) for a, b in pairs]
+        for a, b in pairs:
             for t in self.two_q_angles:
                 p.append(Gate(self.two_q, (a, b), 0.0 if t is None else t))
         return p
@@ -189,6 +192,8 @@ GRIDS = {
     "ibm_paper": GridAlphabet({"rx": HALF, "rz": HALF}, "cz"),
     "heron": GridAlphabet({"rz": GRID8, "sx": (None,), "x": (None,)}, "cz"),
     "ion": GridAlphabet({"rx": GRID8, "ry": GRID8, "rz": GRID8}, "rxx", (pi / 4, -pi / 4, pi / 2, -pi / 2)),
+    # Nam et al. gate set {H, X, Rz, CNOT}, all-to-all: the logical-level benchmark of VOQC, Quartz, QUESO
+    "nam": GridAlphabet({"h": (None,), "x": (None,), "rz": GRID8}, "cx"),
 }
 
 
@@ -372,8 +377,10 @@ def _q2ours(qc, n):
             if abs(((prm[0] + 2 * pi) % (4 * pi)) - 2 * pi) < 1e-12:  # 4pi-periodic identity
                 continue
             out.append(Gate(nm, tuple(sorted(qs)) if len(qs) == 2 else qs, prm[0]))
-        elif nm in ("sx", "x"):
+        elif nm in ("sx", "x", "h"):
             out.append(Gate(nm, qs))
+        elif nm == "cx":
+            out.append(Gate("cx", qs))
         elif nm == "cz":
             out.append(Gate("cz", tuple(sorted(qs))))
         elif nm in ("global_phase", "barrier", "id", "delay"):
@@ -405,9 +412,22 @@ def _fix_phase(word, U, n, kind, eps):
 def resynth_1q(U2, dev: Device, kind, eps):
     from qiskit.synthesis import OneQubitEulerDecomposer
 
-    basis = "ZSXX" if dev.native_2q == "cz" else "ZYZ"
+    basis = {"cz": "ZSXX", "cx": "ZXZ"}.get(dev.native_2q, "ZYZ")
     w = _q2ours(OneQubitEulerDecomposer(basis)(U2), 1)
+    if dev.native_2q == "cx":
+        w = _rx_to_h(w)
     return [_fix_phase(w, U2, 1, kind, eps)]
+
+
+def _rx_to_h(word):
+    """Nam gate set: Rx(t) = H Rz(t) H."""
+    out = []
+    for g in word:
+        if g.name == "rx":
+            out += [Gate("h", g.qubits), Gate("rz", g.qubits, g.theta), Gate("h", g.qubits)]
+        else:
+            out.append(g)
+    return out
 
 
 def _ms_weyl(U4, a, b, c, K1l, K1r, K2l, K2r):
@@ -445,7 +465,18 @@ def _ms_weyl(U4, a, b, c, K1l, K1r, K2l, K2r):
 def resynth_2q(U4, dev: Device, kind, eps):
     """List of (word, error) candidates on local wires 0,1."""
     out = []
-    if dev.native_2q == "cz":
+    if dev.native_2q == "cx":
+        from qiskit.circuit.library import CXGate
+        from qiskit.synthesis import TwoQubitBasisDecomposer
+
+        dec = TwoQubitBasisDecomposer(CXGate(), euler_basis="ZXZ")
+        for k in range(4):
+            w = _rx_to_h(_q2ours(dec(U4, _num_basis_uses=k), 2))
+            wf, e = _fix_phase(w, U4, 2, kind, eps)
+            if wf is not None:
+                out.append((wf, e))
+                break
+    elif dev.native_2q == "cz":
         from qiskit.circuit.library import CZGate
         from qiskit.synthesis import TwoQubitBasisDecomposer
 
@@ -490,6 +521,11 @@ class Config:
     patience: int = 8
     restarts: int = 1
     log: bool = False  # record a rewrite log for qcr.certify.replay
+    # ablation switches (defaults = the full optimiser)
+    use_db: bool = True  # database lookups
+    use_mitm: bool = True  # meet in the middle beyond the database radius
+    use_resynth: bool = True  # analytic resynthesis on <= 2 wires
+    db_radius: int | None = None  # use only database words of at most this length
 
 
 @dataclass
@@ -589,17 +625,20 @@ class Optimizer:
             e = distance(U, np.eye(D), self.cfg.mode)
             if e <= self.cfg.eps:
                 consider([], e, "approx")
-        for kind in kinds:
+        r = self.cfg.db_radius
+        for kind in kinds if self.cfg.use_db else ():
             db = self.dbs.get((kind, topo))
             if db is None:
                 continue
             for cand in db.lookup(U, kind):
-                consider(cand, 0.0, {"state": "state", "out": "out"}.get(kind, "db"))
-            if best is None and longest and len(S_gates) > db.depth and kind == "phase":
+                if r is None or len(cand) <= r:
+                    consider(cand, 0.0, {"state": "state", "out": "out"}.get(kind, "db"))
+            if self.cfg.use_mitm and best is None and longest and len(S_gates) > db.depth and kind == "phase":
                 for cand in db.lookup_mitm(U, kind):
-                    consider(cand, 0.0, "mitm")
+                    if r is None or len(cand) <= r:
+                        consider(cand, 0.0, "mitm")
         # analytic resynthesis on <= 2 wires (continuous-angle hardware)
-        if len(Wp) <= 2 and len(S_gates) >= 2 and self.dev.continuous_1q:
+        if self.cfg.use_resynth and len(Wp) <= 2 and len(S_gates) >= 2 and self.dev.continuous_1q:
             m2 = {q: i for i, q in enumerate(Wp)}
             inv2 = {i: q for q, i in m2.items()}
             sub = circuit_unitary([g.remap(m2) for g in S_gates], len(Wp))
@@ -812,6 +851,12 @@ def _absorb_into_rxx(gates, s):
 
 def repair_phase(gates, C, dev: Device):
     """Return (gates', extra_cost) with circuit(gates') = C^{-1} circuit(gates)."""
+    # C is a product of snapped phases, but thousands of float multiplications drift
+    # past 1e-9 on large circuits; snap it back (same 1e-6 slack as certify's final check)
+    ph = reachable_phases(dev)
+    near = ph[np.argmin(np.abs(ph - C))]
+    if abs(near - C) < 1e-6:
+        C = near
     if abs(C - 1) < 1e-9:
         return gates, 0
     need = 1 / C

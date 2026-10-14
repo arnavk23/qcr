@@ -41,3 +41,6 @@ manuscripts/**/*.blg
 .vscode/
 *.swp
 .DS_Store
+
+# experiment watchdog state (runstatus.py / watchdog.py)
+/results/status/

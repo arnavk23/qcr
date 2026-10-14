@@ -64,7 +64,7 @@ def to_qiskit(gates, n: int):
 
     qc = QuantumCircuit(n)
     for g in gates:
-        if g.name in ("cz", "cx", "sx", "x"):
+        if g.name in ("cz", "cx", "sx", "x", "h"):
             getattr(qc, g.name)(*g.qubits)
         else:
             getattr(qc, g.name)(g.theta, *g.qubits)

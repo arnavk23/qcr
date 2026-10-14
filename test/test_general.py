@@ -17,8 +17,8 @@ from math import pi
 import numpy as np
 
 from qcr.gates import Gate, circuit_unitary
-from qcr.general import GRIDS, Config, Database, Optimizer, commutes_exact, equivalent_local
-from qcr.hardware import Device, ion
+from qcr.general import GRIDS, Config, Database, Optimizer, commutes_exact, equivalent_local, repair_phase
+from qcr.hardware import Device, ion, nam
 
 from .base import QCRTestCase
 
@@ -41,6 +41,12 @@ class TestPrimitives(QCRTestCase):
         U = np.eye(8, dtype=complex)
         V = circuit_unitary([Gate("rz", (0,), 1e-6)], 3)
         self.assertFalse(equivalent_local(U, V, "phase"))
+
+    def test_phase_repair_tolerates_float_drift(self):
+        """Regression: on QFTAdd32 (Heron) the phase product drifted 1.2e-9 from i and no gadget matched."""
+        circ = [Gate("rz", (0,), 0.3), Gate("cz", (0, 1)), Gate("sx", (1,))]
+        out, _ = repair_phase(circ, 1j * (1 - 1.24e-9), line(2))
+        np.testing.assert_allclose(circuit_unitary(out, 2), -1j * circuit_unitary(circ, 2), atol=1e-12)
 
 
 class _OptimizerModes:
@@ -92,6 +98,26 @@ class _OptimizerModes:
     def test_discrete_angles(self):
         self._run("exact", continuous=False)
 
+    def test_ablation_switches_stay_exact(self):
+        """Every ablation setting still returns an exact, legal, never-costlier circuit."""
+        rng = np.random.default_rng(3)
+        circ = self.random_native(self.dev, self.n, 40, rng)
+        U = circuit_unitary(circ, self.n)
+        for kw in (
+            dict(use_db=False),
+            dict(use_mitm=False),
+            dict(use_resynth=False),
+            dict(db_radius=2),
+            dict(max_jump=1),
+            dict(w=4),
+            dict(patience=0),
+        ):
+            opt = Optimizer(self.dev, self.dbs, Config(mode="exact", cost="calibrated", **{"patience": 2} | kw))
+            res = opt.run(circ, seed=0)
+            self.assertTrue(all(self.dev.is_native(g) for g in res.gates), kw)
+            self.assertLessEqual(opt.cost(res.gates), opt.cost(circ) + 1e-12, kw)
+            self.assertLessEqual(np.linalg.norm(U - circuit_unitary(res.gates, self.n), 2), 1e-9, kw)
+
     def test_never_more_expensive_than_input(self):
         rng = np.random.default_rng(7)
         circ = self.random_native(self.dev, self.n, 40, rng)
@@ -122,3 +148,20 @@ class TestTrappedIon(_OptimizerModes, QCRTestCase):
         res = Optimizer(ion(2), {}, Config(mode="exact", cost="calibrated")).run(circ)
         self.assertLessEqual(sum(g.name == "rxx" for g in res.gates), 3)
         self.assertUnitaryEqual(res.gates, circ, 2)
+
+
+class TestNamGateSet(QCRTestCase):
+    """Logical-level Nam gate set {H, X, Rz, CNOT}, all-to-all (the VOQC/Quartz/QUESO setting)."""
+
+    def test_equal_up_to_phase_native_and_shorter(self):
+        dbs = {("phase", "tri"): Database(GRIDS["nam"], "tri", "phase", 4, verbose=False)}
+        for seed in range(2):
+            rng = np.random.default_rng(seed)
+            circ = self.random_native(nam(4), 4, 60, rng, continuous=seed == 1)
+            opt = Optimizer(nam(4), dbs, Config(mode="phase", cost="count", patience=2))
+            out = opt.run(circ, seed=seed).gates
+            self.assertTrue(all(nam(4).is_native(g) for g in out))
+            self.assertLessEqual(len(out), len(circ))
+            U, V = circuit_unitary(circ, 4), circuit_unitary(out, 4)
+            ov = np.trace(U.conj().T @ V)
+            self.assertLessEqual(np.linalg.norm(U * (ov / abs(ov)) - V, 2), 1e-9)

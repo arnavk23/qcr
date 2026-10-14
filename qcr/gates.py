@@ -50,6 +50,7 @@ BASE = {
     # IBM natives with their exact (phase-carrying) definitions
     "sx": lambda t: 0.5 * np.array([[1 + 1j, 1 - 1j], [1 - 1j, 1 + 1j]]),
     "x": lambda t: np.array([[0, 1], [1, 0]], dtype=complex),
+    "h": lambda t: np.array([[1, 1], [1, -1]], dtype=complex) / np.sqrt(2),
     "rzz": lambda t: np.diag(np.exp(-0.5j * t * np.array([1, -1, -1, 1]))),
 }
 TWO_QUBIT = {"rxx", "cz", "cx", "rzz"}
@@ -64,7 +65,7 @@ class Gate:
 
     def __str__(self) -> str:
         q = ",".join(str(x) for x in self.qubits)
-        if self.name in ("cz", "cx", "sx", "x"):
+        if self.name in ("cz", "cx", "sx", "x", "h"):
             return f"{self.name}({q})"
         return f"{self.name}({q},{self.theta:+.4f})"
 
@@ -142,7 +143,7 @@ def to_qasm(gates, n: int) -> str:
     lines = ["OPENQASM 2.0;", 'include "qelib1.inc";', f"qreg q[{n}];"]
     for g in gates:
         qs = ", ".join(f"q[{q}]" for q in g.qubits)
-        if g.name in ("cz", "cx", "sx", "x"):
+        if g.name in ("cz", "cx", "sx", "x", "h"):
             lines.append(f"{g.name} {qs};")
         else:
             lines.append(f"{g.name}({g.theta!r}) {qs};")

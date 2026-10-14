@@ -29,6 +29,7 @@ SPECS = {  # (device grid, topology, kind): depth cap (the builder switches to k
     ("ion", "tri", "state"): 8,
     ("ion_paper", "tri", "phase"): 9,
     ("ibm_paper", "tri", "phase"): 10,  # 12/14 ran out of memory (14 GB)
+    ("nam", "tri", "phase"): 9,  # logical-level baseline comparison (VOQC, Quartz, QUESO)
 }
 if __name__ == "__main__":
     which = [tuple(a.split(",")) for a in sys.argv[1:]] or list(SPECS)
