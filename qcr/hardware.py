@@ -170,6 +170,11 @@ def ion(n: int) -> Device:
     )
 
 
+def nam(n: int) -> Device:
+    """The Nam et al. gate set {H, X, Rz, CNOT}, all-to-all, used by VOQC, Quartz and QUESO (gate count)."""
+    return Device("nam", n, None, ("h", "x", "rz"), "cx", ("rz",), False)
+
+
 def qiskit_basis(dev: Device):
     return list(dev.native_1q) + [dev.native_2q]
 
