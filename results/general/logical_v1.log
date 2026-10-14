@@ -1,0 +1,1114 @@
+<frozen site>:107: RuntimeWarning: Unexpected value in sys.prefix, expected /home/arnav/Downloads/ankur/.venv, got /home/arnav/Downloads/ankur/experiments/../.venv
+<frozen site>:107: RuntimeWarning: Unexpected value in sys.exec_prefix, expected /home/arnav/Downloads/ankur/.venv, got /home/arnav/Downloads/ankur/experiments/../.venv
+  DB[phase,tri] depth 1: +8 (total 9) 0s
+  DB[phase,tri] depth 2: +79 (total 88) 0s
+  DB[phase,tri] depth 3: +789 (total 877) 0s
+  DB[phase,tri] depth 4: +7,001 (total 7,878) 0s
+  DB[phase,tri] depth 5: +56,381 (total 64,259) 2s
+  DB[phase,tri] depth 6: +410,644 (total 474,903) 19s
+  DB[phase,tri] depth 7: +2,716,179 (total 3,191,082) 231s
+  DB[phase,tri] depth 8: +16,304,696 (total 19,495,778) 1238s
+('nam', 'tri', 'phase') {'size': 19495778, 'levels': [1, 8, 79, 789, 7001, 56381, 410644, 2716179, 16304696], 'depth': 8, 'seconds': 1239.7400131225586, 'pool': 27}
+<frozen site>:107: RuntimeWarning: Unexpected value in sys.prefix, expected /home/arnav/Downloads/ankur/.venv, got /home/arnav/Downloads/ankur/experiments/../.venv
+<frozen site>:107: RuntimeWarning: Unexpected value in sys.exec_prefix, expected /home/arnav/Downloads/ankur/.venv, got /home/arnav/Downloads/ankur/experiments/../.venv
+tools: ['qiskit', 'tket', 'ours', 'voqc', 'queso'] skipped: []
+0 rows done, 130 to run
+FAILED adder_8 voqc
+Traceback (most recent call last):
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 180, in job
+    g = TOOL_FNS[tool](path, n, a)
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 138, in t_voqc
+    return _from_qasm_str(o.read_text())
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 157, in _from_qasm_str
+    qc = QuantumCircuit.from_qasm_str(txt)
+  File "/home/arnav/.local/lib/python3.14/site-packages/qiskit/circuit/quantumcircuit.py", line 4789, in from_qasm_str
+    return qasm2.loads(
+           ~~~~~~~~~~~^
+        qasm_str,
+        ^^^^^^^^^
+    ...<3 lines>...
+        strict=False,
+        ^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/arnav/.local/lib/python3.14/site-packages/qiskit/qasm2/__init__.py", line 618, in loads
+    return _parse.from_bytecode(
+           ~~~~~~~~~~~~~~~~~~~~^
+        _qasm2.bytecode_from_string(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+        custom_instructions,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/arnav/.local/lib/python3.14/site-packages/qiskit/qasm2/parse.py", line 241, in from_bytecode
+    for op in bc:
+              ^^
+qiskit.qasm2.exceptions.QASM2ParseError: "<input>:10,0: 'rzq' is not defined in this scope"
+
+{"name": "adder_8", "tool": "ours", "total": 795, "cx": 367, "seconds": 43.41610263098846}
+{"name": "barenco_tof_3", "tool": "qiskit", "total": 56, "cx": 24, "seconds": 3.5291960910253692}
+{"name": "barenco_tof_3", "tool": "tket", "total": 56, "cx": 24, "seconds": 3.508829178987071}
+{"name": "barenco_tof_3", "tool": "ours", "total": 56, "cx": 24, "seconds": 4.3861132159945555}
+FAILED barenco_tof_3 voqc
+Traceback (most recent call last):
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 180, in job
+    g = TOOL_FNS[tool](path, n, a)
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 138, in t_voqc
+    return _from_qasm_str(o.read_text())
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 157, in _from_qasm_str
+    qc = QuantumCircuit.from_qasm_str(txt)
+  File "/home/arnav/.local/lib/python3.14/site-packages/qiskit/circuit/quantumcircuit.py", line 4789, in from_qasm_str
+    return qasm2.loads(
+           ~~~~~~~~~~~^
+        qasm_str,
+        ^^^^^^^^^
+    ...<3 lines>...
+        strict=False,
+        ^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/arnav/.local/lib/python3.14/site-packages/qiskit/qasm2/__init__.py", line 618, in loads
+    return _parse.from_bytecode(
+           ~~~~~~~~~~~~~~~~~~~~^
+        _qasm2.bytecode_from_string(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+        custom_instructions,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/arnav/.local/lib/python3.14/site-packages/qiskit/qasm2/parse.py", line 241, in from_bytecode
+    for op in bc:
+              ^^
+qiskit.qasm2.exceptions.QASM2ParseError: "<input>:8,0: 'rzq' is not defined in this scope"
+
+{"name": "adder_8", "tool": "qiskit", "total": 1012, "cx": 385, "seconds": 1.2535166099842172}
+{"name": "barenco_tof_4", "tool": "qiskit", "total": 109, "cx": 48, "seconds": 1.2547324269835372}
+{"name": "barenco_tof_4", "tool": "tket", "total": 153, "cx": 46, "seconds": 1.741463067010045}
+{"name": "barenco_tof_4", "tool": "ours", "total": 109, "cx": 48, "seconds": 6.221251545997802}
+FAILED barenco_tof_4 voqc
+Traceback (most recent call last):
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 180, in job
+    g = TOOL_FNS[tool](path, n, a)
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 138, in t_voqc
+    return _from_qasm_str(o.read_text())
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 157, in _from_qasm_str
+    qc = QuantumCircuit.from_qasm_str(txt)
+  File "/home/arnav/.local/lib/python3.14/site-packages/qiskit/circuit/quantumcircuit.py", line 4789, in from_qasm_str
+    return qasm2.loads(
+           ~~~~~~~~~~~^
+        qasm_str,
+        ^^^^^^^^^
+    ...<3 lines>...
+        strict=False,
+        ^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/arnav/.local/lib/python3.14/site-packages/qiskit/qasm2/__init__.py", line 618, in loads
+    return _parse.from_bytecode(
+           ~~~~~~~~~~~~~~~~~~~~^
+        _qasm2.bytecode_from_string(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+        custom_instructions,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/arnav/.local/lib/python3.14/site-packages/qiskit/qasm2/parse.py", line 241, in from_bytecode
+    for op in bc:
+              ^^
+qiskit.qasm2.exceptions.QASM2ParseError: "<input>:8,0: 'rzq' is not defined in this scope"
+
+{"name": "adder_8", "tool": "tket", "total": 1471, "cx": 383, "seconds": 9.948666437005159}
+{"name": "barenco_tof_5", "tool": "qiskit", "total": 162, "cx": 72, "seconds": 1.3655506469949614}
+{"name": "barenco_tof_5", "tool": "tket", "total": 247, "cx": 68, "seconds": 1.8414979049994145}
+{"name": "barenco_tof_5", "tool": "ours", "total": 162, "cx": 72, "seconds": 4.590116378007224}
+FAILED barenco_tof_5 voqc
+Traceback (most recent call last):
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 180, in job
+    g0, n = read(path)
+        ^^^^^^^^^^^^^^
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 138, in t_voqc
+    return _from_qasm_str(o.read_text())
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 157, in _from_qasm_str
+    # VOQC writes rotations as rzq(a,b) = Rz(a/b * pi)
+  File "/home/arnav/.local/lib/python3.14/site-packages/qiskit/circuit/quantumcircuit.py", line 4789, in from_qasm_str
+    return qasm2.loads(
+           ~~~~~~~~~~~^
+        qasm_str,
+        ^^^^^^^^^
+    ...<3 lines>...
+        strict=False,
+        ^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/arnav/.local/lib/python3.14/site-packages/qiskit/qasm2/__init__.py", line 618, in loads
+    return _parse.from_bytecode(
+           ~~~~~~~~~~~~~~~~~~~~^
+        _qasm2.bytecode_from_string(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+        custom_instructions,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/arnav/.local/lib/python3.14/site-packages/qiskit/qasm2/parse.py", line 241, in from_bytecode
+    for op in bc:
+              ^^
+qiskit.qasm2.exceptions.QASM2ParseError: "<input>:8,0: 'rzq' is not defined in this scope"
+
+FAILED adder_8 queso
+Traceback (most recent call last):
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 180, in job
+    g0, n = read(path)
+        ^^^^^^^^^^^^^^
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 150, in t_queso
+    subprocess.run(cmd, check=True, capture_output=True, timeout=a.queso_sec + 600, env=env, cwd=rules)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/subprocess.py", line 557, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/subprocess.py", line 1221, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+                     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/subprocess.py", line 2154, in _communicate
+    self._check_timeout(endtime, orig_timeout, stdout, stderr)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/subprocess.py", line 1268, in _check_timeout
+    raise TimeoutExpired(
+    ...<2 lines>...
+            stderr=b''.join(stderr_seq) if stderr_seq else None)
+subprocess.TimeoutExpired: Command '['/home/arnav/tools/jdk17/bin/java', '-Xmx3g', '--enable-preview', '-cp', '/home/arnav/tools/src/queso/target/QUESO-1.0-jar-with-dependencies.jar', 'Optimizer', '-c', '/home/arnav/Downloads/ankur/results/logical/inputs/adder_8.qasm', '-g', 'nam', '-r', 'rules_q3_s6_nam.txt', '-sr', 'rules_q3_s3_nam_symb.txt', '-t', '3600', '-o', '/tmp/tmpq9snmtz8', '-j', 'nam']' timed out after 4200.0 seconds
+
+{"name": "barenco_tof_10", "tool": "qiskit", "total": 427, "cx": 192, "seconds": 1.548496786999749}
+{"name": "barenco_tof_10", "tool": "tket", "total": 717, "cx": 178, "seconds": 2.6840684800117742}
+{"name": "barenco_tof_10", "tool": "ours", "total": 421, "cx": 192, "seconds": 23.26718259701738}
+FAILED barenco_tof_10 voqc
+Traceback (most recent call last):
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 180, in job
+    g0, n = read(path)
+        ^^^^^^^^^^^^^^
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 138, in t_voqc
+    return _from_qasm_str(o.read_text())
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 157, in _from_qasm_str
+    # VOQC writes rotations as rzq(a,b) = Rz(a/b * pi)
+  File "/home/arnav/.local/lib/python3.14/site-packages/qiskit/circuit/quantumcircuit.py", line 4789, in from_qasm_str
+    return qasm2.loads(
+           ~~~~~~~~~~~^
+        qasm_str,
+        ^^^^^^^^^
+    ...<3 lines>...
+        strict=False,
+        ^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/arnav/.local/lib/python3.14/site-packages/qiskit/qasm2/__init__.py", line 618, in loads
+    return _parse.from_bytecode(
+           ~~~~~~~~~~~~~~~~~~~~^
+        _qasm2.bytecode_from_string(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+        custom_instructions,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/arnav/.local/lib/python3.14/site-packages/qiskit/qasm2/parse.py", line 241, in from_bytecode
+    for op in bc:
+              ^^
+qiskit.qasm2.exceptions.QASM2ParseError: "<input>:8,0: 'rzq' is not defined in this scope"
+
+{"name": "barenco_tof_3", "tool": "queso", "total": 48, "cx": 20, "seconds": 3608.7254361529776}
+{"name": "csla_mux_3", "tool": "qiskit", "total": 222, "cx": 71, "seconds": 1.538576015009312}
+{"name": "csla_mux_3", "tool": "tket", "total": 205, "cx": 71, "seconds": 2.9442473119997885}
+{"name": "csla_mux_3", "tool": "ours", "total": 149, "cx": 69, "seconds": 11.583654721005587}
+FAILED csla_mux_3 voqc
+Traceback (most recent call last):
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 180, in job
+    g0, n = read(path)
+        ^^^^^^^^^^^^^^
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 138, in t_voqc
+    return _from_qasm_str(o.read_text())
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 157, in _from_qasm_str
+    # VOQC writes rotations as rzq(a,b) = Rz(a/b * pi)
+  File "/home/arnav/.local/lib/python3.14/site-packages/qiskit/circuit/quantumcircuit.py", line 4789, in from_qasm_str
+    return qasm2.loads(
+           ~~~~~~~~~~~^
+        qasm_str,
+        ^^^^^^^^^
+    ...<3 lines>...
+        strict=False,
+        ^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/arnav/.local/lib/python3.14/site-packages/qiskit/qasm2/__init__.py", line 618, in loads
+    return _parse.from_bytecode(
+           ~~~~~~~~~~~~~~~~~~~~^
+        _qasm2.bytecode_from_string(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+        custom_instructions,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/arnav/.local/lib/python3.14/site-packages/qiskit/qasm2/parse.py", line 241, in from_bytecode
+    for op in bc:
+              ^^
+qiskit.qasm2.exceptions.QASM2ParseError: "<input>:8,0: 'rzq' is not defined in this scope"
+
+{"name": "barenco_tof_4", "tool": "queso", "total": 90, "cx": 39, "seconds": 3607.3233624190034}
+FAILED csum_mux_9 qiskit
+Traceback (most recent call last):
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 188, in job
+    name=name, tool=tool, n=n, input_total=len(g0), input_cx=sum(x.name == "cx" for x in g0),
+                                                                   ^^^^^^^^^^^^^^^
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 98, in check
+    r = qcec_check(to_qiskit(a, n), to_qiskit(b, n))
+                   ~~~~~~~~~^^^^^^
+  File "/home/arnav/Downloads/ankur/qcr/verify.py", line 70, in to_qiskit
+    getattr(qc, g.name)(g.theta, *g.qubits)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+TypeError: QuantumCircuit.h() takes 2 positional arguments but 3 were given
+
+FAILED csum_mux_9 tket
+Traceback (most recent call last):
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 188, in job
+    name=name, tool=tool, n=n, input_total=len(g0), input_cx=sum(x.name == "cx" for x in g0),
+                                                                   ^^^^^^^^^^^^^^^
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 98, in check
+    r = qcec_check(to_qiskit(a, n), to_qiskit(b, n))
+                   ~~~~~~~~~^^^^^^
+  File "/home/arnav/Downloads/ankur/qcr/verify.py", line 70, in to_qiskit
+    getattr(qc, g.name)(g.theta, *g.qubits)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+TypeError: QuantumCircuit.h() takes 2 positional arguments but 3 were given
+
+FAILED csum_mux_9 ours
+Traceback (most recent call last):
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 188, in job
+    name=name, tool=tool, n=n, input_total=len(g0), input_cx=sum(x.name == "cx" for x in g0),
+                                                                   ^^^^^^^^^^^^^^^
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 98, in check
+    r = qcec_check(to_qiskit(a, n), to_qiskit(b, n))
+                   ~~~~~~~~~^^^^^^
+  File "/home/arnav/Downloads/ankur/qcr/verify.py", line 70, in to_qiskit
+    getattr(qc, g.name)(g.theta, *g.qubits)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+TypeError: QuantumCircuit.h() takes 2 positional arguments but 3 were given
+
+FAILED csum_mux_9 voqc
+Traceback (most recent call last):
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 180, in job
+    g0, n = read(path)
+        ^^^^^^^^^^^^^^
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 138, in t_voqc
+    return _from_qasm_str(o.read_text())
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 157, in _from_qasm_str
+    # VOQC writes rotations as rzq(a,b) = Rz(a/b * pi)
+  File "/home/arnav/.local/lib/python3.14/site-packages/qiskit/circuit/quantumcircuit.py", line 4789, in from_qasm_str
+    return qasm2.loads(
+           ~~~~~~~~~~~^
+        qasm_str,
+        ^^^^^^^^^
+    ...<3 lines>...
+        strict=False,
+        ^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/arnav/.local/lib/python3.14/site-packages/qiskit/qasm2/__init__.py", line 618, in loads
+    return _parse.from_bytecode(
+           ~~~~~~~~~~~~~~~~~~~~^
+        _qasm2.bytecode_from_string(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+        custom_instructions,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/arnav/.local/lib/python3.14/site-packages/qiskit/qasm2/parse.py", line 241, in from_bytecode
+    for op in bc:
+              ^^
+qiskit.qasm2.exceptions.QASM2ParseError: "<input>:8,0: 'rzq' is not defined in this scope"
+
+{"name": "barenco_tof_5", "tool": "queso", "total": 144, "cx": 64, "seconds": 3605.2932738950185}
+{"name": "gf2^4_mult", "tool": "qiskit", "total": 213, "cx": 99, "seconds": 1.6190915260231122}
+{"name": "gf2^4_mult", "tool": "tket", "total": 215, "cx": 99, "seconds": 2.8189471150108147}
+{"name": "gf2^4_mult", "tool": "ours", "total": 209, "cx": 99, "seconds": 12.158577171998331}
+FAILED gf2^4_mult voqc
+Traceback (most recent call last):
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 180, in job
+    try:
+    
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 138, in t_voqc
+    return _from_qasm_str(o.read_text())
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 157, in _from_qasm_str
+    from qiskit import QuantumCircuit, transpile
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/arnav/.local/lib/python3.14/site-packages/qiskit/circuit/quantumcircuit.py", line 4789, in from_qasm_str
+    return qasm2.loads(
+           ~~~~~~~~~~~^
+        qasm_str,
+        ^^^^^^^^^
+    ...<3 lines>...
+        strict=False,
+        ^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/arnav/.local/lib/python3.14/site-packages/qiskit/qasm2/__init__.py", line 618, in loads
+    return _parse.from_bytecode(
+           ~~~~~~~~~~~~~~~~~~~~^
+        _qasm2.bytecode_from_string(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+        custom_instructions,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/arnav/.local/lib/python3.14/site-packages/qiskit/qasm2/parse.py", line 241, in from_bytecode
+    for op in bc:
+              ^^
+qiskit.qasm2.exceptions.QASM2ParseError: "<input>:8,0: 'rzq' is not defined in this scope"
+
+<frozen site>:107: RuntimeWarning: Unexpected value in sys.prefix, expected /home/arnav/Downloads/ankur/.venv, got /home/arnav/Downloads/ankur/experiments/../.venv
+<frozen site>:107: RuntimeWarning: Unexpected value in sys.exec_prefix, expected /home/arnav/Downloads/ankur/.venv, got /home/arnav/Downloads/ankur/experiments/../.venv
+tools: ['qiskit', 'tket', 'ours', 'voqc', 'queso5'] skipped: []
+24 rows done, 109 to run
+{"name": "barenco_tof_3", "tool": "voqc", "total": 50, "cx": 22, "seconds": 0.006825780001236126}
+{"name": "barenco_tof_3", "tool": "queso5", "total": 52, "cx": 22, "seconds": 304.4456319040037}
+{"name": "barenco_tof_4", "tool": "voqc", "total": 95, "cx": 44, "seconds": 0.010448840010212734}
+{"name": "barenco_tof_4", "tool": "queso5", "total": 101, "cx": 44, "seconds": 306.03752869399614}
+{"name": "barenco_tof_5", "tool": "voqc", "total": 140, "cx": 66, "seconds": 0.028919008997036144}
+{"name": "barenco_tof_5", "tool": "queso5", "total": 152, "cx": 66, "seconds": 308.95267153999885}
+{"name": "barenco_tof_10", "tool": "voqc", "total": 365, "cx": 176, "seconds": 0.17348110198508948}
+{"name": "barenco_tof_10", "tool": "queso5", "total": 434, "cx": 192, "seconds": 310.0674270860036}
+{"name": "csla_mux_3", "tool": "voqc", "total": 158, "cx": 74, "seconds": 0.09617181000066921}
+{"name": "csla_mux_3", "tool": "queso5", "total": 155, "cx": 73, "seconds": 310.6760462849925}
+FAILED csum_mux_9 qiskit
+Traceback (most recent call last):
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 194, in job
+    native=all(x.name in ("h", "x", "rz", "cx") for x in g), check=check(g0, g, n),
+                                                                   ~~~~~^^^^^^^^^^
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 98, in check
+    r = qcec_check(to_qiskit(a, n), to_qiskit(b, n))
+                   ~~~~~~~~~^^^^^^
+  File "/home/arnav/Downloads/ankur/qcr/verify.py", line 70, in to_qiskit
+    getattr(qc, g.name)(g.theta, *g.qubits)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+TypeError: QuantumCircuit.h() takes 2 positional arguments but 3 were given
+
+{"name": "adder_8", "tool": "voqc", "total": 682, "cx": 337, "seconds": 0.07186237000860274}
+FAILED csum_mux_9 tket
+Traceback (most recent call last):
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 194, in job
+    native=all(x.name in ("h", "x", "rz", "cx") for x in g), check=check(g0, g, n),
+                                                                   ~~~~~^^^^^^^^^^
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 98, in check
+    r = qcec_check(to_qiskit(a, n), to_qiskit(b, n))
+                   ~~~~~~~~~^^^^^^
+  File "/home/arnav/Downloads/ankur/qcr/verify.py", line 70, in to_qiskit
+    getattr(qc, g.name)(g.theta, *g.qubits)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+TypeError: QuantumCircuit.h() takes 2 positional arguments but 3 were given
+
+FAILED csum_mux_9 voqc
+Traceback (most recent call last):
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 194, in job
+    native=all(x.name in ("h", "x", "rz", "cx") for x in g), check=check(g0, g, n),
+                                                                   ~~~~~^^^^^^^^^^
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 98, in check
+    r = qcec_check(to_qiskit(a, n), to_qiskit(b, n))
+                   ~~~~~~~~~^^^^^^
+  File "/home/arnav/Downloads/ankur/qcr/verify.py", line 70, in to_qiskit
+    getattr(qc, g.name)(g.theta, *g.qubits)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+TypeError: QuantumCircuit.h() takes 2 positional arguments but 3 were given
+
+FAILED csum_mux_9 ours
+Traceback (most recent call last):
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 194, in job
+    native=all(x.name in ("h", "x", "rz", "cx") for x in g), check=check(g0, g, n),
+                                                                   ~~~~~^^^^^^^^^^
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 98, in check
+    r = qcec_check(to_qiskit(a, n), to_qiskit(b, n))
+                   ~~~~~~~~~^^^^^^
+  File "/home/arnav/Downloads/ankur/qcr/verify.py", line 70, in to_qiskit
+    getattr(qc, g.name)(g.theta, *g.qubits)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+TypeError: QuantumCircuit.h() takes 2 positional arguments but 3 were given
+
+{"name": "gf2^4_mult", "tool": "voqc", "total": 192, "cx": 99, "seconds": 0.07961410700227134}
+FAILED csum_mux_9 queso5
+Traceback (most recent call last):
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 194, in job
+    native=all(x.name in ("h", "x", "rz", "cx") for x in g), check=check(g0, g, n),
+                                                                   ~~~~~^^^^^^^^^^
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 98, in check
+    r = qcec_check(to_qiskit(a, n), to_qiskit(b, n))
+                   ~~~~~~~~~^^^^^^
+  File "/home/arnav/Downloads/ankur/qcr/verify.py", line 70, in to_qiskit
+    getattr(qc, g.name)(g.theta, *g.qubits)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+TypeError: QuantumCircuit.h() takes 2 positional arguments but 3 were given
+
+{"name": "gf2^5_mult", "tool": "qiskit", "total": 327, "cx": 154, "seconds": 1.735541895031929}
+{"name": "gf2^5_mult", "tool": "tket", "total": 331, "cx": 154, "seconds": 4.835681262018625}
+{"name": "gf2^4_mult", "tool": "queso5", "total": 202, "cx": 99, "seconds": 308.2253441849898}
+{"name": "gf2^5_mult", "tool": "voqc", "total": 291, "cx": 154, "seconds": 0.031720261031296104}
+{"name": "gf2^5_mult", "tool": "ours", "total": 327, "cx": 154, "seconds": 12.203095656004734}
+{"name": "gf2^6_mult", "tool": "qiskit", "total": 465, "cx": 221, "seconds": 1.4925023870309815}
+{"name": "gf2^6_mult", "tool": "tket", "total": 467, "cx": 221, "seconds": 5.800520989985671}
+{"name": "adder_8", "tool": "queso5", "total": 832, "cx": 393, "seconds": 305.50614476998453}
+{"name": "gf2^6_mult", "tool": "voqc", "total": 410, "cx": 221, "seconds": 0.046183892991393805}
+{"name": "gf2^6_mult", "tool": "ours", "total": 451, "cx": 221, "seconds": 25.724582901981194}
+{"name": "gf2^7_mult", "tool": "qiskit", "total": 627, "cx": 300, "seconds": 0.6214686600142159}
+{"name": "gf2^5_mult", "tool": "queso5", "total": 320, "cx": 154, "seconds": 307.9951685689739}
+{"name": "gf2^6_mult", "tool": "queso5", "total": 470, "cx": 221, "seconds": 314.3025759960292}
+{"name": "gf2^7_mult", "tool": "tket", "total": 629, "cx": 300, "seconds": 4.578050593030639}
+{"name": "gf2^7_mult", "tool": "ours", "total": 608, "cx": 300, "seconds": 57.043000105943065}
+{"name": "gf2^7_mult", "tool": "voqc", "total": 549, "cx": 300, "seconds": 0.1679516719887033}
+{"name": "gf2^7_mult", "tool": "queso5", "total": 638, "cx": 300, "seconds": 315.84019254305167}
+<frozen site>:107: RuntimeWarning: Unexpected value in sys.prefix, expected /home/arnav/Downloads/ankur/.venv, got /home/arnav/Downloads/ankur/experiments/../.venv
+<frozen site>:107: RuntimeWarning: Unexpected value in sys.exec_prefix, expected /home/arnav/Downloads/ankur/.venv, got /home/arnav/Downloads/ankur/experiments/../.venv
+tools: ['qiskit', 'tket', 'ours', 'voqc', 'queso5'] skipped: []
+53 rows done, 80 to run
+FAILED csum_mux_9 qiskit
+Traceback (most recent call last):
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 194, in job
+    native=all(x.name in ("h", "x", "rz", "cx") for x in g), check=check(g0, g, n),
+                                                                   ~~~~~^^^^^^^^^^
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 98, in check
+    r = qcec_check(to_qiskit(a, n), to_qiskit(b, n))
+  File "/home/arnav/Downloads/ankur/experiments/gen_large.py", line 76, in qcec_check
+    p.start()
+    ~~~~~~~^^
+  File "/usr/lib/python3.14/multiprocessing/process.py", line 118, in start
+    assert not _current_process._config.get('daemon'), \
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: daemonic processes are not allowed to have children
+
+FAILED csum_mux_9 voqc
+Traceback (most recent call last):
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 194, in job
+    native=all(x.name in ("h", "x", "rz", "cx") for x in g), check=check(g0, g, n),
+                                                                   ~~~~~^^^^^^^^^^
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 98, in check
+    r = qcec_check(to_qiskit(a, n), to_qiskit(b, n))
+  File "/home/arnav/Downloads/ankur/experiments/gen_large.py", line 76, in qcec_check
+    p.start()
+    ~~~~~~~^^
+  File "/usr/lib/python3.14/multiprocessing/process.py", line 118, in start
+    assert not _current_process._config.get('daemon'), \
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: daemonic processes are not allowed to have children
+
+FAILED csum_mux_9 tket
+Traceback (most recent call last):
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 194, in job
+    native=all(x.name in ("h", "x", "rz", "cx") for x in g), check=check(g0, g, n),
+                                                                   ~~~~~^^^^^^^^^^
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 98, in check
+    r = qcec_check(to_qiskit(a, n), to_qiskit(b, n))
+  File "/home/arnav/Downloads/ankur/experiments/gen_large.py", line 76, in qcec_check
+    p.start()
+    ~~~~~~~^^
+  File "/usr/lib/python3.14/multiprocessing/process.py", line 118, in start
+    assert not _current_process._config.get('daemon'), \
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: daemonic processes are not allowed to have children
+
+FAILED gf2^8_mult qiskit
+Traceback (most recent call last):
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 194, in job
+    native=all(x.name in ("h", "x", "rz", "cx") for x in g), check=check(g0, g, n),
+                                                                   ~~~~~^^^^^^^^^^
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 98, in check
+    r = qcec_check(to_qiskit(a, n), to_qiskit(b, n))
+  File "/home/arnav/Downloads/ankur/experiments/gen_large.py", line 76, in qcec_check
+    p.start()
+    ~~~~~~~^^
+  File "/usr/lib/python3.14/multiprocessing/process.py", line 118, in start
+    assert not _current_process._config.get('daemon'), \
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: daemonic processes are not allowed to have children
+
+FAILED gf2^8_mult tket
+Traceback (most recent call last):
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 194, in job
+    native=all(x.name in ("h", "x", "rz", "cx") for x in g), check=check(g0, g, n),
+                                                                   ~~~~~^^^^^^^^^^
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 98, in check
+    r = qcec_check(to_qiskit(a, n), to_qiskit(b, n))
+  File "/home/arnav/Downloads/ankur/experiments/gen_large.py", line 76, in qcec_check
+    p.start()
+    ~~~~~~~^^
+  File "/usr/lib/python3.14/multiprocessing/process.py", line 118, in start
+    assert not _current_process._config.get('daemon'), \
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: daemonic processes are not allowed to have children
+
+FAILED csum_mux_9 ours
+Traceback (most recent call last):
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 194, in job
+    native=all(x.name in ("h", "x", "rz", "cx") for x in g), check=check(g0, g, n),
+                                                                   ~~~~~^^^^^^^^^^
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 98, in check
+    r = qcec_check(to_qiskit(a, n), to_qiskit(b, n))
+  File "/home/arnav/Downloads/ankur/experiments/gen_large.py", line 76, in qcec_check
+    p.start()
+    ~~~~~~~^^
+  File "/usr/lib/python3.14/multiprocessing/process.py", line 118, in start
+    assert not _current_process._config.get('daemon'), \
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: daemonic processes are not allowed to have children
+
+FAILED gf2^8_mult voqc
+Traceback (most recent call last):
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 194, in job
+    native=all(x.name in ("h", "x", "rz", "cx") for x in g), check=check(g0, g, n),
+                                                                   ~~~~~^^^^^^^^^^
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 98, in check
+    r = qcec_check(to_qiskit(a, n), to_qiskit(b, n))
+  File "/home/arnav/Downloads/ankur/experiments/gen_large.py", line 76, in qcec_check
+    p.start()
+    ~~~~~~~^^
+  File "/usr/lib/python3.14/multiprocessing/process.py", line 118, in start
+    assert not _current_process._config.get('daemon'), \
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: daemonic processes are not allowed to have children
+
+FAILED gf2^8_mult ours
+Traceback (most recent call last):
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 194, in job
+    native=all(x.name in ("h", "x", "rz", "cx") for x in g), check=check(g0, g, n),
+                                                                   ~~~~~^^^^^^^^^^
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 98, in check
+    r = qcec_check(to_qiskit(a, n), to_qiskit(b, n))
+  File "/home/arnav/Downloads/ankur/experiments/gen_large.py", line 76, in qcec_check
+    p.start()
+    ~~~~~~~^^
+  File "/usr/lib/python3.14/multiprocessing/process.py", line 118, in start
+    assert not _current_process._config.get('daemon'), \
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: daemonic processes are not allowed to have children
+
+FAILED gf2^9_mult qiskit
+Traceback (most recent call last):
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 194, in job
+    native=all(x.name in ("h", "x", "rz", "cx") for x in g), check=check(g0, g, n),
+                                                                   ~~~~~^^^^^^^^^^
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 98, in check
+    r = qcec_check(to_qiskit(a, n), to_qiskit(b, n))
+  File "/home/arnav/Downloads/ankur/experiments/gen_large.py", line 76, in qcec_check
+    p.start()
+    ~~~~~~~^^
+  File "/usr/lib/python3.14/multiprocessing/process.py", line 118, in start
+    assert not _current_process._config.get('daemon'), \
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: daemonic processes are not allowed to have children
+
+FAILED gf2^9_mult tket
+Traceback (most recent call last):
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 194, in job
+    native=all(x.name in ("h", "x", "rz", "cx") for x in g), check=check(g0, g, n),
+                                                                   ~~~~~^^^^^^^^^^
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 98, in check
+    r = qcec_check(to_qiskit(a, n), to_qiskit(b, n))
+  File "/home/arnav/Downloads/ankur/experiments/gen_large.py", line 76, in qcec_check
+    p.start()
+    ~~~~~~~^^
+  File "/usr/lib/python3.14/multiprocessing/process.py", line 118, in start
+    assert not _current_process._config.get('daemon'), \
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: daemonic processes are not allowed to have children
+
+FAILED gf2^9_mult ours
+Traceback (most recent call last):
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 194, in job
+    native=all(x.name in ("h", "x", "rz", "cx") for x in g), check=check(g0, g, n),
+                                                                   ~~~~~^^^^^^^^^^
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 98, in check
+    r = qcec_check(to_qiskit(a, n), to_qiskit(b, n))
+  File "/home/arnav/Downloads/ankur/experiments/gen_large.py", line 76, in qcec_check
+    p.start()
+    ~~~~~~~^^
+  File "/usr/lib/python3.14/multiprocessing/process.py", line 118, in start
+    assert not _current_process._config.get('daemon'), \
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: daemonic processes are not allowed to have children
+
+FAILED gf2^9_mult voqc
+Traceback (most recent call last):
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 194, in job
+    native=all(x.name in ("h", "x", "rz", "cx") for x in g), check=check(g0, g, n),
+                                                                   ~~~~~^^^^^^^^^^
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 98, in check
+    r = qcec_check(to_qiskit(a, n), to_qiskit(b, n))
+  File "/home/arnav/Downloads/ankur/experiments/gen_large.py", line 76, in qcec_check
+    p.start()
+    ~~~~~~~^^
+  File "/usr/lib/python3.14/multiprocessing/process.py", line 118, in start
+    assert not _current_process._config.get('daemon'), \
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: daemonic processes are not allowed to have children
+
+FAILED csum_mux_9 queso5
+Traceback (most recent call last):
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 194, in job
+    native=all(x.name in ("h", "x", "rz", "cx") for x in g), check=check(g0, g, n),
+                                                                   ~~~~~^^^^^^^^^^
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 98, in check
+    r = qcec_check(to_qiskit(a, n), to_qiskit(b, n))
+  File "/home/arnav/Downloads/ankur/experiments/gen_large.py", line 76, in qcec_check
+    p.start()
+    ~~~~~~~^^
+  File "/usr/lib/python3.14/multiprocessing/process.py", line 118, in start
+    assert not _current_process._config.get('daemon'), \
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: daemonic processes are not allowed to have children
+
+FAILED gf2^10_mult qiskit
+Traceback (most recent call last):
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 194, in job
+    native=all(x.name in ("h", "x", "rz", "cx") for x in g), check=check(g0, g, n),
+                                                                   ~~~~~^^^^^^^^^^
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 98, in check
+    r = qcec_check(to_qiskit(a, n), to_qiskit(b, n))
+  File "/home/arnav/Downloads/ankur/experiments/gen_large.py", line 76, in qcec_check
+    p.start()
+    ~~~~~~~^^
+  File "/usr/lib/python3.14/multiprocessing/process.py", line 118, in start
+    assert not _current_process._config.get('daemon'), \
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: daemonic processes are not allowed to have children
+
+FAILED gf2^10_mult tket
+Traceback (most recent call last):
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 194, in job
+    native=all(x.name in ("h", "x", "rz", "cx") for x in g), check=check(g0, g, n),
+                                                                   ~~~~~^^^^^^^^^^
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 98, in check
+    r = qcec_check(to_qiskit(a, n), to_qiskit(b, n))
+  File "/home/arnav/Downloads/ankur/experiments/gen_large.py", line 76, in qcec_check
+    p.start()
+    ~~~~~~~^^
+  File "/usr/lib/python3.14/multiprocessing/process.py", line 118, in start
+    assert not _current_process._config.get('daemon'), \
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: daemonic processes are not allowed to have children
+
+FAILED gf2^8_mult queso5
+Traceback (most recent call last):
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 194, in job
+    native=all(x.name in ("h", "x", "rz", "cx") for x in g), check=check(g0, g, n),
+                                                                   ~~~~~^^^^^^^^^^
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 98, in check
+    r = qcec_check(to_qiskit(a, n), to_qiskit(b, n))
+  File "/home/arnav/Downloads/ankur/experiments/gen_large.py", line 76, in qcec_check
+    p.start()
+    ~~~~~~~^^
+  File "/usr/lib/python3.14/multiprocessing/process.py", line 118, in start
+    assert not _current_process._config.get('daemon'), \
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: daemonic processes are not allowed to have children
+
+FAILED gf2^10_mult voqc
+Traceback (most recent call last):
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 194, in job
+    native=all(x.name in ("h", "x", "rz", "cx") for x in g), check=check(g0, g, n),
+                                                                   ~~~~~^^^^^^^^^^
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 98, in check
+    r = qcec_check(to_qiskit(a, n), to_qiskit(b, n))
+  File "/home/arnav/Downloads/ankur/experiments/gen_large.py", line 76, in qcec_check
+    p.start()
+    ~~~~~~~^^
+  File "/usr/lib/python3.14/multiprocessing/process.py", line 118, in start
+    assert not _current_process._config.get('daemon'), \
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: daemonic processes are not allowed to have children
+
+FAILED gf2^10_mult ours
+Traceback (most recent call last):
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 194, in job
+    native=all(x.name in ("h", "x", "rz", "cx") for x in g), check=check(g0, g, n),
+                                                                   ~~~~~^^^^^^^^^^
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 98, in check
+    r = qcec_check(to_qiskit(a, n), to_qiskit(b, n))
+  File "/home/arnav/Downloads/ankur/experiments/gen_large.py", line 76, in qcec_check
+    p.start()
+    ~~~~~~~^^
+  File "/usr/lib/python3.14/multiprocessing/process.py", line 118, in start
+    assert not _current_process._config.get('daemon'), \
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: daemonic processes are not allowed to have children
+
+{"name": "mod5_4", "tool": "qiskit", "total": 62, "cx": 28, "seconds": 0.5539244130486622}
+{"name": "mod5_4", "tool": "tket", "total": 62, "cx": 28, "seconds": 0.534615202981513}
+{"name": "mod5_4", "tool": "ours", "total": 35, "cx": 19, "seconds": 1.2178474190295674}
+{"name": "mod5_4", "tool": "voqc", "total": 56, "cx": 28, "seconds": 0.004127022984903306}
+FAILED gf2^9_mult queso5
+Traceback (most recent call last):
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 194, in job
+    native=all(x.name in ("h", "x", "rz", "cx") for x in g), check=check(g0, g, n),
+                                                                   ~~~~~^^^^^^^^^^
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 98, in check
+    r = qcec_check(to_qiskit(a, n), to_qiskit(b, n))
+  File "/home/arnav/Downloads/ankur/experiments/gen_large.py", line 76, in qcec_check
+    p.start()
+    ~~~~~~~^^
+  File "/usr/lib/python3.14/multiprocessing/process.py", line 118, in start
+    assert not _current_process._config.get('daemon'), \
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: daemonic processes are not allowed to have children
+
+{"name": "mod_mult_55", "tool": "qiskit", "total": 117, "cx": 48, "seconds": 0.6550802790443413}
+{"name": "mod_mult_55", "tool": "tket", "total": 168, "cx": 48, "seconds": 1.1182998479926027}
+{"name": "mod_mult_55", "tool": "ours", "total": 113, "cx": 48, "seconds": 3.361981763970107}
+{"name": "mod_mult_55", "tool": "voqc", "total": 90, "cx": 40, "seconds": 0.007692101993598044}
+FAILED gf2^10_mult queso5
+Traceback (most recent call last):
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 194, in job
+    native=all(x.name in ("h", "x", "rz", "cx") for x in g), check=check(g0, g, n),
+                                                                   ~~~~~^^^^^^^^^^
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 98, in check
+    r = qcec_check(to_qiskit(a, n), to_qiskit(b, n))
+  File "/home/arnav/Downloads/ankur/experiments/gen_large.py", line 76, in qcec_check
+    p.start()
+    ~~~~~~~^^
+  File "/usr/lib/python3.14/multiprocessing/process.py", line 118, in start
+    assert not _current_process._config.get('daemon'), \
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: daemonic processes are not allowed to have children
+
+{"name": "mod_red_21", "tool": "qiskit", "total": 261, "cx": 105, "seconds": 0.6170305219711736}
+{"name": "mod_red_21", "tool": "tket", "total": 410, "cx": 105, "seconds": 1.4343318110331893}
+{"name": "mod_red_21", "tool": "ours", "total": 246, "cx": 101, "seconds": 12.33203789795516}
+{"name": "mod_red_21", "tool": "voqc", "total": 214, "cx": 93, "seconds": 0.012772040034178644}
+{"name": "mod5_4", "tool": "queso5", "total": 58, "cx": 27, "seconds": 303.6309955100296}
+FAILED qcla_adder_10 qiskit
+Traceback (most recent call last):
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 194, in job
+    native=all(x.name in ("h", "x", "rz", "cx") for x in g), check=check(g0, g, n),
+                                                                   ~~~~~^^^^^^^^^^
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 98, in check
+    r = qcec_check(to_qiskit(a, n), to_qiskit(b, n))
+  File "/home/arnav/Downloads/ankur/experiments/gen_large.py", line 76, in qcec_check
+    p.start()
+    ~~~~~~~^^
+  File "/usr/lib/python3.14/multiprocessing/process.py", line 118, in start
+    assert not _current_process._config.get('daemon'), \
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: daemonic processes are not allowed to have children
+
+FAILED qcla_adder_10 tket
+Traceback (most recent call last):
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 194, in job
+    native=all(x.name in ("h", "x", "rz", "cx") for x in g), check=check(g0, g, n),
+                                                                   ~~~~~^^^^^^^^^^
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 98, in check
+    r = qcec_check(to_qiskit(a, n), to_qiskit(b, n))
+  File "/home/arnav/Downloads/ankur/experiments/gen_large.py", line 76, in qcec_check
+    p.start()
+    ~~~~~~~^^
+  File "/usr/lib/python3.14/multiprocessing/process.py", line 118, in start
+    assert not _current_process._config.get('daemon'), \
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: daemonic processes are not allowed to have children
+
+FAILED qcla_adder_10 ours
+Traceback (most recent call last):
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 194, in job
+    native=all(x.name in ("h", "x", "rz", "cx") for x in g), check=check(g0, g, n),
+                                                                   ~~~~~^^^^^^^^^^
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 98, in check
+    r = qcec_check(to_qiskit(a, n), to_qiskit(b, n))
+  File "/home/arnav/Downloads/ankur/experiments/gen_large.py", line 76, in qcec_check
+    p.start()
+    ~~~~~~~^^
+  File "/usr/lib/python3.14/multiprocessing/process.py", line 118, in start
+    assert not _current_process._config.get('daemon'), \
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: daemonic processes are not allowed to have children
+
+FAILED qcla_adder_10 voqc
+Traceback (most recent call last):
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 194, in job
+    native=all(x.name in ("h", "x", "rz", "cx") for x in g), check=check(g0, g, n),
+                                                                   ~~~~~^^^^^^^^^^
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 98, in check
+    r = qcec_check(to_qiskit(a, n), to_qiskit(b, n))
+  File "/home/arnav/Downloads/ankur/experiments/gen_large.py", line 76, in qcec_check
+    p.start()
+    ~~~~~~~^^
+  File "/usr/lib/python3.14/multiprocessing/process.py", line 118, in start
+    assert not _current_process._config.get('daemon'), \
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: daemonic processes are not allowed to have children
+
+{"name": "mod_mult_55", "tool": "queso5", "total": 108, "cx": 46, "seconds": 303.7797577889869}
+FAILED qcla_com_7 qiskit
+Traceback (most recent call last):
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 194, in job
+    native=all(x.name in ("h", "x", "rz", "cx") for x in g), check=check(g0, g, n),
+                                                                   ~~~~~^^^^^^^^^^
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 98, in check
+    r = qcec_check(to_qiskit(a, n), to_qiskit(b, n))
+  File "/home/arnav/Downloads/ankur/experiments/gen_large.py", line 76, in qcec_check
+    p.start()
+    ~~~~~~~^^
+  File "/usr/lib/python3.14/multiprocessing/process.py", line 118, in start
+    assert not _current_process._config.get('daemon'), \
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: daemonic processes are not allowed to have children
+
+FAILED qcla_com_7 tket
+Traceback (most recent call last):
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 194, in job
+    native=all(x.name in ("h", "x", "rz", "cx") for x in g), check=check(g0, g, n),
+                                                                   ~~~~~^^^^^^^^^^
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 98, in check
+    r = qcec_check(to_qiskit(a, n), to_qiskit(b, n))
+  File "/home/arnav/Downloads/ankur/experiments/gen_large.py", line 76, in qcec_check
+    p.start()
+    ~~~~~~~^^
+  File "/usr/lib/python3.14/multiprocessing/process.py", line 118, in start
+    assert not _current_process._config.get('daemon'), \
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: daemonic processes are not allowed to have children
+
+FAILED qcla_com_7 ours
+Traceback (most recent call last):
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 194, in job
+    native=all(x.name in ("h", "x", "rz", "cx") for x in g), check=check(g0, g, n),
+                                                                   ~~~~~^^^^^^^^^^
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 98, in check
+    r = qcec_check(to_qiskit(a, n), to_qiskit(b, n))
+  File "/home/arnav/Downloads/ankur/experiments/gen_large.py", line 76, in qcec_check
+    p.start()
+    ~~~~~~~^^
+  File "/usr/lib/python3.14/multiprocessing/process.py", line 118, in start
+    assert not _current_process._config.get('daemon'), \
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: daemonic processes are not allowed to have children
+
+FAILED qcla_com_7 voqc
+Traceback (most recent call last):
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 194, in job
+    native=all(x.name in ("h", "x", "rz", "cx") for x in g), check=check(g0, g, n),
+                                                                   ~~~~~^^^^^^^^^^
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 98, in check
+    r = qcec_check(to_qiskit(a, n), to_qiskit(b, n))
+  File "/home/arnav/Downloads/ankur/experiments/gen_large.py", line 76, in qcec_check
+    p.start()
+    ~~~~~~~^^
+  File "/usr/lib/python3.14/multiprocessing/process.py", line 118, in start
+    assert not _current_process._config.get('daemon'), \
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: daemonic processes are not allowed to have children
+
+FAILED qcla_adder_10 queso5
+Traceback (most recent call last):
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 194, in job
+    native=all(x.name in ("h", "x", "rz", "cx") for x in g), check=check(g0, g, n),
+                                                                   ~~~~~^^^^^^^^^^
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 98, in check
+    r = qcec_check(to_qiskit(a, n), to_qiskit(b, n))
+  File "/home/arnav/Downloads/ankur/experiments/gen_large.py", line 76, in qcec_check
+    p.start()
+    ~~~~~~~^^
+  File "/usr/lib/python3.14/multiprocessing/process.py", line 118, in start
+    assert not _current_process._config.get('daemon'), \
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: daemonic processes are not allowed to have children
+
+FAILED qcla_mod_7 qiskit
+Traceback (most recent call last):
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 194, in job
+    native=all(x.name in ("h", "x", "rz", "cx") for x in g), check=check(g0, g, n),
+                                                                   ~~~~~^^^^^^^^^^
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 98, in check
+    r = qcec_check(to_qiskit(a, n), to_qiskit(b, n))
+  File "/home/arnav/Downloads/ankur/experiments/gen_large.py", line 76, in qcec_check
+    p.start()
+    ~~~~~~~^^
+  File "/usr/lib/python3.14/multiprocessing/process.py", line 118, in start
+    assert not _current_process._config.get('daemon'), \
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: daemonic processes are not allowed to have children
+
+FAILED qcla_mod_7 tket
+Traceback (most recent call last):
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 194, in job
+    native=all(x.name in ("h", "x", "rz", "cx") for x in g), check=check(g0, g, n),
+                                                                   ~~~~~^^^^^^^^^^
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 98, in check
+    r = qcec_check(to_qiskit(a, n), to_qiskit(b, n))
+  File "/home/arnav/Downloads/ankur/experiments/gen_large.py", line 76, in qcec_check
+    p.start()
+    ~~~~~~~^^
+  File "/usr/lib/python3.14/multiprocessing/process.py", line 118, in start
+    assert not _current_process._config.get('daemon'), \
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: daemonic processes are not allowed to have children
+
+FAILED qcla_com_7 queso5
+Traceback (most recent call last):
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 194, in job
+    native=all(x.name in ("h", "x", "rz", "cx") for x in g), check=check(g0, g, n),
+                                                                   ~~~~~^^^^^^^^^^
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 98, in check
+    r = qcec_check(to_qiskit(a, n), to_qiskit(b, n))
+  File "/home/arnav/Downloads/ankur/experiments/gen_large.py", line 76, in qcec_check
+    p.start()
+    ~~~~~~~^^
+  File "/usr/lib/python3.14/multiprocessing/process.py", line 118, in start
+    assert not _current_process._config.get('daemon'), \
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: daemonic processes are not allowed to have children
+
+FAILED qcla_mod_7 voqc
+Traceback (most recent call last):
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 194, in job
+    native=all(x.name in ("h", "x", "rz", "cx") for x in g), check=check(g0, g, n),
+                                                                   ~~~~~^^^^^^^^^^
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 98, in check
+    r = qcec_check(to_qiskit(a, n), to_qiskit(b, n))
+  File "/home/arnav/Downloads/ankur/experiments/gen_large.py", line 76, in qcec_check
+    p.start()
+    ~~~~~~~^^
+  File "/usr/lib/python3.14/multiprocessing/process.py", line 118, in start
+    assert not _current_process._config.get('daemon'), \
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: daemonic processes are not allowed to have children
+
+FAILED qcla_mod_7 ours
+Traceback (most recent call last):
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 194, in job
+    native=all(x.name in ("h", "x", "rz", "cx") for x in g), check=check(g0, g, n),
+                                                                   ~~~~~^^^^^^^^^^
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 98, in check
+    r = _qcec_check(to_qiskit(a, n), to_qiskit(b, n))  # in-process: pool workers may not start child processes
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/arnav/Downloads/ankur/experiments/gen_large.py", line 76, in qcec_check
+    p.start()
+    ~~~~~~~^^
+  File "/usr/lib/python3.14/multiprocessing/process.py", line 118, in start
+    assert not _current_process._config.get('daemon'), \
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: daemonic processes are not allowed to have children
+
+{"name": "rc_adder_6", "tool": "qiskit", "total": 262, "cx": 81, "seconds": 0.8418488659663126}
+{"name": "rc_adder_6", "tool": "tket", "total": 254, "cx": 81, "seconds": 2.4473330139881}
+{"name": "rc_adder_6", "tool": "ours", "total": 182, "cx": 81, "seconds": 7.510037918982562}
+{"name": "rc_adder_6", "tool": "voqc", "total": 157, "cx": 73, "seconds": 0.00824538996675983}
+{"name": "mod_red_21", "tool": "queso5", "total": 251, "cx": 105, "seconds": 472.27122113195946}
+{"name": "tof_3", "tool": "qiskit", "total": 44, "cx": 18, "seconds": 0.6272168279974721}
+{"name": "tof_3", "tool": "tket", "total": 44, "cx": 18, "seconds": 0.5623305810149759}
+{"name": "tof_3", "tool": "ours", "total": 44, "cx": 18, "seconds": 2.0312890380155295}
+{"name": "tof_3", "tool": "voqc", "total": 40, "cx": 16, "seconds": 0.00397538096876815}
+FAILED qcla_mod_7 queso5
+Traceback (most recent call last):
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 194, in job
+    native=all(x.name in ("h", "x", "rz", "cx") for x in g), check=check(g0, g, n),
+                                                                   ~~~~~^^^^^^^^^^
+  File "/home/arnav/Downloads/ankur/experiments/gen_logical.py", line 98, in check
+    r = _qcec_check(to_qiskit(a, n), to_qiskit(b, n))  # in-process: pool workers may not start child processes
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/arnav/Downloads/ankur/experiments/gen_large.py", line 76, in qcec_check
+    p.start()
+    ~~~~~~~^^
+  File "/usr/lib/python3.14/multiprocessing/process.py", line 118, in start
+    assert not _current_process._config.get('daemon'), \
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: daemonic processes are not allowed to have children
+
+{"name": "tof_4", "tool": "qiskit", "total": 73, "cx": 30, "seconds": 1.8472263099974953}
+{"name": "tof_4", "tool": "tket", "total": 73, "cx": 30, "seconds": 1.5746840850333683}
+{"name": "tof_4", "tool": "ours", "total": 73, "cx": 30, "seconds": 7.58912167896051}
+{"name": "tof_4", "tool": "voqc", "total": 65, "cx": 26, "seconds": 0.017514190985821187}
+{"name": "rc_adder_6", "tool": "queso5", "total": 182, "cx": 81, "seconds": 304.5665521269548}
+{"name": "tof_5", "tool": "qiskit", "total": 102, "cx": 42, "seconds": 0.9285761650535278}
+{"name": "tof_5", "tool": "tket", "total": 102, "cx": 42, "seconds": 1.1634838790050708}
+{"name": "tof_5", "tool": "ours", "total": 102, "cx": 42, "seconds": 5.047613412956707}
+{"name": "tof_5", "tool": "voqc", "total": 90, "cx": 36, "seconds": 0.00938215700443834}
+{"name": "tof_3", "tool": "queso5", "total": 40, "cx": 16, "seconds": 304.0506635280326}
+{"name": "tof_10", "tool": "qiskit", "total": 247, "cx": 102, "seconds": 0.9056906169862486}
+{"name": "tof_10", "tool": "tket", "total": 247, "cx": 102, "seconds": 1.5735110220266506}
+{"name": "tof_10", "tool": "ours", "total": 249, "cx": 102, "seconds": 9.389621847018134}
+{"name": "tof_10", "tool": "voqc", "total": 215, "cx": 86, "seconds": 0.02369535295292735}
+{"name": "tof_4", "tool": "queso5", "total": 65, "cx": 26, "seconds": 305.2766578280134}
+{"name": "vbe_adder_3", "tool": "qiskit", "total": 168, "cx": 62, "seconds": 1.4683889920124784}
+{"name": "vbe_adder_3", "tool": "tket", "total": 181, "cx": 62, "seconds": 1.9400095120072365}
+{"name": "vbe_adder_3", "tool": "ours", "total": 97, "cx": 45, "seconds": 6.51161048898939}
+{"name": "vbe_adder_3", "tool": "voqc", "total": 101, "cx": 54, "seconds": 0.016404504014644772}
+{"name": "tof_5", "tool": "queso5", "total": 90, "cx": 36, "seconds": 304.7671637960011}
+{"name": "tof_10", "tool": "queso5", "total": 238, "cx": 102, "seconds": 308.14350371604087}
+{"name": "vbe_adder_3", "tool": "queso5", "total": 95, "cx": 44, "seconds": 304.98192423}
+<frozen site>:107: RuntimeWarning: Unexpected value in sys.prefix, expected /home/arnav/Downloads/ankur/.venv, got /home/arnav/Downloads/ankur/experiments/../.venv
+<frozen site>:107: RuntimeWarning: Unexpected value in sys.exec_prefix, expected /home/arnav/Downloads/ankur/.venv, got /home/arnav/Downloads/ankur/experiments/../.venv
+tools: ['qiskit', 'tket', 'ours', 'voqc', 'queso5'] skipped: []
+98 rows done, 35 to run
+{"name": "csum_mux_9", "tool": "qiskit", "total": 420, "cx": 168, "seconds": 0.4664044930250384}
+{"name": "csum_mux_9", "tool": "voqc", "total": 308, "cx": 168, "seconds": 0.012091525015421212}
+{"name": "csum_mux_9", "tool": "tket", "total": 537, "cx": 168, "seconds": 1.8512157989898697}
+{"name": "gf2^8_mult", "tool": "qiskit", "total": 819, "cx": 405, "seconds": 0.6141103660338558}
+{"name": "gf2^8_mult", "tool": "tket", "total": 823, "cx": 405, "seconds": 4.506258818961214}
+{"name": "csum_mux_9", "tool": "ours", "total": 387, "cx": 167, "seconds": 9.592984745977446}
+{"name": "gf2^8_mult", "tool": "voqc", "total": 705, "cx": 405, "seconds": 0.08468937303405255}
+{"name": "csum_mux_9", "tool": "queso5", "total": 406, "cx": 168, "seconds": 303.87857049895683}
+{"name": "gf2^9_mult", "tool": "qiskit", "total": 1023, "cx": 494, "seconds": 0.6698793389950879}
+{"name": "gf2^9_mult", "tool": "tket", "total": 1031, "cx": 494, "seconds": 5.72362848703051}
+{"name": "gf2^8_mult", "tool": "queso5", "total": 851, "cx": 405, "seconds": 305.67368012899533}
+{"name": "gf2^9_mult", "tool": "voqc", "total": 885, "cx": 494, "seconds": 0.14045035903109238}
+{"name": "gf2^9_mult", "tool": "ours", "total": 976, "cx": 494, "seconds": 46.99126824300038}
+{"name": "gf2^10_mult", "tool": "qiskit", "total": 1257, "cx": 609, "seconds": 0.55073534703115}
+{"name": "gf2^10_mult", "tool": "tket", "total": 1263, "cx": 609, "seconds": 6.217947166995145}
+{"name": "gf2^8_mult", "tool": "ours", "total": 807, "cx": 402, "seconds": 26.70197765302146}
+{"name": "gf2^10_mult", "tool": "voqc", "total": 1084, "cx": 609, "seconds": 0.22443376400042325}
+{"name": "gf2^9_mult", "tool": "queso5", "total": 1049, "cx": 494, "seconds": 308.49467691697646}
+{"name": "qcla_adder_10", "tool": "qiskit", "total": 565, "cx": 213, "seconds": 0.6538236439810134}
+{"name": "qcla_adder_10", "tool": "tket", "total": 558, "cx": 213, "seconds": 2.650350358977448}
+{"name": "qcla_adder_10", "tool": "ours", "total": 471, "cx": 205, "seconds": 10.683962089999113}
+{"name": "qcla_adder_10", "tool": "voqc", "total": 438, "cx": 207, "seconds": 0.03127009799936786}
+{"name": "gf2^10_mult", "tool": "ours", "total": 1214, "cx": 610, "seconds": 35.99620894994587}
+{"name": "qcla_com_7", "tool": "qiskit", "total": 456, "cx": 174, "seconds": 0.5629934550379403}
+{"name": "qcla_com_7", "tool": "tket", "total": 568, "cx": 174, "seconds": 2.092142076988239}
+{"name": "qcla_com_7", "tool": "ours", "total": 390, "cx": 162, "seconds": 14.180151798005681}
+{"name": "qcla_com_7", "tool": "voqc", "total": 314, "cx": 148, "seconds": 0.021468071965500712}
+{"name": "gf2^10_mult", "tool": "queso5", "total": 1292, "cx": 609, "seconds": 308.67539816198405}
+{"name": "qcla_mod_7", "tool": "qiskit", "total": 895, "cx": 366, "seconds": 0.5697424659738317}
+{"name": "qcla_mod_7", "tool": "tket", "total": 950, "cx": 366, "seconds": 4.341205707984045}
+{"name": "qcla_mod_7", "tool": "ours", "total": 807, "cx": 354, "seconds": 38.26155656098854}
+{"name": "qcla_mod_7", "tool": "voqc", "total": 723, "cx": 338, "seconds": 0.09567548200720921}
+{"name": "qcla_adder_10", "tool": "queso5", "total": 488, "cx": 224, "seconds": 308.39464497898007}
+{"name": "qcla_com_7", "tool": "queso5", "total": 386, "cx": 160, "seconds": 304.3375469640014}
+{"name": "qcla_mod_7", "tool": "queso5", "total": 810, "cx": 358, "seconds": 305.50502902799053}
+<frozen site>:107: RuntimeWarning: Unexpected value in sys.prefix, expected /home/arnav/Downloads/ankur/.venv, got /home/arnav/Downloads/ankur/experiments/../.venv
+<frozen site>:107: RuntimeWarning: Unexpected value in sys.exec_prefix, expected /home/arnav/Downloads/ankur/.venv, got /home/arnav/Downloads/ankur/experiments/../.venv
+tools: ['qiskit', 'tket', 'ours', 'voqc', 'voqc_ours', 'queso5'] skipped: []
+133 rows done, 26 to run
+{"name": "barenco_tof_3", "tool": "voqc_ours", "total": 38, "cx": 16, "seconds": 2.0102292700321414}
+{"name": "barenco_tof_4", "tool": "voqc_ours", "total": 73, "cx": 34, "seconds": 2.6783465900225565}
+{"name": "barenco_tof_5", "tool": "voqc_ours", "total": 108, "cx": 52, "seconds": 2.638461120019201}
+{"name": "adder_8", "tool": "voqc_ours", "total": 611, "cx": 293, "seconds": 20.76752235100139}
+{"name": "csla_mux_3", "tool": "voqc_ours", "total": 149, "cx": 69, "seconds": 7.566894812975079}
+{"name": "barenco_tof_10", "tool": "voqc_ours", "total": 284, "cx": 143, "seconds": 6.914118823013268}
+{"name": "csum_mux_9", "tool": "voqc_ours", "total": 241, "cx": 123, "seconds": 4.984566599014215}
+{"name": "gf2^4_mult", "tool": "voqc_ours", "total": 188, "cx": 99, "seconds": 6.814403529046103}
+{"name": "gf2^5_mult", "tool": "voqc_ours", "total": 291, "cx": 154, "seconds": 5.8225580070284195}
+{"name": "gf2^7_mult", "tool": "voqc_ours", "total": 549, "cx": 300, "seconds": 15.203078167047352}
+{"name": "gf2^6_mult", "tool": "voqc_ours", "total": 410, "cx": 221, "seconds": 9.538369060959667}
+{"name": "gf2^8_mult", "tool": "voqc_ours", "total": 702, "cx": 402, "seconds": 15.563707517983858}
+{"name": "gf2^9_mult", "tool": "voqc_ours", "total": 885, "cx": 494, "seconds": 12.868237525981385}
+{"name": "mod5_4", "tool": "voqc_ours", "total": 31, "cx": 17, "seconds": 3.3026539129787125}
+{"name": "mod_mult_55", "tool": "voqc_ours", "total": 90, "cx": 40, "seconds": 3.188296751002781}
+{"name": "mod_red_21", "tool": "voqc_ours", "total": 187, "cx": 81, "seconds": 5.759223143977579}
+{"name": "qcla_adder_10", "tool": "voqc_ours", "total": 406, "cx": 182, "seconds": 11.657170502003282}
+{"name": "gf2^10_mult", "tool": "voqc_ours", "total": 1083, "cx": 609, "seconds": 15.699025568028446}
+{"name": "qcla_com_7", "tool": "voqc_ours", "total": 275, "cx": 126, "seconds": 7.091119960998185}
+{"name": "rc_adder_6", "tool": "voqc_ours", "total": 140, "cx": 71, "seconds": 4.129154021968134}
+{"name": "tof_3", "tool": "voqc_ours", "total": 35, "cx": 14, "seconds": 2.8817453180090524}
+{"name": "tof_4", "tool": "voqc_ours", "total": 55, "cx": 22, "seconds": 2.941288086993154}
+{"name": "tof_5", "tool": "voqc_ours", "total": 75, "cx": 30, "seconds": 3.1159429430263117}
+{"name": "qcla_mod_7", "tool": "voqc_ours", "total": 672, "cx": 304, "seconds": 15.691902169026434}
+{"name": "vbe_adder_3", "tool": "voqc_ours", "total": 80, "cx": 41, "seconds": 2.0375544729758985}
+{"name": "tof_10", "tool": "voqc_ours", "total": 175, "cx": 70, "seconds": 2.982743138971273}
