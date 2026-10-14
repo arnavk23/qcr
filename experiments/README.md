@@ -41,8 +41,8 @@ only through the three `make_*` scripts. Run everything from this directory afte
 | script | writes |
 |---|---|
 | `make_assets.py` | `figures/repro_*.png`, `results/tex/*.tex`, `manuscripts/reproduction/numbers.tex` |
-| `make_ext_assets.py` | `manuscripts/extension/figs/ext_*.png`, `manuscripts/extension/ext_numbers.tex` |
-| `make_general_assets.py` | `manuscripts/extension/gen_*.tex`, `manuscripts/extension/figs/gen_*` |
+| `make_ext_assets.py` | `manuscripts/paper/figs/ext_*.png`, `manuscripts/paper/ext_numbers.tex` |
+| `make_general_assets.py` | `manuscripts/paper/gen_*.tex`, `manuscripts/paper/figs/gen_*` |
 | `fig_notes.py` | explanatory figures for the study notes |
 
 `common.py` holds shared paths and cached databases.

@@ -133,15 +133,12 @@ discusses limitations, and the appendices summarise the reproduction of~\cite{ro
 
 \paragraph{Local and database-driven optimisation.} Peephole optimisation with databases of optimal small circuits goes
 back to reversible logic~\cite{prasad2006,golubitsky2012}. For quantum circuits, rule-based optimisers with continuous
-parameters~\cite{nam2018}, exact template matching~\cite{iten2022} and Clifford templates with symbolic Pauli
-gates~\cite{bravyi2021templates} are standard. Superoptimisers enumerate small circuits, collect equivalent pairs and
-use them as rewrite rules~\cite{quartz,queso}, and Quarl learns where to apply them~\cite{quarl}. The method
-of~\cite{rosenhahn2025} is the database variant in its simplest form. Our optimiser keeps its simplicity but changes what
-is stored (canonical orbit keys), where it is applied (DAG-convex windows on coupled qubits) and what it optimises
-(calibrated cost). Resynthesis compilers take the opposite route. BQSKit~\cite{bqskit} partitions a circuit into blocks
-of a few qubits and synthesises each block anew by numerical optimisation over parametrised circuit
-templates~\cite{qsearch,leap}. It is not limited to stored rewrites, but its blocks are equal to their originals only up
-to a numerical tolerance.
+parameters~\cite{nam2018,voqc}, template matching~\cite{iten2022,bravyi2021templates} and superoptimisers that turn
+enumerated equivalent pairs into rewrite rules~\cite{quartz,queso,quarl} are standard. The method of~\cite{rosenhahn2025}
+is the database variant in its simplest form. We keep its simplicity but change what is stored (canonical orbit keys),
+where it is applied (DAG-convex windows on coupled qubits) and what it optimises (calibrated cost). Resynthesis compilers
+such as BQSKit~\cite{bqskit} instead re-synthesise blocks of a few qubits numerically~\cite{qsearch,leap}, which is not
+limited to stored rewrites but equal to the original only up to a tolerance.
 
 \paragraph{Optimal synthesis and exact ground truth.} Clifford circuits are described exactly by stabiliser
 tableaux~\cite{aaronson2004}, have a complete set of relations~\cite{selinger2015}, and optimal circuits are known up to
@@ -195,7 +192,7 @@ of~\cite{rosenhahn2025} are a stochastic enumeration of convex windows, which we
 A replacement $u\to v$ of a window is \emph{sound} if it does not change what the program computes. What counts as
 ``the same'' depends on context, and each notion we need is the orbit relation of a group acting on $U(2^k)$
 (Table~\ref{tab:actions}). The database is keyed by a hash of a canonical orbit representative, so a single lookup
-finds every member of the orbit. Exact equivalence including global phase is the only notion that remains sound when the
+finds every member of the orbit (proofs of this and the following sections are in Appendix~\ref{app:proofs}). Exact equivalence including global phase is the only notion that remains sound when the
 circuit is later controlled. Equality up to phase, used in~\cite{rosenhahn2025}, is kept only for comparison.
 
 \begin{table}[t]
@@ -224,23 +221,11 @@ not change the output distribution.
 output distribution.
 Any sequence of such rewrites, each applied to the current circuit, preserves the output distribution.
 \end{proposition}
-\begin{proof}
-By convexity, $S$ can be moved to the front (a) or the back (b) of the circuit without changing $\ev(u)$. In case (a) the
-input factorises as $|0_W\rangle\otimes|0_{\bar W}\rangle$, so the final state changes only by the global phase
-$e^{i\varphi}$. In case (b) the final state changes from $|\psi\rangle$ to $(D\otimes I)|\psi\rangle$, and
-$|\langle x|(D\otimes I)|\psi\rangle|^2=|\langle x|\psi\rangle|^2$ for every basis state $x$. Since the invariant is the
-output distribution of the current circuit, soundness composes.
-\end{proof}
 
 \begin{proposition}[Approximate rewriting]\label{prop:approx}
 If rewrites $i=1,\dots,m$ replace windows $S_i$ by $v_i$ with $\op{\ev(v_i)-\ev(S_i)}\le\varepsilon_i$ in operator norm,
 the final circuit $u'$ satisfies $\op{\ev(u')-\ev(u)}\le\sum_i\varepsilon_i$ (including global phase in exact mode).
 \end{proposition}
-\begin{proof}
-Telescope over the intermediate circuits $u=u_0,u_1,\dots,u_m=u'$. Each step changes one factor of a product of
-unitaries, $\ev(u_i)=A(\ev(v_i))B$ and $\ev(u_{i-1})=A(\ev(S_i))B$ with unitary $A,B$, and
-$\op{A(X-Y)B}=\op{X-Y}$.
-\end{proof}
 
 The optimiser reports $\sum_i\varepsilon_i$ with every circuit. Equivalence tests are linear in the operator error
 (a norm distance), not quadratic as in fidelity tests $|\mathrm{tr}(U^\dagger V)|/2^k\approx1$, which accept errors
@@ -256,24 +241,6 @@ and $\CZ$ (23 local gates), and the ion grid has $\RX,\RY,\RZ$ on the same angle
 minimised over the topology's automorphisms, and keep matrices only below the deepest level. Every hit is re-checked
 numerically before use. Table~\ref{tab:dbs} lists the databases and Fig.~\ref{fig:growth}(b) shows their growth. They are
 not told that any group is finite or Clifford.
-
-\begin{table}[t]
-\caption{Hashed databases of the general optimiser (classes per equivalence notion).}\label{tab:dbs}
-\begin{tabular*}{\textwidth}{@{\extracolsep\fill}lllrrr}
-\toprule
-device & topology & notion & depth & classes & build time\\
-\midrule
-Heron & line & up to phase & 9 & 6.31M & 6 min\\
-Heron & line & output-aware & 10 & 0.34M & $<$1 min\\
-Heron & line & input-aware & 14 & 1.41M & $<$1 min\\
-ion & triangle & up to phase & 6 & 28.4M & 38 min\\
-ion & triangle & output-aware & 6 & 7.36M & 27 min\\
-ion & triangle & input-aware & 7 & 31.6M & 23 min\\
-paper ion ($\pm\frac\pi2$) & triangle & up to phase & 9 & 2.93M & 7 min\\
-paper IBM ($\pm\frac\pi2$) & triangle & up to phase & 10 & 1.84M & 2 min\\
-\botrule
-\end{tabular*}
-\end{table}
 
 \paragraph{Lookup beyond the radius.} If a window $U$ is not in the database, meet in the middle tries $U=RA$ with $A$ in a
 stored ball of radius~2, which extends the reach by two gates at the cost of one lookup per element of that ball.
@@ -297,42 +264,31 @@ $\RXX(\theta\pm\pi)\,\RX(\pi)^{\otimes2}=\pm i\,\RXX(\theta)$. The output is equ
 The optimiser never returns a circuit of higher cost than its input.
 
 \paragraph{Replay certificates.} Statevector checks end at about 25 qubits, and on routed 23-qubit adders the
-decision-diagram equivalence checker of~\cite{qcec} returned no result. The optimiser can therefore log every
-accepted step, namely the swaps of each shuffle and each window replacement. An independent checker replays the log from
-the input. It accepts a swap if the two gates commute as matrices on their joint wires. It accepts a replacement if every
-gate it moves past commutes with the window gates it passes, and if the new word equals the old window times a scalar $c$
-on the window's wires. Finally it checks that the replayed circuit differs from the output only by the phase repair, that
-each repaired patch equals its original times a scalar on its own wires, and that the product of all scalars is~1. The
-checker uses none of the optimiser's databases, canonical forms or commutation rules. Every matrix it builds acts on a
-few qubits, so its cost grows with the number of steps, not with the circuit width. An accepted certificate
-proves equality including global phase, up to the floating-point residuals of the local checks, which are summed and
-reported. Logging does not change the optimiser's output.
+decision-diagram checker of~\cite{qcec} returned no result. The optimiser therefore logs every accepted step, the swaps
+of each shuffle and each window replacement, and an independent checker replays the log from the input. A swap is
+accepted if the two gates commute as matrices on their joint wires, and a replacement if every gate it moves past commutes
+with the window and the new word equals the old window times a scalar on the window's wires. Finally each phase-repair
+patch must equal its original times a scalar, and all scalars must multiply to~1. The checker shares no databases,
+canonical forms or rules with the optimiser and builds only few-qubit matrices, so its cost grows with the number of steps,
+not with the width. An accepted certificate proves equality including global phase up to the summed floating-point
+residuals of the local checks. Logging does not change the output.
 
 %=====================================================================
 \section{Layout-aware rewriting}\label{sec:layout}
 
-Local rewriting cannot change \emph{where} a circuit runs, yet on calibrated hardware placement matters as much as gate
-count. On IBM Heron the ESP of the same circuit can differ by an order of magnitude between placements. We add the
-missing degree of freedom in two ways.
-
-\paragraph{Relocation.} Let $u$ be a routed circuit on physical qubits $A$, and let $H$ be its interaction graph (the
-coupled pairs used by its two-qubit gates). A \emph{relocation} is an injective map $\phi:A\to[n]$ such that every edge of
-$H$ is mapped to an edge of the coupling graph, i.e.\ a subgraph monomorphism $H\hookrightarrow E$. Relabelling all gates
-by $\phi$ gives a native circuit $u^\phi$ whose output distribution is that of $u$ with the measured qubits relabelled, so
-relocation is exact. Among all relocations we choose one minimising
+Local rewriting cannot change \emph{where} a circuit runs, yet on calibrated hardware the ESP of the same circuit can
+differ by an order of magnitude between placements. A \emph{relocation} of a routed circuit $u$ on physical qubits $A$ is
+a subgraph monomorphism $\phi$ of its interaction graph into the coupling graph. Relabelling all gates by $\phi$ gives a
+native circuit $u^\phi$ with the same output distribution up to relabelling the measured qubits, so relocation is exact.
+We choose $\phi$ to minimise
 \begin{equation}\label{eq:reloc}
 c_{\rm cal}(u^\phi)\;+\;\sum_{q\in A}-\log\bigl(1-e_{\rm meas}(\phi(q))\bigr),
 \end{equation}
-where the second term accounts for reading out every active qubit. Monomorphisms are enumerated with the VF2
-algorithm~\cite{cordella2004}, anchored at every physical qubit (the highest-degree node of $H$ is pinned to it and the
-search is restricted to the ball of radius equal to its eccentricity), so the search covers the whole chip while each
-anchored search stays small. Isolated qubits are placed greedily. Since the identity is a candidate, relocation never
-increases~\eqref{eq:reloc}.
-
-\paragraph{Joint layout selection.} The layout that is best before optimisation need not be best after it, because
-rewriting removes different gates in different placements. We therefore generate candidate layouts (Qiskit level-3
-transpilations with several seeds, with and without the calibrated target), optimise each candidate, relocate it, run a
-final sweep, and keep the candidate of lowest~\eqref{eq:reloc}.
+enumerating monomorphisms with VF2~\cite{cordella2004} anchored at every physical qubit, so the whole chip is searched while
+each search stays small. The identity is a candidate, so relocation never increases~\eqref{eq:reloc}. Since the layout that
+is best before optimisation need not be best after it, \emph{joint layout selection} optimises and relocates several
+candidate layouts (Qiskit level-3 transpilations with several seeds, with and without the calibrated target) and keeps the
+cheapest.
 
 %=====================================================================
 \section{Theory for discrete gate sets}\label{sec:theory}
@@ -345,33 +301,17 @@ $\Gamma_{\rm ibm}=\{\RX,\RZ(\pm\frac\pi2)\}\cup\{\CZ\}$, modulo global phase.
 $\langle\Gamma\rangle=\Cl_n/U(1)$, of order $2^{n^2+2n}\prod_{j=1}^n(4^j-1)$. The compute graph of depth $d$
 in~\cite{rosenhahn2025} is the ball $B(d)$ of $\Cay(\Cl_n/U(1),\Gamma)$.
 \end{lemma}
-\begin{proof}
-All generators map Paulis to Paulis under conjugation, so $\langle\Gamma\rangle\subseteq\Cl_n/U(1)$. The single-qubit
-generators generate $\Cl_1$, and an entangling Clifford together with $\Cl_1^{\otimes n}$ generates
-$\Cl_n$~\cite{selinger2015}. Enumeration confirms the orders 24, 11,520 and 92,897,280 for $n=1,2,3$, and all 22 entries
-of Table~I of~\cite{rosenhahn2025}.
-\end{proof}
 
 \subsection{When local optimality is global}
 
 \begin{theorem}[Exactness threshold]\label{thm:exact}
 Let $G$ be finite with diameter $D$. If $w\ge D+1$ and $r\ge D$, every $(w,r)$-reduced word is a geodesic.
 \end{theorem}
-\begin{proof}
-Let $u$ be $(w,r)$-reduced. If $|u|>D$, its first $D+1$ letters form a factor $f$ with $|\ev(f)|\le D\le r$ and
-$|f|=D+1\le w$, so the rule $f\to v$ with $v$ a geodesic of $\ev(f)$ applies, a contradiction. Hence $|u|\le D<w$, so $u$
-is itself a factor of length at most $w$. If it were not geodesic, the rule $u\to v$ with $v$ a geodesic of $\ev(u)$ and
-$|v|\le D\le r$ would apply.
-\end{proof}
 
 \begin{proposition}[Cascade]\label{prop:cascade}
 Let $\ell(w)$ be the length of the fixed point of an exhaustive $\mathcal R(w,\infty)$ optimiser. If the current length is
 at most $w$ at any time, the next sweep returns a geodesic.
 \end{proposition}
-\begin{proof}
-If the whole word is a factor of length at most $w$ and the database has unbounded radius, the word itself is replaced by
-a geodesic of its value.
-\end{proof}
 
 The relevant window is therefore the self-consistent $w^\star=\min\{w:\ell(w)\le w\}$. We measure
 $w^\star\approx\WStarIon$ (ion) and $\WStarIbm$ (IBM-style) for 3-qubit circuits, well below $D+1=\DiamIonThreePlusOne$
@@ -385,14 +325,6 @@ window is exact. Ground truth must then come from bounded search (Section~\ref{s
 an even number of gates. (b) For $n\ge3$ and any generating set of $\Cl_n/U(1)$ that contains, for each qubit, a gate
 squaring to $X_i$ and one squaring to $Z_i$, the Cayley graph is not bipartite.
 \end{theorem}
-\begin{proof}
-A Cayley graph is bipartite if and only if there is a homomorphism $\chi:G\to\{\pm1\}$ with $\chi(\Gamma)=-1$. (a) For
-$n=1$, $\Cl_1/U(1)\cong S_4$ and every $\pm\frac\pi2$ rotation is a 4-cycle, so $\chi=\mathrm{sgn}$ works. For $n=2$ we
-verify bipartiteness exhaustively (no edge joins two elements at equal distance from the identity). (b) The Pauli group
-$\mathcal P_n$ is normal with quotient $\Sp(2n,2)$. If $\chi$ existed, then $\chi(X_i)=\chi(\gamma)^2=1$ and likewise
-$\chi(Z_i)=1$, so $\chi$ would factor through $\Sp(2n,2)$, which is simple and non-abelian for $n\ge3$. Hence
-$\chi\equiv1$, contradicting $\chi(\Gamma)=-1$.
-\end{proof}
 
 Exhaustive search for $n=3$ gives a shortest odd relation of length $\rho=\OddRelIon$ (ion) and $\OddRelIbm$ (IBM-style),
 so a parity change needs a window of at least $\lceil\rho/2\rceil=\OddRelIonHalf$ gates. Fig.~4 of~\cite{rosenhahn2025},
@@ -406,12 +338,6 @@ largest modulus of a non-trivial eigenvalue of the random-walk operator (excludi
 $\|\mu_L-\pi_L\|_{TV}\le\frac12\sqrt{|G|}\,\beta^L$, where $\pi_L$ is uniform on $G$ (or on the parity class of $L$).
 Consequently $\mathbb E|\ev(u)|\to\frac1{|G|}\sum_d d\,|S(d)|$.
 \end{theorem}
-\begin{proof}
-This is the standard $L^2$ bound for random walks on groups~\cite{diaconis1988}. By Cauchy--Schwarz,
-$\|\mu_L-\pi_L\|_{TV}\le\frac12\sqrt{|G|}\,\|\mu_L-\pi_L\|_2$, and the walk operator contracts the component orthogonal to
-the constants (and, in the bipartite case, to the sign character) by at least $\beta$ per step. The limit of the expected
-length follows because $|\ev(u)|$ is bounded by $D$.
-\end{proof}
 
 For $n=2$ (ion) $\beta=\BetaTwo$. A random length-300 benchmark therefore has a constant optimal answer, \MeanIonThree\
 gates for 3-qubit ion-trap circuits and \MeanIbmThree\ for IBM-style ones, independent of the input length beyond
@@ -423,10 +349,6 @@ $L\approx\MixLThree$.
 For $g$ uniform in $G$, $\Pr[|g|\le d]\le|B(d)|/|G|$, and $|S(a+b)|\le|S(a)||S(b)|$. Exact sphere sizes up to depth $k$
 therefore give lower bounds on $\mathbb E|g|$ that hold for every optimiser.
 \end{proposition}
-\begin{proof}
-A geodesic of length $a+b$ splits into geodesics of lengths $a$ and $b$, so $S(a+b)\subseteq S(a)S(b)$. Bounding $|B(d)|$
-from above by these products gives $\Pr[|g|\le d]$ from above, and $\mathbb E|g|=\sum_{d\ge0}\Pr[|g|>d]$.
-\end{proof}
 
 At $n=4$ ($|G|=1.21\times10^{13}$), exact spheres to depth 6 give $\mathbb E|g|\ge\LBFourIon$ (ion) and
 $\ge\LBFourIbm$ (IBM-style).
@@ -463,13 +385,6 @@ database. The Clifford+T sphere sizes keep growing roughly tenfold per level, si
 general optimiser's databases (keys per depth, one curve per device, topology and equivalence notion).}\label{fig:growth}
 \end{figure}
 
-\begin{figure}[t]
-\centering\includegraphics[width=\textwidth]{figs/fig_compute_graph.pdf}
-\caption{Compute graphs of comparable size, nodes coloured by exact distance from the identity. (a) Two-qubit Clifford
-group, ion alphabet, depth $\le3$. Many short words coincide, and the ball closes up. (b) Two-qubit Clifford+T, depth
-$\le2$. Almost every word is new.}\label{fig:cg}
-\end{figure}
-
 For $n=3$, the numbers of elements that need exactly $0,1,\dots,6$ entangling gates are 13\,824, 373\,248, 5\,971\,968,
 38\,486\,016, 42\,052\,608, 5\,971\,968 and 27\,648 (mean \TwoQThreeMean). By local equivalence of $\RXX(\frac\pi2)$ and $\CZ$
 the distribution is the same for both alphabets.
@@ -490,13 +405,6 @@ Then $P(U)$ has entries in $\Dw$, and $V=e^{i\varphi}U$ for some $\varphi$ if an
 position and $P(V)=P(U)$. Writing $P(U)=M'/\sqrt2^{\,k'}$ with the smallest $k'\ge0$ for which $M'$ has entries in $\Zw$
 makes the pair $(M',k')$ unique.
 \end{lemma}
-\begin{proof}
-$\Dw$ is closed under products and conjugation ($\overline\omega=-\omega^3$). If $V=e^{i\varphi}U$, the zero patterns agree
-and $V_{ij}\overline{V_p}=U_{ij}\overline{U_p}$. Conversely, $P(V)=P(U)$ at $(i,j)=p$ gives $|V_p|=|U_p|$, so
-$V_p=e^{i\varphi}U_p$ for some $\varphi$, and then $V_{ij}=U_{ij}\overline{U_p}/\overline{V_p}=e^{i\varphi}U_{ij}$.
-For uniqueness, note that $1,\omega,\omega^2,\omega^3$ is a $\mathbb Z$-basis of $\Zw$ and that the smallest common exponent is unique.
-Divisibility by $\sqrt2=\omega-\omega^3$ is decided exactly by checking that all coefficients of $M\sqrt2$ are even.
-\end{proof}
 
 We hash the canonical forms into 64-bit keys, grow a breadth-first ball of radius \CTRadius\ (\CTBallSize\ elements with
 level sizes \CTBallLevels, built in \CTBallMinutes\ minutes) and certify afterwards that the number of distinct keys equals the
@@ -552,12 +460,6 @@ T5, IBM-style, 15q & \TFiveLThree & \TFivePaper & \TFiveCliff & \TFiveGen & -- &
 \end{table}
 
 \begin{figure}[t]
-\centering\includegraphics[width=\textwidth]{figs/fig_paper_flow.pdf}
-\caption{From the input to the output of every method on the original benchmarks. Grey lines are individual circuits (paired by seed) and
-the black line is the mean. The dashed line at 4 qubits is the certified lower bound of Proposition~\ref{prop:count}.}\label{fig:paperflow}
-\end{figure}
-
-\begin{figure}[t]
 \centering\includegraphics[width=\textwidth]{figs/fig_example_paper.pdf}
 \caption{A random 3-qubit word over the ion alphabet (a), the output of the original method (b) and the proven optimum from the
 exact Cayley table (c).}\label{fig:expaper}
@@ -582,12 +484,6 @@ emits continuous angles, a different alphabet, and is shown for reference) with 
 the fraction certified). (b) Planted circuits, a core of the stated length hidden in 60 or 120 gates.}\label{fig:ct}
 \end{figure}
 
-\begin{figure}[t]
-\centering\includegraphics[width=\textwidth]{figs/fig_example_cliffordt.pdf}
-\caption{A planted Clifford+T circuit (a) and the output of the general optimiser (b), which equals the certified optimum.}
-\label{fig:exct}
-\end{figure}
-
 Fig.~\ref{fig:ct} summarises \CTRandN\ random words and \CTPlantN\ planted circuits. On random words with certified optimum
 the general optimiser is optimal on \CTRandGenAtOpt\ circuits and the original method on \CTRandOrigAtOpt. On planted
 circuits (mean input \CTPlantInputMean\ gates, mean optimum \CTPlantOptMean) the general optimiser reaches the certified
@@ -597,15 +493,12 @@ outputs of the two discrete methods are exactly equal to their inputs in $\Dw$. 
 
 \subsection{Algorithms on hardware models}
 
-\paragraph{Suite.} We use \HwCircuits\ circuits of 2--\HeronMaxQubits\ qubits and up to \HeronMaxInput\ gates, taken from Nam/VOQC
-arithmetic~\cite{nam2018}, QASMBench~\cite{qasmbench} (circuits with classical feed-forward and four that do not parse are
-skipped), QFT, QAOA, Heisenberg Trotter steps, EfficientSU2, a Steane encoder and random circuits. Each is compiled by
-Qiskit at levels 1 and 3 with the same coupling map and seed. TKET \texttt{FullPeepholeOptimise} runs on the level-1
-output followed by a rebase. BQSKit~\cite{bqskit} (version 1.2.1) compiles the same level-1 output at optimisation levels 2
-and 3 with its default settings, restricted to the active qubits. On Heron its model is the coupling graph induced on these
-qubits, so it may re-place and re-route the circuit within them, and its output is mapped back to the physical qubits so
-that ESP uses the same calibration. BQSKit resynthesises blocks of up to three qubits numerically to a tolerance of
-$10^{-8}$ per block, so its outputs are approximate.
+\paragraph{Suite.} We use \HwCircuits\ circuits of 2--\HeronMaxQubits\ qubits and up to \HeronMaxInput\ gates from Nam/VOQC
+arithmetic~\cite{nam2018}, QASMBench~\cite{qasmbench} (without feed-forward), QFT, QAOA, Heisenberg Trotter steps,
+EfficientSU2, a Steane encoder and random circuits, each compiled by Qiskit at levels 1 and 3 with the same coupling map
+and seed. TKET \texttt{FullPeepholeOptimise} and BQSKit~\cite{bqskit} (version 1.2.1, levels 2 and 3, default settings,
+restricted to the active qubits and mapped back to them) start from the level-1 output. BQSKit resynthesises blocks of up
+to three qubits numerically to a tolerance of $10^{-8}$ per block, so its outputs are approximate.
 
 \begin{table}[t]
 \caption{Relative to Qiskit level 3 (\HwCompared\ circuits per device). Count columns are ratios of summed counts, and ESP
@@ -622,66 +515,37 @@ pipeline & 2q & all & ESP && 2q & all & ESP\\
 \end{tabular*}
 \end{table}
 
-\begin{figure}[t]
-\centering\includegraphics[width=\textwidth]{figs/fig_hw_flow.pdf}
-\caption{Hardware suite, from the level-1 compilation to every pipeline's output. The top panel shows total gates per circuit (sorted by
-the level-3 count), the bottom panel the sums over all circuits, with two-qubit gates as solid bars.}\label{fig:hwflow}
-\end{figure}
+Table~\ref{tab:hw} shows the results (per circuit in Fig.~\ref{fig:hwflow}, an example in Fig.~\ref{fig:exheron}).
+\emph{Stacked on Qiskit level 3, the optimiser never adds a two-qubit gate} (\HeronFromLThreeBetter\ circuits better and
+\HeronFromLThreeEqual\ equal on Heron, \IonFromLThreeBetter\ and \IonFromLThreeEqual\ on ions) and never lowers ESP. On Heron
+it removes 13\% of all gates, most of them $\SX/X$ pulses and virtual $\RZ$. On ions the total can rise
+(\IonFromLThreeTotalUp\ circuits) because the calibrated objective trades pulses for virtual $\RZ$ gates, so the guarantee
+is on the objective and the two-qubit count, not on the total. Starting from level 1 the optimiser beats level 3 on Heron
+in all gates and, for seed 0, in ESP, where a factor $\times$\HeronEspLOneOverLThree\ is due to Qiskit's level-1 layout
+alone. State/measurement-aware rewriting gives the largest reductions but turns \HeronStateEmpty\ (Heron) and
+\IonStateEmpty\ (ion) reversible circuits with a fixed output into the empty circuit, so it should be read per circuit.
+The median run time is \HeronMedianSec\,s (Heron) and \IonMedianSec\,s (ion) per circuit.
 
-\begin{figure}[t]
-\centering\includegraphics[width=\textwidth]{figs/fig_example_heron.pdf}
-\caption{Two QASMBench circuits after Qiskit level 3 on IBM Heron (a, c) and after \qcr\ (b, d). The outputs are equal
-including global phase.}\label{fig:exheron}
-\end{figure}
+\paragraph{Robustness.} Repeating the suite with \SeedN\ transpiler seeds (\SeedOutputs\ verified outputs) changes little on
+top of level~3. On Heron the ratios are $\times$\SeedHeronLThreeTwoqMean\ $\pm$ \SeedHeronLThreeTwoqSd\ in two-qubit gates and
+$\times$\SeedHeronLThreeAllMean\ $\pm$ \SeedHeronLThreeAllSd\ in all gates. From level~1 the gate ratio is equally stable
+($\times$\SeedHeronLOneAllMean\ $\pm$ \SeedHeronLOneAllSd), but the ESP gain ranges from $\times$\SeedHeronLOneEspMin\ to
+$\times$\SeedHeronLOneEspMax\ (mean $\times$\SeedHeronLOneEspMean), as it follows the layout Qiskit picks. Seed 0 gives the
+largest value. Different optimiser seeds change the total by at most \SeedHeronOptSpread.
 
-Table~\ref{tab:hw} and Fig.~\ref{fig:hwflow} show the results. \emph{Stacked on Qiskit level 3, the optimiser never adds a
-two-qubit gate} (\HeronFromLThreeBetter\ circuits better and \HeronFromLThreeEqual\ equal on Heron,
-\IonFromLThreeBetter\ better and \IonFromLThreeEqual\ equal on ions) and never lowers ESP. On Heron it removes 13\% of
-all gates. $\SX/X$ pulses fall from
-\HeronLThreePulse\ to \HeronFromLThreePulse, virtual $\RZ$ from \HeronLThreeRz\ to \HeronFromLThreeRz, and $\CZ$ from
-\HeronLThreeTwoq\ to \HeronFromLThreeTwoq\ (Fig.~\ref{fig:exheron}). On ions the total can rise (\IonFromLThreeTotalUp\
-circuits) because the calibrated objective trades $\RX/\RY$ pulses for virtual $\RZ$ gates (pulses \IonLThreePulse\ $\to$
-\IonFromLThreePulse). The guarantee is on the objective and the two-qubit count, not on the total. Starting from level 1 (seed 0, see the robustness check below),
-the optimiser beats level 3 on Heron in all gates and ESP. Part of the ESP gain ($\times$\HeronEspLOneOverLThree) is due to
-Qiskit's level-1 layout already being better than its level-3 layout, our rewriting adding $\times$\HeronEspOursOverLOne.
-State/measurement-aware rewriting gives the largest reductions, but \HeronStateEmpty\ (Heron) and \IonStateEmpty\ (ion)
-circuits are reversible logic on $|0\cdots0\rangle$ with a fixed output and reduce to the empty circuit, so this mode should
-be read per circuit. Median run time is \HeronMedianSec\,s (Heron) and \IonMedianSec\,s (ion) per circuit in single-threaded
-Python.
+\paragraph{Comparison with resynthesis.} BQSKit is the strongest baseline. From the same level-1 input its level~3 uses
+fewer two-qubit gates than our optimiser on \HeronBqFewerTwoqThanOursLOne\ of \HwCompared\ Heron circuits (more on
+\HeronBqMoreTwoqThanOursLOne) at about the same ESP, but \HeronBqAllOverOurs\ times as many gates as ours stacked on level~3,
+because numerical resynthesis leaves many single-qubit rotations. On ions it has fewer gates than every pipeline except our
+state-aware mode. Its outputs differ from the input by a median of $\HeronBqMedErr$ (maximum $\HeronBqMaxErr$), while ours
+are exact. It takes \HeronBqMeanSec\,s per Heron circuit on eight workers, ours \HeronOursMeanSec\,s on one.
 
-\paragraph{Robustness.} All numbers above use transpiler seed 0. We repeated the suite with \SeedN\ transpiler seeds for
-Qiskit and our optimiser (\SeedOutputs\ verified outputs). Stacked on level~3 the result barely moves. Over the seeds the
-Heron ratios are $\times$\SeedHeronLThreeTwoqMean\ $\pm$ \SeedHeronLThreeTwoqSd\ in two-qubit gates and
-$\times$\SeedHeronLThreeAllMean\ $\pm$ \SeedHeronLThreeAllSd\ in all gates, with ESP between $\times$\SeedHeronLThreeEspMin\ and
-$\times$\SeedHeronLThreeEspMax. Starting from level~1, the all-gate ratio is equally stable
-($\times$\SeedHeronLOneAllMean\ $\pm$ \SeedHeronLOneAllSd), but the ESP gain is not. It ranges from
-$\times$\SeedHeronLOneEspMin\ to $\times$\SeedHeronLOneEspMax\ (mean $\times$\SeedHeronLOneEspMean), because it depends on the
-layout Qiskit picks at level~1. Seed 0 happens to give the largest value. The optimiser's own randomness, the commuting
-shuffles, changes the total gate count by at most \SeedHeronOptSpread\ over five optimiser seeds on a fixed input.
-
-\paragraph{Comparison with resynthesis.} BQSKit is the strongest baseline in the suite (Table~\ref{tab:hw}). Given the same
-level-1 input, its level~3 uses fewer two-qubit gates than our exact optimiser on \HeronBqFewerTwoqThanOursLOne\ of
-\HwCompared\ Heron circuits and more on \HeronBqMoreTwoqThanOursLOne, and the two reach about the same ESP. Its outputs
-contain \HeronBqAllOverOurs\ times as many gates as ours stacked on level 3, because numerical resynthesis leaves many
-single-qubit rotations. On ions BQSKit level 3 has fewer gates than every pipeline except our state-aware mode, the same ESP as ours from level 1,
-and a higher ESP than ours stacked on level 3 on \IonBqHigherEspThanOursLThree\ of \HwCompared\ circuits. Its outputs differ from the input by a median of $\HeronBqMedErr$
-(maximum $\HeronBqMaxErr$ on Heron and $\IonBqMaxErr$ on ions, measured as $\min_\varphi\op{(e^{i\varphi}U-V)\psi}$ on random
-states), while ours are exact including global phase. BQSKit level 3 takes \HeronBqMeanSec\,s per Heron circuit on average
-with eight worker processes, against \HeronOursMeanSec\,s for our single-threaded optimiser.
-
-\paragraph{Exact rewriting on resynthesised circuits.} The two approaches combine. We ran BQSKit level~3 again on the
-level-1 input and applied our exact optimiser (calibrated cost) to its output. BQSKit is not deterministic across runs, so
-this input has \HeronStackInTwoq\ two-qubit and \HeronStackInAll\ total gates on Heron, close to but not identical with the
-run in Table~\ref{tab:hw}, and each stacked output is compared with its own input. Our optimiser never adds a two-qubit gate
-and never lowers ESP. On Heron it removes two-qubit gates on \HeronStackTwoqDown\ of \HwCompared\ circuits
-($\times$\HeronStackTwoqOverBq), reduces the total from \HeronStackInAll\ to \HeronStackAll\ gates
-($\times$\HeronStackAllOverBq) and raises ESP on \HeronStackEspUp\ circuits ($\times$\HeronStackEspOverBq, geometric mean).
-Most of the saving is in the single-qubit rotations that numerical resynthesis leaves behind. On ions BQSKit's output is
-already lean, and the gain is small ($\times$\IonStackAllOverBq\ in total gates, ESP higher on \IonStackEspUp\ circuits but
-unchanged in the geometric mean). The total count rises on \HeronStackTotalUp\ Heron and \IonStackTotalUp\ ion circuits,
-where the calibrated cost trades cheap gates for fewer expensive ones. Each rewrite is exact, and the stacked outputs
-differ from BQSKit's by at most $\HeronStackMaxErr$ (floating-point rounding). The extra step takes \HeronStackMeanSec\,s
-per Heron circuit and \IonStackMeanSec\,s per ion circuit on average.
+\paragraph{Exact rewriting on resynthesised circuits.} The two approaches combine. On the output of a separate BQSKit
+level-3 run (\HeronStackInTwoq\ two-qubit and \HeronStackInAll\ total gates on Heron, as BQSKit is not deterministic) our
+optimiser never adds a two-qubit gate or lowers ESP, reduces the total to \HeronStackAll\ ($\times$\HeronStackAllOverBq) and
+raises ESP on \HeronStackEspUp\ circuits ($\times$\HeronStackEspOverBq). The saving is mostly in leftover single-qubit
+rotations. On ions BQSKit's output is already lean ($\times$\IonStackAllOverBq). The extra step takes \HeronStackMeanSec\,s
+per Heron circuit.
 
 \subsection{What each component contributes}\label{sec:ablation}
 
@@ -715,14 +579,12 @@ variant & saved & 2q & ESP && all & 2q && all & 2q\\
 
 \subsection{Large circuits}\label{sec:large}
 
-\paragraph{Suite.} To test scale we ran the same pipelines on \LargeCircuits\ circuits of the Nam/VOQC
-suite~\cite{nam2018} with 14 to 100 qubits. They are decomposed to $\{U3, CX\}$ and compiled by Qiskit for the 133-qubit
-Heron model and for an all-to-all ion model with one ion per qubit. Our optimiser runs in the calibrated exact mode as before.
-The product-formula circuits pf1 and pf2 (\LargeHeronPfN\ per device) are excluded from the comparison for the reason given
-for Table~\ref{tab:hw}, as Qiskit level~3 removes almost all of their gates. Circuits with a certificate awaiting
-re-check (\LargeHeronPending\ on Heron, \LargeIonPending\ on ions, see below) are excluded as well. This leaves
-\LargeHeronN\ Heron circuits of \LargeHeronMinQubits--\LargeHeronMaxQubits\ qubits with up to \LargeHeronMaxInput\ input
-gates, and \LargeIonN\ ion circuits with up to \LargeIonMaxInput\ input gates. BQSKit levels~2 and~3 ran on the \LargeBqCircuits\ smallest circuits of the suite before the run was stopped for time.
+\paragraph{Suite.} To test scale we ran the same pipelines on \LargeCircuits\ Nam/VOQC circuits~\cite{nam2018} of 14 to 100
+qubits, compiled by Qiskit for the 133-qubit Heron model and for an all-to-all ion model. The product-formula circuits
+(\LargeHeronPfN\ per device) are excluded as in Table~\ref{tab:hw}, and so are circuits with an unchecked certificate
+(\LargeHeronPending\ on Heron, \LargeIonPending\ on ions, see below). This leaves \LargeHeronN\ Heron circuits of
+\LargeHeronMinQubits--\LargeHeronMaxQubits\ qubits and \LargeIonN\ ion circuits, with up to \LargeHeronMaxInput\ input gates.
+BQSKit ran on the \LargeBqCircuits\ smallest circuits before the run was stopped for time.
 
 \begin{table}[t]
 \caption{Large circuits, relative to Qiskit level 3 (\LargeHeronN\ Heron and \LargeIonN\ ion circuits of up to
@@ -740,55 +602,34 @@ pipeline & 2q & all & ESP && 2q & all & ESP\\
 \end{tabular*}
 \end{table}
 
-\paragraph{Results.} For gate counts, Table~\ref{tab:large} shows the picture of the 60-circuit suite with larger margins on Heron. Stacked
-on Qiskit level~3, the optimiser removes \LargeHeronFromLThreeAllSaved\ of all gates and \LargeHeronFromLThreeTwoqSaved\ of the
-two-qubit gates on Heron. It removes two-qubit gates on \LargeHeronFromLThreeBetter\ of \LargeHeronN\ circuits, never adds
-one, and raises ESP by $\times$\LargeHeronFromLThreeEsp\ in the geometric mean over the circuits of
-Table~\ref{tab:large} (median $\times$\LargeHeronFromLThreeEspMedAll\ over all \LargeHeronN). On ions it never adds a two-qubit gate and
-never lowers ESP. The total never rises on Heron and rises on \LargeIonFromLThreeTotalUp\ ion circuits, again
-because the calibrated cost trades pulses for virtual $\RZ$ gates. Starting from level~1, the optimiser ends with fewer gates
-than level~3 on all \LargeHeronN\ Heron circuits but with more two-qubit gates on \LargeHeronLOneTwoqMore\ of them, since
-level~3 routing and resynthesis find entangling structure that local rewriting does not reach. Its ESP from level~1
-is also lower, because at this scale the level-3 layout and routing matter more than the gates rewriting removes. On ions, where no routing is
-needed, it uses fewer two-qubit gates than level~3 on \LargeIonLOneTwoqFewer\ circuits and more on none.
+\paragraph{Results.} For gate counts Table~\ref{tab:large} repeats the picture of the 60-circuit suite with larger margins on
+Heron. Stacked on Qiskit level~3 the optimiser removes \LargeHeronFromLThreeAllSaved\ of all gates and
+\LargeHeronFromLThreeTwoqSaved\ of the two-qubit gates, removes two-qubit gates on \LargeHeronFromLThreeBetter\ of
+\LargeHeronN\ circuits, never adds one, and raises ESP by $\times$\LargeHeronFromLThreeEsp\ (median
+$\times$\LargeHeronFromLThreeEspMedAll\ over all \LargeHeronN). On ions it never adds a two-qubit gate or lowers ESP. From
+level~1 it ends with fewer gates than level~3 on every Heron circuit but with more two-qubit gates on
+\LargeHeronLOneTwoqMore\ of them and a lower ESP, since at this scale level-3 layout and routing matter more than the gates
+rewriting removes. On ions, where no routing is needed, it uses fewer two-qubit gates than level~3 on
+\LargeIonLOneTwoqFewer\ circuits and more on none.
 
-\paragraph{Resynthesis at scale.} On the \LargeBqHeronN\ comparable circuits of up to \LargeBqHeronMaxQubits\ qubits that
-BQSKit completed, the picture of the 60-circuit suite holds. Relative to Qiskit level~3 on Heron, BQSKit level~3 reaches
-\LargeHeronBqLThreeTwoq\ two-qubit gates, fewer than ours stacked on level~3 (\LargeHeronOursLThreeTwoq), but
-\LargeHeronBqLThreeAll\ in all gates, against \LargeHeronOursLThreeAll\ for ours. On ions BQSKit level~3 reaches
-\LargeIonBqLThreeTwoq\ and \LargeIonBqLThreeAll, and ours from level~1 \LargeIonOursLOneTwoq\ and
-\LargeIonOursLOneAll. BQSKit's outputs on at most 24 qubits differ from their inputs by up to $\LargeBqMaxErr$. Its
-\LargeBqUnchecked\ outputs on more qubits could not be checked, as the decision-diagram checker returned no result.
+\paragraph{Resynthesis at scale.} On the \LargeBqHeronN\ comparable circuits BQSKit completed (up to \LargeBqHeronMaxQubits\
+qubits), BQSKit level~3 reaches \LargeHeronBqLThreeTwoq\ two-qubit gates on Heron, fewer than ours on level~3
+(\LargeHeronOursLThreeTwoq), but \LargeHeronBqLThreeAll\ in all gates against \LargeHeronOursLThreeAll. On ions it reaches
+\LargeIonBqLThreeTwoq\ and \LargeIonBqLThreeAll, ours from level~1 \LargeIonOursLOneTwoq\ and \LargeIonOursLOneAll. Its
+outputs on at most 24 qubits differ from their inputs by up to $\LargeBqMaxErr$, and its \LargeBqUnchecked\ wider outputs
+could not be checked.
 
-\paragraph{Certificates.} Of the \LargeOutputs\ outputs of our optimiser, \LargeCertOk\ have an accepted replay certificate.
-A certificate replays up to \LargeCertMaxSteps\ steps in at most \LargeCertMaxSec\,s (median \LargeCertMedSec\,s), against up
-to hours for the optimisation itself, and the summed residuals stay below $\LargeCertMaxErr$. The first version of the
-checker rejected \LargeCertFirstRejected\ certificates. It checked the whole phase repair as one block, which exceeds its
-limit of 12 wires when the repair touches two distant parts of a wide circuit. The current checker treats each repaired
-patch separately. The optimiser is deterministic. Rerunning it on the \LargeCertRechecked\ cases re-checked so far reproduced
-their outputs exactly, and the current checker accepted both. The remaining \LargeCertPending\ were not re-checked and are excluded from Table~\ref{tab:large}.
+\paragraph{Certificates.} \LargeCertOk\ of the \LargeOutputs\ outputs of our optimiser have an accepted replay certificate,
+each replaying up to \LargeCertMaxSteps\ steps in at most \LargeCertMaxSec\,s with summed residuals below $\LargeCertMaxErr$.
+A first version of the checker rejected \LargeCertFirstRejected\ certificates because it checked the whole phase repair as
+one block, beyond its limit of 12 wires. The current checker checks each repaired patch separately and accepted the
+\LargeCertRechecked\ re-run cases (the optimiser is deterministic). The other \LargeCertPending\ were not re-checked.
 
-\paragraph{Run time.} Table~\ref{tab:runtime} lists median run times. Qiskit needs well under a second per circuit and
-TKET a few seconds. On the 60-circuit suite our optimiser takes seconds per circuit, like BQSKit level~2 and less than
-BQSKit level~3, which used eight worker processes. On the large suite it takes minutes and up to \LargeHeronMaxSec\,h per
-circuit, in single-threaded Python with several circuits sharing eight cores. BQSKit level~3 needs a median of
-several minutes per Heron circuit on the part of the suite it completed. Run time is the main cost of the method at this
-scale. Sweeps over non-overlapping windows could run in parallel, which we have not done.
+\paragraph{Run time.} Table~\ref{tab:runtime} lists median run times. On the 60-circuit suite our optimiser takes seconds per
+circuit, between BQSKit levels~2 and~3 (eight workers), while Qiskit needs well under a second. On the large suite it takes
+minutes and up to \LargeHeronMaxSec\,h per circuit in single-threaded Python. This is the main cost of the method at scale,
+and sweeps over non-overlapping windows could run in parallel.
 
-\begin{table}[t]
-\caption{Median run time per circuit in seconds. Qiskit level~1 was not timed on the 60-circuit suite. On the large suite
-BQSKit covers only the \LargeBqCircuits\ smallest circuits, so its medians are over easier circuits than the others, and
-part of its run shared the machine with an unrelated job. The large suite ran several circuits at a time on eight
-cores.}\label{tab:runtime}
-\begin{tabular*}{\textwidth}{@{\extracolsep\fill}lcc c cc}
-\toprule
-& \multicolumn{2}{c}{60-circuit suite} && \multicolumn{2}{c}{large suite}\\\cmidrule{2-3}\cmidrule{5-6}
-pipeline & Heron & ion && Heron & ion\\
-\midrule
-\RuntimeRows
-\botrule
-\end{tabular*}
-\end{table}
 
 \subsection{Logical-level comparison}\label{sec:logical}
 
@@ -831,17 +672,6 @@ qubits (Table~\ref{tab:tvd}). The calibrated cost is at least as good as the alt
 level 3 on \HeronCalBeatsLThree/\HeronTvdCircuits\ Heron circuits. The two-qubit-weighted count is a good proxy where no
 calibration exists.
 
-\begin{table}[t]
-\caption{Mean noisy-simulation TVD by objective (lower is better).}\label{tab:tvd}
-\begin{tabular*}{\textwidth}{@{\extracolsep\fill}lccccc}
-\toprule
-& Qiskit L1 & Qiskit L3 & ours, count & ours, $w2$ & ours, calibrated\\
-\midrule
-Heron & \HeronTvdLOne & \HeronTvdLThree & \HeronTvdCount & \HeronTvdWTwo & \HeronTvdCal\\
-ion & \IonTvdLOne & \IonTvdLThree & \IonTvdCount & \IonTvdWTwo & \IonTvdCal\\
-\botrule
-\end{tabular*}
-\end{table}
 
 \subsection{Layout-aware rewriting}
 
@@ -849,13 +679,6 @@ On Heron we compare, for the \LayN\ circuits of the suite, Qiskit level 3 withou
 (noise-aware layout), our optimiser on each, relocation after the noise-aware pipeline, and joint layout selection over
 four seeds $\times$ two modes. ESP here includes readout errors of the active qubits, and the noisy simulation now includes
 readout errors as well.
-
-\begin{figure}[t]
-\centering\includegraphics[width=\textwidth]{figs/fig_layout.pdf}
-\caption{Layout-aware rewriting on IBM Heron (FakeTorino). (a) ESP including readout relative to Qiskit's noise-aware level 3
-(dots are circuits, bars and labels are geometric means). (b) Exact noisy TVD including readout for circuits with at most eight
-active qubits (labels: means).}\label{fig:layout}
-\end{figure}
 
 \begin{table}[t]
 \caption{Layout-aware rewriting on IBM Heron. ESP includes readout, and ratios are geometric means relative to Qiskit's
@@ -888,34 +711,27 @@ method leaves most of the possible reduction unrealised because its database rad
 general optimiser with large hashed databases and convex windows closes almost all of the gap without exploiting the group
 structure, also on certified Clifford+T circuits.
 
-\paragraph{Exact rewriting and resynthesis.} The BQSKit comparison separates two kinds of optimisation. Resynthesis finds
-cheaper entangling structure inside blocks that no stored rewrite reaches, and is therefore better at reducing two-qubit
-gates. Exact local rewriting is faster, keeps the unitary including global phase, and removes more single-qubit gates.
-The two are complementary rather than competing. Applied after resynthesis, exact rewriting keeps BQSKit's
-two-qubit savings and removes a further \HeronStackAllSaved\ of the gates on Heron at no cost in accuracy. The same holds
-for VOQC's global rotation merging at the logical level, where exact local rewriting on top gives the best result of all
-tools. A practical pipeline would use a global or resynthesis pass for structure that windows cannot see and exact local
-rewriting to clean up.
+\paragraph{Exact rewriting and global passes.} Resynthesis (BQSKit) finds cheaper entangling structure inside blocks, and
+rotation merging over phase polynomials (VOQC) combines rotations far apart. Neither is reachable by stored rewrites on
+three-qubit windows. Exact local rewriting is faster, keeps the unitary including global phase and removes the gates
+these passes leave. Applied after either, it keeps their savings and adds its own, \HeronStackAllSaved\ more gates removed
+after BQSKit on Heron and the best result of all tools after VOQC. A practical pipeline would use a global pass for
+structure that windows cannot see and exact local rewriting to clean up.
 
 \paragraph{Limitations.}
-(i) \emph{Noise models, not hardware.} ESP and TVD come from calibration snapshots. The simulations contain gate,
-relaxation and readout errors but no idle errors or crosstalk, and no real-hardware runs were performed.
-(ii) \emph{Global phase.} Our outputs are exact including phase, which costs \HeronPhaseGadgetGates\ single-qubit gates
-over the Heron suite. With phase as metadata, as Qiskit, TKET and BQSKit store it, the all-gate ratio from level 1 improves from
-$\times0.838$ to $\times0.825$.
-(iii) \emph{Baselines.} Quartz was not run, and QUESO had five minutes per circuit instead of one hour. Qiskit, TKET and
-BQSKit use their default settings, BQSKit level~4 was run only on the four-qubit benchmark (Table~\ref{tab:four}), and on the
-large suite BQSKit covers only the \LargeBqCircuits\ smallest circuits. BQSKit is not deterministic, so its numbers carry a
-run-to-run spread that we did not measure beyond the two runs of Section~\ref{sec:exp}.
-(iv) \emph{Scale.} Windows have at most three qubits, the code is single-threaded Python, and feed-forward circuits are out
-of scope. Circuits of up to \LargeHeronMaxQubits\ qubits and \LargeIonMaxInput\ gates were tested, where one run takes up to a few
-hours. Two 64-qubit Heron runs (QFT64 and QFTAdd32) did not finish, and the \LargeCertPending\ outputs whose certificates
-were not re-checked are left out of Table~\ref{tab:large}.
-(v) \emph{Clifford+T ground truth} is certified for two qubits and lengths up to \CTCertified, and three-qubit Clifford+T balls
-grow too fast for the present implementation.
-(vi) \emph{Verification} is numerical (random input states) for the 60-circuit hardware suite and by replay certificates for
-the large suite. A certificate proves equality up to the rounding of its local checks. Exact arithmetic is used only for
-Clifford and Clifford+T circuits.
+(i) \emph{Noise models.} ESP and TVD come from calibration snapshots with gate, relaxation and readout errors but no idle
+errors or crosstalk.
+(ii) \emph{Global phase.} Exactness including phase costs \HeronPhaseGadgetGates\ single-qubit gates over the Heron suite.
+With phase as metadata, as other compilers store it, the all-gate ratio from level 1 would improve from $\times0.838$ to
+$\times0.825$.
+(iii) \emph{Baselines.} Quartz was not run, QUESO had five minutes per circuit instead of one hour, the other baselines
+use default settings, and on the large suite BQSKit covers only the \LargeBqCircuits\ smallest circuits. BQSKit's run-to-run
+spread was measured only through two runs.
+(iv) \emph{Scale.} Windows have at most three qubits, the code is single-threaded Python, and feed-forward is out of scope.
+On the large suite two 64-qubit Heron runs did not finish and \LargeCertPending\ certificates were not re-checked.
+(v) \emph{Ground truth} beyond Clifford is certified for two qubits and lengths up to \CTCertified.
+(vi) \emph{Verification} is numerical (random states) up to 24 qubits and by replay certificates beyond. Exact arithmetic
+is used only for Clifford and Clifford+T circuits.
 
 \paragraph{Future work.} Two questions remain open. The first is a theory of the self-consistent window $w^\star$, relating
 the cascade to Dehn presentations and local geodesics in groups~\cite{gromov1987,epstein1992} and to complete rewriting
@@ -958,6 +774,155 @@ TKET, QASMBench and the VOQC benchmarks.
 \end{itemize}
 
 \begin{appendices}
+
+\section{Proofs}\label{app:proofs}
+
+\begin{proof}[Proof of Proposition~\ref{prop:sound}]
+By convexity, $S$ can be moved to the front (a) or the back (b) of the circuit without changing $\ev(u)$. In case (a) the
+input factorises as $|0_W\rangle\otimes|0_{\bar W}\rangle$, so the final state changes only by the global phase
+$e^{i\varphi}$. In case (b) the final state changes from $|\psi\rangle$ to $(D\otimes I)|\psi\rangle$, and
+$|\langle x|(D\otimes I)|\psi\rangle|^2=|\langle x|\psi\rangle|^2$ for every basis state $x$. Since the invariant is the
+output distribution of the current circuit, soundness composes.
+\end{proof}
+
+\begin{proof}[Proof of Proposition~\ref{prop:approx}]
+Telescope over the intermediate circuits $u=u_0,u_1,\dots,u_m=u'$. Each step changes one factor of a product of
+unitaries, $\ev(u_i)=A(\ev(v_i))B$ and $\ev(u_{i-1})=A(\ev(S_i))B$ with unitary $A,B$, and
+$\op{A(X-Y)B}=\op{X-Y}$.
+\end{proof}
+
+\begin{proof}[Proof of Lemma~\ref{lem:clifford}]
+All generators map Paulis to Paulis under conjugation, so $\langle\Gamma\rangle\subseteq\Cl_n/U(1)$. The single-qubit
+generators generate $\Cl_1$, and an entangling Clifford together with $\Cl_1^{\otimes n}$ generates
+$\Cl_n$~\cite{selinger2015}. Enumeration confirms the orders 24, 11,520 and 92,897,280 for $n=1,2,3$, and all 22 entries
+of Table~I of~\cite{rosenhahn2025}.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:exact}]
+Let $u$ be $(w,r)$-reduced. If $|u|>D$, its first $D+1$ letters form a factor $f$ with $|\ev(f)|\le D\le r$ and
+$|f|=D+1\le w$, so the rule $f\to v$ with $v$ a geodesic of $\ev(f)$ applies, a contradiction. Hence $|u|\le D<w$, so $u$
+is itself a factor of length at most $w$. If it were not geodesic, the rule $u\to v$ with $v$ a geodesic of $\ev(u)$ and
+$|v|\le D\le r$ would apply.
+\end{proof}
+
+\begin{proof}[Proof of Proposition~\ref{prop:cascade}]
+If the whole word is a factor of length at most $w$ and the database has unbounded radius, the word itself is replaced by
+a geodesic of its value.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:parity}]
+A Cayley graph is bipartite if and only if there is a homomorphism $\chi:G\to\{\pm1\}$ with $\chi(\Gamma)=-1$. (a) For
+$n=1$, $\Cl_1/U(1)\cong S_4$ and every $\pm\frac\pi2$ rotation is a 4-cycle, so $\chi=\mathrm{sgn}$ works. For $n=2$ we
+verify bipartiteness exhaustively (no edge joins two elements at equal distance from the identity). (b) The Pauli group
+$\mathcal P_n$ is normal with quotient $\Sp(2n,2)$. If $\chi$ existed, then $\chi(X_i)=\chi(\gamma)^2=1$ and likewise
+$\chi(Z_i)=1$, so $\chi$ would factor through $\Sp(2n,2)$, which is simple and non-abelian for $n\ge3$. Hence
+$\chi\equiv1$, contradicting $\chi(\Gamma)=-1$.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:mix}]
+This is the standard $L^2$ bound for random walks on groups~\cite{diaconis1988}. By Cauchy--Schwarz,
+$\|\mu_L-\pi_L\|_{TV}\le\frac12\sqrt{|G|}\,\|\mu_L-\pi_L\|_2$, and the walk operator contracts the component orthogonal to
+the constants (and, in the bipartite case, to the sign character) by at least $\beta$ per step. The limit of the expected
+length follows because $|\ev(u)|$ is bounded by $D$.
+\end{proof}
+
+\begin{proof}[Proof of Proposition~\ref{prop:count}]
+A geodesic of length $a+b$ splits into geodesics of lengths $a$ and $b$, so $S(a+b)\subseteq S(a)S(b)$. Bounding $|B(d)|$
+from above by these products gives $\Pr[|g|\le d]$ from above, and $\mathbb E|g|=\sum_{d\ge0}\Pr[|g|>d]$.
+\end{proof}
+
+\begin{proof}[Proof of Lemma~\ref{lem:canon}]
+$\Dw$ is closed under products and conjugation ($\overline\omega=-\omega^3$). If $V=e^{i\varphi}U$, the zero patterns agree
+and $V_{ij}\overline{V_p}=U_{ij}\overline{U_p}$. Conversely, $P(V)=P(U)$ at $(i,j)=p$ gives $|V_p|=|U_p|$, so
+$V_p=e^{i\varphi}U_p$ for some $\varphi$, and then $V_{ij}=U_{ij}\overline{U_p}/\overline{V_p}=e^{i\varphi}U_{ij}$.
+For uniqueness, note that $1,\omega,\omega^2,\omega^3$ is a $\mathbb Z$-basis of $\Zw$ and that the smallest common exponent is unique.
+Divisibility by $\sqrt2=\omega-\omega^3$ is decided exactly by checking that all coefficients of $M\sqrt2$ are even.
+\end{proof}
+
+\section{Additional figures and tables}\label{app:extra}
+
+\begin{table}[h]
+\caption{Median run time per circuit in seconds. Qiskit level~1 was not timed on the 60-circuit suite. On the large suite
+BQSKit covers only the \LargeBqCircuits\ smallest circuits, so its medians are over easier circuits than the others, and
+part of its run shared the machine with an unrelated job. The large suite ran several circuits at a time on eight
+cores.}\label{tab:runtime}
+\begin{tabular*}{\textwidth}{@{\extracolsep\fill}lcc c cc}
+\toprule
+& \multicolumn{2}{c}{60-circuit suite} && \multicolumn{2}{c}{large suite}\\\cmidrule{2-3}\cmidrule{5-6}
+pipeline & Heron & ion && Heron & ion\\
+\midrule
+\RuntimeRows
+\botrule
+\end{tabular*}
+\end{table}
+
+\begin{table}[h]
+\caption{Mean noisy-simulation TVD by objective (lower is better).}\label{tab:tvd}
+\begin{tabular*}{\textwidth}{@{\extracolsep\fill}lccccc}
+\toprule
+& Qiskit L1 & Qiskit L3 & ours, count & ours, $w2$ & ours, calibrated\\
+\midrule
+Heron & \HeronTvdLOne & \HeronTvdLThree & \HeronTvdCount & \HeronTvdWTwo & \HeronTvdCal\\
+ion & \IonTvdLOne & \IonTvdLThree & \IonTvdCount & \IonTvdWTwo & \IonTvdCal\\
+\botrule
+\end{tabular*}
+\end{table}
+
+\begin{table}[h]
+\caption{Hashed databases of the general optimiser (classes per equivalence notion).}\label{tab:dbs}
+\begin{tabular*}{\textwidth}{@{\extracolsep\fill}lllrrr}
+\toprule
+device & topology & notion & depth & classes & build time\\
+\midrule
+Heron & line & up to phase & 9 & 6.31M & 6 min\\
+Heron & line & output-aware & 10 & 0.34M & $<$1 min\\
+Heron & line & input-aware & 14 & 1.41M & $<$1 min\\
+ion & triangle & up to phase & 6 & 28.4M & 38 min\\
+ion & triangle & output-aware & 6 & 7.36M & 27 min\\
+ion & triangle & input-aware & 7 & 31.6M & 23 min\\
+paper ion ($\pm\frac\pi2$) & triangle & up to phase & 9 & 2.93M & 7 min\\
+paper IBM ($\pm\frac\pi2$) & triangle & up to phase & 10 & 1.84M & 2 min\\
+\botrule
+\end{tabular*}
+\end{table}
+
+\begin{figure}[h]
+\centering\includegraphics[width=\textwidth]{figs/fig_compute_graph.pdf}
+\caption{Compute graphs of comparable size, nodes coloured by exact distance from the identity. (a) Two-qubit Clifford
+group, ion alphabet, depth $\le3$. Many short words coincide, and the ball closes up. (b) Two-qubit Clifford+T, depth
+$\le2$. Almost every word is new.}\label{fig:cg}
+\end{figure}
+
+\begin{figure}[h]
+\centering\includegraphics[width=\textwidth]{figs/fig_paper_flow.pdf}
+\caption{From the input to the output of every method on the original benchmarks. Grey lines are individual circuits (paired by seed) and
+the black line is the mean. The dashed line at 4 qubits is the certified lower bound of Proposition~\ref{prop:count}.}\label{fig:paperflow}
+\end{figure}
+
+\begin{figure}[h]
+\centering\includegraphics[width=\textwidth]{figs/fig_example_cliffordt.pdf}
+\caption{A planted Clifford+T circuit (a) and the output of the general optimiser (b), which equals the certified optimum.}
+\label{fig:exct}
+\end{figure}
+
+\begin{figure}[h]
+\centering\includegraphics[width=\textwidth]{figs/fig_hw_flow.pdf}
+\caption{Hardware suite, from the level-1 compilation to every pipeline's output. The top panel shows total gates per circuit (sorted by
+the level-3 count), the bottom panel the sums over all circuits, with two-qubit gates as solid bars.}\label{fig:hwflow}
+\end{figure}
+
+\begin{figure}[h]
+\centering\includegraphics[width=\textwidth]{figs/fig_example_heron.pdf}
+\caption{Two QASMBench circuits after Qiskit level 3 on IBM Heron (a, c) and after \qcr\ (b, d). The outputs are equal
+including global phase.}\label{fig:exheron}
+\end{figure}
+
+\begin{figure}[h]
+\centering\includegraphics[width=\textwidth]{figs/fig_layout.pdf}
+\caption{Layout-aware rewriting on IBM Heron (FakeTorino). (a) ESP including readout relative to Qiskit's noise-aware level 3
+(dots are circuits, bars and labels are geometric means). (b) Exact noisy TVD including readout for circuits with at most eight
+active qubits (labels: means).}\label{fig:layout}
+\end{figure}
 
 \section{Reproduction of the reference method}\label{app:repro}
 

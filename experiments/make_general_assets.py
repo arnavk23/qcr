@@ -11,14 +11,14 @@
 # that they have been altered from the originals.
 
 
-"""Numbers, tables and figures for the general-engine part of the extension paper.
+"""Numbers, tables and figures for the general-engine part of the paper.
 
 Inputs:  results/general/bench_v2.json (hardware suite, run 2),
          results/general/bqskit_v2.jsonl, bqskit_stack_v1.jsonl, bqskit_njp_v1.jsonl (BQSKit baseline, ext_bqskit.py),
          results/general_paper_bench_*.json (paper benchmarks, general engine),
          results/quality_all.json, ext_bench_cliff_*.json, ext_gap3_*.json (reference numbers).
-Outputs: extension/gen_numbers.tex, extension/gen_hw_table.tex, extension/figs/gen_paper_bench.pdf,
-         extension/figs/gen_tvd.pdf.
+Outputs: paper/gen_numbers.tex, paper/gen_hw_table.tex, paper/figs/gen_paper_bench.pdf,
+         paper/figs/gen_tvd.pdf.
 
 Conventions (same as manuscripts/talk/talk.tex): count ratios are ratios of summed counts; success-probability
 ratios are geometric means of per-circuit ratios; Nam pf1_10 / pf2_10 are excluded from the comparison
@@ -36,7 +36,7 @@ from common import RESULTS
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-EXT = Path(__file__).resolve().parents[1] / "manuscripts" / "extension"
+EXT = Path(__file__).resolve().parents[1] / "manuscripts" / "paper"
 FIG = EXT / "figs"
 EXCLUDE = {"nam/pf1_10", "nam/pf2_10"}
 M = {}

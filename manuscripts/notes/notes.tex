@@ -454,7 +454,7 @@ $105+60$ gates, so $500\cdot0.64=318$ (paper: 313). So these are uniformly rando
 \item Qiskit L2/L3 \emph{increase} \#rz relative to L1 in Table III. Qiskit's generic resynthesis does not know that the
   input is a Clifford over a 4-gate alphabet. A Clifford-aware baseline would be the fair comparison (\S10).
 \item The 3-qubit results can be checked against the \emph{exact} optimum, because $|\mathcal C_3|$ is only $9.3\times10^7$
-  (see the extension paper).
+  (see the paper).
 \item ``ours'' is much slower than Qiskit ($<1$\,s), which the authors acknowledge.
 \end{itemize}
 \end{careful}
@@ -546,7 +546,7 @@ The released code uses only $\pm\pi/2$.
 correctness is easy to check. The database turns search into lookup and certifies irreducibility. Wire reduction is a
 clean way to use a small database on large registers. The idea of composing with existing transpilers is sensible.
 
-\textbf{Weaknesses} (developed fully in the accompanying extension paper):
+\textbf{Weaknesses} (developed fully in the accompanying paper):
 \begin{enumerate}[nosep]
 \item \textbf{The Clifford structure is ignored.} All gates are Clifford. The search space is a finite group with
   exact $O(n^2)$-bit fingerprints and known optimal-synthesis results (complete for $n\le3$). Global optima can be computed exactly
@@ -584,7 +584,7 @@ advantage disappears at level 3.\\\bottomrule
 \end{center}
 \textbf{How good is ``good''?} Because all gates are Clifford we could compute the \emph{exact} optimum of every 3-qubit circuit.
 On the Table III/IV setting the optimum is 10.5 (ion trap) and 12.3 (IBM-style) gates, so the paper's method is 4.5$\times$ and
-3.0$\times$ longer than necessary. An exact-window optimiser reaches the optimum in about 0.2\,s. See the extension paper.
+3.0$\times$ longer than necessary. An exact-window optimiser reaches the optimum in about 0.2\,s. See the paper.
 
 %=====================================================================
 \section{Questions you may be asked (with answers)}
@@ -609,5 +609,5 @@ On the Table III/IV setting the optimum is 10.5 (ion trap) and 12.3 (IBM-style) 
 
 \vfill
 {\small\textit{Companion material:} \texttt{qcr/} and \texttt{experiments/} contain the Python port and all experiments
-(\texttt{manuscripts/reproduction/reproduction\_report.pdf}); \texttt{manuscripts/extension/extension\_paper.pdf} contains the follow-up research paper.}
+(\texttt{manuscripts/reproduction/reproduction\_report.pdf}); \texttt{manuscripts/paper/paper.pdf} contains the follow-up research paper.}
 \end{document}

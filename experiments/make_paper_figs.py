@@ -10,7 +10,7 @@
 # copyright notice, and modified files need to carry a notice indicating
 # that they have been altered from the originals.
 
-"""Figures for the journal version of the extension paper (manuscripts/extension/figs/fig_*.pdf).
+"""Figures for the journal version of the paper (manuscripts/paper/figs/fig_*.pdf).
 
   python make_paper_figs.py [compute_graph growth examples paper_flow hw_flow cliffordt layout]
 
@@ -28,7 +28,7 @@ from common import RESULTS
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-FIG = Path(__file__).resolve().parents[1] / "manuscripts" / "extension" / "figs"
+FIG = Path(__file__).resolve().parents[1] / "manuscripts" / "paper" / "figs"
 FIG.mkdir(parents=True, exist_ok=True)
 W = 5.2  # Springer sn-jnl text width is 372pt = 5.15in: draw at final size
 # one categorical palette for methods, used consistently in every figure

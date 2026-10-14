@@ -25,7 +25,7 @@ qcr can be installed in one step with `pip install git+https://github.com/arnavk
 Supported platforms: Linux and macOS, Python 3.10 to 3.14, Qiskit 1.2 or newer (tested with 1.4 and 2.5).
 
 <p align="center">
-  <img src="manuscripts/extension/figs/gen_paper_bench.png" width="640"
+  <img src="manuscripts/paper/figs/gen_paper_bench.png" width="640"
        alt="Output length relative to the original method on its own benchmarks">
 </p>
 
@@ -115,7 +115,7 @@ calibrated noise models).
 | Verification | every reported output checked numerically: 250/250 paper benchmarks, 720/720 hardware-suite runs |
 
 The full story, including what does *not* reproduce and the limitations of this work, is in the
-[extension paper](manuscripts/extension/extension_paper.pdf) and the
+[paper](manuscripts/paper/paper.pdf) and the
 [reproduction report](manuscripts/reproduction/reproduction_report.pdf).
 
 ## Installation instructions
@@ -193,7 +193,7 @@ qcr/                 the library
 test/                unit tests (pytest / unittest)
 experiments/         one script per table, figure or benchmark; see experiments/README.md
 results/, figures/   raw outputs of the experiments (JSON, logs, PNG)
-manuscripts/         LaTeX sources and PDFs: study notes, reproduction report, extension paper, talk
+manuscripts/         LaTeX sources and PDFs: study notes, reproduction report, paper, talk
 docs/                Sphinx documentation
 releasenotes/        reno release notes
 tools/               fetch_external.sh (third-party benchmarks, authors' demo, paper source)
@@ -206,7 +206,7 @@ cache/, external/    generated / downloaded, not tracked
 |---|---|
 | [Study notes](manuscripts/notes/notes.pdf) | the paper explained from scratch |
 | [Reproduction report](manuscripts/reproduction/reproduction_report.pdf) | every table and figure re-run, with verdicts |
-| [Extension paper](manuscripts/extension/extension_paper.pdf) | framework, theory, ground truth, hardware results, limitations |
+| [Paper](manuscripts/paper/paper.pdf) | framework, theory, ground truth, hardware results, limitations |
 | [Talk](manuscripts/talk/talk.pdf) | 53-slide narrative presentation |
 
 ## Contributing

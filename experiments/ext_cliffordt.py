@@ -10,7 +10,7 @@
 # copyright notice, and modified files need to carry a notice indicating
 # that they have been altered from the originals.
 
-"""Certified optima beyond Clifford (open problem 2 of the extension paper).
+"""Certified optima beyond Clifford (open problem 2 of the paper).
 
 Two-qubit circuits over the Clifford+T ion alphabet {rx, ry, rz}(+-pi/4, +-pi/2, pi) and rxx(+-pi/4, +-pi/2)
 (the angle grid of the journal version of the reference paper). Exact arithmetic over Z[1/sqrt2, w]

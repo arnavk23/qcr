@@ -11,7 +11,7 @@
 # that they have been altered from the originals.
 
 
-"""Figures + ext_numbers.tex for the extension paper, and numbers.tex for the
+"""Figures + ext_numbers.tex for the paper, and numbers.tex for the
 reproduction report.  Missing inputs are rendered as '??'."""
 
 import json
@@ -24,7 +24,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 
-EXT = Path(__file__).resolve().parents[1] / "manuscripts" / "extension"
+EXT = Path(__file__).resolve().parents[1] / "manuscripts" / "paper"
 FIG = EXT / "figs"
 FIG.mkdir(exist_ok=True, parents=True)
 REP = Path(__file__).resolve().parents[1] / "manuscripts" / "reproduction"

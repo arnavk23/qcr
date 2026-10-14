@@ -11,11 +11,11 @@
 # that they have been altered from the originals.
 
 
-"""Numbers and tables for the robustness and baseline sections of the extension paper.
+"""Numbers and tables for the robustness and baseline sections of the paper.
 
 Inputs:  results/general/robust_seeds_v1.jsonl, robust_ablation_v1.jsonl (gen_robust.py),
          logical_v1.jsonl (gen_logical.py), large_bqskit_v1.jsonl and large_v1.jsonl (gen_large.py).
-Outputs: extension/robust_numbers.tex.
+Outputs: paper/robust_numbers.tex.
 
 Same conventions as the other asset scripts: count columns are ratios of summed counts relative to Qiskit level 3,
 ESP is the geometric mean of per-circuit ratios, and Nam pf* circuits are excluded from the hardware-suite and
@@ -29,7 +29,7 @@ from pathlib import Path
 
 from common import RESULTS
 
-EXT = Path(__file__).resolve().parents[1] / "manuscripts" / "extension"
+EXT = Path(__file__).resolve().parents[1] / "manuscripts" / "paper"
 G = RESULTS / "general"
 DEV = {"heron": "Heron", "ion": "Ion"}
 M = {}

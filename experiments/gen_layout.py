@@ -10,7 +10,7 @@
 # copyright notice, and modified files need to carry a notice indicating
 # that they have been altered from the originals.
 
-"""Layout-aware rewriting on IBM Heron (FakeTorino), open problem 4 of the extension paper.
+"""Layout-aware rewriting on IBM Heron (FakeTorino), open problem 4 of the paper.
 
 Pipelines per circuit (all exact, calibrated objective, dead couplers removed everywhere):
   L3            Qiskit level 3, basis + coupling map only (not noise-aware), seed 0

@@ -1,4 +1,4 @@
-"""figures_tables.tex: every figure and table of extension_paper.tex, grouped by section, one float per page.
+"""figures_tables.tex: every figure and table of paper.tex, grouped by section, one float per page.
 
 Build after the make_*_assets.py scripts and make_paper_figs.py: pdflatex, bibtex, pdflatex x2.
 """
@@ -6,10 +6,10 @@ Build after the make_*_assets.py scripts and make_paper_figs.py: pdflatex, bibte
 import re
 from pathlib import Path
 
-EXT = Path(__file__).resolve().parents[1] / "manuscripts" / "extension"
-src = (EXT / "extension_paper.tex").read_text()
+EXT = Path(__file__).resolve().parents[1] / "manuscripts" / "paper"
+src = (EXT / "paper.tex").read_text()
 pre = src[: src.index(r"\begin{document}")].replace(
-    r"\raggedbottom", r"\usepackage{xr}\externaldocument{extension_paper}"
+    r"\raggedbottom", r"\usepackage{xr}\externaldocument{paper}"
 )
 body = src[src.index(r"\begin{document}") :]
 appendix_at = body.find(r"\begin{appendices}")

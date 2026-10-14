@@ -72,7 +72,7 @@ Node counts for 2 qubits / 14 operators (depth 1--6) and 3 qubits / 24 operators
 paper, and so are the edge counts (which follow $E(d)=N(d{-}1)\cdot|\mathcal{OP}|$). The operator counts 14/24 imply the pool
 contains $\mathrm{RXX}(\pm\pi/2)$. The demo code uses only $+\pi/2$ (13/21 operators), which gives smaller graphs
 (3 qubits, depth 4: 12,441 nodes). Building the largest graph (137,572 nodes) takes \BuildSecondsBig\,s in Python.
-An independent exact engine (Clifford tableaux, see the extension paper) gives the same counts.
+An independent exact engine (Clifford tableaux, see the paper) gives the same counts.
 
 \section{Figures 1, 4, 5: worked examples}
 \begin{itemize}[nosep]
@@ -83,7 +83,7 @@ An independent exact engine (Clifford tableaux, see the extension paper) gives t
   $\mathrm{RXX}(\frac\pi2)\mathrm{RXX}(\frac\pi2)\mathrm{RZ}_2(\frac\pi2)\mathrm{RZ}_2(-\frac\pi2)$ contains an inverse pair that
   \texttt{simplereduce} cannot see (it never checks the last pair), and the database cannot remove it (identity excluded).
   Its optimum is 2. Note also that every step in our trace removes an even number of gates. For two qubits this is
-  forced (gate-count parity is invariant, see the extension paper). The paper's Fig.~4 shows a $6\to3$ replacement, so it
+  forced (gate-count parity is invariant, see the paper). The paper's Fig.~4 shows a $6\to3$ replacement, so it
   must have used a pool different from the one stated.
 \item Fig.~5 analogue (3 qubits, 200 gates): $200\to36$ in 31 replacements.
 \item Authors' demo circuit (\texttt{longcode10}, 5 qubits, 300 gates): authors' output 140 gates. Our port with the demo's
@@ -146,7 +146,7 @@ Method&rx&rz&cz&total&rx&rz&cz&total\\\midrule
 \end{table}
 \textbf{Findings.} \QualityFindings
 
-\paragraph{NJP protocol (4 qubits, length 300; 30 random circuits per gate set, the first 30 of the 100 used in the extension paper).}
+\paragraph{NJP protocol (4 qubits, length 300; 30 random circuits per gate set, the first 30 of the 100 used in the paper).}
 \begin{table}[H]\centering\scriptsize
 \begin{tabular}{l rrrr r | rrrr r}\toprule
 &\multicolumn{5}{c|}{circuit 1}&\multicolumn{5}{c}{mean $\pm$ std over 30 circuits}\\
