@@ -1,0 +1,588 @@
+{
+ "backend": "ibm_marrakesh",
+ "calibrated": "",
+ "seed": 0,
+ "rows": [
+  {
+   "name": "qasmbench/hs4_n4",
+   "n": 4,
+   "deterministic": true,
+   "ideal": {
+    "0101": 1.0
+   },
+   "pipes": {
+    "L3": {
+     "total": 26,
+     "twoq": 4,
+     "oneq": 22,
+     "rz": 10,
+     "depth": 8,
+     "success": 0.9889394227982362,
+     "esp_readout": 0.9692861738927345
+    },
+    "L3_ours": {
+     "total": 21,
+     "twoq": 4,
+     "oneq": 17,
+     "rz": 5,
+     "depth": 8,
+     "success": 0.9889394227982362,
+     "esp_readout": 0.9692861738927345
+    },
+    "L1_ours": {
+     "total": 22,
+     "twoq": 4,
+     "oneq": 18,
+     "rz": 6,
+     "depth": 8,
+     "success": 0.9859208138843204,
+     "esp_readout": 0.9466355396048239
+    }
+   },
+   "esp_L3": 0.9692861738927345
+  },
+  {
+   "name": "qasmbench/toffoli_n3",
+   "n": 3,
+   "deterministic": true,
+   "ideal": {
+    "111": 1.0
+   },
+   "pipes": {
+    "L3": {
+     "total": 43,
+     "twoq": 7,
+     "oneq": 36,
+     "rz": 18,
+     "depth": 29,
+     "success": 0.9876332155385392,
+     "esp_readout": 0.9656068827146415
+    },
+    "L3_ours": {
+     "total": 37,
+     "twoq": 7,
+     "oneq": 30,
+     "rz": 15,
+     "depth": 28,
+     "success": 0.9883914616625794,
+     "esp_readout": 0.9663482183285573
+    },
+    "L1_ours": {
+     "total": 37,
+     "twoq": 9,
+     "oneq": 28,
+     "rz": 9,
+     "depth": 31,
+     "success": 0.9849784159260653,
+     "esp_readout": 0.9630112908109861
+    }
+   },
+   "esp_L3": 0.9656068827146415
+  },
+  {
+   "name": "qasmbench/fredkin_n3",
+   "n": 3,
+   "deterministic": true,
+   "ideal": {
+    "101": 1.0
+   },
+   "pipes": {
+    "L3": {
+     "total": 65,
+     "twoq": 12,
+     "oneq": 53,
+     "rz": 26,
+     "depth": 43,
+     "success": 0.9797524593316524,
+     "esp_readout": 0.9579018842246741
+    },
+    "L3_ours": {
+     "total": 62,
+     "twoq": 12,
+     "oneq": 50,
+     "rz": 24,
+     "depth": 41,
+     "success": 0.9799205750731343,
+     "esp_readout": 0.9580662506255947
+    },
+    "L1_ours": {
+     "total": 48,
+     "twoq": 11,
+     "oneq": 37,
+     "rz": 15,
+     "depth": 29,
+     "success": 0.9814426667048639,
+     "esp_readout": 0.9595543963588454
+    }
+   },
+   "esp_L3": 0.9579018842246741
+  },
+  {
+   "name": "qasmbench/basis_change_n3",
+   "n": 3,
+   "deterministic": true,
+   "ideal": {
+    "000": 0.9999999999999996
+   },
+   "pipes": {
+    "L3": {
+     "total": 93,
+     "twoq": 10,
+     "oneq": 83,
+     "rz": 43,
+     "depth": 52,
+     "success": 0.9796989491610069,
+     "esp_readout": 0.957849567445269
+    },
+    "L3_ours": {
+     "total": 93,
+     "twoq": 10,
+     "oneq": 83,
+     "rz": 43,
+     "depth": 52,
+     "success": 0.9796989491610069,
+     "esp_readout": 0.957849567445269
+    },
+    "L1_ours": {
+     "total": 100,
+     "twoq": 10,
+     "oneq": 90,
+     "rz": 50,
+     "depth": 57,
+     "success": 0.9647157492951107,
+     "esp_readout": 0.936449243916504
+    }
+   },
+   "esp_L3": 0.957849567445269
+  },
+  {
+   "name": "qasmbench/adder_n4",
+   "n": 4,
+   "deterministic": true,
+   "ideal": {
+    "1001": 1.0
+   },
+   "pipes": {
+    "L3": {
+     "total": 84,
+     "twoq": 16,
+     "oneq": 68,
+     "rz": 30,
+     "depth": 34,
+     "success": 0.9564499434253272,
+     "esp_readout": 0.932148447583569
+    },
+    "L3_ours": {
+     "total": 59,
+     "twoq": 12,
+     "oneq": 47,
+     "rz": 19,
+     "depth": 26,
+     "success": 0.9665172452040641,
+     "esp_readout": 0.9419599591936773
+    },
+    "L1_ours": {
+     "total": 57,
+     "twoq": 10,
+     "oneq": 47,
+     "rz": 21,
+     "depth": 32,
+     "success": 0.971853297445331,
+     "esp_readout": 0.9471604329321234
+    }
+   },
+   "esp_L3": 0.932148447583569
+  },
+  {
+   "name": "nam/tof_3",
+   "n": 5,
+   "deterministic": true,
+   "ideal": {
+    "00000": 1.0
+   },
+   "pipes": {
+    "L3": {
+     "total": 141,
+     "twoq": 26,
+     "oneq": 115,
+     "rz": 52,
+     "depth": 92,
+     "success": 0.9263470985084972,
+     "esp_readout": 0.9000552973808167
+    },
+    "L3_ours": {
+     "total": 120,
+     "twoq": 26,
+     "oneq": 94,
+     "rz": 42,
+     "depth": 79,
+     "success": 0.9293485791405396,
+     "esp_readout": 0.9029715892839332
+    },
+    "L1_ours": {
+     "total": 107,
+     "twoq": 26,
+     "oneq": 81,
+     "rz": 32,
+     "depth": 75,
+     "success": 0.9298084294049183,
+     "esp_readout": 0.8749895247756464
+    }
+   },
+   "esp_L3": 0.9000552973808167
+  },
+  {
+   "name": "qasmbench/pea_n5",
+   "n": 5,
+   "deterministic": true,
+   "ideal": {
+    "00011": 0.9999999999999998
+   },
+   "pipes": {
+    "L3": {
+     "total": 154,
+     "twoq": 30,
+     "oneq": 124,
+     "rz": 52,
+     "depth": 97,
+     "success": 0.9352184330519973,
+     "esp_readout": 0.8867448124596204
+    },
+    "L3_ours": {
+     "total": 127,
+     "twoq": 30,
+     "oneq": 97,
+     "rz": 38,
+     "depth": 91,
+     "success": 0.9388178726901498,
+     "esp_readout": 0.8901576883334175
+    },
+    "L1_ours": {
+     "total": 127,
+     "twoq": 30,
+     "oneq": 97,
+     "rz": 42,
+     "depth": 78,
+     "success": 0.9464991320121524,
+     "esp_readout": 0.8895944560790229
+    }
+   },
+   "esp_L3": 0.8867448124596204
+  },
+  {
+   "name": "nam/barenco_tof_3",
+   "n": 5,
+   "deterministic": true,
+   "ideal": {
+    "00000": 0.9999999999999996
+   },
+   "pipes": {
+    "L3": {
+     "total": 203,
+     "twoq": 37,
+     "oneq": 166,
+     "rz": 75,
+     "depth": 126,
+     "success": 0.8908818978627323,
+     "esp_readout": 0.865596678397404
+    },
+    "L3_ours": {
+     "total": 173,
+     "twoq": 37,
+     "oneq": 136,
+     "rz": 56,
+     "depth": 113,
+     "success": 0.8948709746558858,
+     "esp_readout": 0.8694725362752098
+    },
+    "L1_ours": {
+     "total": 149,
+     "twoq": 39,
+     "oneq": 110,
+     "rz": 41,
+     "depth": 97,
+     "success": 0.9083029028814312,
+     "esp_readout": 0.8547519039520978
+    }
+   },
+   "esp_L3": 0.865596678397404
+  },
+  {
+   "name": "nam/mod5_4",
+   "n": 5,
+   "deterministic": true,
+   "ideal": {
+    "10000": 1.0
+   },
+   "pipes": {
+    "L3": {
+     "total": 233,
+     "twoq": 48,
+     "oneq": 185,
+     "rz": 78,
+     "depth": 164,
+     "success": 0.9126088656677094,
+     "esp_readout": 0.8577417136565704
+    },
+    "L3_ours": {
+     "total": 172,
+     "twoq": 42,
+     "oneq": 130,
+     "rz": 50,
+     "depth": 119,
+     "success": 0.925885853193135,
+     "esp_readout": 0.8702204725867976
+    },
+    "L1_ours": {
+     "total": 173,
+     "twoq": 48,
+     "oneq": 125,
+     "rz": 43,
+     "depth": 120,
+     "success": 0.9014332520035376,
+     "esp_readout": 0.8493494879939434
+    }
+   },
+   "esp_L3": 0.8577417136565704
+  },
+  {
+   "name": "nam/tof_4",
+   "n": 7,
+   "deterministic": true,
+   "ideal": {
+    "0000000": 0.9999999999999993
+   },
+   "pipes": {
+    "L3": {
+     "total": 236,
+     "twoq": 41,
+     "oneq": 195,
+     "rz": 90,
+     "depth": 160,
+     "success": 0.8926949093956957,
+     "esp_readout": 0.8261594708764481
+    },
+    "L3_ours": {
+     "total": 213,
+     "twoq": 41,
+     "oneq": 172,
+     "rz": 79,
+     "depth": 145,
+     "success": 0.8967132037425376,
+     "esp_readout": 0.829878268750696
+    },
+    "L1_ours": {
+     "total": 194,
+     "twoq": 47,
+     "oneq": 147,
+     "rz": 59,
+     "depth": 139,
+     "success": 0.8835196665767548,
+     "esp_readout": 0.7912105843841688
+    }
+   },
+   "esp_L3": 0.8261594708764481
+  },
+  {
+   "name": "alg/heisenberg_6",
+   "n": 6,
+   "deterministic": true,
+   "ideal": {
+    "000000": 0.9999999999999973
+   },
+   "pipes": {
+    "L3": {
+     "total": 266,
+     "twoq": 45,
+     "oneq": 221,
+     "rz": 91,
+     "depth": 109,
+     "success": 0.8744119504070947,
+     "esp_readout": 0.8203479006667198
+    },
+    "L3_ours": {
+     "total": 262,
+     "twoq": 45,
+     "oneq": 217,
+     "rz": 90,
+     "depth": 110,
+     "success": 0.8751463454486229,
+     "esp_readout": 0.8210368887692923
+    },
+    "L1_ours": {
+     "total": 271,
+     "twoq": 45,
+     "oneq": 226,
+     "rz": 102,
+     "depth": 108,
+     "success": 0.8691792937065648,
+     "esp_readout": 0.7945663003367528
+    }
+   },
+   "esp_L3": 0.8203479006667198
+  },
+  {
+   "name": "nam/barenco_tof_4",
+   "n": 7,
+   "deterministic": true,
+   "ideal": {
+    "0000000": 0.9999999999999989
+   },
+   "pipes": {
+    "L3": {
+     "total": 407,
+     "twoq": 76,
+     "oneq": 331,
+     "rz": 147,
+     "depth": 248,
+     "success": 0.8181978966934758,
+     "esp_readout": 0.7607812976365715
+    },
+    "L3_ours": {
+     "total": 314,
+     "twoq": 76,
+     "oneq": 238,
+     "rz": 91,
+     "depth": 198,
+     "success": 0.8307106284753868,
+     "esp_readout": 0.7724159551692917
+    },
+    "L1_ours": {
+     "total": 284,
+     "twoq": 76,
+     "oneq": 208,
+     "rz": 80,
+     "depth": 182,
+     "success": 0.8286094891460407,
+     "esp_readout": 0.7420373568747849
+    }
+   },
+   "esp_L3": 0.7607812976365715
+  },
+  {
+   "name": "alg/heisenberg_8",
+   "n": 8,
+   "deterministic": true,
+   "ideal": {
+    "00000000": 0.9999999999999964
+   },
+   "pipes": {
+    "L3": {
+     "total": 368,
+     "twoq": 63,
+     "oneq": 305,
+     "rz": 123,
+     "depth": 129,
+     "success": 0.8287606261425983,
+     "esp_readout": 0.7391098170567751
+    },
+    "L3_ours": {
+     "total": 369,
+     "twoq": 63,
+     "oneq": 306,
+     "rz": 131,
+     "depth": 132,
+     "success": 0.8308914800685936,
+     "esp_readout": 0.7410101668148802
+    },
+    "L1_ours": {
+     "total": 381,
+     "twoq": 63,
+     "oneq": 318,
+     "rz": 144,
+     "depth": 130,
+     "success": 0.8152177494020778,
+     "esp_readout": 0.735534697755067
+    }
+   },
+   "esp_L3": 0.7391098170567751
+  },
+  {
+   "name": "qasmbench/linearsolver_n3",
+   "n": 3,
+   "deterministic": false,
+   "ideal": {
+    "000": 0.07508255882421583,
+    "001": 0.0750825588242158,
+    "100": 0.8431487661333777,
+    "101": 0.006686116218190695
+   },
+   "pipes": {
+    "L3": {
+     "total": 28,
+     "twoq": 4,
+     "oneq": 24,
+     "rz": 13,
+     "depth": 17,
+     "success": 0.9856947238308991,
+     "esp_readout": 0.9744254133304875
+    },
+    "L3_ours": {
+     "total": 28,
+     "twoq": 4,
+     "oneq": 24,
+     "rz": 13,
+     "depth": 17,
+     "success": 0.9856947238308991,
+     "esp_readout": 0.9744254133304875
+    },
+    "L1_ours": {
+     "total": 32,
+     "twoq": 4,
+     "oneq": 28,
+     "rz": 17,
+     "depth": 20,
+     "success": 0.9861587062499506,
+     "esp_readout": 0.9572639148103563
+    }
+   },
+   "esp_L3": 0.9744254133304875
+  },
+  {
+   "name": "qasmbench/qaoa_n3",
+   "n": 3,
+   "deterministic": false,
+   "ideal": {
+    "000": 0.22595185812077886,
+    "001": 0.09655676474713819,
+    "010": 0.03678542572489422,
+    "011": 0.1407059514071887,
+    "100": 0.09655676474713819,
+    "101": 0.22595185812077903,
+    "110": 0.1407059514071886,
+    "111": 0.0367854257248942
+   },
+   "pipes": {
+    "L3": {
+     "total": 54,
+     "twoq": 7,
+     "oneq": 47,
+     "rz": 22,
+     "depth": 28,
+     "success": 0.9861769972470109,
+     "esp_readout": 0.9641831412052311
+    },
+    "L3_ours": {
+     "total": 52,
+     "twoq": 7,
+     "oneq": 45,
+     "rz": 22,
+     "depth": 31,
+     "success": 0.9864918270119744,
+     "esp_readout": 0.9644909495931521
+    },
+    "L1_ours": {
+     "total": 44,
+     "twoq": 7,
+     "oneq": 37,
+     "rz": 17,
+     "depth": 32,
+     "success": 0.9870585432299893,
+     "esp_readout": 0.9650450268275461
+    }
+   },
+   "esp_L3": 0.9641831412052311
+  }
+ ],
+ "created": "2026-10-15 05:03"
+}
