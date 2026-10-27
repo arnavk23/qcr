@@ -23,7 +23,7 @@ from pathlib import Path
 
 from common import RESULTS
 
-EXT = Path(__file__).resolve().parents[1] / "manuscripts" / "extension"
+EXT = Path(__file__).resolve().parents[1] / "manuscripts" / "paper"
 M = {}
 
 

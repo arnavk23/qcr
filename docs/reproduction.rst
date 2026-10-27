@@ -13,7 +13,7 @@ extension; raw outputs are in ``results/`` and every number in the manuscripts i
      - the original paper explained from scratch
    * - ``manuscripts/reproduction/reproduction_report.pdf``
      - every table and figure re-run, with verdicts
-   * - ``manuscripts/extension/extension_paper.pdf``
+   * - ``manuscripts/paper/paper.pdf``
      - framework, theory, Clifford ground truth, hardware results and limitations
    * - ``manuscripts/talk/talk.pdf``
      - presentation

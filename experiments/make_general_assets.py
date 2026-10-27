@@ -11,14 +11,14 @@
 # that they have been altered from the originals.
 
 
-"""Numbers, tables and figures for the general-engine part of the extension paper.
+"""Numbers, tables and figures for the general-engine part of the paper.
 
 Inputs:  results/general/bench_v2.json (hardware suite, run 2),
          results/general/bqskit_v2.jsonl, bqskit_stack_v1.jsonl, bqskit_njp_v1.jsonl (BQSKit baseline, ext_bqskit.py),
          results/general_paper_bench_*.json (paper benchmarks, general engine),
          results/quality_all.json, ext_bench_cliff_*.json, ext_gap3_*.json (reference numbers).
-Outputs: extension/gen_numbers.tex, extension/gen_hw_table.tex, extension/figs/gen_paper_bench.pdf,
-         extension/figs/gen_tvd.pdf.
+Outputs: paper/gen_numbers.tex, paper/gen_hw_table.tex, paper/figs/gen_paper_bench.pdf,
+         paper/figs/gen_tvd.pdf.
 
 Conventions (same as manuscripts/talk/talk.tex): count ratios are ratios of summed counts; success-probability
 ratios are geometric means of per-circuit ratios; Nam pf1_10 / pf2_10 are excluded from the comparison
@@ -30,14 +30,10 @@ import math
 import statistics as st
 from pathlib import Path
 
-import matplotlib
 from common import RESULTS
 
-matplotlib.use("Agg")
-import matplotlib.pyplot as plt
 
-EXT = Path(__file__).resolve().parents[1] / "manuscripts" / "extension"
-FIG = EXT / "figs"
+EXT = Path(__file__).resolve().parents[1] / "manuscripts" / "paper"
 EXCLUDE = {"nam/pf1_10", "nam/pf2_10"}
 M = {}
 tot = lambda c: sum(c.values()) if isinstance(c, dict) else c
@@ -312,64 +308,6 @@ with open(EXT / "gen_numbers.tex", "w") as fh:
     for k, v in M.items():
         fh.write(f"\\newcommand{{\\{k}}}{{{v}}}\n")
 
-# ---------------------------------------------------------------- figures
-plt.rcParams.update({"font.size": 9, "axes.spines.top": False, "axes.spines.right": False})
-BLUE, ORANGE, AQUA, MUTED = "#2a78d6", "#eb6834", "#1baf7a", "#6b6a63"
-LBL = {
-    "T3": "T3  ion, 3q",
-    "T4": "T4  IBM-style, 3q",
-    "NJP_ion": "NJP  ion, 4q",
-    "NJP_nisq": "NJP  IBM-style, 4q",
-    "T5": "T5  IBM-style, 15q",
-}
-fig, ax = plt.subplots(figsize=(6.0, 3.0), dpi=200)
-h = 0.28
-series = [
-    ("general engine (no Clifford knowledge)", BLUE, 1),
-    ("Clifford-specific CW", ORANGE, 2),
-    ("proven optimum", AQUA, 3),
-]
-for i, row in enumerate(bars):
-    present = [(col, row[idx]) for _, col, idx in series if row[idx] is not None]
-    for k, (col, v) in enumerate(present):
-        y = i + (k - (len(present) - 1) / 2) * h
-        ax.barh(y, v, height=h - 0.04, color=col)
-        ax.text(v + 0.012, y, f"{v:.2f}", va="center", fontsize=7)
-ax.axvline(1.0, color=MUTED, lw=1, ls=(0, (3, 2)))
-ax.set_yticks(range(len(bars)), [LBL[r[0]] for r in bars])
-ax.set_xlim(0, 1.12)
-ax.invert_yaxis()
-ax.set_xlabel("output length / original method (same circuits, mean ratio)")
-from matplotlib.patches import Patch
-
-ax.legend(
-    handles=[Patch(color=c, label=n) for n, c, _ in series],
-    loc="lower center",
-    bbox_to_anchor=(0.45, 1.0),
-    ncol=3,
-    fontsize=7,
-    frameon=False,
-)
-fig.tight_layout()
-fig.savefig(FIG / "gen_paper_bench.pdf")
-fig.savefig(FIG / "gen_paper_bench.png")  # README
-plt.close(fig)
-
-fig, axs = plt.subplots(1, 2, figsize=(6.4, 2.6), dpi=200)
-for ax, dev in zip(axs, ("heron", "ion")):
-    T = [r for r in B if r["device"] == dev and "tvd" in r and r["name"] not in EXCLUDE]
-    L3 = [r["tvd"]["qiskit_L3"] for r in T]
-    CA = [r["tvd"]["ours_exact_cal"] for r in T]
-    lim = max(L3 + CA) * 1.05
-    ax.plot([0, lim], [0, lim], color=MUTED, lw=0.8, ls=(0, (3, 2)))
-    ax.scatter(L3, CA, s=9, color=BLUE)
-    ax.set_xlim(0, lim)
-    ax.set_ylim(0, lim)
-    ax.set_xlabel("TVD, Qiskit L3")
-    ax.set_ylabel("TVD, ours (calibrated)")
-    ax.set_title({"heron": "IBM Heron (FakeTorino noise)", "ion": "trapped ion (model noise)"}[dev], fontsize=8)
-fig.tight_layout()
-fig.savefig(FIG / "gen_tvd.pdf")
-fig.savefig(FIG / "gen_tvd.png")  # README
+# figures: make_paper_figs.paper_bench and make_paper_figs.tvd
 print(json.dumps(M, indent=1))
 print(json.dumps(rows, indent=1))

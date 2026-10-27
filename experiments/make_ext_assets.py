@@ -11,25 +11,17 @@
 # that they have been altered from the originals.
 
 
-"""Figures + ext_numbers.tex for the extension paper, and numbers.tex for the
+"""ext_numbers.tex for the paper (its figures are drawn by make_paper_figs.py), and numbers.tex for the
 reproduction report.  Missing inputs are rendered as '??'."""
 
 import json
 from pathlib import Path
 
-import matplotlib
+import numpy as np
 from common import RESULTS
 
-matplotlib.use("Agg")
-import matplotlib.pyplot as plt
-import numpy as np
-
-EXT = Path(__file__).resolve().parents[1] / "manuscripts" / "extension"
-FIG = EXT / "figs"
-FIG.mkdir(exist_ok=True, parents=True)
+EXT = Path(__file__).resolve().parents[1] / "manuscripts" / "paper"
 REP = Path(__file__).resolve().parents[1] / "manuscripts" / "reproduction"
-plt.rcParams.update({"font.size": 9, "axes.spines.top": False, "axes.spines.right": False})
-C = {"ion": "#1f4e79", "nisq": "#c0392b"}
 M = {}
 
 
@@ -59,21 +51,6 @@ M["OddRelIonMinusOne"] = fmt(rho and rho - 1)
 M["OddRelIonHalf"] = fmt(rho and (rho + 1) // 2)
 M["OddRelIonHalfMinusOne"] = fmt(rho and (rho + 1) // 2 - 1)
 M["OddRelIbm"] = fmt(par.get("nisq", {}).get("shortest_odd_relator"))
-
-if ci and cn:
-    fig, ax = plt.subplots(figsize=(5.4, 3.2))
-    for c, k, lab in ((ci, "ion", "ion trap (24 gates)"), (cn, "nisq", "IBM-style (15 gates)")):
-        lv = np.array(c["levels"], float)
-        ax.semilogy(range(len(lv)), lv, "o-", color=C[k], label=lab, ms=3)
-    ax.axvspan(-0.2, 5.2, color="0.92", zorder=0)
-    ax.text(0.3, 2e7, "database of\n[R25] (depth ≤ 5)", fontsize=7.5, color="0.35")
-    ax.set_xticks(range(0, 20, 2))
-    ax.set_xlabel("distance d from identity (optimal gate count)")
-    ax.set_ylabel("|S(d)|  (# 3-qubit Cliffords)")
-    ax.legend(frameon=False)
-    ax.set_title("Growth series of the 3-qubit Clifford group (92,897,280 elements)", fontsize=9)
-    fig.tight_layout()
-    fig.savefig(FIG / "ext_growth.png", dpi=200)
 
 # ---------------------------------------------------------------- 2q counts
 tq = J("ext_twoq3.json")
@@ -110,57 +87,10 @@ for k in ("ion", "nisq"):
     M[f"WStar{tag}"] = fmt(wstar)
 for key in ("OptIbm", "FaithIbm", "EWeightIbm", "EWsixteenIbm", "GapFactorIbm", "WStarIbm", "SpeedupIbm"):
     M.setdefault(key, "??")
-if gaps:
-    fig, ax = plt.subplots(figsize=(5.2, 3.4))
-    for k, rs in gaps.items():
-        lab = "ion trap" if k == "ion" else "IBM-style"
-        m = [np.mean([r[f"ew{w}"] for r in rs]) for w in ws]
-        ax.plot(ws, m, "o-", color=C[k], label=f"EW-w, {lab}")
-        ax.axhline(np.mean([r["opt"] for r in rs]), color=C[k], ls="--", lw=1)
-        ax.plot(
-            [8],
-            [np.mean([r["faithful"] for r in rs])],
-            "*",
-            ms=12,
-            color=C[k],
-            mec="k",
-            label=f"faithful [R25] (w=8, r={5 if k == 'ion' else 6}), {lab}",
-        )
-    ax.set_xscale("log", base=2)
-    ax.set_xticks(ws, ws)
-    ax.set_xlabel("window w (gates)")
-    ax.set_ylabel("output length (mean of 20 circuits)")
-    ax.set_title("3 qubits, 300 random gates; dashed = exact optimum", fontsize=9)
-    ax.legend(frameon=False, fontsize=7)
-    fig.tight_layout()
-    fig.savefig(FIG / "ext_window.png", dpi=200)
-
 grid = J("ext_grid_ion.json")
 if grid:
-    W, R = [4, 6, 8, 10, 12, 16], [3, 4, 5, 6, 8, 99]
+    W, R = [4, 6, 8, 10, 12, 16], [3, 4, 5, 6, 8, 99]  # figure: make_paper_figs.window_grid
     A = np.array([[np.mean([g[f"w{w}_r{r}"] - g["opt"] for g in grid]) for w in W] for r in R])
-    fig, ax = plt.subplots(figsize=(4.8, 3.4))
-    im = ax.imshow(A, cmap="viridis_r", origin="lower", aspect="auto")
-    for i in range(len(R)):
-        for j in range(len(W)):
-            ax.text(
-                j,
-                i,
-                f"{A[i, j]:.0f}",
-                ha="center",
-                va="center",
-                fontsize=7,
-                color="w" if A[i, j] > A.max() / 2 else "k",
-            )
-    ax.set_xticks(range(len(W)), W)
-    ax.set_yticks(range(len(R)), [str(r) if r < 99 else "∞" for r in R])
-    ax.set_xlabel("window w")
-    ax.set_ylabel("database radius r")
-    ax.add_patch(plt.Rectangle((W.index(8) - 0.5, R.index(5) - 0.5), 1, 1, fill=False, ec="r", lw=2))
-    plt.colorbar(im, label="mean excess gates over optimum")
-    ax.set_title("ion trap, 3 qubits (red: operating point of [R25])", fontsize=8.5)
-    fig.tight_layout()
-    fig.savefig(FIG / "ext_grid.png", dpi=200)
     M["GridEightFive"] = fmt(float(A[R.index(5), W.index(8)]), 1)
     M["GridEightInf"] = fmt(float(A[R.index(99), W.index(8)]), 1)
 else:
@@ -175,25 +105,6 @@ if mx:
     beta = max(e for e in eig if e < 1 - 1e-9)
     M["BetaTwo"] = fmt(beta, 3)
     M["LMixTwo"] = str(int(np.ceil(np.log(0.01 / (0.5 * np.sqrt(11520))) / np.log(beta))))
-    fig, ax = plt.subplots(figsize=(5.4, 3.3))
-    for key, lab, col in (
-        ("ion_pm_2", "2q ion trap", "#76b7e5"),
-        ("nisq_2", "2q IBM-style", "#f39c12"),
-        ("ion_pm_3", "3q ion trap", C["ion"]),
-        ("nisq_3", "3q IBM-style", C["nisq"]),
-    ):
-        if key not in mx:
-            continue
-        cv = mx[key]["curve"]
-        L = [c["L"] for c in cv]
-        ax.plot(L, [c["mean"] for c in cv], "o-", ms=3, color=col, label=lab)
-        ax.axhline(mx[key]["uniform"]["mean"], color=col, ls="--", lw=0.8)
-    ax.set_xscale("log")
-    ax.set_xlabel("input length L (random native gates)")
-    ax.set_ylabel("mean exact optimal length")
-    ax.legend(frameon=False, fontsize=7.5)
-    fig.tight_layout()
-    fig.savefig(FIG / "ext_mixing.png", dpi=200)
     if "ion_pm_3" in mx:
         target = mx["ion_pm_3"]["uniform"]["mean"]
         Lmix = next((c["L"] for c in mx["ion_pm_3"]["curve"] if abs(c["mean"] - target) < 0.15), None)

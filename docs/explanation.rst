@@ -53,6 +53,6 @@ When is local rewriting optimal?
 For a finite gate group of diameter :math:`D`, windows longer than :math:`D` with a database of radius
 :math:`D` make every locally reduced circuit globally optimal. The paper's discrete alphabets generate the
 Clifford group, so this is checkable: for three qubits :math:`D = 17` (ion trap) and :math:`19` (IBM-style), and in
-practice windows of 12-16 gates already reach the proven optimum. The extension paper in
-``manuscripts/extension`` proves this and further results (gate-count parity, mixing of random-circuit benchmarks,
+practice windows of 12-16 gates already reach the proven optimum. The paper in
+``manuscripts/paper`` proves this and further results (gate-count parity, mixing of random-circuit benchmarks,
 counting lower bounds).

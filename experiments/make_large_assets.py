@@ -11,11 +11,11 @@
 # that they have been altered from the originals.
 
 
-"""Numbers and tables for the large-circuit suite and the run-time comparison (extension paper).
+"""Numbers and tables for the large-circuit suite and the run-time comparison (paper).
 
 Inputs:  results/general/large_v1.jsonl (gen_large.py ours), large_recert_v1.jsonl (gen_large.py recert),
          results/general/bench_v2.json and bqskit_v2.jsonl (60-circuit suite, for the run-time table).
-Outputs: extension/large_numbers.tex.
+Outputs: paper/large_numbers.tex.
 
 The run may be partial (gen_large.py is resumable): every number is computed from the rows present.
 Nam pf1_* / pf2_* are excluded from the comparison because Qiskit level 3 drops their ~1e-7 rad rotations
@@ -29,7 +29,7 @@ from pathlib import Path
 
 from common import RESULTS
 
-EXT = Path(__file__).resolve().parents[1] / "manuscripts" / "extension"
+EXT = Path(__file__).resolve().parents[1] / "manuscripts" / "paper"
 DEV = {"heron": "Heron", "ion": "Ion"}
 M = {}
 

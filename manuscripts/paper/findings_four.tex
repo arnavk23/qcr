@@ -1,0 +1,13 @@
+\paragraph{Findings.} (1) \emph{Convexity matters more than anything else at $n\ge4$.} With the same exact 3-qubit
+oracle, contiguous windows (EW-16) give \EWFourIon\ (ion trap) and \EWFourIbm\ (IBM-style) gates, no better than the
+published method. With DAG-convex windows (CW-24) the same oracle gives \CWFourIon\ and \CWFourIbm\ gates, i.e.\
+\FourImprovementIon\ and \FourImprovementIbm\ fewer than the published results, in about \CWFourSec\,s per circuit. (2)
+Two-qubit counts drop from 43 (published) to \CWFourIonTwoQ\ RXX and \CWFourIbmTwoQ\ CZ, although CW optimises
+total length, not two-qubit count. On the first \CWBqIonN\ circuits, where we also ran BQSKit level~4
+(Table~\ref{tab:four}), CW-24 averages \CWBqIonTwoQ\ RXX against BQSKit's \BqFourIonTwoQ\ (fewer on \CWBqIonFewer, more
+on \CWBqIonMore) and \CWBqIbmTwoQ\ CZ against \BqFourIbmTwoQ\ (fewer on \CWBqIbmFewer, more on \CWBqIbmMore), with
+$\times$\CWBqIonTotalRatio\ and $\times$\CWBqIbmTotalRatio\ of BQSKit's total gates and exact outputs. The journal
+reports 28 and 37 two-qubit gates for BQSKit. (3) The certified lower bounds
+(\LBFourIon, \LBFourIbm) leave a gap of at most a factor of about 4 (\NjpIonCliff/\LBFourIon\ and \NjpIbmCliff/\LBFourIbm). Closing it, either by tightening the bound (deeper spheres,
+meet-in-the-middle) or by better upper bounds (4-qubit oracles via symmetry reduction), is an open problem that our framework
+makes precise.
